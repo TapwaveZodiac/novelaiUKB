@@ -362,8 +362,8 @@ the context window, then number 1 on top of it, number 2 on top of that,
 so on and so forth.
 
 All of these settings are set through the [Context
-Viewer](Context.html#Context_Viewer) and
-[Lorebook](Lorebook.html).
+Viewer](Context#context-viewer) and
+[Lorebook](Lorebook).
 
 This is your **Insertion Order** setting. Story is **0**.
 

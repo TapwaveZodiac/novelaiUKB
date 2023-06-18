@@ -34,17 +34,17 @@ There are three types of modules: **Style**, **Theme** and **Inspiration**.
 Experiment to find what works best with what you enjoy and want to write about!
 
 Further information on cleaning and preparing a dataset for use in training AI Modules can be found at the [Datasetting for AI
-Modules](Datasetting-for-AI-Modules.html) section.
+Modules](Datasetting-for-AI-Modules) section.
 
 ***
 
 ### Story's Memory
 
-Injects this text at the top of the context. Helpful to keep the AI on track with important information to keep in mind, as well as the **Author, Title, Tags, Genre** setup. More information on how to use this can be found in the [Injected Text](Context.html#Injected_Text) section.
+Injects this text at the top of the context. Helpful to keep the AI on track with important information to keep in mind, as well as the **Author, Title, Tags, Genre** setup. More information on how to use this can be found in the [Injected Text](Context#injected-Text) section.
 
 ### Story's Author's Note
 
-Injects this text three newlines from the bottom of the context. Helpful for immediate instructions for the AI, which gives direction to the AI's generations. More information on how to use this can be found in the [Injected Text](Context.html#Injected_Text) section.
+Injects this text three newlines from the bottom of the context. Helpful for immediate instructions for the AI, which gives direction to the AI's generations. More information on how to use this can be found in the [Injected Text](Context#injected-text) section.
 
 ### Lorebook Quick Access
 

@@ -1,5 +1,5 @@
 COMMAND = pandoc
-ARGS = --from gfm --to html --standalone
+ARGS = --from gfm --to html --standalone --lua-filter filters/convert_link.lua
 SRC_DIR = docs
 BUILD_DIR = build
 

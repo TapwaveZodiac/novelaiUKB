@@ -45,7 +45,7 @@ If it is part of a placeholder, add a **\$** at the very beginning before the fi
 
 #### Lore Generation
 
-Click the 💡 **Generate** button to enter the [Lore Generator](Lorebook.html#Lore_Generator).
+Click the 💡 **Generate** button to enter the [Lore Generator](Lorebook#lore-generator).
 
 ***
 
@@ -95,7 +95,7 @@ As an example, if you set it to **-3 Newline**, then it will insert the entry's 
 
 If this tab is active, you can click **Dock Active Tab to the Side** to make it show up at all times. Click **Undock** to remove it.
 
-Explained in [Phrase Bias](Generation-Settings.html#Phrase_Bias), although this has an extra setting: *When Entry Inactive*, which enables the biases **if the entry is not active!** This can help activate things randomly, such as monster encounters.
+Explained in [Phrase Bias](Generation-Settings#phrase-bias), although this has an extra setting: *When Entry Inactive*, which enables the biases **if the entry is not active!** This can help activate things randomly, such as monster encounters.
 
 Phrase biases in entries can otherwise be used to favor nicknames for a person (such as referring to their job, or a shorthand), and terms relative to them.
 

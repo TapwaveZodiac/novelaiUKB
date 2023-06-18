@@ -275,7 +275,7 @@ using DEFLATE.
 Generate using one of the text AIs. For the input and output, see
 parameters.use_string. The most relevant generation options can be
 viewed in [Generation
-Settings](Generation_Settings.html#Generation_Options).
+Settings](Generation-Settings#generation-options).
 
 The input you send will be all the AI sees, which mean any context
 building needs to be done before sending the request. The maximum length

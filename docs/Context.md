@@ -63,7 +63,7 @@ Keep in mind that Author's Note influence is **extremely strong**. It is **stron
 
 ### Lorebook
 
-Further described in the dedicated [Lorebook](Lorebook.html) page.
+Further described in the dedicated [Lorebook](Lorebook) page.
 
 ***
 
@@ -91,7 +91,7 @@ Punctuation outside of colons is usually only as part of a chapter/work title.
 
 You can encase only descriptive passages in Injected Text entries if they differ from the usual style of your prose.
 
-Brackets **do not notably affect the accuracy of the text** - this is [Generation Settings](Generation-Settings.html) at work.
+Brackets **do not notably affect the accuracy of the text** - this is [Generation Settings](Generation-Settings) at work.
 
 It is generally not recommended to use brackets in Euterpe or Krake for anything outside of the aforementioned purposes.
 
@@ -164,7 +164,7 @@ Lists how this entry was trimmed. There are four trim steps, which occur in this
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/bb95d656-5b18-4294-8ae6-a893d0860b19)
 
-Remember all the advanced settings of the [Lorebook](Lorebook.html)? Those are used here, but for the **Story**, **Memory** and **Author's Note**.
+Remember all the advanced settings of the [Lorebook](Lorebook)? Those are used here, but for the **Story**, **Memory** and **Author's Note**.
 
 These can be accessed in the **Advanced Options** collapse in the **Options** tab on the right.
 

@@ -24,7 +24,7 @@ You cannot put these characters inside the text fields of the placeholder: $ {} 
 
 ### Placeholders in Lorebook entries
 
-For the lorebook entries, you can add placeholders in the **Title** of an entry, its **Description** and its **Keys**. If you want to use [regex](Using-Regex.html) for your keys, you have to prefix the expression with a $.
+For the lorebook entries, you can add placeholders in the **Title** of an entry, its **Description** and its **Keys**. If you want to use [regex](Using-Regex) for your keys, you have to prefix the expression with a $.
 For example to match with the name of a character, you have to write $/${name}/
 
 ### Order of the Placeholders

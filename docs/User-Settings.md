@@ -49,7 +49,7 @@ The **User Settings** can be accessed from the *Story Library*, then clicking on
 
 ## Theme
 
-Consult [Theming](Theming.html) for more information on this feature.
+Consult [Theming](Theming) for more information on this feature.
 
 ## Account tab
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8d63990c-25b8-4e37-968d-635c463658f9)

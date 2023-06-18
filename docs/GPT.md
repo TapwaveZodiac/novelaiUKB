@@ -58,5 +58,5 @@ This is similar to [ironic process theory](https://en.wikipedia.org/wiki/Ironic_
 
 ### Tokenizer Tool
 
-*NovelAI* includes a built-in Tokenizer [Tool](Tools.html) that allows you to see not only the breakdown of tokens used in an input, but also the token IDs, token count, and character count.
+*NovelAI* includes a built-in Tokenizer [Tool](Tools) that allows you to see not only the breakdown of tokens used in an input, but also the token IDs, token count, and character count.
 This tool is accessed through the main menu, or by clicking on the token count of Memory, Author's Note or Lorebook entries.

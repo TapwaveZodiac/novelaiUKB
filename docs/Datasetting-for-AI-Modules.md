@@ -176,7 +176,7 @@ your story.
 
 [Notepad++](https://notepad-plus-plus.org/downloads/)
 A free and highly-extendable text editor that features custom macros and
-(somewhat limited) [Regex](Using-Regex.html)
+(somewhat limited) [Regex](Using-Regex)
 Find and Replace.
 
 [Zaltys' Notepad++ Macros](https://cdn.discordapp.com/attachments/870449695657443349/1009881560406831204/shortcuts.xml)
@@ -190,7 +190,7 @@ details
 
 [Regex101](https://regex101.com/)
 A website focused on the quick creation, testing, and learning of
-[Regular Expressions](Using-Regex.html). If
+[Regular Expressions](Using-Regex). If
 you make an account you can also save and share your regex with others.
 
 [Chris' Wordstat](https://github.com/Systemcluster/wordstat)
@@ -238,7 +238,7 @@ identify some symbol you don't recognize.
 ### Useful Regular Expressions
 
 A [**regular expression**, or
-**regex**](Using-Regex.html), is a sequence
+**regex**](Using-Regex), is a sequence
 of characters that can be used to quickly **find and replace** more
 complex patterns of text. The following are some useful regular
 expressions for cleaning datasets. **Keep in mind these are potentially

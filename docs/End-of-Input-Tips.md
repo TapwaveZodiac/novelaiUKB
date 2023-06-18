@@ -1,7 +1,7 @@
 **This page was conceived during the Euterpe Era of
 NovelAI. Some tech here might not be relevant anymore, but some tips can
 still be useful. Refer to [The Rabbit Hole
-(Clio)](The-Rabbit-Hole-(Clio).html) For the current
+(Clio)](The-Rabbit-Hole-(Clio)) For the current
 model.**
 
 This page contains **community-researched** content and aims to provide
@@ -9,7 +9,7 @@ in-depth tips to improve your experience with the AI.
 
 This is an **expert** guide. There will be much less
 hand-holding from now on. Terms and tools will not be explained if they
-were defined in the feature pages and [Writing Help](Writing-Help.html), so make sure you have fully
+were defined in the feature pages and [Writing Help](Writing-Help), so make sure you have fully
 read these two pages before continuing.
 
 ***

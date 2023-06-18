@@ -33,7 +33,7 @@ write.
 
 *Text Injection, Feature*
 
-A type of [Text Injection](Context.html) that is
+A type of [Text Injection](Context) that is
 usually situated three newlines from the bottom of the context. It is
 much stronger than Memory and can often be disruptive, especially if the
 inserted text doesn\'t fit the output seamlessly. The typical
@@ -54,7 +54,7 @@ next most likely token.
 Shorthand for *Square Brackets*, which are these symbols: \[ \]. They
 are part of the finetune data, and used to contain metadata about the
 text files. They are traditionally used in [Injected
-Text](Context.html) to separate it from story text.
+Text](Context) to separate it from story text.
 
 ## Branch
 
@@ -245,7 +245,7 @@ lot of power, which also makes *running* a GPT model expensive.
 
 *Image Generation*
 
-See [Scale](Glossary.html#Scale).
+See [Scale](Glossary#scale).
 
 ## Image Resolution
 

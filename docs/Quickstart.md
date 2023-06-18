@@ -8,9 +8,9 @@ and is aimed at newcomers to the service.
 
 - **Overview**
   - **Main Concepts in *NovelAI***
-  - [AI Writing Essentials](Quickstart.html#ai-writing-essentials)
-  - [Data and Privacy](Quickstart.html#data-and-privacy)
-  - [Customization](Quickstart.html#customization)
+  - [AI Writing Essentials](Quickstart#ai-writing-essentials)
+  - [Data and Privacy](Quickstart#data-and-privacy)
+  - [Customization](Quickstart#customization)
 
 ***
 
@@ -93,7 +93,7 @@ The amount of tokens available to you is limited, so it's important to learn how
 
 #### Tokenizer
 
-NovelAI includes a built-in [Tokenizer tool](Tools.html#Tokenizer) that allows you to see not only the breakdown of tokens used in an input, but also the token IDs, token count, and character count.
+NovelAI includes a built-in [Tokenizer tool](Tools#tokenizer) that allows you to see not only the breakdown of tokens used in an input, but also the token IDs, token count, and character count.
 
 This tool is accessed through the main menu, or by clicking on the token count of Memory, Author's Note or Lorebook entries.
 
@@ -132,11 +132,11 @@ The **Context** helps the AI understand the current writing style, the character
 
 The Context is built from four blocks.
 
-- The **[Memory](Detailed-Concepts.html#Memory)**.
-- The **[LoreBook](Detailed-Concepts.html#Lorebook) entries** that
+- The **[Memory](Detailed-Concepts#memory)**.
+- The **[LoreBook](Detailed-Concepts#lorebook) entries** that
   have been triggered.
 - The remaining text that can fit.
-- The **[Author's Note](Detailed-Concepts.html#Author's_Note)**,
+- The **[Author's Note](Detailed-Concepts#authors-note)**,
   inserted three new-lines before the end of the text.
 
 #### Author's Note
@@ -178,7 +178,7 @@ The **Lorebook** is a powerful tool that allows you to define entries for practi
 
 You can access it by clicking the **Lorebook icon** (📘) on the left of the input bar, or by clicking **View All** above the Lorebook search field.
 
-The **Lorebook** is an advanced feature and has a more detailed guide [Here](Lorebook.html)!
+The **Lorebook** is an advanced feature and has a more detailed guide [Here](Lorebook)!
 
 #### Leaking
 
@@ -246,7 +246,7 @@ If you enter text in the **Story box** and want to ask the AI to generate, you c
 
 When your cursor is in the main text box, pressing CTRL / CMD⌘ + SHIFT + ENTER will ignore all text after the cursor, and replace all highlighted text with a new generation. The text generated will be inserted at the cursor position, rather than at the end.
 
-Consult the [Shortcuts and Hotkeys](Shortcuts-and-Hotkeys.html) page for more detail.
+Consult the [Shortcuts and Hotkeys](Shortcuts-and-Hotkeys) page for more detail.
 
 ***
 

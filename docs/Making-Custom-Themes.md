@@ -37,7 +37,7 @@ Things to keep in mind:
 # Template Walkthrough
 
 Before you start, **save the [raw
-template](Making-Custom-Themes#Raw_Template) at the bottom of
+template](Making-Custom-Themes#raw-template) at the bottom of
 this page** and give it a good read.
 
 ## Template Explanation

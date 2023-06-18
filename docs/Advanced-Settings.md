@@ -2,7 +2,7 @@
 
 ## Context
 
-Tools relative to [Context](Context.html). Explained on the corresponding page.
+Tools relative to [Context](Context). Explained on the corresponding page.
 
 ## Phrase Bias
 
@@ -52,7 +52,7 @@ If you inserted an exclusive token (using curly braces), it will be displayed wi
 
 At times, you may wish to include hints to the AI that are **not considered for text generation**. These can be encapsulated in **square brackets** (\[ and \]) to relay information that will affect the **Current Context** while not being considered part of the actual text.
 
-These most often take the form of hints. For more information on what to put between square brackets, see **[Keeping Track](Advanced Writing.html#Keeping Track)**.
+These most often take the form of hints. For more information on what to put between square brackets, see **[Keeping Track](Advanced Writing#Keeping Track)**.
 
 ## Stop Sequence
 

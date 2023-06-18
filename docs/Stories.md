@@ -4,8 +4,8 @@
 
 Also known as the "left panel", this part of the interface controls everything **outside of your Story**. This includes the **Settings** menu, as well as the **list of your Stories**.
 
-The **cog icon** (**⚙️**) contains the **[Account Settings](Account-Settings.html)** menu, and is also where you can **log out**.
-The **Goose** (**🦆**) contains the **[Tools](Tools.html)** menu, which includes **Module Training and Tokenizer**, the link to **Image Generation**, as well as the **Official Documentation and Tutorial**.
+The **cog icon** (**⚙️**) contains the **[Account Settings](Account-Settings)** menu, and is also where you can **log out**.
+The **Goose** (**🦆**) contains the **[Tools](Tools)** menu, which includes **Module Training and Tokenizer**, the link to **Image Generation**, as well as the **Official Documentation and Tutorial**.
 
 Below them is the **Search Field** (**🔍**), along with the **Sort Menu** (**🔻**) which allows you to search through your Story collection.
 
