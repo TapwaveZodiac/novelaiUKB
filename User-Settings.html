@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>User Settings</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">User Settings</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#ai-settings">AI Settings</a></li>
+<li><a href="#interface-tab">Interface Tab</a></li>
+<li><a href="#theme">Theme</a></li>
+<li><a href="#account-tab">Account tab</a></li>
+<li><a href="#text-to-speech-tab">Text to Speech tab</a>
+<ul>
+<li><a href="#seed-mixing">Seed Mixing</a></li>
+</ul></li>
+<li><a href="#defaults-tab">Defaults tab</a></li>
+</ul>
+</nav>
+<p>The <strong>User Settings</strong> can be accessed from the <em>Story Library</em>, then clicking on the Settings button (<strong>⚙️</strong>), or the Goose button.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1d9054a9-67cd-4f3e-9634-6c7fecbe0f3f" alt="image" /></p>
+<h2 id="ai-settings">AI Settings</h2>
+<ul>
+<li><p><strong>Stream AI Responses</strong>: If ON, displays the tokens from the AI as they are generated, rather than displaying the entire answer at once.</p></li>
+<li><p><strong>Streamed Response Delay</strong>: Delay between token displays if Stream AI Responses is ON.</p></li>
+<li><p><strong>HypeBot</strong>: A secondary AI model that comments on the story. The model is consistent regardless of the <strong>Avatar</strong> selected.</p></li>
+</ul>
+<ul>
+<li><ul>
+<li>The probability settings sets the chance for comments to be given.</li>
+</ul></li>
+<li><ul>
+<li><strong>Permanent</strong> allows you to poll HypeBot for a comment whenever you like by clicking their avatar, while <strong>Automatic</strong> comments when their chance is triggered only.</li>
+</ul></li>
+</ul>
+<ul>
+<li><p><strong>Continue Response to End of Sentence</strong>: If ON, the generation will continue for up to 20 tokens more or until it creates a sentence delimiter (. or ;)</p></li>
+<li><p><strong>Preamble</strong>: Adds a small amount of "marker" tokens before the entire context. This improves quality when the context window isn't full by telling the AI "this is a new story". <strong>If the context is empty, a preamble is always added even if this is set to OFF.</strong></p></li>
+<li><p><strong>Trim Excess Whitespace</strong>: If a loose space or repeated newline is detected at the end of the text, it will be cleaned up. Trailing whitespace can cause generation inconsistency.</p></li>
+<li><p><strong>Max Context Size</strong>: If you have the <em>Scroll</em> or <em>Opus</em> Subscription plan, you can demo for users with less money to spend by forcing your context window to something smaller.</p></li>
+<li><p><strong>Default Bias</strong>: Some logit biases are applied by default to the Dinkus and Asterism to make their generation less likely. Turn this OFF to remove those biases and apply your own.</p></li>
+<li><p><strong>Enable Token Probabilities</strong>: Activates a diagnosis mode which returns the probabilities of all possible tokens in the AI's response. You can access the interface by clicking the <strong>🧠</strong> button next to Retry under the main text box. <em>Keep in mind that this can lengthen generation time!</em></p></li>
+<li><p><strong>Bidirectional Inline Generation</strong>: Normally, pressing Ctrl + Shift + Enter or ⌘Cmd + Shift + Enter will cause the AI to generate at the cursor position. NovelAI's models are not bidirectional, so it only reads the text before the cursor. If this option is <strong>enabled</strong>, a special model that can process text bidirectionally will be used for cursor position ("inline") generations.</p></li>
+</ul>
+<hr />
+<h2 id="interface-tab">Interface Tab</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/eaa8d27f-445b-4e42-a0c6-2829e0c63b9c" alt="image" /></p>
+<ul>
+<li><strong>Gesture Controls</strong>: Enables swipe-based controls for the side tabs and the input box on mobile devices and touchscreens.</li>
+<li><strong>Swap Context Menu Controls</strong>: If on, use the NAI context menu on right click. Browser's default context menu is used if off.</li>
+<li><strong>Input Box</strong>: Toggles the display of the input box. If off, only the story box is displayed.</li>
+<li><strong>Output Highlighting</strong>: Toggles the different text colors in the story based on whether or not it was generated or written by the user.</li>
+<li><strong>Output Spellcheck</strong>: Enables spellcheck in the main story box if your browser supports it efficiently.</li>
+<li><strong>Context Viewer Colors</strong>: Color codes injected text elements in the context viewer depending on their origin.</li>
+<li><strong>Text to Speech</strong>: When enabled, generations are read out loud by the TTS service.</li>
+<li><strong>Show lorebook keys in the output box</strong>: When enabled, text that triggered a lorebook key will be shown in <strong>bold</strong>. This can have a performance impact.</li>
+<li><strong>Show story title</strong>: Displays the title of the story at the top of the screen if enabled.</li>
+<li><strong>Show Tips</strong>: Displays tips under the story box if enabled.</li>
+<li><strong>Use EditorV2 for new Stories</strong>: Turns on the Experimental Story Editor for any story created with this setting on. This allows for text formatting, a more mobile-friendly interface, mouse-only inline generations, and performance improvements. However, not all features are available currently, check the list when turning on this feature for more information.</li>
+</ul>
+<h2 id="theme">Theme</h2>
+<p>Consult <a href="Theming.html">Theming</a> for more information on this feature.</p>
+<h2 id="account-tab">Account tab</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8d63990c-25b8-4e37-968d-635c463658f9" alt="image" /></p>
+<ul>
+<li><p><strong>Default Storage Location</strong>: Switches between using <em>Local Storage</em> and <em>Serverside storage</em> by default.</p></li>
+<li><p><strong>Ignore Remote Story Conflicts</strong>: If you are editing the same story on two different devices at once, you may cause overwrite issues. If conflicts are detected, NovelAI will notify you and tell you of the changes, letting you choose which version you want to keep. Toggling this ON will make your current device always save changes regardless.</p></li>
+<li><p><strong>Download All Stories</strong>: Processes all your story files and exports them in a .ZIP archive. Keep in mind those include all branches and retries, so this can be a lot of data and take quite a bit of time to process!</p></li>
+</ul>
+<hr />
+<h2 id="text-to-speech-tab">Text to Speech tab</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e76cfe5f-2045-4f67-b38d-3ec90f13d6c3" alt="image" /></p>
+<p>The <strong>Text to Speech</strong> tab contains accessibility options for visually impaired users.</p>
+<p><strong>You can stop the TTS at any moment by pressing ALT + SHIFT + T or ⌘Cmd + SHIFT + T</strong>.</p>
+<ul>
+<li><strong>TTS Source</strong>: Selects the <em>Local</em> TTS service installed on your device, or NAI's <em>streamed</em> TTS service.</li>
+<li><strong>Speak Outputs</strong>: AI-generated outputs will be read by the TTS service if On.</li>
+<li><strong>Speak Inputs</strong>: User Input will be read by the TTS service if On.</li>
+<li><strong>Speak HypeBot Comments</strong>: Comments by HypeBot will be read by the TTS service if On.</li>
+<li><strong>Voiceset, Volume, Pitch &amp; Speed</strong>: Selects the voice used by the service, the volume at which it will speak, its treble/bass pitch, and the reading speed. Press <strong>Test</strong> to check if your settings are comfortable.</li>
+</ul>
+<p>Streamed TTS has a different array of settings, displayed when it is enabled.</p>
+<ul>
+<li><strong>Model</strong>: Allows you to choose between the original V1 model and the newer V2 model. Be aware that V1 and V2 work differently in terms of seed input.</li>
+<li><strong>Story Voice</strong>: Which voice is used by the TTS service for story text.</li>
+<li><strong>HypeBot Voice</strong>: Which voice is used by the TTS service for HypeBot comments.</li>
+<li><strong>Saved Voices</strong>: Custom voices you have set up for the Streamed TTS service.</li>
+<li><strong>Name</strong>: Sets a name for the voice you designed.</li>
+<li><strong>TTS Seed</strong>: Write anything in there to generate a new voice.</li>
+</ul>
+<p>Click the <strong>🔊</strong> button to play the test field's text with the voice selected.</p>
+<p>Click the <strong>💾</strong> to save a recording of the text in the test field with the voice selected, so you can share it easily.</p>
+<h3 id="seed-mixing">Seed Mixing</h3>
+<p>You can combine different seeds by opening with <code>seedmix:</code>. After the colon, you can write the seed, and connect it to another seed with <strong>+</strong> to combine, or <strong>-</strong> to subtract its <strong>Specifics</strong>.</p>
+<p><strong>Specifics</strong> are <em>Cadence</em> ("speed of the speech"), <em>Intonation</em> ("pitch and dynamics of the speech"), and <em>Style</em> ("how the voice sounds").</p>
+<p>To manipulate the specific of a seed on its own, preface the seed with the specific. These must be prefaced with a pipe: <code>|</code></p>
+<p>Keep in mind that:</p>
+<ul>
+<li>All spaces are removed.</li>
+<li>Stray : are kept.</li>
+<li>If Style is not specified, it will be set to the same value as Intonation.</li>
+<li>If Intonation and Cadence are set, the base seed's settings are ignored.</li>
+</ul>
+<p><code>seedmix:Aini|cadence:SonicTheHedgehog+Tails</code></p>
+<p>Here, the cadence will be the result of the combination of SonicTheHedgehog and Tail's cadence.</p>
+<p><strong>If a seed or a specific is specified after a lone seed or identical specific, it will override what comes before it!</strong></p>
+<p><code>seedmix:Mario+Luigi|cadence:Toad</code></p>
+<p>In this example, the cadence of Toad will override the cadence in the mix of Mario+Luigi.</p>
+<hr />
+<h2 id="defaults-tab">Defaults tab</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/d4b16976-6b3c-42e0-9266-cdc331fc7b06" alt="image" /></p>
+<p>The <strong>Defaults</strong> tab allows you to set the default <strong>Model</strong>, <strong>Generation Settings</strong> and <strong>Module</strong> for new stories.</p>
+<p><strong>Legacy Lore Generation</strong> uses an older model with less functionalities for Lore Generation.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Writing Help</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Writing Help</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#interacting">Interacting</a>
+<ul>
+<li><a href="#absolute-phrasing">Absolute Phrasing</a></li>
+<li><a href="#ambiguous-phrasing">Ambiguous Phrasing</a></li>
+<li><a href="#dangling-prompts">Dangling Prompts</a></li>
+<li><a href="#indirect-intent">Indirect Intent</a></li>
+</ul></li>
+<li><a href="#getting-more-detail">Getting More Detail</a></li>
+<li><a href="#dialogue">Dialogue</a>
+<ul>
+<li><a href="#uncertain-speakers-in-dialogue">Uncertain Speakers in Dialogue</a></li>
+</ul></li>
+<li><a href="#keeping-track-keeping_track">Keeping Track {#keeping_track}</a>
+<ul>
+<li><a href="#what-to-add">What to Add</a></li>
+<li><a href="#when-to-take-notes">When to Take Notes</a></li>
+<li><a href="#working-with-the-lorebook-working_with_the_lorebook">Working with the Lorebook {#working_with_the_lorebook}</a></li>
+<li><a href="#how-to-format-memory-how_to_format_memory">How to Format Memory {#how_to_format_memory}</a></li>
+<li><a href="#why-the-ai-forgets">Why the AI Forgets</a></li>
+</ul></li>
+<li><a href="#perspective">Perspective</a>
+<ul>
+<li><a href="#first-person-first_person">First Person {#first_person}</a></li>
+<li><a href="#second-person-second_person">Second Person {#second_person}</a></li>
+<li><a href="#third-person-third_person">Third Person {#third_person}</a></li>
+<li><a href="#changing-perspective-changing_perspective">Changing Perspective {#changing_perspective}</a></li>
+</ul></li>
+<li><a href="#custom-pronouns-custom_pronouns">Custom Pronouns {#custom_pronouns}</a></li>
+<li><a href="#verbs">Verbs</a>
+<ul>
+<li><a href="#tenses">Tenses</a></li>
+<li><a href="#what-about-the-future-what_about_the_future">What about the future? {#what_about_the_future}</a></li>
+<li><a href="#aspect">Aspect</a></li>
+<li><a href="#modality">Modality</a></li>
+</ul></li>
+<li><a href="#steering-the-plot-steering_the_plot">Steering the Plot {#steering_the_plot}</a>
+<ul>
+<li><a href="#what-to-write-what_to_write">What to Write {#what_to_write}</a></li>
+</ul></li>
+<li><a href="#why-negation-and-denial-is-hard-why_negation_and_denial_is_hard">Why Negation and Denial is Hard {#why_negation_and_denial_is_hard}</a></li>
+</ul>
+</nav>
+<p>This section seeks to explain in detail the finer points of using <em>NovelAI</em> to manage the world presented in your Story.</p>
+<h2 id="interacting">Interacting</h2>
+<p>At many points in your tales, you may find yourself wanting to directly influence the world around your protagonist. In these cases, there are a number of simple ways you can do so!</p>
+<h3 id="absolute-phrasing">Absolute Phrasing</h3>
+<p>An easy method of interacting with the world presented in your Story is to directly <strong>edit the text</strong>. If you were presented with a chasm and wanted to leap across it, simply add this to the Story and it will have occurred:</p>
+<p><code>I jump over the chasm.</code></p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Immediate result</li>
+<li>Definite outcome guarantees flow in the direction you desire</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Interrupts narrative flow</li>
+<li>Leaves less room for AI creativity</li>
+</ul>
+<h3 id="ambiguous-phrasing">Ambiguous Phrasing</h3>
+<p>The previous sentence has a definite outcome - you <em>will</em> jump over the chasm, as you just told the AI you did so successfully. If you wish to have any chance of failure or an unexpected outcome, try to <strong>phrase the sentence so the outcome is unsure</strong>, like:</p>
+<p><code>I run to the edge of the chasm and jump.</code> or <code>I run to the edge of the chasm and attempt to jump over it.</code></p>
+<p>Because your action has no definite outcome attached, it's now up to the AI to decide how things progress from here. You could succeed, fail, or perhaps have a giant eagle swoop down to save you at the last moment.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Immediate result</li>
+<li>Indefinite outcome leaves room for AI creativity</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Somewhat interrupts narrative flow</li>
+<li>Might not lead you where you wish to go</li>
+</ul>
+<h3 id="dangling-prompts">Dangling Prompts</h3>
+<p>Another simple method is to begin your sentence, then <strong>let the AI complete it</strong>. With the previous example, it would be phrased thusly:</p>
+<p><code>I run to the edge of the chasm, and</code></p>
+<p>As this sentence has not been completed, the AI can decide what happens next. The dangling prompt method is noticeably more fluid within the Story's flow, and reduces the chance of unexpected actions performed thereafter. This method allows the AI considerably more freedom, and it may even choose some additional actions for you. Don't be surprised if you perform a graceful pirouette with this method!</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Indefinite outcome allows for great AI creativity</li>
+<li>Maintains narrative flow</li>
+<li>Can lead to truly unexpected outcomes</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>No guarantee of an immediate result</li>
+<li>Can require several retries before obtaining an "acceptable" outcome</li>
+</ul>
+<h3 id="indirect-intent">Indirect Intent</h3>
+<p>You may wish to afford the AI more control, while still wanting a character to do something. In these cases, it's possible to use <strong>Memory</strong> or <strong>Author's Note</strong> to tell the AI of your desire to act.</p>
+<p><code>[ I want to leap across the chasm. ]</code></p>
+<p>Though this method is far less effective than directly editing the Story, it allows the AI to have these actions performed at a point that more fluently fits into its narrative. Do note this could be the very next line, or even three paragraphs from now!</p>
+<p>You can improve the chance of this working by styling it after chapter titles, as in: <code>[ Leaping Across the Chasm ]</code></p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Allows for greater AI creativity</li>
+<li>Indefinite outcome and timing can lead to interesting developments</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>Delayed, potentially no result</li>
+<li>Does not help with pacing</li>
+</ul>
+<p>**</p>
+<h2 id="getting-more-detail">Getting More Detail</h2>
+<p>Examining the world presented within your Story is simple, and can be used in conjunction with the above methods. The best results are often found using dangling prompts, because they flow more fluently within the narrative of the Story while affording the user a high degree of control.</p>
+<p><code>After approaching the edge of the chasm, I peer across. It</code></p>
+<p>This will encourage the AI to provide more information about the noun (<strong>it</strong>) in relation to the examining verb (<strong>peer</strong>) and the direction adverb (<strong>across</strong>). As such, it will be very likely to describe what it is you see as you <em>peer</em> <em>across</em> the <em>chasm</em>.</p>
+<p>The same approach may be used during existing descriptions or exposition.</p>
+<p><code>It's about six foot wide, a yawning abyss that cuts deep into the earth to the jagged rocks below.</code></p>
+<p>While this sentence is interesting, you may wish to know something specific about the chasm - perhaps what's on the other side. In this case, the best course of action is to edit the Story directly with a dangling prompt containing something to direct the AI.</p>
+<p><code>It's about six foot wide, a yawning abyss that cuts deep into the earth to the jagged rocks below. On the other side</code></p>
+<p>Keep in mind that the best way to obtain more detail is to perform actions that would lead to acquiring information. Use verbs related to <strong>the five senses</strong>, but also <em>think</em> or <em>ask</em>. <strong>Adverbs</strong> and <strong>circumstancial complements</strong> for <em>time</em>, <em>direction</em>, <em>origin</em>, <em>intent</em>, and so many more will help refine what kind of information you will receive.</p>
+<p>**</p>
+<h2 id="dialogue">Dialogue</h2>
+<p>Want to say something? It's easy - just place your spoken words within <strong>quotation marks</strong> (<strong>"</strong> and <strong>"</strong>), and for stronger effect, append a <em>declarative action verb</em>, like so:</p>
+<p><code>"The chasm appears very deep. Perhaps jumping across it is not such a wise course of action," I say.</code></p>
+<p>Of course, this is rather bland phrasing. You may wish to use more inventive language, providing more depth to your dialogue like this:</p>
+<p><code>"The chasm appears very deep. Perhaps jumping across it is not such a wise course of action," I muse to myself, staring down to the sharp stone teeth far below.</code></p>
+<p>Notice how this provides a simultaneous action, as well as a tone to your speech? While this can certainly be overdone, it's an effective way to encourage more intricate scenes as presented by the AI in your Story.</p>
+<p>It's also possible to use varied dialogue styles, as long as they maintain a noticeable pattern. One can can use split-dialogue:</p>
+<p><code>"The chasm appears very deep," I muse to myself, staring down to the sharp stone teeth far below. "Perhaps jumping across it is not such a wise course of action."</code></p>
+<p>Which will encourage an addendum to the first spoken sentence based on the appended prose. Another common method is first specifying the speaker, which is more likely to produce character-accurate dialogue:</p>
+<p><code>I muse to myself, staring down to the sharp stone teeth far below, then say "The chasm appears very deep. Perhaps jumping across it is not such a wise course of action."</code></p>
+<p>Each of these methods provides a similar experience. It's up to you to decide which to use!</p>
+<h3 id="uncertain-speakers-in-dialogue">Uncertain Speakers in Dialogue</h3>
+<p>Occasionally, you may find either yourself or the AI not specifying a speaker for lines of dialogue.</p>
+<p><code>"The chasm appears very deep. Perhaps jumping across it is not such a wise course of action."</code></p>
+<p>While this is commonly acceptable in traditional literature, it <strong>can cause confusion in AI-generated works</strong>. This is because the AI does not track speakers - while a human can reason which character is likely to have spoken a line, the AI will never be sure unless a speaker is directly specified.</p>
+<p>Using the techniques provided, you will find yourself able to interact with and examine the environment presented to you in your Story with a high level of detail.</p>
+<hr />
+<h2 id="keeping-track-keeping_track">Keeping Track {#keeping_track}</h2>
+<p>Stories longer than the <strong>Current Context</strong> will require some input from the user to maintain narrative cohesion. This is because the AI can only read so much text at a time, so things that happened further back in the Story will be forgotten unless you keep track of them using <strong>Memory</strong> and the <strong>Lorebook</strong>.</p>
+<h3 id="what-to-add">What to Add</h3>
+<p>As there is a limit to how much the AI can process, it's important to only keep track of things that matter. For example, it's not important to note how many freckles a character has unless it's important to the plot.</p>
+<p>Many users like to treat these Stories similar to role-playing games. That's fine, and works great! Just remember that <strong>every detail will dilute the AI's focus</strong> - for a more focused experience, keep track of only <strong>the most critical elements.</strong></p>
+<h3 id="when-to-take-notes">When to Take Notes</h3>
+<p>The AI will check the <strong>Story's Memory</strong> every time you hit <strong>Send</strong>, though the Memory appears before the actual Story segment seen by the AI. As such, it's only important to keep track of things within the <strong>Current Context</strong>.</p>
+<p>Despite this, it's generally a good idea to update anything that changes as it does. For example, if you have gold and receive some more, it's best to immediately update this if you're keeping track: so <em>you</em> don't forget!</p>
+<h3 id="working-with-the-lorebook-working_with_the_lorebook">Working with the Lorebook {#working_with_the_lorebook}</h3>
+<p>While the Lorebook can provide additional information to the AI, it <strong>only triggers on words present in the Story itself</strong>. Because of this, it's important to give a brief description of something present in the Lorebook if you're keeping track of it in the Memory. Otherwise, when the AI introduces the thing into the actual Story, it may get some details wrong because it hasn't actually read the notes yet.</p>
+<p>For example, a Lorebook entry may describe a character named "Seren" as a sneaky sort, who's currently an undercover agent in a gang. If you're keeping track of this in the Memory, you'd simply refer to them at least once as <code>Seren (sly undercover gang spy)</code>, so the AI knows the basics when introducing them.</p>
+<h3 id="how-to-format-memory-how_to_format_memory">How to Format Memory {#how_to_format_memory}</h3>
+<p>There is no set standard to <em>NovelAI</em>'s Memory formatting. That said, you will find the best results by following a few simple guidelines:</p>
+<ul>
+<li><strong>Keep it simple</strong>. Only take note of things that matter, either at all times or for the specific moment in the plot. Because every Story is different, exactly what this means will vary - it's up to you to decide what's important.</li>
+<li><strong>Keep it together</strong>. Note down related things on the same line. For example, splitting up details for a character's appearance across lines will only confuse the AI. Because of this, you will generally want to have your Memory divided into sections relating to every entry. Keep a character's outfit on the same line as the character's hairstyle, and a location's population on the same line as its history. Use headers to categorize information, and separate them with <strong>commas, semicolons and brackets</strong>, which all have a strong effect.</li>
+<li><strong>Keep it literal</strong>. Using inventive language may be tempting, but can greatly reduce the accuracy of your Memory entry. Instead of describing an apple as <code>a succulently scrumptious fruit, red as deepest crimson</code>, just refer to it as <code>a tasty red fruit</code>. The Story is for more complex prose, not Memory.</li>
+</ul>
+<h3 id="why-the-ai-forgets">Why the AI Forgets</h3>
+<p>If you find the AI is unable to accurately 'remember' something, there are a few possibilities as to why. This is easily remedied in most cases by following simple steps:</p>
+<ol>
+<li><strong>Check the Current Context</strong>. What the AI is getting wrong may have faded from what it's currently able to see in the Story. If this is the case, that's okay! This is why Memory exists, after all.</li>
+<li><strong>Repetition Penalty</strong>. This is a common cause for the AI 'forgetting' colors and other small details that you've outlined in AN or LB entry. If this happens frequently, consider whether you really need to include all the small details in the entries, or switch to using a different preset with a looser repetition penalty and larger token pool.</li>
+<li><strong>Check the Phrasing</strong>. If you added something to the Memory and it's still being misremembered, it may be down to wording. Keep in mind there are a number of ways to interpret simple sentences in English - for example, <code>a flower like the sun</code> may imply the flower is the same <em>color</em>, or the same <em>size</em>. As the AI is not able to deduce the intricacies of figures of speech on its own, it can sometimes take things too literally.</li>
+<li><strong>Try something different</strong>. It could be that the thing you are trying to have remembered by the AI just isn't compatible with its current abilities. In this case, it's best to try to figure out what it is that is "confusing" the AI, and try wording it down in a different way.</li>
+</ol>
+<p>Below is an example of a common Memory layout. Simplified prose is ubiquitous, though it can occasionally fail to get the point across. Try to use the least amount of words as possible, while still getting the information across to the AI.</p>
+<p><code>[ High Reach city is futuristic dark gritty corrupt. Founded year 2387. 3 districts: Diamond, Industrial, Lower. Diamond District guarded with walls. Industrial District working class polluted. Lower District oppressed rioting dirty. Winter Syndicate (W.S.) gang is trying take over High Reach city. W.S. is ruthless greedy based in Industrial District warehouse. Eron is gritty detective trying to take down W.S. gang. Eron has strong morals and grew up in Lower District. Eron wearing detective coat, detective hat, pistol. Eron got case from boss, found lead in Slums for contact with spy in gang (Seren) and got call to meet here in Slums. Currently cloudy night. In Lower District, on street. Seren (sly undercover gang spy) is here. ]</code></p>
+<hr />
+<h2 id="perspective">Perspective</h2>
+<p>In this context, <em>perspective</em> means the <strong>narrative point of view</strong> (or POV) represented in your Story. There are three perspectives - <a href="https://en.wikipedia.org/wiki/Narration#First-person"><strong>First Person</strong></a>, <a href="https://en.wikipedia.org/wiki/Narration#Second-person"><strong>Second Person</strong></a> and <a href="https://en.wikipedia.org/wiki/Narration#Third-person"><strong>Third Person</strong></a>.</p>
+<h3 id="first-person-first_person">First Person {#first_person}</h3>
+<p>In this perspective, the narrator is both a participant and self-referential in the Story. They will typically refer to themselves as "I", "me", and similar words. As such, the narrator is usually the protagonist. Most users will recognize this perspective from diaries and other autobiographical works.</p>
+<p>Because the protagonist's name is not specified through self-reference, it should be noted in the <strong>Memory</strong> to maintain narrative cohesion.</p>
+<p><code>[ My name is Melissa. ]</code></p>
+<p>As a reference:</p>
+<ul>
+<li><strong>Nominative</strong> pronouns serve as a subject. <code>[She] is right.</code></li>
+<li><strong>Relative</strong> pronouns serve as an object complement. <code>Look! That's [him]!</code></li>
+<li><strong>Possessive</strong> pronouns serve to designate the owner of something. <code>That is [my] AI.</code></li>
+<li><strong>Reflexive</strong> pronouns are used as the object complement when it refers to the same thing as the subject. <code>He is looking at [himself] in the mirror.</code></li>
+</ul>
+<p>A quirk of the First Person Perspective is that the narrator <strong>should logically have a way of telling the Story if presented in the past tense</strong>. This is because a narrator who is rendered incapable of retelling their tale would have no way of authoring the Story.</p>
+<p><code>I approached the door, held out my trembling hand, and reached for the handle...</code></p>
+<p>NOMINATIVE RELATIVE POSSESSIVE REFLEXIVE</p>
+<hr />
+<p>I Me My Myself</p>
+<h3 id="second-person-second_person">Second Person {#second_person}</h3>
+<p>This perspective is especially popular with the <strong>Choose Your Own Adventure</strong> (<strong>CYOA</strong>) variety of literature. Also known as gamebooks, these typically utilize second person as a way to draw the reader into the Story by implying <strong>they are the protagonist</strong>.</p>
+<p>Due to a relative lack of second person training material, there may be a downgrade in literary quality when utilizing second person.</p>
+<p>Again, no name is specified, so you should note it down in the <strong>Memory</strong> to maintain narrative cohesion.</p>
+<p><code>[ Your name is Melissa. ]</code></p>
+<p>While second person can be effective at increasing the reader's immersion, it also requires further <a href="https://en.wikipedia.org/wiki/Suspension_of_disbelief"><strong>suspension of disbelief</strong></a> than the other perspectives, as the reader should be comfortable assuming the protagonist's position.</p>
+<p><code>You approached the door, held out your trembling hand, and reached for the handle...</code></p>
+<p>NOMINATIVE RELATIVE POSSESSIVE REFLEXIVE</p>
+<hr />
+<p>You You Your Yourself</p>
+<h3 id="third-person-third_person">Third Person {#third_person}</h3>
+<p>This perspective is by far the most plentiful in fiction, owing to its versatility in scope and capacity for <a href="https://en.wikipedia.org/wiki/Narration#Omniscient_or_limited"><strong>omniscient narration</strong></a>. For users who wish to switch the currently-followed protagonist or simply provide enhanced worldbuilding, third person offers powerful narrative capabilities.</p>
+<p>Because a name is specified, it is not necessary to list which character is the protagonist. However, please note that not doing so will result in <strong>shifting third person</strong>. This means the narrative may follow any of the characters presented, rather than being <strong>limited</strong> to events unfolding around a particular character. This can be avoided by having a reminder in the <strong>Memory</strong> on who is important to the plot.</p>
+<p><code>Melissa is the protagonist.</code></p>
+<p>Shifting third person is not necessarily a bad thing, of course - it's simply a phenomenon that can occur during the utilization of this perspective. One can even encourage the perspective to shift by removing any hints as to who the current protagonist is, then focus your inputs on a specific character in the Story.</p>
+<p><code>Melissa approached the door, held out her trembling hand, and reached for the handle...</code></p>
+<p><strong>It is important to note that the AI does not track speakers, and it is important even in traditional literature to regularly re-establish the identity of the subject or object.</strong></p>
+<p>REFERENT NOMINATIVE RELATIVE POSSESSIVE REFLEXIVE</p>
+<hr />
+<p>Name ♀ She Her Her Herself Name ♂ He Him His Himself Name ⚥ / Plural They Them Their Themselves Non-person It It Its Itself</p>
+<h3 id="changing-perspective-changing_perspective">Changing Perspective {#changing_perspective}</h3>
+<p>It is also possible to switch perspective during your Story. This allows you to experience the world presented in your Story from a different point of view, and even reveal the inner thoughts of an entirely different character! Should you wish to do so, simply follow the steps below.</p>
+<ol>
+<li>Separate your previous text in the Story from the next text. A simple way to do this is to add multiple new lines, or a <strong><a href="https://en.wikipedia.org/wiki/Asterism_(typography)#Dinkus">dinkus</a></strong> (***), then another new line.</li>
+<li>On the most recent line of your Story, add a <strong>perspective-shifting hint</strong> in square brackets ([ and ]).</li>
+<li>Either hit <strong>Send</strong> or give the AI a line on which to begin the new POV.</li>
+</ol>
+<p>Doing so, your text should now read like this:</p>
+<pre><code>Melissa approached the door, held out her trembling hand, and reached for the handle...
+***
+[ This is now first Person perspective, from Gary&#39;s POV. ]
+This wasn&#39;t the first time I&#39;d hear the door. 
+</code></pre>
+<p>The AI should now use the new POV. Don't worry - the hint can be removed when you feel confident the AI understands the new perspective without it. In order to avoid confusion, be sure to check your <strong>Memory</strong>, <strong>Author's Note</strong> and <strong>Lorebook</strong> for any entries that refer to the old perspective, then remove them.</p>
+<p>Please note that excessively changing the perspective within the <strong>Current Context</strong> will decrease narrative cohesion, and result in more frequent mistakes made by the AI.</p>
+<p>In Euterpe, all you need for POV switching is a simple character tag:</p>
+<pre><code>***
+[ Gary ]
+</code></pre>
+<p>This will switch the active character to Gary. Note that this works best for names that the AI recognizes as names.</p>
+<h2 id="custom-pronouns-custom_pronouns">Custom Pronouns {#custom_pronouns}</h2>
+<p>It should be noted that training material including pronouns outside of those specified above is sparse. As such, the AI will rarely ever refer to any character by pronouns it doesn't associate with the given name.</p>
+<p>If you wish to use a custom pronoun, you may encourage the AI to do so by editing its mistakes while hinting the correct pronoun to it in <strong>Memory</strong>, <strong>Author's Note</strong> or <strong>Lorebook</strong>. This may take some reinforcement before it takes, so please be patient.</p>
+<p><code>[ Melissa is referred to as 'he', 'him', 'his'. ]</code></p>
+<hr />
+<h2 id="verbs">Verbs</h2>
+<h3 id="tenses">Tenses</h3>
+<p>Preterite and present - these are both <strong><a href="https://en.wikipedia.org/wiki/Grammatical_tense">tenses</a></strong>. While some stories may shift about the narrative timeline, it's important to maintain some sense of order and continuity while utilizing tense.</p>
+<p>As such, it is strongly encouraged that you decide on whether your Story is set in the past or the present. Consistency will help tremendously.</p>
+<h3 id="what-about-the-future-what_about_the_future">What about the future? {#what_about_the_future}</h3>
+<p>As a reminder, <strong>there is no future tense in English.</strong> WILL is a modal auxiliary to talk about future events in the "it is certain, this action happens in the future" way. WOULD is used only for <strong>hypotheticals</strong>.</p>
+<p>This is because WOULD is the <strong>preterite</strong> (i.e, past) form of WILL. The preterite not only carries the notion of <em>past</em>, but also <em>imaginary and hypothetical</em> actions. As a result, make sure not to use them constantly. Stick to either present or preterite.</p>
+<h3 id="aspect">Aspect</h3>
+<p>An <strong>aspect</strong> is another element of conjugation that works together with <strong>tense</strong>. There are two: <strong>Perfect</strong> and <strong>Progressive</strong>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Perfect_(grammar)">Perfect</a> is an aspect which focuses on the result of the action rather than its process. The action may already be concluded by the time it is spoken about. It requires the use of "have" as an auxiliary, followed by the verb in its <strong>past participle</strong> form.</p>
+<p><code>I have eaten crab before.</code></p>
+<p>This implies that you have <em>experience</em> eating crab, and you may do it again. It's not the action that matters, but the fact the action happened before. If you use the preterite form, i.e "had eaten", then you are using Past Perfect, which has a similar meaning but is used to talk about events even further back in time.</p>
+<p><a href="https://en.wikipedia.org/wiki/Continuous_and_progressive_aspects">Progressive</a>, also known as <em>continuous</em>, is for actions that are currently ongoing, repeated actions, or actions that are about to happen. This usually has connotations of being interrupted by something:</p>
+<p><code>I am doing something very delicate right now, can it wait?</code></p>
+<p>Having the intent to do something:</p>
+<p><code>I am going to see him soon.</code></p>
+<p>Or describe an event that happens regularly:</p>
+<p><code>He is sending me a lot of e-mails lately.</code></p>
+<p>You may know it as the "be+ing" aspect since it uses Be as an auxiliary, followed by the verb with a -ing suffix. This -ing form is also known as a <em>present participle.</em></p>
+<p>You can use the preterite for "Be", turning it into "was" for singulars and "were" for plurals or neutral personal (they). This results in focusing on the effects described above, but in a situation that happened in the past.</p>
+<p>You can even combine both aspects into perfect continuous:</p>
+<p><code>I had been living here for ten years.</code></p>
+<p>This helps underline the length of the action all while focusing on the situation that happens at the end of it.</p>
+<h3 id="modality">Modality</h3>
+<p><a href="https://en.wikipedia.org/wiki/Modal_verb">Modality</a> is the use of <strong>modal auxiliaries</strong> to add additional information to a verb.</p>
+<p>There is an incredible wealth of uses for these, but we'll address their basic use for the purpose of this tutorial.</p>
+<p>Modal auxiliaries in English are: <strong>WILL</strong>, <strong>SHALL</strong>, <strong>CAN</strong>, <strong>MAY</strong> and <strong>MUST</strong>. Their preterite forms are: <strong>WOULD</strong>, <strong>SHOULD</strong>, <strong>COULD</strong> and <strong>MIGHT</strong>. Must has no preterite form.</p>
+<p>The preterite works differently for modals. Instead of talking about the past, it <em>makes them weaker</em>.</p>
+<p>Modals can be used to carry notions, but also probability. They are placed before both the verb and any auxiliaries it might have: <code>He might have been eating at one PM.</code></p>
+<p>Modal Notion Strength of Probability</p>
+<hr />
+<p>WILL Future, Powerful intent Extremely strong WOULD Hypothetical, Potential Moderate (mostly fictional) MUST Obligation (External) Extremely strong SHALL Obligation (Internal) Strong SHOULD Suggestion, Hypothetical Weak (mostly fictional) CAN Possibility, Ability Weak COULD Lost or fictional Possibility, Ability Very Weak (mostly fictional) MAY Considering an action, Polite request if question Moderate MIGHT Unlikely, Theoretical Extremely Weak</p>
+<hr />
+<h2 id="steering-the-plot-steering_the_plot">Steering the Plot {#steering_the_plot}</h2>
+<p>Occasionally, you may wish to have the Story progress in a certain direction. There are three methods of steering the plot; using <strong>Memory</strong>/<strong>Lorebook</strong>, using the <strong>Author's Note</strong>, and adding to the <strong>Story</strong> directly.</p>
+<h3 id="what-to-write-what_to_write">What to Write {#what_to_write}</h3>
+<p>As always, you should decide whether to use <strong>square brackets</strong> ([ and ]). Doing so has a tendency to reduce the "presence" of the text that is being added, so that it isn't interpreted as part of the story. Square brackets can be used with any of these methods, and may always be removed through editing later.</p>
+<p>Remember to put a space after the opening bracket, and before the closing bracket. Avoid using linebreaks in bracket blocks. It should be a single paragraph.</p>
+<p>When using square brackets, it's best to include your hint using shorthand, like:</p>
+<p><code>[ Barbarian is powerful. ]</code></p>
+<p>If you don't use square brackets, you should implement your plot steering as if it were part of your Story, keeping in mind the <strong>Memory</strong> is kept all the way at the top of the context and the <strong>Author's Note</strong> appears <em>three newlines</em> <em>before</em> the latest line of the Story by default. Example:</p>
+<p><code>The barbarian appears to be powerful.</code></p>
+<h4 id="using-the-memorylorebook-using_the_memorylorebook">Using the Memory/Lorebook {#using_the_memorylorebook}</h4>
+<p>Although Memory and Lorebook take the <strong>lowest priority</strong> by default, and are the least effective method of steering the plot unless their insertion points are changed, they can still be used to influence the outcome of events in the Story.</p>
+<ul>
+<li>Low priority</li>
+<li>Permanent until removed</li>
+</ul>
+<h4 id="using-the-authors-note-using_the_authors_note">Using the Author's Note {#using_the_authors_note}</h4>
+<p>Because it takes a <strong>higher priority</strong> than Memory by default, Author's Note is very powerful. Use it with moderation! It is very much capable of derailing things due to its strength.</p>
+<ul>
+<li>High priority</li>
+<li>Permanent until removed</li>
+<li>Can cause derailing if not used sparingly</li>
+</ul>
+<h4 id="using-the-story-using_the_story">Using the Story {#using_the_story}</h4>
+<p>Editing the Story directly is the most effective method of steering the plot, because <strong>the last line is always the most relevant to the next Generation</strong>.</p>
+<p>Please note that the best approach to utilizing the Story directly this way is to match the existing prose. Example:</p>
+<p><code>Standing tall, it's clear the barbarian is a powerful warrior.</code></p>
+<ul>
+<li>Top priority</li>
+<li>Will require you to remind the AI later using Memory or Author's note</li>
+</ul>
+<h2 id="why-negation-and-denial-is-hard-why_negation_and_denial_is_hard">Why Negation and Denial is Hard {#why_negation_and_denial_is_hard}</h2>
+<p>Considering how a GPT model works, it is important to note that <strong>stating things in the negative</strong> is counterproductive. If a word is in the memory, it is more likely to be used in the output.</p>
+<p>To put this more clearly, if you say:</p>
+<pre><code>Johnathan cannot hear sounds.
+</code></pre>
+<p>The AI only sees that <em>Johnathan</em> and <em>hear sounds</em> are close to each other. <em>Cannot</em> does not have much of an effect because of that.</p>
+<p>If you have to state something that <em>denies, prevent or forbids</em>, it is better to present it <strong>positively</strong>, as in, without using negatives:</p>
+<pre><code>Johnathan is deaf.
+</code></pre>
+<p>Using adjectives that represent denial, prevention or impossibility is better than using <strong>not</strong> as a verb particle.</p>
+<p>Avoid saying:</p>
+<pre><code>You cannot cross the bridge. Your legs do not work. You may not move until you recover.
+</code></pre>
+<p>Instead say:</p>
+<pre><code>Crossing the bridge is impossible. Your legs are disabled. It is too painful to move. You must recover first.
+</code></pre>
+<p>If you feel the AI has issues dealing with a concept like this, try telling the AI what effects it has, again, trying to avoid negation as much as possible:</p>
+<pre><code>Johnathan is blind and can only see darkness. Johnathan must use his hearing and touch to locate people and objects. Johnathan&#39;s eyes are always closed.
+</code></pre>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

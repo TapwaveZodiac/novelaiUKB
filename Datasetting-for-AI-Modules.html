@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Datasetting for AI Modules</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Datasetting for AI Modules</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#dataset-cleaning-guidelines">Dataset Cleaning Guidelines</a>
+<ul>
+<li><a href="#general-overview">General Overview</a></li>
+<li><a href="#cleaning-headings--auxiliary-sections">Cleaning Headings &amp; Auxiliary Sections</a></li>
+<li><a href="#cleaning-prose">Cleaning Prose</a></li>
+<li><a href="#miscellaneous-tips">Miscellaneous Tips</a></li>
+<li><a href="#recommended-dataset-tools">Recommended Dataset Tools</a></li>
+<li><a href="#useful-regular-expressions">Useful Regular Expressions</a></li>
+<li><a href="#common-text-containers-and-affixes">Common Text Containers and Affixes</a></li>
+<li><a href="#final-thoughts-final_thoughts">Final Thoughts {#final_thoughts}</a></li>
+<li><a href="#setting-a-module-image-setting_a_module_image">Setting a Module Image {#setting_a_module_image}</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="dataset-cleaning-guidelines">Dataset Cleaning Guidelines</h2>
+<p><strong>Preparation of a clean dataset is the most important factor in the creation of a proper AI Module</strong>. Simply scraping a wiki or throwing together some PDF conversions is vastly insufficient and will at best result in suboptimal outputs riddled with leaked symbols, odd spacing, and circular repetition.</p>
+<p>Luckily cleaning your dataset is not difficult, only time-consuming. Assuming you have the patience and follow these guidelines, you too can create high quality AI modules.</p>
+<h3 id="general-overview">General Overview</h3>
+<p><em>Dataset files should be...</em> Plain text in UTF-8 encoded <code>.txt</code> format with no tags/markdown/html, instead focusing on standard-formatted English prose.</p>
+<p><strong>One paragraph per newline</strong>. That is, no paragraphs should be split onto multiple lines. To visualize this, it helps to enable Word Wrapping on whatever text editor you are using (in Notepad++ this done by checking View &gt; Word Wrap).</p>
+<p><strong>No empty newlines</strong>. There should be no empty rows left in the data. For chapter and scene breaks, it is recommend that you instead use <code>***</code> on its own row.</p>
+<p><strong>Check the newline style</strong>. NovelAI is trained on the standard <code>n</code>, but Windows apps tend to default to <code>rn</code>. The latter will function worse than <code>n</code>, so it is recommended to fix this if you use Windows for editing. As the difference is not visually apparent, you can check the usage by searching for regex /<code>rn</code>/.</p>
+<p><strong>Do not leave any leading/trailing space, tabs or other whitespace</strong>. This includes checking for any spaces after the end of a sentence before a newline.</p>
+<p><strong>Use regular single and double quotation characters</strong> (<code>"</code> and <code>'</code>) not the fancy ones (<code>❝</code> and <code>❜</code>). The AI is trained using the former and thus will not use the latter properly.</p>
+<p><strong>Try to focus in on only one specific subject matter</strong> and ensure all included material is focused on what your module should achieve in terms of what you expect from its output. This process necessitates nuance, not stuffing as much as you can into your dataset. Keep in mind this can be tricky, as for example some Steampunk novels don't actually talk all that much about the type of content one would relate to the Steampunk genre and thus in practice it is not very effective using them to train a "Steampunk" module.</p>
+<p><strong>A little data goes a long way</strong>. 1MB to 5MB still provides excellent results for an authorial or thematic style assuming you provide it enough training steps. On this note, feel free to experiment with short data in general. There is nothing stopping you from turning a short prompt into a module, and this would also require much fewer training steps (perhaps within the range of 50-100 for a typical scenario prompt).</p>
+<p>If you want to avoid the same characters appearing constantly or other forms of overfitting, <strong>try to keep the data balanced with a variety of names, phrases, and terms</strong> by including stories featuring different characters or locations.</p>
+<p><strong>Do not expect a module to memorize relational/factual data</strong>. For instance if you feed it data containing Pokémon descriptions, it'll recognize the species but will randomly mix up their types, moves, appearance, and other data.</p>
+<p><strong>The format of the data matters</strong>. If you want the module to generate prose, train it on prose. Avoid training on wikis or other encyclopedic data, unless you've set out to create an utility module such as a random generator. (Example: Training a module on tabletop RPG style monster data blocks will result in a module that generates random creatures in that style.)</p>
+<h3 id="cleaning-headings--auxiliary-sections">Cleaning Headings &amp; Auxiliary Sections</h3>
+<p>Before anything else, it is important to note that <em>discretion is key here</em>, as you typically want to be as <em>least</em> destructive to your data as possible, considering how easy it is to completely ruin your data with a single misguided Find and Replace. Unless you want to see them leaked in the AI's output, <strong>make sure to remove Fore/Afterwords, Acknowledgements, Author's Notes, About the Authors, and any other sections that have nothing to do with the story or data</strong>. This also includes any author commentary or excerpts <em>unless</em> it is diagetic to (takes place within the narrative of) the story.</p>
+<p>Chapter titles can be replaced with <code>***</code> alone on a newline to signify breaks between chapters or <code>⁂</code> for breaks between individual short stories as these are conventions of the base training data and the AI is used to working with them. If the chapter titles seem useful (instead of just <code>Chapter #</code>) you can instead opt to keep them by enclosing them in square brackets (<code>[ Title ]</code>).</p>
+<p><code>----</code> is used instead of <code>***</code> if the text directly after it consists of data such as glossaries, timelines, Attributes style, or other non-prose.</p>
+<p>In general it is a good idea to remove, replace, or trim down anything too repetitive (such as numbered chapters, titles that use the same prefixes, or stylistic phrases like <code>&lt;ERROR&gt;</code> repeated twenty times in a row) as this will increase the chance of these leaking into your output. That said, if you find yourself removing too much from a work it might just be a better idea to exclude it from your dataset altogether.</p>
+<h3 id="cleaning-prose">Cleaning Prose</h3>
+<p><strong>Keep an eye out for odd symbols</strong>, characters, or other unusual formatting such as odd card suits or other symbols used as chapter breaks (<code>●, ■, ✽, ᚖ, ♣, ◇, ◆, †</code>) or Japanese quotations (<code>『</code> and <code>』</code>) which are often found in visual novels (and can be replaced with regular quotations). Sometimes even the replacement character () can be found; this is usually a sign that something's gone badly wrong with the file conversion.</p>
+<p>On this note, often times scanning a book to a digital copy certain formatting will produce errors or won't scan correctly. You can see examples of this occasionally with underscores such as from OCR software reading <code>...</code> as <code>___</code> or for things like <em>telepathic dialogue communication, which is typically italicized</em>, but since raw text has no characters for italics, they will appear as <strong>dialogue encapsulated by underscores like this</strong> which need to be replaced with quotations or angled brackets (<code>&lt;</code> and <code>&gt;</code>) as the AI knows to associate them with non-verbal dialogue.</p>
+<p><strong>Another common scanning issue is having chapters start in all uppercase capital letters</strong> (ie. <code>TUESDAY MARKED THE beginning of the end</code>) or with the first letter of the first word separated from the rest of the word (ie. <code>T uesday marked the beginning of the end</code>).</p>
+<p><strong>Extra spacing</strong> is yet another common issue such as with possessive indicators (ie. <code>It was Mark 's dog</code>) or at the end of sentences before a newline. On that note extra newlines aren't good either as the AI tends to associate them with chapter breaks or a passage of time.</p>
+<p><strong>Also be on the lookout for vertical bars</strong> ( <code>|</code> ) which can be replaced with colons ( <code>:</code> ). Lastly, if there any square brackets (<code>[</code> and <code>]</code>) in an unedited file, you might want to remove them unless they are encapsulating something such as an indication of time, location, point-of-view or some other note you intend to use to nudge the AI in your story.</p>
+<h3 id="miscellaneous-tips">Miscellaneous Tips</h3>
+<ul>
+<li>Don't worry about and don't include the well-known <code>&lt;|endoftext|&gt;</code> token. It is not needed for training AI modules as the training process handles that already. You don't need a <code>&lt;|startoftext|&gt;</code> token either as <em>contrary to popular belief, this is not an actual token used by GPT language models</em>.</li>
+<li>Don't worry about your clean-up or tokens being perfect. AI Modules are not as powerful as the actual underlying fine-tuned model and thus don't have as strong an effect as the existing model's training. If your resulting module produces at least fun or interesting results, that's still very much a success.</li>
+<li>Make use of good feature-rich text editors such as Notepad++ (Windows) or Sublime Text (Mac), or at least something that supports regular expressions which greatly cut down on editing time. If you do a lot of editing, the Notepad++ macros are a massive time-saver.</li>
+<li>Avoid PDFs. Converting those to usable format is a time-consuming process even for pros, and often requires OCR software such as ABBYY Finereader. Exception: Some modern PDFs contain a pre-edited text layer which can be converted easily. This is especially common for digitally published magazines.</li>
+<li>When converting into <strong>.txt</strong> from other formats, <strong>.mobi</strong> and <strong>.azw</strong> are usually the best ones, as those tend to be digital releases that have already been cleaned by the publisher. Calibre and other similar apps can convert those with minimal additional work needed. <strong>.epub</strong> are less reliable, as they can be anything from officially digitized works to bad scans. Other data formats such as <strong>.lit</strong>, <strong>.doc</strong> etc are not recommended due to common encoding and line wrap problems.</li>
+</ul>
+<h3 id="recommended-dataset-tools">Recommended Dataset Tools</h3>
+<p><a href="https://notepad-plus-plus.org/downloads/">Notepad++</a> A free and highly-extendable text editor that features custom macros and (somewhat limited) <a href="Using-Regex.html">Regex</a> Find and Replace.</p>
+<p><a href="https://cdn.discordapp.com/attachments/870449695657443349/1009881560406831204/shortcuts.xml">Zaltys' Notepad++ Macros</a> A set of keyboard macros for use with Notepad++ courtesy of Zaltys. The main functions are keyed to Ctrl+1-4 for various problems that may need manual fixing and Ctrl+F1-F5 for other scripts. Keep in mind Ctrl+1-4 can find some issues that do not need to be fixed but may need to be manually looked over, so it is recommended against blind usage. More details <a href="https://discord.com/channels/836774308772446268/870449695657443349/1009881560532656181">here</a>.</p>
+<p><a href="https://regex101.com/">Regex101</a> A website focused on the quick creation, testing, and learning of <a href="Using-Regex.html">Regular Expressions</a>. If you make an account you can also save and share your regex with others.</p>
+<p><a href="https://github.com/Systemcluster/wordstat">Chris' Wordstat</a> A tool for counting word frequency in files. Useful for balancing modules and avoiding overtraining of names.</p>
+<p><a href="https://github.com/valahraban/python-scripts/blob/main/globtext.py">Belverk's Cleaning Python Script</a> One of the scripts used by the datasetting team. This is a "set it and forget it" <a href="https://www.python.org/downloads">Python</a> script for automatically cleaning <em>many</em> common issues in data files. Note that while there is no graphical user interface or indication of progress while running, it is incredibly thorough while being minimally destructive. It is recommend users manually check through each file afterwards as it does not catch everything.</p>
+<p><a href="https://github.com/Gnurro/FinetuneReFormatter/releases">Gnurro's ReFormatter</a> A powerful set of tools for data cleaning with an accessible graphical user interface. Requires <a href="https://www.python.org/downloads">Python</a> to run. Detailed operation information can be found on its own <a href="https://github.com/Gnurro/FinetuneReFormatter/wiki">Wiki page</a> along with a handy <a href="https://github.com/Gnurro/FinetuneReFormatter/wiki/HowTo:-Textadventure-Reformatting-from-Source">guide on how to structure your data for a text adventure type module</a>.</p>
+<p><a href="https://ermela.net/dumb-reformatter/">Zermelane's Dumb Reformatter</a> A stupidly simple but quite convenient tool for reformatting text for module training in your browser. No downloads, Python, or script running necessary. This tool has some functionality overlap with some of the above scripts, but is more destructive than Belverk's. Use with caution, and note that your data will still require manual tweaking (such as removing Afterwords and Author's Notes) afterwards.</p>
+<p><a href="https://github.com/JOHW85/ScrapeFandom">ScrapeFandom</a> A <a href="https://www.python.org/downloads">Python</a> script which scrapes English Fandom sites for updated Wiki dumps. Using Wiki data is not recommended unless heavily cleaning is done and/or the resulting module is intended for utility use such as with content generators.</p>
+<p><a href="https://www.babelstone.co.uk/Unicode/whatisit.html">What Unicode?</a> A website for identifying unicode characters. Handy when you need to differentiate between various types of spaces, dashes, or just need to identify some symbol you don't recognize.</p>
+<h3 id="useful-regular-expressions">Useful Regular Expressions</h3>
+<p>A <a href="Using-Regex.html"><strong>regular expression</strong>, or <strong>regex</strong></a>, is a sequence of characters that can be used to quickly <strong>find and replace</strong> more complex patterns of text. The following are some useful regular expressions for cleaning datasets. <strong>Keep in mind these are potentially highly destructive</strong> and one should exercise much care when using these. <strong>Batch replacement (ie. "Replace All") with these is</strong> <strong>''not</strong>'' <strong>recommended</strong>.</p>
+<p>/<code>^([^.!?'":]|[0-9].?)+r?n</code>/ Selects headers, titles, and anything else that does not end in punctuation before a new line.</p>
+<p>/<code>^(["'. ]*b[^a-z])([^a-z]{3,}b)+</code>/ Selects sequences of text in all uppercase capital letters. You can optionally replace the selected text with normal lower case (preserving the first uppercase letter) using this in the Replace field /<code>$1L$2E</code>/ though keep in mind character names and other proper nouns may lose their first uppercase letter this way.</p>
+<p>/<code>( '?[dis?!] |[“”"][“”"]|[A-z][“”"][“”"]?[A-z]|^"?.")</code>/ Detects various quotation and spacing problems.</p>
+<p>/<code>^[". ]*b[^IA] w</code>/ Selects cases where the first letter of a word is separated by a space (common OCR error).</p>
+<p>/<code>[«»©^■◇◆●•★†‡�✽☙《》【】※|─_ ]</code>/ Locates common OCR artifacts and other characters that should normally (with rare exceptions) not be present.</p>
+<p>/<code>(opyright|ISBN|http|html|o be continued|^.?THE END.?$|endoftext|bout the author|able of Contents|nterlude|^[Gg]lossary|(ro|pi)logue|hapter|xcerpt|[Rr]eader|^Afterword)</code>/ Catches many of the auxiliary sections of a work.</p>
+<h3 id="common-text-containers-and-affixes">Common Text Containers and Affixes</h3>
+<ul>
+<li>[ text ]: Metadata. Should include the spaces. Used for chapter titles, locations, time, and other data that the AI should read but not repeat. Should always be contained on a single row.</li>
+</ul>
+<hr />
+<ul>
+<li><code>&lt;text&gt;</code>: Nonverbal dialogue such as telepathy, signing, kinesics, etc. Used without space padding. <code>&lt;You’re welcome,&gt; Basilard signed.</code></li>
+</ul>
+<hr />
+<ul>
+<li><em>text</em>: Sound effects and onomatopoeia. <code>*BANG!*</code></li>
+</ul>
+<hr />
+<ul>
+<li>─ text: LitRPG data blocks. Not to be confused with Em-Dash, this is <code>U+2500: ─ BOX DRAWINGS LIGHT HORIZONTAL</code>. This can include things like character or equipment stats, charged spells, item names, item rarity, etc. <code>─ Status: Bleeding</code></li>
+</ul>
+<hr />
+<ul>
+<li><blockquote>
+<p>text: Used for computer output, texting, etc. Typically anything that is read from a screen. Currently overlaps with the text adventure mode and may be replaced by different character in the future. <code>&gt; C U Ltr</code></p>
+</blockquote></li>
+</ul>
+<hr />
+<ul>
+<li> text: Text preceded by <code>U+2002: EN SPACE</code> is used for letters and quotations. <code> Dear John,...</code></li>
+</ul>
+<hr />
+<ul>
+<li> text: Text preceded by <code>U+2003: EM SPACE</code> is used for poetry and song lyrics. <code> Never gonna give you up</code></li>
+</ul>
+<h3 id="final-thoughts-final_thoughts">Final Thoughts {#final_thoughts}</h3>
+<p>Dataset cleaning may seem intimidating at first, but once you familiarize yourself with the tools and resources it's quite easy to get into the groove of things and prep a dataset in an afternoon. <strong>Take your time finding good source material</strong>, too, as no matter how well you clean something, <strong>if its inherent quality is already subpar, then it won't make much difference</strong>.</p>
+<p>Lastly, if you have any follow up questions feel free to reach out to NAI's datasetting team including Zaltys (via the main NAI Discord), <a href="https://github.com/valahraban/">Belverk</a>, and <a href="https://github.com/l-io-n/">Lion</a> (who wrote this guide). Special thanks to all of them!</p>
+<hr />
+<h3 id="setting-a-module-image-setting_a_module_image">Setting a Module Image {#setting_a_module_image}</h3>
+<p>To add a preview image to your module modules, use a site such as [<a href="https://onlinejpgtools.com/convert-jpg-to-base64%5Dto">https://onlinejpgtools.com/convert-jpg-to-base64%5Dto</a> convert a (small!) jpg to base64, then, open your module file in a text editor, find:</p>
+<p><code>"mode":0</code></p>
+<p>Near the bottom, and add the following after it:</p>
+<p><code>,"image":"</code><a href="data:image/jpeg;base64,codehere.html"><code>data:image/jpeg;base64,codehere</code></a><code>"</code></p>
+<p>Replace "codehere" in the string with the base64generated by the site.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

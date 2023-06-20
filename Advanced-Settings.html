@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Advanced Settings</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Advanced Settings</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#context">Context</a></li>
+<li><a href="#phrase-bias">Phrase Bias</a>
+<ul>
+<li><a href="#ensure-completion-after-start"><strong>Ensure Completion After Start</strong></a></li>
+<li><a href="#unbias-after-generation"><strong>Unbias after Generation</strong></a></li>
+</ul></li>
+<li><a href="#ban-token">Ban Token</a>
+<ul>
+<li><a href="#banned-tokens">Banned Tokens</a></li>
+<li><a href="#ban-bracket-generation">Ban Bracket Generation</a></li>
+</ul></li>
+<li><a href="#stop-sequence">Stop Sequence</a>
+<ul>
+<li><a href="#min-output-length">Min Output Length</a></li>
+</ul></li>
+</ul>
+</nav>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/230c9043-56d6-44a1-8491-bf97dab4e5d8" alt="image" /></p>
+<h2 id="context">Context</h2>
+<p>Tools relative to <a href="Context.html">Context</a>. Explained on the corresponding page.</p>
+<h2 id="phrase-bias">Phrase Bias</h2>
+<p><strong>Phrase Bias</strong> allows you to tell the AI to <strong>increase</strong> or <strong>decrease</strong> the probability of single or groups of <strong>tokens</strong>. You may have 1024 biases enabled at once. Any extra will cause generation to fail.</p>
+<p>Rather than ban tokens outright, this is more of a direction to produce specific output, or avoid specific outputs without fully eliminating them.</p>
+<p><strong>Keep in mind that Phrase Bias is case sensitive.</strong> However, a variation of the first token with a space will be considered, even if you do not specify it. (This does not apply if the tokens are ;, :, &lt;, &gt;, &amp;, @, #, %, ^, \n, and the entire range of unicode characters from u3000-u9faf and uff00-uff9f.)</p>
+<p>Bias is collected in <strong>Groups</strong> with a certain <strong>Bias Level</strong>, which is applied to all phrases and tokens put in the <strong>Group</strong>.</p>
+<p>To create a new <strong>Bias Group</strong>, click the âž• button. The currently selected group can be deleted by clicking ðŸ—‘ï¸.</p>
+<p>To enter a new phrase or token in the Group, enter it in the text box and press Enter.</p>
+<p>If you wish to insert token IDs (such as [198] for newlines), encase their numerical ID in <strong>Square Brackets: []</strong></p>
+<p>If you wish to insert the exact input, as is, case sensitive and with exact spacing, encase in <strong>Curly Braces {}</strong>.</p>
+<p><strong>Bias Level</strong> is a <em>non-linear Scale</em> from -2 (less likely) to +2 (more likely). It is not an arithmetic scale: -2 is <strong>much stronger</strong> than simply "twice less likely than -1". The opposite is true for +1 and +2. Generally, a bias of <strong>-0.1 to +0.1</strong>, usually lower, works well for most uses cases.</p>
+<h3 id="ensure-completion-after-start"><strong>Ensure Completion After Start</strong></h3>
+<p>If checked, the AI will make sure <strong>Phrases</strong> are completed if their first token is generated.</p>
+<p>For example, if you've given a positive bias to the phrase "blue business suit" with this function turned <strong>off</strong>, the AI might start generating outputs featuring blue lights, blue planets, or people with blue eyes. With Ensure Completion After Start turned <strong>on</strong>, the word "blue" will <em>always</em> be followed by the phrase "business suit".</p>
+<h3 id="unbias-after-generation"><strong>Unbias after Generation</strong></h3>
+<p>If checked, the AI will disable the bias for the remainder of the generation once it has been applied once. Following the previous example, the first instance of "blue" will output "blue business suit", but all following instances will work as normal.</p>
+<h2 id="ban-token">Ban Token</h2>
+<p>Any Tokens added here will <strong>have their likelihoods reduced to zero</strong>. This means they <strong>will not appear in Generations</strong>. As this adjusts the relationships between Tokens, this will have an impact on the phrasing chosen by the AI. Be careful about what you ban, because this can heavily disrupt output if used incorrectly.</p>
+<p>When you add a new token to the banlist, it also adds any case-sensitive variation of the token, and the token with a preceding space as well.</p>
+<p>To prevent that from happening, and exclusively ban this token, add<strong>curly braces</strong> { } around the token you want to ban before pressing enter. You may have 2048 bans at once, any extra will cause generation to fail.</p>
+<h3 id="banned-tokens">Banned Tokens</h3>
+<p>Relating to the previous setting, this field <strong>shows every Token currently blacklisted</strong> for generation. Clicking one of these tags will remove it from the list.</p>
+<p>If you inserted an exclusive token (using curly braces), it will be displayed with brackets around it.</p>
+<h3 id="ban-bracket-generation">Ban Bracket Generation</h3>
+<p>At times, you may wish to include hints to the AI that are <strong>not considered for text generation</strong>. These can be encapsulated in <strong>square brackets</strong> ([ and ]) to relay information that will affect the <strong>Current Context</strong> while not being considered part of the actual text.</p>
+<p>These most often take the form of hints. For more information on what to put between square brackets, see <strong>[Keeping Track](Advanced Writing#Keeping Track)</strong>.</p>
+<h2 id="stop-sequence">Stop Sequence</h2>
+<p>If you wish to end your Generations upon reaching a specific Token, simply add it to this field. Doing so will cause the Generation to <strong>end prematurely upon generating the Token</strong>.</p>
+<p>This can be used to trim the output to single sentences by inputting punctuation, or to increase the accuracy of Lorebook entries by pausing Generation when a defined word is reached.</p>
+<h3 id="min-output-length">Min Output Length</h3>
+<p>This adjusts the <strong>minimum number of Tokens returned by the AI before having a chance to generate the Stop token.</strong> It will never be below this target, but may exceed it.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

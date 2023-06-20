@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Context</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Context</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#context-window">Context Window</a></li>
+<li><a href="#elements-of-context">Elements of Context</a>
+<ul>
+<li><a href="#prompt">Prompt</a></li>
+<li><a href="#injected-text">Injected Text</a>
+<ul>
+<li><a href="#memory">Memory</a></li>
+<li><a href="#authors-note">Author's Note</a></li>
+<li><a href="#lorebook">Lorebook</a></li>
+</ul></li>
+<li><a href="#why-use-brackets">Why use Brackets?</a></li>
+<li><a href="#context-viewer">Context Viewer</a>
+<ul>
+<li><a href="#identifiers">Identifiers</a></li>
+<li><a href="#inclusion">Inclusion</a></li>
+<li><a href="#reason">Reason</a></li>
+<li><a href="#key">Key</a></li>
+<li><a href="#reserved">Reserved</a></li>
+<li><a href="#tokens">Tokens</a></li>
+<li><a href="#trim-type">Trim Type</a></li>
+<li><a href="#advanced-context-settings">Advanced Context Settings</a></li>
+</ul></li>
+<li><a href="#ephemeral-context">Ephemeral Context</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>The Context is effectively the AI's memory. Understanding how it works will greatly help with leading to "good" generations.</p>
+<h1 id="context-window">Context Window</h1>
+<p>The context window is comprised:</p>
+<ul>
+<li>On older models (Calliope, Sigurd, Euterpe, Krake, Snek, Genji) of <strong>2048</strong> Tokens, or <strong>1024</strong> if you are subscribed under the Tablet tier.</li>
+<li>On Clio, of <strong>3072</strong> Tokens for Tablet, <strong>6144</strong> tokens for Scroll and <strong>8192</strong> for Opus.</li>
+</ul>
+<p><em>View Last Context</em> at the top of the <strong>Advanced</strong> tab of the settings panel opens a window which displays all the tokens sent to the AI for the previous generation. This helps you check if anything you feel is important was omitted. <em>View Current Context</em> does the same, but for the input you're about to send.</p>
+<hr />
+<h1 id="elements-of-context">Elements of Context</h1>
+<h2 id="prompt">Prompt</h2>
+<p>The prompt is displayed in <strong>cream</strong> by default. It is the first piece of text fed into the AI. If you have put anything into the <strong>Memory</strong> or <strong>Author's note</strong>, they will be inserted before it in the context before being sent to the AI.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/25a1815f-4053-457c-b6a4-961958f5df19" alt="image" /></p>
+<h2 id="injected-text">Injected Text</h2>
+<p><strong>Injected Text</strong> is any text that is not part of the story, but part of the context. All of these elements are injected text:</p>
+<ul>
+<li><p>The <strong>Memory.</strong></p></li>
+<li><p>The <strong>Author's Note</strong>, or <strong>A/N</strong> colloquially.</p></li>
+<li><p><strong>Lorebook</strong> entries.</p></li>
+<li><p><strong>Ephemeral Context</strong> entries.</p></li>
+</ul>
+<p>There are two important things to consider about injected text:</p>
+<ul>
+<li><p><strong>Position</strong> determines the strength of the injection's influence. Closer to the end = Stronger. Further at the top = weaker.</p></li>
+<li><p><strong>Style</strong> determines how it influences the generation. Generally, you want to stay close to your Story's style, perhaps with minor concessions such as removing determiners, prepositions, etc.</p></li>
+</ul>
+<p>Square brackets are recommended mostly for <strong>Author, Title, Tags, Genre</strong> metadata in Memory. The brackets must be separated from their contents by a space, and everything should be lowercase outside of category titles and proper nouns.</p>
+<p><code>[ Author: George R.R. Martin; Title: A Song of Ice and Fire; Tags: dragons, politics, dynasty; Genre: fantasy ]</code></p>
+<hr />
+<h3 id="memory">Memory</h3>
+<p>By default, the <strong>Memory</strong> is inserted at the <strong>top</strong> of the context, before anything else. Its position may be adjusted for a <strong>stronger</strong> (closer to the bottom) or a <strong>weaker</strong> (further to the top) effect.</p>
+<p>Traditionally used it to make the AI remember broad context elements and the <strong>Author, Title, Tags, Genre</strong> metadata.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1a65becd-7605-4a6e-abe8-8b1c05e15fb1" alt="image" /></p>
+<hr />
+<h3 id="authors-note">Author's Note</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e246544c-bb7b-4b1d-aa9e-30d6e7390ae9" alt="image" /></p>
+<p>The <strong>Author's Note</strong> or <strong>A/N</strong> is identical in format and use to Memory, but it is inserted <strong>three newlines</strong> by default before the last token in the input. It has a greater influence as a result. The A/N's position may be adjusted for a <strong>stronger</strong> (closer to the bottom) or a <strong>weaker</strong> (further to the top) effect. Traditionally, it is used to either <strong>give immediate instructions</strong>, and <strong>immediately important information</strong>, such as the name of the POV character, the date, etc.</p>
+<p>Keep in mind that Author's Note influence is <strong>extremely strong</strong>. It is <strong>strongly recommended</strong> to leave it empty unless you are using it for a specific purpose, after which it should be cleared. Leaving elements in the Author's Note can degrade generation quality.</p>
+<h3 id="lorebook">Lorebook</h3>
+<p>Further described in the dedicated <a href="Lorebook.html">Lorebook</a> page.</p>
+<hr />
+<h2 id="why-use-brackets">Why use Brackets?</h2>
+<p>Bracketed text is used specifically in the fine-tuning material for <strong>metadata</strong>, which includes <strong>Author, Title, Tags and Genre</strong>.</p>
+<p>Brackets used for metadata, look like this:</p>
+<p><code>[ Author: Neil Gaiman; Title: Sandman; Tags: ; Genre: Modern Fantasy; ]</code></p>
+<p>As you can see, you can use empty categories, or even omit them outright. Note the spaces next to the brackets! For optimal effect on your story, it is recommended to include the metadata headers in their original order, even if they are empty. You can omit the first ones if they are empty, but it is better if you keep Genre: at the very least.</p>
+<p>Each category is separated by a <strong>semicolon</strong> (;) and elements in a category are separated by a <strong>comma</strong> (,).</p>
+<p>It is also usable for:</p>
+<ul>
+<li><strong>Dates and locations</strong>: <code>[ 1889 , London ]</code></li>
+<li>The <strong>name of the POV character</strong> <code>[ Batman ]</code></li>
+<li>To contain text that has a tendency to leak into generations.</li>
+</ul>
+<p>Bracketed text is thus best described as being read by the AI as "Pertinent information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text.</p>
+<p>Punctuation outside of colons is usually only as part of a chapter/work title.</p>
+<p>You can encase only descriptive passages in Injected Text entries if they differ from the usual style of your prose.</p>
+<p>Brackets <strong>do not notably affect the accuracy of the text</strong> - this is <a href="Generation-Settings.html">Generation Settings</a> at work.</p>
+<p>It is generally not recommended to use brackets in Euterpe or Krake for anything outside of the aforementioned purposes.</p>
+<p>As a note, if you are using Krake, enable the <strong>Preamble</strong> in your AI settings to reinforce the Metadata's effect.</p>
+<hr />
+<h2 id="context-viewer">Context Viewer</h2>
+<p>The Context Viewer is a powerful tool to identify what elements were used by the AI in the last generation. This helps you diagnose Memory, Author's Note and Lorebook usage. Check for bloat, trimmed entries, or ones that take too much space using this tool.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/6facab34-249d-4e37-9dcb-46a00d14741c" alt="image" /></p>
+<h3 id="identifiers">Identifiers</h3>
+<p>Lists the <strong>Identifier</strong> of each element of the context that describes it's origin from one of the following:</p>
+<ul>
+<li><strong>Story</strong>: From the main text.</li>
+<li><strong>Memory</strong>: From the Memory block.</li>
+<li><strong>Author's Note</strong>: From the Author's Note block.</li>
+<li><strong>Display Name of a Lorebook Entry</strong>: The name that you gave that entry in the Lorebook, not its keys.</li>
+</ul>
+<h3 id="inclusion">Inclusion</h3>
+<p>Lists if this element is included in the context:</p>
+<ul>
+<li><strong>Included</strong>: Successfully inserted in the context.</li>
+<li><strong>Partially Included</strong>: Inserted in the context but some trimming was performed.</li>
+<li><strong>Not Included</strong>: Insertion in the context failed or was not attempted.</li>
+</ul>
+<h3 id="reason">Reason</h3>
+<p>Lists the reason for this element's inclusion or omission:</p>
+<p><em><strong>Included</strong></em></p>
+<ul>
+<li><strong>Default</strong>: Reserved to Story, Memory and Author's Note. Included by default.</li>
+<li><strong>Key Activated</strong>: This Lorebook entry was triggered by one of its keys.</li>
+<li><strong>Forced</strong>: This Lorebook entry was activated because it was set to Forced.</li>
+</ul>
+<p><em><strong>Omitted</strong></em></p>
+<ul>
+<li><strong>Disabled</strong>: This Lorebook entry was omitted because it was disabled.</li>
+<li><strong>No key</strong>: This Lorebook entry was ommitted because it could not find any of its keys in the text.</li>
+<li><strong>No space</strong>: This entry was ommitted because it could not be allocated enough tokens to fit.</li>
+<li><strong>No text</strong>: This entry was deactivated because it contains no text.</li>
+</ul>
+<h3 id="key">Key</h3>
+<p>Lists the key that triggered this Lorebook entry.</p>
+<h3 id="reserved">Reserved</h3>
+<p>Lists the amount of tokens reserved for this entry. This is usually lower than the <strong>Reserved Tokens</strong> setting of that entry, as that setting is the upper limit.</p>
+<h3 id="tokens">Tokens</h3>
+<p>Lists how many tokens are used by this entry <strong>solely on its own</strong>. Tokenization can cause a couple extra (or sometimes <em>less</em>) tokens to be used when this entry is placed in the text.</p>
+<h3 id="trim-type">Trim Type</h3>
+<p>Lists how this entry was trimmed. There are four trim steps, which occur in this sequence:</p>
+<ul>
+<li>Fit the entire entry without trimming. (<strong>No Trim</strong>) If it doesn't fit, go to the next step:</li>
+<li>The entry was trimmed to a new line character inside its text. (<strong>New Line</strong>) If this results in the entry having less than 30% of its allocated token content inserted, go to the next step:</li>
+<li>The entry was trimmed to a sentence delimited (period, ellipse, semicolon) (<strong>Sentence</strong>) If this causes the entry to have less than 30% of its allocated token content inserted, go to the next step:</li>
+<li>The entry is trimmed by the individual token, and then all the content that can fit in the space that remains is inserted. (<strong>Token</strong>) If this <strong>STILL</strong> fails, this is likely because the Prefix and Suffix can't fit in the context, so the entire entry is omitted.</li>
+</ul>
+<h3 id="advanced-context-settings">Advanced Context Settings</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/bb95d656-5b18-4294-8ae6-a893d0860b19" alt="image" /></p>
+<p>Remember all the advanced settings of the <a href="Lorebook.html">Lorebook</a>? Those are used here, but for the <strong>Story</strong>, <strong>Memory</strong> and <strong>Author's Note</strong>.</p>
+<p>These can be accessed in the <strong>Advanced Options</strong> collapse in the <strong>Options</strong> tab on the right.</p>
+<p>This allows you to:</p>
+<ul>
+<li>Fine-tune the maximum size of these blocks.</li>
+<li>Make Memory or the Author's Note get trimmed before the Story by setting them to a lower priority.</li>
+<li>Change the way these three blocks are trimmed.</li>
+<li>Force suffixes and prefixes that you won't need to write in the blocks directly.</li>
+</ul>
+<hr />
+<h2 id="ephemeral-context">Ephemeral Context</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/fc05235e-dec1-4436-92c1-8ff8f0a12f59" alt="image" /></p>
+<p><strong>Ephemeral Context</strong> entries are effectively <em>time-sensitive Text injections.</em> Think Mission Impossible:</p>
+<p><code>This message will self-destruct in 30 seconds...</code></p>
+<p>Every time you <strong>generate text</strong>, you perform a <em>step</em>. Ephemeral Context entries wait a certain number of steps, appear, remain for a certain number of steps, and disappear.</p>
+<p>The syntax example is as follows: <code>{0+30r~15,+5:[Angela's amnesia temporarily dissipates.]}</code></p>
+<p>Several symbols are used to define the type of information specified:</p>
+<ul>
+<li>{} Contains the block.</li>
+<li>The first number specifies the exact starting step, if necessary. You can also specify negative steps using <strong>-</strong></li>
+<li><strong>+</strong> specifies the delay in <strong>steps</strong> before activation. +0 will trigger immediately. Adding <strong>r</strong> to it will make it repeat after the number of steps set passes, <strong>even if the entry is still active</strong>. As a result, make sure the delay is longer than the duration if you don't want the entry to be always on, if it repeats.</li>
+<li><strong>~</strong> specifies the <strong>duration</strong> of the entry, in <strong>steps</strong>, before it disables.</li>
+<li><strong>,</strong> followed by <strong>+</strong> or <strong>-</strong> specifies the <strong>insertion position</strong> of the entry, <strong>in new lines</strong>. + starts from the top the context, - starts from the bottom of the context.</li>
+<li><strong>:</strong> specifies the beginning of the text content of the entry.</li>
+</ul>
+<p>Thus: <code>{0+30r~15,+5:[Angela's amnesia temporarily dissipates.]}</code> will add <code>"\[Angela's amnesia temporarily dissipates.\]"</code> to the context, five new lines from the top of the context, for fifteen steps, starting thirty steps after you set up this entry. Effectively, it'll be on half the time.</p>
+<p>You may also add a <strong>!</strong> after the first curly brace to be able to specify <strong>a temporarily inactive entry</strong>. This makes it <em>always</em> present <strong>except during the Ephemeral Context's entry duration.</strong></p>
+<p><code>{!0+30r~15,+5:[Angela's amnesia makes her forget why she is here and what she is doing..]}</code></p>
+<p>This one will be <em>off</em> half the time, when the other entry is active.</p>
+<p>You can also type out Ephemeral Context entries directly in the Input box.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

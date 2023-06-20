@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Lorebook</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lorebook</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#categories">Categories</a></li>
+<li><a href="#placement-tab">Placement Tab</a></li>
+<li><a href="#lorebook-phrase-bias">Lorebook Phrase Bias</a></li>
+<li><a href="#lore-generator">Lore Generator</a></li>
+</ul>
+</nav>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1bfa191e-4687-401d-882c-071faf74f52c" alt="image" /></p>
+<p>The Lorebook allows you to create entries for <strong>specific elements in your story</strong>. This helps the AI have more information about characters, places, items, concepts and so on.</p>
+<p>Click the <strong>📗 button</strong> on the input bar, or in the "Lorebook Quick Access" area of the Story tab on the right, to open the main lorebook window.</p>
+<p>You can import a Lorebook file by clicking the 📥 <strong>Import</strong> button at the top left. Once you're done you can export with 📤 <strong>Export</strong>. The 🖼️ icon lets you create a <strong>lorebook embedded in an image</strong>.</p>
+<p>Click the <strong>funnel</strong> icon to sort entries alphabetically or by timestamp.</p>
+<p>Click the <strong>🔎</strong> icon to perform a search.</p>
+<h4 id="basics">Basics</h4>
+<p>Click <strong>➕ Add Entry</strong> to create a new entry. Only the <em>content</em> and settings are read by the AI. The entry name is just an identifier.</p>
+<p>You will be presented with this window:</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/d282d815-2e83-425b-a2f4-1e5d41b65c6b" alt="image" /></p>
+<hr />
+<h4 id="entries">Entries</h4>
+<p>A lore entry is composed of two main elements: <strong>Entry Text</strong> and <strong>Keys</strong>.</p>
+<p>The <strong>Entry Text</strong> is what will be injected into the context window when a <strong>Key</strong> is triggered. Balancing out the density of this content with the remaining space in your context window is important.</p>
+<p>The <strong>Default Settings</strong> will be applied to all new entries, but they can be changed after creation.</p>
+<p>You can mass-select entries with the checkbox ☑️ to <strong>delete</strong> 🗑️, <strong>export</strong> 📤, or <strong>export to image</strong> 🖼️ several entries at once.</p>
+<h4 id="keys">Keys</h4>
+<p><strong>Enabled</strong> determines if the entry will be inserted in the context if detected. If it is disabled, it won't trigger regardless of keys. This is useful to reduce context cluttering if you don't need details about specific things.</p>
+<p><strong>Keys</strong> are all the <strong>words that the AI will associate with this entry.</strong> If the AI reads this word, then the connected entry will be inserted in the context. Keys are <em>case insensitive.</em></p>
+<p>Type the key and press <strong>Enter</strong> to register it. Keys are <strong>case insensitive by default.</strong></p>
+<p>To make a Key case-sensitive, preface it with <code>/</code> and close it by <code>/</code>: <code>/Entry/</code>.</p>
+<p>If it is part of a placeholder, add a <strong>$</strong> at the very beginning before the first dash.</p>
+<h4 id="lore-generation">Lore Generation</h4>
+<p>Click the 💡 <strong>Generate</strong> button to enter the <a href="Lorebook.html#lore-generator">Lore Generator</a>.</p>
+<hr />
+<h2 id="categories">Categories</h2>
+<p>Click <strong>➕ Add Category</strong> to create a new category.</p>
+<p>Categories allow you to organize Lorebook Entries, but also create a <strong>Subcontext</strong>. You can define default settings for all entries in the category as well.</p>
+<p>A subcontext is basically a <em>block</em> in the main, complete context. All entries of the category will be inserted, then organized according to their settings, <em>in this block only</em>. This helps reduce "spreading out data" by packing similar information together.</p>
+<p>The entries' individual placement settings will be applied <strong>relative to other entries in the block only.</strong> i.e If an entry has an placement position of -2 newlines, it will be inserted 2 newlines <em>before the last line of the last inserted entry in the subcontext block.</em></p>
+<p>The entire subcontext is then inserted as one block according to its own placement settings.</p>
+<p>This is useful if you want to lump a certain type of entries together, or use something like Scaffolding where every type of content has its own settings.</p>
+<h2 id="placement-tab">Placement Tab</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/590c999c-2c04-4276-a5a2-abac1d10c16e" alt="image" /></p>
+<p>Accessed by clicking the <strong>Placement</strong> tab. If this tab is active, you can click <strong>Dock Active Tab to the Side</strong> to make it show up at all times. Click <strong>Undock</strong> to remove it.</p>
+<ul>
+<li><strong>Search Range:</strong> Determines how many characters of text will be read by the AI when it looks for lorebook keys.</li>
+<li><strong>Force Activation:</strong> If turned <em>ON</em>, the entry will ALWAYS be in the context (if it can fit in there).</li>
+<li><strong>Key-Relative Insertion:</strong> By default, Lorebook Entries are inserted relative to the top, or the bottom of the text, see <strong>Insertion Position.</strong> When this toggle is <em>ON</em>, entries are inserted relative to the <strong>last occurrence of the Key found in the context.</strong></li>
+<li><strong>Cascading Activation:</strong> When <em>ON</em>, this entry will also look for its keys in <strong>other Lorebook entries, the Memory, and the Author's note.</strong> Search Range will be disregarded if this toggle is <em>ON</em>.</li>
+<li><strong>Prefix &amp; Suffix:</strong> These two are intended to work in tandem to allow for lengthier entries without losing coherence when the entry is trimmed. For example, you could add the <strong><a href="https://en.wikipedia.org/wiki/Prefix">prefix</a></strong> <code>[</code> and the <strong><a href="https://en.wikipedia.org/wiki/Suffix">suffix</a></strong> <code>]</code> to encapsulate the entirety of your entry despite trimming. If your entry read as <code>Winston is a good soldier. Works well under pressure. Likes bunnies.</code>, and the <em>last</em> sentence was trimmed, it would still read as <code>[Winston is a good soldier. Works well under pressure.]</code> despite the end of the entry being trimmed - your <strong>prefix</strong> and <strong>suffix</strong> still remain.</li>
+</ul>
+<p>You may also use a <code>\n</code> (a <strong>newline marker</strong>), which helps isolate the entry further by separating it with a full newline.</p>
+<ul>
+<li><strong>Token Budget:</strong> Keeps this number of tokens in the context window for this entry. <em>This will overwrite other content if necessary!</em> It's recommended to set it a litter lower than the entry's full size.</li>
+<li><strong>Insertion Order:</strong> The higher this number, the earlier the entry is processed. Entries with a low value may be dropped to save space for those with a higher value. If you have three entries, with order <em>500,0 and -500</em>, they will be processed from highest (500) to lowest (-500).</li>
+<li><strong>Insertion Position:</strong> How far <em>from the top</em> (if positive) or <em>the bottom</em> (if negative) will the entry be inserted in the window. The unit is defined in <strong>Insertion Type</strong>. It can be a number of <strong>tokens</strong>, <strong>sentences</strong>, and <strong>newlines</strong>.</li>
+</ul>
+<p>As an example, if you set it to <strong>-3 Newline</strong>, then it will insert the entry's text <em>as soon as it finds the third newline, reading back from the bottom of the window.</em> -1 will mean it is always placed at the very bottom of the Context, just as <em>positive</em> 1 will always place it at the very top of the Context. 0 will always be the very top.</p>
+<ul>
+<li><strong>Trim Direction:</strong> If the entry needs to be inserted partially due to lack of room in the context window, should it trim from the beginning towards the end, (top) end towards the beginning, (bottom) or omit the entire entry if it can't fit fully (Do Not Trim)?</li>
+</ul>
+<p><strong>Attention:</strong> If an entry is inserted after a subcontext, then it may insert itself <em>into that subcontext's text area.</em></p>
+<h2 id="lorebook-phrase-bias">Lorebook Phrase Bias</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1c801ad6-9d4f-4945-8215-a14cb70210ed" alt="image" /></p>
+<p>If this tab is active, you can click <strong>Dock Active Tab to the Side</strong> to make it show up at all times. Click <strong>Undock</strong> to remove it.</p>
+<p>Explained in <a href="Generation-Settings.html#phrase-bias">Phrase Bias</a>, although this has an extra setting: <em>When Entry Inactive</em>, which enables the biases <strong>if the entry is not active!</strong> This can help activate things randomly, such as monster encounters.</p>
+<p>Phrase biases in entries can otherwise be used to favor nicknames for a person (such as referring to their job, or a shorthand), and terms relative to them.</p>
+<hr />
+<h1 id="lore-generator">Lore Generator</h1>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/610c71e1-c780-4aec-8aae-bb6e883168c9" alt="image" /></p>
+<p>The <strong>Lore Generator</strong> is a powerful tool that allows you to generate Lore for several types of objects, people, and concepts.</p>
+<p>First, <strong>select a type from the dropdown,</strong> choosing one that fits the type of content you want generated. They may appear a little broad, so see which is the closest fit.</p>
+<p>If you need the AI to be aware of elements in the <strong>Story</strong>, <strong>Memory</strong>, <strong>Author's Note</strong>, or <strong>Lorebook</strong>, open <strong>Add Context (Advanced)</strong>, and tick their respective boxes or enter <strong>Keys</strong> that will activate <strong>Lorebook Entries</strong> that you want the AI to be aware of when you generate the Lore Entry.</p>
+<p>Once you are ready, type into <strong>Input Text</strong>:</p>
+<ul>
+<li><strong>The Name of the element you want generated (or a short description)</strong></li>
+<li><strong>Pointers, in parentheses, separated by commas.</strong></li>
+</ul>
+<p>Here is an example:</p>
+<pre><code>Type selected: Concept
+FTL Travel (Space Folding, Instantaneous)
+</code></pre>
+<p>Press ▶ or <strong>Ctrl/Cmd⌘+Enter</strong> to generate. Click 🔃 to retry the last generation. You can freely edit the text, and keep generating, just like in the main text editor!</p>
+<p><strong>Generation History</strong> is similar to the <strong>Redo Tree</strong>, displaying the last generations <em>for all entries</em>. The list is purged on refresh.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

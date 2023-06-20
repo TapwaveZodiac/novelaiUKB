@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Generation Settings</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Generation Settings</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#generation-presets">Generation Presets</a></li>
+<li><a href="#generation-options">Generation Options</a>
+<ul>
+<li><a href="#randomness-temperature">Randomness (Temperature)</a></li>
+<li><a href="#output-length">Output Length</a></li>
+<li><a href="#repetition-penalty">Repetition Penalty</a></li>
+</ul></li>
+<li><a href="#sampling">Sampling</a>
+<ul>
+<li><a href="#top-k-sampling">Top-K Sampling</a></li>
+<li><a href="#nucleus-sampling">Nucleus Sampling</a></li>
+<li><a href="#tail-free-sampling">Tail-Free Sampling</a></li>
+<li><a href="#top-a-sampling">Top-A Sampling</a></li>
+<li><a href="#typical-sampling">Typical Sampling</a></li>
+<li><a href="#change-settings-order">Change Settings Order</a></li>
+</ul></li>
+<li><a href="#repetition-penalty-1">Repetition Penalty</a>
+<ul>
+<li><a href="#repetition-penalty-range">Repetition Penalty Range</a></li>
+<li><a href="#repetition-penalty-slope">Repetition Penalty Slope</a></li>
+</ul></li>
+</ul>
+</nav>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/144e3f9b-5275-4e4b-97a0-6e67524eaf1d" alt="image" /></p>
+<h2 id="generation-presets">Generation Presets</h2>
+<p>In order to make selecting the AI's various generation settings easier, NovelAI offers several generation presets.</p>
+<p>Settings are divided into three categories:</p>
+<ul>
+<li><strong>User</strong>: Settings you have defined and saved, or imported.</li>
+<li><strong>Scenario</strong>: Settings that came included in the scenario you imported.</li>
+<li><strong>Defaults</strong>: Settings designed by NAI testers.</li>
+</ul>
+<p>You can <strong>Import</strong> a .preset file, or export the currently selected custom preset in the same format.</p>
+<p>Use the ➕ button to create a new preset based on the current generation settings.</p>
+<p>Use the ✍ button to edit the preset's name.</p>
+<hr />
+<h2 id="generation-options">Generation Options</h2>
+<p>These settings allow you to adjust the generation settings to your liking. These get <strong>really technical</strong> so only explore them if you like messing with the finer things. Otherwise, leave them to their defaults; they're usually good as is.</p>
+<p>Most of them deal with the <strong>Pool of possible tokens.</strong> To understand what this means, look at these examples:</p>
+<p><code>Stepping outside, I looked</code> could result in <code>up, down, left, right, across, around, fancy</code> and so on.</p>
+<p><code>Stepping outside, I looked up at the sun, which was burning</code> would result in fewer potential matches, such as <code>hot, bright, with</code>.</p>
+<h3 id="randomness-temperature">Randomness (Temperature)</h3>
+<p>Imagine the next token for a generation comes out of a bag. You shake the bag and pick one. Generally, it's easier to pick out bigger things from the bag, right? If you increase the randomness, then the tokens's probabilities become more and more averaged out, think of it as all the pieces growing or shrinking to be closer to the same size, making it more random.</p>
+<p>True to its name, the Randomness setting (or "Temperature") increases the <strong>likelihood of less-expected tokens during text generation</strong>. This works by dividing <a href="https://en.wikipedia.org/wiki/Logit"><strong>logits</strong></a> by the Temperature before sampling. In plain English, this means the next part of the sentence will be more unexpected, as elements that have less of a chance of appearing are granted a greater likelihood of being used.</p>
+<h3 id="output-length">Output Length</h3>
+<p>This setting will adjust the <strong>approximate number of characters returned at once by the AI</strong> in each Generation. It shows the amount of tokens that will be returned multiplied by four to show the average amount of characters. The amount of tokens will not always be exact, but will never fall under this number. Up to 20 additional tokens will be generated to attempt to reach the end of a sentence before the generation ends.</p>
+<p>As a note, Output length is part of the Context memory. The longer your output length, the less memory you have.</p>
+<h3 id="repetition-penalty">Repetition Penalty</h3>
+<p>Going back to the bag metaphor, Repetition Penalty checks for tokens that appear too often and makes them less likely.</p>
+<p>Because text generation is based on patterns, repetition is a constant concern. The Repetition Penalty introduces an artificial dampener to the probability of a token depending on the frequency of its appearance in the current context.</p>
+<p>As such, increasing this value makes a word <strong>less likely to appear for each time it shows up in the text</strong>. Do take note that this can get really awkward with words that are recurrent in the current context, such as names, or objects being discussed. With high Repetition Penalty, the AI may find itself unable to use a word repeatedly, and will need to substitute it with another which may be inappropriate.*</p>
+<hr />
+<h2 id="sampling">Sampling</h2>
+<p>Again with the bag metaphor, Sampling decides what tokens are in the bag to begin with.</p>
+<h3 id="top-k-sampling">Top-K Sampling</h3>
+<p>This setting affects the <strong>pool of tokens the AI will pick from</strong> by only selecting the <strong>most likely tokens</strong>, then redistributing the [<strong>probability</strong>] (<a href="https://en.wikipedia.org/wiki/Probability">https://en.wikipedia.org/wiki/Probability</a>) for those that remain. The pool will only contain the <em>K</em> most likely tokens. If the setting is set to 10, then your pool will contain the 10 most likely tokens. (Top-10 Sampling), then redistribute 100% of probability across those tokens, based on their relative probabilities.</p>
+<p>In plain English, lowering this setting causes more consistent generations at the cost of creativity, by giving the AI less things to pick from.</p>
+<h3 id="nucleus-sampling">Nucleus Sampling</h3>
+<p>Relating to the previous setting, this adds up the probability of each potential Token, from most likely to least likely until it reaches the value specified. Lowering this value creates a smaller subset of probable Tokens, because the maximum sum will be smaller, so you can add less tokens to the pool before it's full.</p>
+<p>In plain English, lowering this setting causes more consistent generations at the cost of creativity.</p>
+<p>As an example, if the most likely token has 30% chance, the second 25, the third 20, the fourth 10, the fifth 5, and the sixth 3, and your setting is at 0.9 (90%), then you would do: 30+25+20+10+5 = 90. The sixth most likely token and onwards will be removed from the pool.</p>
+<h3 id="tail-free-sampling">Tail-Free Sampling</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Probability_distribution"><strong>tail</strong></a> in this context is the least-likely subset of Tokens to be chosen in a Generation. This alternative sampling method works by trimming <strong>the least-likely tokens by searching for the estimated tail's probability</strong>, removing that tail to the best of its ability, then re-<a href="https://en.wikipedia.org/wiki/Normalization_(statistics)"><strong>normalizing</strong></a> the remaining sample.</p>
+<p>This method may have a smaller impact on creativity while maintaining consistency. However, take note that it tends to behave strangely if your context does not contain a lot of data.</p>
+<p>Consider the setting as "how much you want to keep". High settings lead to larger token pools.</p>
+<h3 id="top-a-sampling">Top-A Sampling</h3>
+<p>Top-A considers the <strong>probability</strong> of <strong>the most likely Token</strong>, and sets a <em>limit</em> based on its percentage. After this, remaining tokens are compared to this limit. If their probability is too low, they are removed from the pool.</p>
+<p>The calculation is as follows: <code>limit = max(token_probs)^2 * A.</code></p>
+<p>Increasing A results in a stricter limit. Lowering A results in a looser limit.</p>
+<p>This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.</p>
+<h3 id="typical-sampling">Typical Sampling</h3>
+<p>Typical Sampling is complicated to explain, as it uses an advanced concept known as <a href="https://en.wikipedia.org/wiki/Conditional_entropy">conditional entropy</a>. It calculates an entropy average, shifts the probabilities of tokens, and then checks which values shifted the most. Those are removed from the pool.</p>
+<p>Typical is atypical compared to other sampling methods, as it cuts <em>both likely and unlikely tokens</em>, based on their deviation from the expected base line of entropy. Extremes are considered by the math behind the sampling to be too "random" or "noisy", and thus carrying less "information".</p>
+<p>Lowering the value makes the thresholds for cutting off tokens harsher. Increasing it loosens the thresholds, allowing for more tokens.</p>
+<h3 id="change-settings-order">Change Settings Order</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8" alt="image" /></p>
+<p>Allows you to enable or disable sampling types, as well as select the order in which they are processed.</p>
+<hr />
+<h2 id="repetition-penalty-1">Repetition Penalty</h2>
+<p>Repetition Penalty is applied to the probability of tokens when they appear in context. This is to avoid generation loops, or overuse of single terms. On the flipside, penalizing important words too heavily when they are important and expected to show up regularly can have odd side effects.</p>
+<h3 id="repetition-penalty-range">Repetition Penalty Range</h3>
+<p>Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more tokens are checked.</p>
+<h4 id="dynamic-penalty-range">Dynamic Penalty Range</h4>
+<p>When <strong>Enabled</strong>, the Repetition Penalty is <strong>only applied to the story.</strong> All text injections (Lorebook, Author's Note, Memory, Ephemeral Context) will be <em>ignored</em> for the purposes of repetition penalty.</p>
+<h3 id="repetition-penalty-slope">Repetition Penalty Slope</h3>
+<p>The penalty to repeated tokens is applied differently based on distance from the final token. The distribution of that penalty follows a S-shaped curve. If the sloping is set to 0, that curve will be completely flat. All tokens will be penalized equally. If it is set to a very high value, it'll act more like two steps: Early tokens will receive little to no penalty, but later ones will be considerably penalized.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Using the API</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Using the API</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#1-introduction">1. Introduction</a></li>
+<li><a href="#2-the-endpoints">2. The endpoints</a>
+<ul>
+<li><a href="#21-terms-and-concepts">2.1. Terms and concepts</a>
+<ul>
+<li><a href="#211-access-key-and-access-token">2.1.1. Access key and Access token</a></li>
+<li><a href="#212-encryption-and-keystore">2.1.2. Encryption and Keystore</a></li>
+<li><a href="#213-compression">2.1.3. Compression</a></li>
+<li><a href="#214-logprobs">2.1.4. Logprobs</a></li>
+<li><a href="#215-infilling">2.1.5. Infilling</a></li>
+<li><a href="#216-hypebot">2.1.6. Hypebot</a></li>
+</ul></li>
+<li><a href="#22-endpoints-starting-with-">2.2. Endpoints starting with /</a>
+<ul>
+<li><a href="#221-">2.2.1. /</a></li>
+</ul></li>
+<li><a href="#23-endpoints-starting-with-user">2.3. Endpoints starting with /user/</a>
+<ul>
+<li><a href="#231-userregister">2.3.1. /user/register</a></li>
+<li><a href="#232-userlogin">2.3.2. /user/login</a></li>
+<li><a href="#233-userchange-access-key">2.3.3. /user/change-access-key</a></li>
+<li><a href="#234-userresend-email-verification">2.3.4. /user/resend-email-verification</a></li>
+<li><a href="#235-userverify-email">2.3.5. /user/verify-email</a></li>
+<li><a href="#236-userinformation">2.3.6. /user/information</a></li>
+<li><a href="#237-userdeletionrequest">2.3.7. /user/deletion/request</a></li>
+<li><a href="#238-userdeletiondelete">2.3.8. /user/deletion/delete</a></li>
+<li><a href="#239-userrecoveryrequest">2.3.9. /user/recovery/request</a></li>
+<li><a href="#2310-userrecoveryrecover">2.3.10. /user/recovery/recover</a></li>
+<li><a href="#2311-userdelete">2.3.11. /user/delete</a></li>
+<li><a href="#2312-userdata">2.3.12. /user/data</a></li>
+<li><a href="#2313-userpriority">2.3.13. /user/priority</a></li>
+<li><a href="#2314-usergiftkeys">2.3.14. /user/giftkeys</a></li>
+<li><a href="#2315-usersubscription">2.3.15. /user/subscription</a></li>
+<li><a href="#2316-userkeystore">2.3.16. /user/keystore</a></li>
+<li><a href="#2317-userobjectstype-type--stories-storycontent-aimodules-shelf-presets">2.3.17. /user/objects/{type} (type = "stories", "storycontent", "aimodules", "shelf", "presets")</a></li>
+<li><a href="#2318-userobjectstypeid">2.3.18. /user/objects/{type}/{id}</a></li>
+<li><a href="#2319-userclientsettings">2.3.19. /user/clientsettings</a></li>
+<li><a href="#2320-usersubmission">2.3.20. /user/submission</a></li>
+<li><a href="#2321-usersubmissionevent">2.3.21. /user/submission/{event}</a></li>
+<li><a href="#2322-uservote-submissionevent">2.3.22. /user/vote-submission/{event}</a></li>
+</ul></li>
+<li><a href="#24-usersubscription">2.4. /user/subscription/</a>
+<ul>
+<li><a href="#241-usersubscriptionbind">2.4.1. /user/subscription/bind</a></li>
+<li><a href="#242-usersubscriptionchange">2.4.2. /user/subscription/change</a></li>
+</ul></li>
+<li><a href="#25-ai">2.5. /ai/</a>
+<ul>
+<li><a href="#251-aigenerate">2.5.1. /ai/generate</a></li>
+<li><a href="#252-aigenerate-prompt">2.5.2. /ai/generate-prompt</a></li>
+<li><a href="#253-aigenerate-stream">2.5.3. /ai/generate-stream</a></li>
+<li><a href="#254-aiannotate-image">2.5.4. /ai/annotate-image</a></li>
+<li><a href="#255-aigenerate-image">2.5.5. /ai/generate-image</a></li>
+<li><a href="#256-aiupscale">2.5.6. /ai/upscale</a></li>
+<li><a href="#257-aiclassify">2.5.7. /ai/classify</a></li>
+<li><a href="#258-aigenerate-imagesuggest-tags">2.5.8. /ai/generate-image/suggest-tags</a></li>
+<li><a href="#259-aigenerate-voice">2.5.9. /ai/generate-voice</a></li>
+</ul></li>
+<li><a href="#26-aimodule">2.6. /ai/module/</a>
+<ul>
+<li><a href="#261-aimoduletrain">2.6.1. /ai/module/train</a></li>
+<li><a href="#262-aimoduleall">2.6.2. /ai/module/all</a></li>
+<li><a href="#263-aimoduleid">2.6.3. /ai/module/{id}</a></li>
+<li><a href="#264-aimodulebuy-training-steps">2.6.4. /ai/module/buy-training-steps</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#3-unofficial-api-resources">3. Unofficial API resources</a></li>
+</ul>
+</nav>
+<p>*<strong>Written by <em>Aedial</em></strong></p>
+<h1 id="1-introduction">1. Introduction</h1>
+<p>The API is the backbone of the website. All text and image generation, storage your content, and much more happens through API requests. As such, it is possible to use API requests to interact with NovelAI's back-end in ways that are more elaborate and sometimes originally unintended by the developers. Due to this, using the API comes with some restrictions that must be followed (<a href="https://novelai.net/terms">ToS</a> - sections 5.3 and 9.1) :</p>
+<ul>
+<li><strong>No account sharing.</strong> Any request using your access token should be done by the owner of the account.</li>
+<li><strong>No automation.</strong> There is some leeway, but the basis of it is that there should be some form of user interaction: <strong>requests should be sent by users, and never automatically through a script.</strong></li>
+</ul>
+<p>This means <strong>no public bots</strong> using a single API key, among other things. Making a tool that lets you send a small batch of staggered requests: OK. Making a tool that generates every 5s and downloads every result: Not OK.</p>
+<p>In the same vein, all requests should be done one request at a time, as to not choke the server with too much load at once.</p>
+<p>Failure to do so can result in your <strong>account's permanent termination</strong> or your <strong>right to free generations being suspended</strong></p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/98bc914c-de64-4935-91d4-3bca412fb982" alt="image" /></p>
+<h1 id="2-the-endpoints">2. The endpoints</h1>
+<p>The official API docs can be viewed at <a href="https://api.novelai.net/docs">docs</a>, but might be vague about some aspects.</p>
+<p>Here is a breakdown of each endpoint, but <strong>with only the <em>undocumented</em> arguments, types, and schemas</strong>. Documented args, types and schemas are present in the documentation. <strong>Each</strong> endpoint should be prepended with "<a href="https://api.novelai.net">https://api.novelai.net</a>".</p>
+<p>Several responses can come from any endpoint:</p>
+<ul>
+<li>A Cloudflare error with an HTML response</li>
+<li>A normal error with a JSON response containing an "error" field for more information</li>
+<li>The expected response</li>
+</ul>
+<h2 id="21-terms-and-concepts">2.1. Terms and concepts</h2>
+<h3 id="211-access-key-and-access-token">2.1.1. Access key and Access token</h3>
+<p>To access most of the API, you will need an <strong>Access token</strong>. This token is generated via the <strong>/user/login endpoint</strong>, and is valid for <strong>exactly 30 days</strong> (2592000 seconds) after its creation. When you have your access token, You can use it in the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a> header with the <strong>Bearer</strong> scheme.</p>
+<p>To login, you will need to send your Access key to the /user/login endpoint. The Access key is derived from your <em>email and password</em> using the <strong>blake2 and argon2 algorithms</strong> (see <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L43">here</a>).</p>
+<p>There are several ways to get your access key :</p>
+<ul>
+<li>Implement /user/login or use a tool that implements it (recommended way, as you won't have to manually copy it when it expires)</li>
+<li>Grab it from the Local Storage, having logged in beforehand (Browser's dev tools &gt; Storage &gt; Local Storage &gt; <a href="https://novelai.net">https://novelai.net</a> &gt; session - see image below)</li>
+<li>Use an external tool (<span class="emoji" data-emoji="warning">⚠️</span> Do not trust any external tool unless you know what it does)</li>
+</ul>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/37438fa2-9ebe-43d8-8d3d-73eb5c22bc5d" alt="image" /></p>
+<h3 id="212-encryption-and-keystore">2.1.2. Encryption and Keystore</h3>
+<p>"stories", "storycontent", and "aimodules" objects are encrypted using <a href="https://en.wikipedia.org/wiki/Salsa20">Salsa20/8</a>, in an <a href="https://en.wikipedia.org/wiki/End-to-end_encryption">End-to-End</a> manner. To get the key of an object, you will need to retrieve and decrypt your <strong>keystore</strong> with your <strong>Encryption key</strong>. The Encryption key is derived in the same manner as the Access key, using blake2 and argon2 (see <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L49">here</a>).</p>
+<p>The encrypted keystore contains the <strong>encrypted data</strong> ("sdata") and the <strong>nonce</strong> ("nonce") to be used to decrypt it (it is also encrypted using Salsa20), the key is your Encryption key. Once you have decrypted your keystore, you will see a mapping of meta -&gt; key. Each encrypted object has a "meta" field, which is used to link them to their encryption key (more info <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/Keystore.py#L113">here</a> and <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L63">here</a>).</p>
+<p>Once you have the key of the object, you can decrypt it by removing the nonce that is stored in the 16 first bytes of the encrypted data, and decrypting the rest using this nonce and the key from the keystore (more info <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L188">here</a> and <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L63">here</a>).</p>
+<h3 id="213-compression">2.1.3. Compression</h3>
+<p>"shelf", "preset", and any decrypted object might be compressed using <a href="https://en.wikipedia.org/wiki/Deflate">DEFLATE</a>. It is easily recognizable as the data is prefixed with 0x00000000000000000000000000000001 (hex representation of byte data), which should be <strong>removed when decompressing</strong> and <strong>added back when compressing</strong> (note that the prefix is matched and removed <em>before decryption</em>, but the <em>decompression takes place after decryption</em> - see <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L72">here</a>). The compression library used by the NovelAI team is <a href="https://www.npmjs.com/package/fflate">fflate</a>, which might result in slightly different results, but should be fully compatible with the standard.</p>
+<h3 id="214-logprobs">2.1.4. Logprobs</h3>
+<p>Logprobs, or logarithm of probabilities, are useful information for knowing where the AI is going. They are returned by text models when the parameter is enabled, and show the probability of the top alternatives in descending order, for a specific token. The logprobs come in the "logprobs" field of the response, and will contain a "chosen" field for the tokens that were chosen, and a "before" field for the top alternatives of these tokens, with their probability before and after applying sampling.</p>
+<h3 id="215-infilling">2.1.5. Infilling</h3>
+<p>Infilling, or Bidirectional inline generation, is a specific feature and a totally different way of generating, which takes into account both the text before and after the targeted spot.</p>
+<p>The current model used for infilling is GPT-J-6B, but it is unsure whether it is a finetune or a module v2. It uses token 50261 as mask for the part to replace, token 50257 at the end of context sent to prompt it into infilling mode, and token 50258 for the end of generation (so put that as Stop sequence).</p>
+<h3 id="216-hypebot">2.1.6. Hypebot</h3>
+<p>Hypebot is a commenter bot, which sees the story and comments on it.</p>
+<p>The current model used for hypebot is GPT-J-6B, finetuned on ~300 samples with some augmentation. It uses token 49527 at the end of context sent to prompt it into hypebot mode, and token 48585 for the end of generation (so put that as Stop sequence).</p>
+<h2 id="22-endpoints-starting-with-">2.2. Endpoints starting with /</h2>
+<h3 id="221-">2.2.1. /</h3>
+<p>Checks if the API is reachable.</p>
+<h2 id="23-endpoints-starting-with-user">2.3. Endpoints starting with /user/</h2>
+<h3 id="231-userregister">2.3.1. /user/register</h3>
+<p>Registers an account. Automation is mitigated by ReCaptcha.</p>
+<h3 id="232-userlogin">2.3.2. /user/login</h3>
+<p>Get a new access token from your access key.</p>
+<h3 id="233-userchange-access-key">2.3.3. /user/change-access-key</h3>
+<p>Change your access key and email (access key is based on email and password).</p>
+<h3 id="234-userresend-email-verification">2.3.4. /user/resend-email-verification</h3>
+<p>Send an email with a verification token to verify your email address.</p>
+<h3 id="235-userverify-email">2.3.5. /user/verify-email</h3>
+<p>Verify your email address with the verification token sent to it.</p>
+<h3 id="236-userinformation">2.3.6. /user/information</h3>
+<p>Get miscellaneous information about your account.</p>
+<h3 id="237-userdeletionrequest">2.3.7. /user/deletion/request</h3>
+<p>Send an email to the account deletion. The email address should be the same you provided for the registration.</p>
+<h3 id="238-userdeletiondelete">2.3.8. /user/deletion/delete</h3>
+<p>Confirm the account deletion with the deletion token to your email.</p>
+<h3 id="239-userrecoveryrequest">2.3.9. /user/recovery/request</h3>
+<p>Send an email to recover your account, in case you forgot your password. The email address should be the same you provided for the registration. <strong>Changing your password will make all stories permanently inaccessible, so make sure you back up everything!</strong></p>
+<h3 id="2310-userrecoveryrecover">2.3.10. /user/recovery/recover</h3>
+<p>Change your access key, using the recovery token sent to your email.</p>
+<h3 id="2311-userdelete">2.3.11. /user/delete</h3>
+<p>Delete the account.</p>
+<h3 id="2312-userdata">2.3.12. /user/data</h3>
+<p>Combination of all user data (/user/priority, /user/subscription, /user/keystore, /user/clientsettings, and /user/information)</p>
+<h3 id="2313-userpriority">2.3.13. /user/priority</h3>
+<p>Get the priority level. (Legacy system, now deprecated.)</p>
+<h3 id="2314-usergiftkeys">2.3.14. /user/giftkeys</h3>
+<p>Get the gift keys you bought</p>
+<h3 id="2315-usersubscription">2.3.15. /user/subscription</h3>
+<p>Get information about subscription, payment processor info, and current Anlas count</p>
+<h3 id="2316-userkeystore">2.3.16. /user/keystore</h3>
+<p>Get/Edit the keystore.</p>
+<h3 id="2317-userobjectstype-type--stories-storycontent-aimodules-shelf-presets">2.3.17. /user/objects/{type} (type = "stories", "storycontent", "aimodules", "shelf", "presets")</h3>
+<p>Get/Upload all the objects of a specific type, that you have uploaded to your account. "stories", "storycontent", and "aimodules" are encrypted, while "shelf" and "presets" are compressed (storycontent is both).</p>
+<h3 id="2318-userobjectstypeid">2.3.18. /user/objects/{type}/{id}</h3>
+<p>Get/Edit/Delete a specific object, that you have uploaded to your account.</p>
+<h3 id="2319-userclientsettings">2.3.19. /user/clientsettings</h3>
+<p>Get/Edit user-specific settings for the website, like font, theme, etc.</p>
+<h3 id="2320-usersubmission">2.3.20. /user/submission</h3>
+<p>Submit content for an event hosted by NovelAI.</p>
+<h3 id="2321-usersubmissionevent">2.3.21. /user/submission/{event}</h3>
+<p>Get the content your submitted for the event.</p>
+<h3 id="2322-uservote-submissionevent">2.3.22. /user/vote-submission/{event}</h3>
+<p>Vote, get your voting status, or delete your vote for an event.</p>
+<h2 id="24-usersubscription">2.4. /user/subscription/</h2>
+<h3 id="241-usersubscriptionbind">2.4.1. /user/subscription/bind</h3>
+<p>Bind new subscription info from the payment processor to your account.</p>
+<h3 id="242-usersubscriptionchange">2.4.2. /user/subscription/change</h3>
+<p>Change the subscription tier to a new tier.</p>
+<h2 id="25-ai">2.5. /ai/</h2>
+<p>Image generation returns image(s) as PNG file(s) packed into a zip file using DEFLATE.</p>
+<h3 id="251-aigenerate">2.5.1. /ai/generate</h3>
+<p>Generate using one of the text AIs. For the input and output, see parameters.use_string. The most relevant generation options can be viewed in <a href="Generation-Settings.html#generation-options">Generation Settings</a>.</p>
+<p>The input you send will be all the AI sees, which mean any context building needs to be done before sending the request. The maximum length (in tokens) you can send to the model depends on the selected model, your subscription tier, the generation length (parameters.max_length), if a module v1 is loaded, and if generate until sentence (parameters.generate_until_sentence) is true. For example, if the chosen model and your tier give you 2048 tokens of context, you need to remove the generation length (up to 150 tokens), 20 tokens if a module v1 is loaded, and 20 tokens if generate until sentence is true. Any additional token above this limit is truncated, starting from the top of context. If parameters.generate_until_sentence is true, the model will try to generate up to 20 tokens past the generation length, until a period is found.</p>
+<p>For parameters.order, the sampling methods are <strong>ordered</strong>, the disabled ones are <strong>removed</strong>, and they are then arranged into an array with temperature =&gt; 0, top_k =&gt; 1 , top_p =&gt; 2, tfs =&gt; 3, top_a =&gt; 4, typical_p =&gt; 5</p>
+<p>The number of lobprobs per token is set by parameters.num_logprobs. If this field is not set, no logprob will be sent with the response.</p>
+<p>Stop sequences (parameters.stop_sequences) and Banned tokens (parameters.bad_words_ids) both expect a list of tokenized word(s).</p>
+<p>Modules can be selected through parameters.prefix, and have a unique identifier, which you can usually find by exporting a scenario using this module and looking into the file. Official modules have a simple identifier (e.g. "general_crossgenre"), while custom modules have a longer one containing the model, location, and password of the encrypted module (e.g. "6B-v4:c6021aaa523e2dcb8588848b5fd4e2516dd4bb7107268aaa6050b5430c3a4b47:b764a71f139d0d829ed0f3077f026db43fdb25bc6b45ac508e85dd4c405a2fae"). All custom modules are encrypted and stored server-side.</p>
+<h3 id="252-aigenerate-prompt">2.5.2. /ai/generate-prompt</h3>
+<p>Unknown, unused yet.</p>
+<h3 id="253-aigenerate-stream">2.5.3. /ai/generate-stream</h3>
+<p>Same as /ai/generate, but uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">SSE</a> to transmit the response one token at a time.</p>
+<h3 id="254-aiannotate-image">2.5.4. /ai/annotate-image</h3>
+<p>Get the mask for ControlNet, from an image. The parameters should contain an "image" field with the base64-encoded PNG image to convert. For the model, Palette Swap is "hed", Form Lock is "midas", Scribbler is "fake_scribble", Building Control is "mlsd", and Landscaper is "uniformer".</p>
+<h3 id="255-aigenerate-image">2.5.5. /ai/generate-image</h3>
+<p>Generate an image using normal text to image, image to image, or inpainting.</p>
+<ul>
+<li><p><strong>Parameters.width</strong>: Width of the image to generate.</p></li>
+<li><p><strong>Parameters.height</strong>: Height of the image to generate.</p></li>
+<li><p><strong>Parameters.n_samples</strong>: Number of images to return. The maximum value is 8 up to 360,448 px, 6 up to 409,600 px, 4 up to 1,310,720 px, 2 up to 1,572,864 px, and 1 up to the max size.</p></li>
+<li><p><strong>Parameters.seed</strong>: Random seed to use for the image (between 0 and 4294967295), defaults to 0. Seed 0 means that a random seed will be chosen, but <strong>not set in the metadata</strong> (so giving a seed yourself is important). <strong>Note</strong>: When generating multiple images, each consecutive image adds 1 to the seed parameter. This means it can go beyond the limit of 4294967295, making it <strong>unreproducible</strong> with a single generation.</p></li>
+<li><p><strong>Parameters.extra_noise_seed</strong>: Unknown, but seems to be fulfill the same role as Parameters.seed.</p></li>
+<li><p><strong>Parameters.sampler</strong>: Refer to <a href="https://docs.novelai.net/image/sampling.html">sampling</a>. The full list of samplers is (some may not work due to being deprecated): "k_lms", "k_euler", "k_euler_ancestral", "k_heun", "plms", "ddim", "nai_smea", "nai_smea_dyn", "k_dpmpp_2m", "k_dpmpp_2s_ancestral", "k_dpmpp_sde", "k_dpm_2", "k_dpm_2_ancestral", "k_dpm_adaptive", "k_dpm_fast".</p></li>
+<li><p><strong>Parameters.noise, Parameters.strength</strong>: Refer to <a href="https://docs.novelai.net/image/strengthnoise.html">strength and noise</a>.</p></li>
+<li><p><strong>Parameters.steps, Parameters.scale</strong>: Refer to <a href="https://docs.novelai.net/image/stepsguidance.html">steps and scale</a>.</p></li>
+<li><p><strong>Parameters.negative_prompt</strong>: Refer to <a href="https://docs.novelai.net/image/undesiredcontent.html">Undesired Content</a>.</p></li>
+<li><p><strong>Parameters.sm, Parameters.sm_dyn</strong>: Enables SMEA and SMEA DYN, if True (SMEA needs to be enabled for SMEA DYN). Refer to <a href="https://docs.novelai.net/image/sampling.html#special-samplers-smea--smea-dyn">SMEA</a>.</p></li>
+<li><p><strong>Parameters.image</strong>: Base64-encoded PNG image for Image to Image.</p></li>
+<li><p><strong>Parameters.controlnet_condition</strong>: Base64-encoded PNG ControlNet mask retrieved from the /ai/annotate-image endpoint.</p></li>
+<li><p><strong>Parameters.controlnet_model</strong>: Model to use for the ControlNet. Palette Swap is "hed", Form Lock is "depth", Scribbler is "scribble", Building Control is "mlsd", is Landscaper is "seg",</p></li>
+<li><p><strong>Parameters.controlnet_strength</strong>: Controls how much influence the ControlNet has on the image.</p></li>
+<li><p><strong>Parameters.dynamic_thresholding</strong>: Refer to <a href="https://docs.novelai.net/image/stepsguidance.html#decrisper">descrisper</a>. The technical details can be found on <a href="https://github.com/mcmonkeyprojects/sd-dynamic-thresholding">GitHub</a> and <a href="https://twitter.com/Birchlabs/status/1582165379832348672">Twitter</a>.</p></li>
+<li><p><strong>Parameters.add_original_image</strong>: Refer to <a href="https://docs.novelai.net/image/inpaint.html#overlay-original-image">Overlay Original Image</a>.</p></li>
+<li><p><strong>Parameters.mask</strong>: Base64-encoded black and white PNG image to use as a mask for inpainting. White is the area to inpaint and black is the rest.</p></li>
+</ul>
+<p>More fields can be added in parameters, which will be present in the metadata of the image, like qualityToggle or ucPreset. These fields are mainly for the website to remember some key information when importing the image.</p>
+<h3 id="256-aiupscale">2.5.6. /ai/upscale</h3>
+<p>Upscale the provided PNG image.</p>
+<h3 id="257-aiclassify">2.5.7. /ai/classify</h3>
+<p>Unknown, unused yet.</p>
+<h3 id="258-aigenerate-imagesuggest-tags">2.5.8. /ai/generate-image/suggest-tags</h3>
+<p>Suggest tags with a certain confidence, considering how much the tag is used in the dataset. The confidence is between 0 and 1.</p>
+<h3 id="259-aigenerate-voice">2.5.9. /ai/generate-voice</h3>
+<p>Generates an audio file reading the text sent. The endpoint accepts up to 1000 characters to read, any more being cut out.</p>
+<p>There are 2 versions, selected via the "version" parameter. This parameter should be set to "v1" for TTS v1, or "v2" for TTS v2.</p>
+<p>The voice choice is governed by the "voice" parameter for TTS v1, or the seed "parameter" for TTS v2. When using TTS v2, the "voice" parameter can be set to a default value (-1). Furthermore, the "seed" parameter allows for seedmix.</p>
+<p>If the "opus" parameter is true, the returned audio file will be in WebM format, otherwise it will be in MP3 format.</p>
+<h2 id="26-aimodule">2.6. /ai/module/</h2>
+<h3 id="261-aimoduletrain">2.6.1. /ai/module/train</h3>
+<p>Send a new module to the training queue.</p>
+<h3 id="262-aimoduleall">2.6.2. /ai/module/all</h3>
+<p>Get the modules currently in training or that finished training.</p>
+<h3 id="263-aimoduleid">2.6.3. /ai/module/{id}</h3>
+<p>Get/Delete a module currently in training or that finished training.</p>
+<h3 id="264-aimodulebuy-training-steps">2.6.4. /ai/module/buy-training-steps</h3>
+<p>Buy Anlas (steps) using your payment processor information.</p>
+<h1 id="3-unofficial-api-resources">3. Unofficial API resources</h1>
+<ul>
+<li>C# - <a href="https://github.com/Draco18s/NovelAPI">https://github.com/Draco18s/NovelAPI</a></li>
+<li>Golang - <a href="https://github.com/wbrown/novelai-research-tool">https://github.com/wbrown/novelai-research-tool</a> (more of a tool than an API, but uses the API)</li>
+<li>Python - <a href="https://github.com/Aedial/novelai-api">https://github.com/Aedial/novelai-api</a></li>
+</ul>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

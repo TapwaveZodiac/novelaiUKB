@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Privacy and Security</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Privacy and Security</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#encryption">Encryption</a></li>
+<li><a href="#local-storage">Local Storage</a></li>
+<li><a href="#remote-storage">Remote Storage</a></li>
+<li><a href="#account-management">Account Management</a>
+<ul>
+<li><a href="#account-termination">Account Termination</a></li>
+<li><a href="#changing-your-password">Changing Your Password</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="encryption">Encryption</h2>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/5f67d5e3-372c-4951-88a1-e5210c01c76a" alt="image" /></p>
+<p>Encryption is performed through the <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES-256</a> standard. It possesses incredible entropy, meaning brute force attacks are practically impossible.</p>
+<p>The combination of your User ID and password generates an unique <strong>Authentication Token</strong> on login. It lets the server know it's you, allowing it to know about your subscription, your settings, and which stories you own that are hosted on the server.</p>
+<p>Logging in also creates an <strong>Encryption Key</strong> which is used to decrypt a Keystore.</p>
+<p>The Keystore contains <em>individual</em> keys to <em>each</em> of your stories. The Keystore is <em>also</em> encrypted. Without the encryption key, the keystore cannot be accessed, and thus, your stories cannot be accessed. Even if someone were to obtain data from NAI's servers, they would not be able to recover any human-legible data from it.</p>
+<p>All decryption is done <strong>solely on your device</strong>. However, generation requests are <strong>unencrypted</strong>. This is unavoidable: the GPU that runs the AI cannot process encrypted data. The GPU and <em>Novel AI</em> do not perform any logging of this data.</p>
+<hr />
+<h2 id="local-storage">Local Storage</h2>
+<p>Stories are locally stored using your browser's <a href="https://en.wikipedia.org/wiki/Indexed_Database_API">Indexed Database</a> in JSON format. The entirety of War and Peace is 3 MB of text, so you really don't have to worry about bloat.</p>
+<p>Remember that your browser cannot record things permanently in <strong>Private/Incognito</strong> mode, so <strong>any stories made in such a session must be exported, or they will be permanently lost</strong>!</p>
+<p>If you use cleaning software such as <em>CCleaner</em>, you might erase these databases. As a result, make sure you back up anything you really want to keep.</p>
+<p>Storage is per device and per <strong>browser</strong>, so changing browsers will not let you access stories made on the previous one. This also applies if you use your phone instead of your computer, so you should use serverside hosting if you want to have access to stories anywhere.</p>
+<p>Keep in mind that <em>most browsers purge unused database entries after some time.</em> Make sure you <strong>back up your stories regularly!</strong></p>
+<hr />
+<h2 id="remote-storage">Remote Storage</h2>
+<p>Remote storage stores your stories in encrypted JSON on NovelAI's servers. They <strong>cannot read it without your auth token</strong>, which they do not store. All it knows about saved JSON files is their owner. There is no limit to how much storage you can request, as text compresses very easily and takes little space.</p>
+<hr />
+<h1 id="account-management">Account Management</h1>
+<p>All info here is a <strong>placeholder</strong>. It will be completed when possible.</p>
+<h2 id="account-termination">Account Termination</h2>
+<p>Visit your Account Settings if you wish to request to <strong>Delete your Account</strong>. Once the procedure is completed, <em>NovelAI</em> purge all data that corresponds to your account permanently. You will <strong>not be able to recover any stories you have not backed up</strong>.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/ffd3efc5-e920-406e-b7be-4b24a06d11d4" alt="image" /></p>
+<p>After tapping Request, you will need to enter the email address registered to your account to continue. This will send you a confirmation link you may use to delete your account.</p>
+<p>Once you have the confirmation link, you have one more chance to abandon the account deletion process. If you are still completely sure you want to delete your account permanently, you may do so here.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8f897152-c082-40fd-98f4-cdcf8a25b0e1" alt="image" /></p>
+<hr />
+<h2 id="changing-your-password">Changing Your Password</h2>
+<p>You can change your password. This will re-encrypt all of your content, but you will not lose access to any of your stories.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/87f28f19-b4a8-4b50-a900-9713c52536e4" alt="image" /></p>
+<p>If you fail to log in, you can click <strong>Reset password</strong> and follow the steps. Keep in mind that you will lose access to all serverside stories <strong>permanently</strong> if you change your password due to how the encryption works.</p>
+<p>If the process fails you can try contacting the NovelAI support at <strong><a href="mailto:support@novelai.net">support@novelai.net</a></strong>.</p>
+<hr />
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/d033ad8a-909b-4f03-a6fc-e4877c4a02b6" alt="image" /></p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Making Custom Themes</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Making Custom Themes</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#custom-themes">Custom Themes</a></li>
+<li><a href="#template-walkthrough">Template Walkthrough</a>
+<ul>
+<li><a href="#template-explanation">Template Explanation</a></li>
+<li><a href="#name-field">Name field</a></li>
+<li><a href="#font-block">Font Block</a>
+<ul>
+<li><a href="#adding-formatting-to-fonts">Adding Formatting to Fonts</a></li>
+<li><a href="#font-notes">Font Notes</a></li>
+</ul></li>
+<li><a href="#colors-block">Colors Block</a>
+<ul>
+<li><a href="#color-tables">Color Tables</a></li>
+</ul></li>
+<li><a href="#global-block">Global Block</a>
+<ul>
+<li><a href="#prose-mirror">Prose Mirror</a></li>
+<li><a href="#setting-the-page-background">Setting the page Background</a></li>
+<li><a href="#editing-the-size-and-placement-of-the-text-box">Editing the size and placement of the text box</a></li>
+<li><a href="#making-the-text-box-transparent-when-focused">Making the Text Box Transparent when Focused</a></li>
+<li><a href="#defining-settings-for-mobile-displays-only">Defining settings for Mobile Displays only</a></li>
+</ul></li>
+<li><a href="#finishing-your-theme">Finishing your Theme</a></li>
+<li><a href="#extra-resources">Extra Resources</a>
+<ul>
+<li><a href="#raw-template">Raw Template</a></li>
+<li><a href="#editing-the-hypebot-elements">Editing the HypeBot elements</a></li>
+<li><a href="#list-of-all-element-ids">List of all Element IDs</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<p><strong>This guide was made before CSS could be edited directly inside the theme menu. This remains as an educational resource, but you can do all the edits directly into NAI now, outside of using custom fonts.</strong></p>
+<h1 id="custom-themes">Custom Themes</h1>
+<p>This page contains <strong>community-researched</strong> content aiming to provide a <em>relatively</em> easy to use Theme template, as well as a database of IDs for more indepth modification.</p>
+<p>This is an <strong>expert</strong> guide. There will be <em>quite a bit</em> of hand-holding, because CSS is a satanic spawn of devastation.</p>
+<p>All these sites will be useful for you as you work on themes:</p>
+<ul>
+<li><a href="https://www.w3schools.com/css/">W3Schools' CSS tutorials</a></li>
+<li><a href="https://www.color-hex.com/">Color-Hex</a></li>
+</ul>
+<p>Utilities that may be useful:</p>
+<ul>
+<li><a href="https://code.visualstudio.com">VSCode</a> - Set with JSON syntax highlight for the main theme content, and CSS for Global block.</li>
+</ul>
+<p>Things to keep in mind:</p>
+<ul>
+<li>Ensure that all blocks are properly delineated with the quotes and commas. Don't forget the semicolons between CSS commands as well. Check that pairs of curly braces are present and properly placed.</li>
+<li>KEEP A BACKUP OF YOUR LATEST 'WORKING' VERSION.</li>
+</ul>
+<hr />
+<h1 id="template-walkthrough">Template Walkthrough</h1>
+<p>Before you start, <strong>save the <a href="Making-Custom-Themes.html#raw-template">raw template</a> at the bottom of this page</strong> and give it a good read.</p>
+<h2 id="template-explanation">Template Explanation</h2>
+<p>Okay, you've got the file? Open it in notepad or a JSON editor of your choice, but you're still probably confused. Let's go down the template, part by part.</p>
+<p>The template begins with a <code>{</code>. Leave it alone.</p>
+<h2 id="name-field">Name field</h2>
+<p><code>"name":"NAME HERE",</code></p>
+<p>Simply replace "NAME HERE" with the name of your font. Keep the quotes as is.</p>
+<p>You'll notice that all major elements use the following structure:</p>
+<p>"elementname", colon, opening quote, content, closing quote, comma.</p>
+<p>Keep this in mind for later, because if syntax breaks, it's probably because a comma is dangling or missing, or a quote isn't opened/closed properly.</p>
+<hr />
+<h2 id="font-block">Font Block</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode JSON"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="er">&quot;fonts&quot;:</span><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="dt">&quot;default&quot;</span><span class="fu">:</span><span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">DEFAULT FONT</span><span class="ch">\&quot;</span><span class="st">, -apple-system, BlinkMacSystemFont, </span><span class="ch">\&quot;</span><span class="st">Segoe UI</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Roboto</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Oxygen</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Ubuntu</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Cantarell</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Fira Sans</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Droid Sans</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Helvetica Neue</span><span class="ch">\&quot;</span><span class="st">, sans-serif&quot;</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="dt">&quot;code&quot;</span><span class="fu">:</span><span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">UI FONT</span><span class="ch">\&quot;</span><span class="st">, Menlo, Monaco, Consolas, </span><span class="ch">\&quot;</span><span class="st">Courier New</span><span class="ch">\&quot;</span><span class="st">, monospace&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="dt">&quot;field&quot;</span><span class="fu">:</span><span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">Source Sans Pro</span><span class="ch">\&quot;</span><span class="st">, -apple-system, BlinkMacSystemFont, </span><span class="ch">\&quot;</span><span class="st">Segoe UI</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Roboto</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Oxygen</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Ubuntu</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Cantarell</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Fira Sans</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Droid Sans</span><span class="ch">\&quot;</span><span class="st">, </span><span class="ch">\&quot;</span><span class="st">Helvetica Neue</span><span class="ch">\&quot;</span><span class="st">, sans-serif&quot;</span><span class="fu">,</span>   </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="dt">&quot;headings&quot;</span><span class="fu">:</span><span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">HEADINGS FONT</span><span class="ch">\&quot;</span><span class="st">&quot;</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="dt">&quot;selectedHeadings&quot;</span><span class="fu">:</span><span class="st">&quot;DEFAULT FONT&quot;</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="dt">&quot;selectedDefault&quot;</span><span class="fu">:</span><span class="st">&quot;HEADINGS FONT&quot;</span><span class="fu">}</span><span class="er">,</span></span></code></pre></div>
+<p>First of all, we have four font categories.</p>
+<ul>
+<li>"INTERFACE FONT" Used for everything in the interface that isn't a heading or title, or a text field.</li>
+<li>"UI BOXES FONT" Used for everything in the interface that is a text field: Memory, Author's Note, Lorebook, etc.</li>
+<li>"MAIN TEXT BOX FONT" Used for the central text box.</li>
+<li>"HEADINGS FONT" Used for headings and titles in general.</li>
+</ul>
+<p>Simply <em>replace</em> the all-caps text with the name of font of your choosing. <strong>Don't touch the backslashed quotes. Those are required for fonts that have spaces in their names.</strong></p>
+<p><strong>Make sure you match the Default font and Headings font for the SelectedDefault and SelectedHeadings fields.</strong></p>
+<p>What about all the other fonts on the same line? It's simple: Those are fallback fonts. If the first one fails to load, it'll load the second, etc, until the end. You can edit those too. Remember that the <strong>entire</strong> font definition is contained within quotes, and concluded by a comma:</p>
+<p><code>"fontcategory": " \"Font Name With Space\", fontnamewithoutspace, anotherfontname ",</code></p>
+<h3 id="adding-formatting-to-fonts">Adding Formatting to Fonts</h3>
+<p>You can add additional formatting to all font types by using CSS. In order to insert them, you must add a semicolon just before the final font's name of the font definition:</p>
+<p>All the CSS code must be added after that semicolon. Every CSS element must be separated by a semicolon. At the end of all the CSS content, you must have the ending quote, and comma.</p>
+<p><code>"fontcategory": " \"Font Name With Space\", fontnamewithoutspace, anotherfontname; font-style:bold; text-shadow: 0 1px 2px #000000;",</code></p>
+<h3 id="font-notes">Font Notes</h3>
+<ul>
+<li><p>Not all fonts are available on all devices. To be sure it'll always work, only use fonts that are available in the font selector, or provide a "stock fonts" version of your theme that uses these.</p></li>
+<li><p>You can use heading fonts for the text font, and vice versa. Just because they're not in the same drop down doesn't mean they can't be used.</p></li>
+<li><p>Make sure you pick fonts that are legible. Your theme should be comfortable to use.</p></li>
+<li><p>You'll notice something that reads "Leave Untouched" It's better you leave these as is, as Themes break when fonts are changed after they're set up. Specifically, the header font, as it reapplies all default styling elements for some reason.</p></li>
+</ul>
+<hr />
+<h2 id="colors-block">Colors Block</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode JSON"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="er">&quot;colors&quot;:</span><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="dt">&quot;bg0&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="dt">&quot;bg1&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a><span class="dt">&quot;bg2&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="dt">&quot;bg3&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="dt">&quot;textHeadings&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a><span class="dt">&quot;textMain&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a><span class="dt">&quot;textHeadingsOptions&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="st">&quot;#57B260&quot;</span><span class="ot">,</span><span class="st">&quot;#5199AF&quot;</span><span class="ot">,</span><span class="st">&quot;#C56565&quot;</span><span class="ot">,</span><span class="st">&quot;#8B6BBF&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a><span class="dt">&quot;textMainOptions&quot;</span><span class="fu">:</span><span class="ot">[</span><span class="st">&quot;#F7F7F7&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="dt">&quot;textDisabled&quot;</span><span class="fu">:</span><span class="st">&quot;#F7F7F7A0&quot;</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="dt">&quot;textPlaceholder&quot;</span><span class="fu">:</span><span class="st">&quot;#F7F7F777&quot;</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a><span class="dt">&quot;warning&quot;</span><span class="fu">:</span><span class="st">&quot;#FFA5A5&quot;</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true"></a><span class="dt">&quot;textHighlight&quot;</span><span class="fu">:</span><span class="st">&quot;rgba(RRR, GGG, BBB, A.A)&quot;</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true"></a><span class="dt">&quot;textPrompt&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true"></a><span class="dt">&quot;textUser&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true"></a><span class="dt">&quot;textEdit&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true"></a><span class="dt">&quot;textAI&quot;</span><span class="fu">:</span><span class="st">&quot;#RRGGBB&quot;</span><span class="fu">}</span><span class="er">,</span></span></code></pre></div>
+<p>The colors block specifies all the default <strong>Background Colors</strong> (bg0-bg3), as well as all the font colors.</p>
+<p>All of these except one are specified in Hex.</p>
+<p>Text Highlight is defined in RGBA format. This is identical to HEX except the numbers go from 0 to 255 and are separated by commas. The Alpha (transparency) channel, however, is an <strong>index</strong>, and goes from 1.0 to 0.0.</p>
+<p>I suggest using Hexadecimal because it takes a lot less space, and also, <a href="https://www.color-hex.com/">ColorHex</a> exists. Use it. It's amazing.</p>
+<p>A Hex color can have either <strong>six</strong> or <strong>eight</strong> digits. The digits in Hexadecimal are 0123456789ABCDEF. The maximum value of FF is thus 256 in decimal.</p>
+<p>Hex is read in pairs, hence the RR GG BB AA nomenclature. They take values of <strong>00</strong> to <strong>FF</strong>. RR for red, GG for Green, BB for Blue.</p>
+<p>Now, what is <strong>AA</strong>? This specifies the level of <strong>transparency.</strong> FF is fully opaque and 00 is completely transparent and thus invisible.</p>
+<p>There are things to keep in mind before setting these:</p>
+<ul>
+<li><p>BG colors can take transparency by adding another pair of digits at the end. Just like the Red, Green and Blue channel, this one goes from 00 to FF.</p></li>
+<li><p>If your BGs colors are transparent, you will need to edit several elements in the Global block because they will be difficult to read! It's better to make the bg colors solid, THEN give transparency to specific items.</p></li>
+<li><p>Text colors must mesh well with your BG colors or they will be illegible. Always remember the rules of DARK ON BRIGHT or BRIGHT ON DARK.</p></li>
+<li><p>Never use pitch black for backgrounds. Very uncomfortable for the user's eyes, and looks terrible on most monitors.</p></li>
+<li><p>Make your font colors discernible from each other, not shades of each other. What I suggest is make pairs of colors: One for User/prompt and one for AI/Edited. Choose one color for each. Then, select two of the component colors. Raise one and decrease the other to complete the pair.</p></li>
+</ul>
+<h3 id="color-tables">Color Tables</h3>
+<p><em><strong>Background Colors</strong></em></p>
+<ul>
+<li>bg0 Background of sliders, context text boxes (memory, AN, etc), Search bar, Toggles set to ON, frames of dropdown boxes, background story export/import buttons, fade applied to the background when popups are opened, fade applies on the AI module pictures.</li>
+<li>bg1 Background of side tabs, headers of popups, background of popup buttons, keys/tags badges background.</li>
+<li>bg2 Main page and text box background, background of popups, background of dropdown boxes, active tab (on the side tabs) color</li>
+<li>bg3 New Story &amp; Lorebook button, frame of tabs and main text box, Toggles set to OFF, slider handle color.</li>
+</ul>
+<p><em><strong>Text Colors</strong></em></p>
+<ul>
+<li>textHeadings Text used for the title of the selected story, the send button, name of active tab tabs and popups with multiple sub-tabs, background of toggles, selected AI module in the dropdown &amp; the Favorite heart.</li>
+<li>textMain Everything else in the interface that isn't part of the main text box, and also all the text in the main text box when Highlighting is turned off.</li>
+<li>textHeadingsOptions Array that contains all the colors of the color picker for the heading font.</li>
+<li>textMainOptions Array that contains all the colors of the color picker for the main text font.</li>
+<li>textDisabled Used for elements that are disabled or turned off. e.g the Undo button if no actions have been performed. Has transparency.</li>
+<li>textPlaceholder Used for "Type here and hit enter", "Search for Entries", i.e text in boxes where you write things in the interface.</li>
+<li>warning Used to signal problems with NovelAI or non-fatal errors.</li>
+<li>error Used to signal errors that caused something to fail. "err: timeout" is the most common.</li>
+<li>textPrompt Color used for the prompt. i.e the very first piece of text entered in the story.</li>
+<li>textUser Color used for user input. i.e text added at the very end.</li>
+<li>textEdit Color used for text edited by the user.</li>
+<li>textAI Color used for generated text.</li>
+</ul>
+<hr />
+<h2 id="global-block">Global Block</h2>
+<p>The Global block contains all <strong>CSS overrides</strong>. This is used to directly edit the style sheet of various parts of the interface. This section won't cover everything, you can learn CSS yourself.</p>
+<p>What is important, is that <strong>the entire global block is basically the integrality of your CSS style sheet, contained in a <em>single line, in a single quote</em>.</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode JSON"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="er">&quot;global&quot;:&quot;div.ProseMirror</span> <span class="fu">{</span><span class="er">padding</span><span class="fu">:</span> <span class="er">initial;</span><span class="fu">}</span> <span class="er">.userText,</span> <span class="er">.editText,</span> <span class="er">.aiText,</span> <span class="er">.promptText</span> <span class="fu">{</span><span class="er">text-shadow</span><span class="fu">:</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span><span class="er">px</span> <span class="er">#</span><span class="dv">000000</span><span class="fu">,</span> <span class="er">0</span> <span class="er">0</span> <span class="er">0px</span> <span class="er">#000000;</span><span class="fu">}</span> <span class="er">#app</span><span class="fu">{</span><span class="er">background-image</span><span class="fu">:</span><span class="er">url(linkhere);</span><span class="fu">}</span><span class="er">&quot;</span></span></code></pre></div>
+<p>Every element ID begins with a period. Every CSS override applied to it must be between curly braces, and every override separated by a semicolon. It is not necessary to separate them with commas, unless you want overrides to be applied to two elements at once.</p>
+<h3 id="prose-mirror">Prose Mirror</h3>
+<p>You'll have noticed something called <strong>ProseMirror</strong>. This is basically what formats the text in the main text box, <strong>if you use EditorV1</strong>, if you want to edit the text box in EditorV2, edit <strong>.conversation</strong> and its subclasses.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a>div<span class="fu">.ProseMirror</span> {<span class="kw">padding</span>: <span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span><span class="op">;</span>}</span></code></pre></div>
+<p>The Padding parameters here will add a bit of space between the text box frame and the text itself. The order <strong>appears</strong> to be <strong>UP, RIGHT, DOWN, LEFT.</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">.userText</span><span class="op">,</span> <span class="fu">.editText</span><span class="op">,</span> <span class="fu">.aiText</span><span class="op">,</span> <span class="fu">.promptText</span> {<span class="kw">text-shadow</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">10</span><span class="dt">px</span> <span class="cn">#000000</span><span class="op">;</span>}</span></code></pre></div>
+<p>Now you have four identifiers. Each identifier is a type of text, same as the different colors used in highlighting. The names should be obvious enough.</p>
+<p>If you only want the shadowing to affect certain types, remove all the ones you want unaffected.</p>
+<p>The shadow's arguments are vertical and horizontal offsets, shadow blur distance, and the hex color off the shadow. The second set defines the secondary shadow that it will fade to.</p>
+<p>You can add</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>text-decoration<span class="in">: underline</span></span></code></pre></div>
+<p>between the curly braces as well to make that type of text underlined, and</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>font-style<span class="in">: italic</span></span></code></pre></div>
+<p>to italicize the text.</p>
+<p>If you wish to have different types of formatting, simply separate them like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">.userText</span><span class="op">,</span> <span class="fu">.promptText</span> {<span class="kw">text-shadow</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">10</span><span class="dt">px</span> <span class="cn">#000000</span><span class="op">;</span> <span class="kw">text-decoration</span>: <span class="dv">underline</span><span class="op">;</span>} <span class="fu">.editText</span><span class="op">,</span> <span class="fu">.aiText</span> {<span class="kw">font-style</span>: <span class="dv">italic</span><span class="op">;</span>}</span></code></pre></div>
+<hr />
+<h3 id="setting-the-page-background">Setting the page Background</h3>
+<p>The background of the site is defined under the <code>#app</code> label. It works like any other ID, but doesn't take a period.</p>
+<h4 id="setting-a-color">Setting a Color</h4>
+<p>By default the background is a color. It can be set in different formats. RGB(A), or Hexadecimal. use &lt;code:&gt;background-color: #RRGGBB;<code>&lt;/code&gt;</code>{=html}</p>
+<h4 id="setting-an-image">Setting an Image</h4>
+<p>To set an image as background, use</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>background-image<span class="in">: url(BACKGROUND DIRECT LINK HERE)</span>;</span></code></pre></div>
+<p>You'll notice it is already present for the main site background. Replace "BACKGROUND DIRECT LINK HERE" with the <strong>direct link</strong> (i.e with the file extension) to your image.</p>
+<p><strong>If your background needs to be stretched to fit</strong>: add</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a>background-size<span class="in">: cover</span> !important;</span></code></pre></div>
+<p><strong>If your background needs to EXACTLY fit to a full size window (not recommended for mobile!)</strong>: add</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a>background-size<span class="in">: 100% 100% !important</span>;</span></code></pre></div>
+<p><strong>If your background needs to be tiled</strong>: add</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a> repeat scroll 0% 0% !important;</span></code></pre></div>
+<h4 id="blending-background-image--color-blend">Blending Background Image &amp; Color Blend</h4>
+<p>You can apply a background image and apply a <a href="https://www.w3schools.com/cssref/pr_background-blend-mode.asp">color blend</a> to it by using the following properties:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode CSS"><code class="sourceCode css"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">.element</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>{</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="kw">background-image</span>:<span class="fu">url(</span><span class="st">imageurl.png</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a><span class="kw">background-color</span>:#RRGGBBAA<span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a><span class="kw">background-blend-mode</span>:<span class="dv">default</span><span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>}</span></code></pre></div>
+<hr />
+<h4 id="fade-in-fade-out-effect">Fade-in Fade-out Effect</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">.conversation-main</span> {<span class="kw">border</span>: <span class="dv">none</span><span class="op">;</span> -webkit-mask-image: -webkit-linear-gradient<span class="fu">(</span><span class="dv">top</span><span class="op">,</span> rgba(<span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">0</span><span class="fu">)</span><span class="op">,</span> <span class="fu">rgba(</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">1</span><span class="fu">)</span> <span class="dv">2</span><span class="dt">%</span><span class="op">,</span> <span class="fu">rgba(</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">1</span><span class="fu">)</span> <span class="dv">98</span><span class="dt">%</span><span class="op">,</span> <span class="fu">rgba(</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">0</span><span class="fu">)</span>)<span class="op">;</span> <span class="kw">background</span>: <span class="fu">rgb(</span><span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span> / <span class="dv">75</span><span class="dt">%</span><span class="fu">)</span><span class="op">;</span>}</span></code></pre></div>
+<p>What it does is create a fade in from the very top of the main text box, and a fade out at the very bottom.</p>
+<p>There's only two things that really need to be edited there: the percentages. The first one indicates how much distance the fade-in takes. The second indicates where the fade-out begins.</p>
+<p><strong>The <em>lower</em> the first value, the <em>smaller</em> the fade-in, the <em>higher</em> the first value, the <em>bigger</em> the fade-in.</strong></p>
+<p><strong>The <em>higher</em> the second value, the <em>smaller</em> the fade-out, the <em>lower</em> the second value, the <em>bigger</em> the fade-out.</strong></p>
+<hr />
+<h3 id="editing-the-size-and-placement-of-the-text-box">Editing the size and placement of the text box</h3>
+<p>If the text box is too small or too large for you, you can adjust it by adding the following to the Global block:</p>
+<p><code>.conversation{max-width: 90%;}</code></p>
+<p>Edit the percentage to make it wider or thinner. You can also use <code>max-height</code> to edit how tall it is.</p>
+<p>For the placement, you'll want to add a <code>margin</code> property, this will create empty space around the text box. You can also make margins from specific directions by specifying it, like <code>margin-top</code>.</p>
+<p>Remember that all sizes can be specified both in <strong>PX and in % of the page space.</strong></p>
+<hr />
+<h3 id="making-the-text-box-transparent-when-focused">Making the Text Box Transparent when Focused</h3>
+<p>You noticed that making <code>.conversation</code> or <code>.conversation-main</code> have a transparent background doesn't make the main text box transparent when it is selected. This is due to a dynamic class being used, and the override not being applied consistently.</p>
+<p>To give the main text box a different color than BG0 when focused (and apply transparency), use the following:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">.conversation-main</span> { <span class="kw">background</span>: <span class="dv">transparent</span> <span class="at">!important</span><span class="op">;</span> } <span class="fu">.ProseMirror-focused</span> { <span class="kw">background</span>: #RRGGBBAA <span class="at">!important</span><span class="op">;</span> }</span></code></pre></div>
+<p>Change RRGGBBAA to the color of your choosing.</p>
+<hr />
+<h3 id="defining-settings-for-mobile-displays-only">Defining settings for Mobile Displays only</h3>
+<p>You can define overrides that are only performed on Mobile devices by encapsulating them in the following block:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="im">@media</span> (<span class="kw">max-width</span>:<span class="dv">800</span><span class="dt">px</span>) {<span class="er">// CSS GOES HERE}</span></span></code></pre></div>
+<hr />
+<h2 id="finishing-your-theme">Finishing your Theme</h2>
+<p>You did it? You filled everything? Great! Now you need to do a few things.</p>
+<p>1. Check if all your blocks are properly opened and closed. Check pairs of quotes, pairs of curly braces, etc. Make sure the initial and final curly braces are present. Everything in the global field must be in a single line, in a single quote.</p>
+<p>2. Make sure everything in the Global field is on a single line and that all the blocks are properly closed.</p>
+<p>3. Import that new file from the theme menu, and <strong>CLICK SAVE CHANGES.</strong></p>
+<p>4. Profit!</p>
+<p>If it didn't work, check how much <em>did</em> work. Usually something broke somewhere because of a missing semicolon, parenthesis, comma or curly brace.</p>
+<h2 id="extra-resources">Extra Resources</h2>
+<h3 id="raw-template">Raw Template</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode {.css"><code class="sourceCode css"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a>{</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>&quot;name&quot;<span class="in">:&quot;NAME</span> HERE&quot;<span class="op">,</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>&quot;fonts&quot;<span class="in">:{</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>&quot;default&quot;<span class="in">:&quot;\&quot;DEFAULT</span> FONT\&quot;<span class="op">,</span> -apple-system<span class="op">,</span> BlinkMacSystemFont<span class="op">,</span> \&quot;Segoe UI\&quot;<span class="op">,</span> \&quot;Roboto\&quot;<span class="op">,</span> \&quot;Oxygen\&quot;<span class="op">,</span> \&quot;Ubuntu\&quot;<span class="op">,</span> \&quot;Cantarell\&quot;<span class="op">,</span> \&quot;Fira Sans\&quot;<span class="op">,</span> \&quot;Droid Sans\&quot;<span class="op">,</span> \&quot;Helvetica Neue\&quot;<span class="op">,</span> sans-serif&quot;<span class="op">,</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>&quot;code&quot;<span class="in">:&quot;\&quot;UI</span> FONT\&quot;<span class="op">,</span> Menlo<span class="op">,</span> Monaco<span class="op">,</span> Consolas<span class="op">,</span> \&quot;Courier New\&quot;<span class="op">,</span> monospace&quot;<span class="op">,</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>&quot;field&quot;<span class="in">:&quot;\&quot;Source</span> Sans Pro\&quot;<span class="op">,</span> -apple-system<span class="op">,</span> BlinkMacSystemFont<span class="op">,</span> \&quot;Segoe UI\&quot;<span class="op">,</span> \&quot;Roboto\&quot;<span class="op">,</span> \&quot;Oxygen\&quot;<span class="op">,</span> \&quot;Ubuntu\&quot;<span class="op">,</span> \&quot;Cantarell\&quot;<span class="op">,</span> \&quot;Fira Sans\&quot;<span class="op">,</span> \&quot;Droid Sans\&quot;<span class="op">,</span> \&quot;Helvetica Neue\&quot;<span class="op">,</span> sans-serif&quot;<span class="op">,</span>   </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a>&quot;headings&quot;<span class="in">:&quot;\&quot;HEADINGS</span> FONT\&quot;&quot;<span class="op">,</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true"></a>&quot;selectedHeadings&quot;<span class="in">:&quot;Leave</span> Untouched&quot;<span class="op">,</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true"></a>&quot;selectedDefault&quot;<span class="in">:&quot;Source</span> Sans Pro&quot;}<span class="op">,</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true"></a>&quot;colors&quot;<span class="in">:{</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true"></a>&quot;bg0&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true"></a>&quot;bg1&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true"></a>&quot;bg2&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true"></a>&quot;bg3&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true"></a>&quot;textHeadings&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true"></a>&quot;textMain&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true"></a>&quot;textHeadingsOptions&quot;<span class="in">:[&quot;#57B260&quot;,&quot;#5199AF&quot;,&quot;#C56565</span>&quot;<span class="op">,</span>&quot;#8B6BBF&quot;]<span class="op">,</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true"></a>&quot;textMainOptions&quot;<span class="in">:[&quot;#F7F7F7</span>&quot;]<span class="op">,</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true"></a>&quot;textDisabled&quot;<span class="in">:&quot;#F7F7F7A0</span>&quot;<span class="op">,</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true"></a>&quot;textPlaceholder&quot;<span class="in">:&quot;#F7F7F777</span>&quot;<span class="op">,</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true"></a>&quot;warning&quot;<span class="in">:&quot;#FFA5A5</span>&quot;<span class="op">,</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true"></a>&quot;textHighlight&quot;<span class="in">:&quot;rgba(RRR, GGG, BBB, A.A)</span>&quot;<span class="op">,</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true"></a>&quot;textPrompt&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true"></a>&quot;textUser&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true"></a>&quot;textEdit&quot;<span class="in">:&quot;#RRGGBB</span>&quot;<span class="op">,</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true"></a>&quot;textAI&quot;<span class="in">:&quot;#RRGGBB</span>&quot;}<span class="op">,</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true"></a>&quot;global&quot;<span class="in">:&quot;div</span><span class="fu">.ProseMirror</span> {<span class="kw">padding-right</span>: <span class="dv">2</span><span class="dt">px</span><span class="op">;</span>} <span class="fu">.userText</span><span class="op">,</span> <span class="fu">.editText</span><span class="op">,</span> <span class="fu">.aiText</span><span class="op">,</span> <span class="fu">.promptText</span> {<span class="kw">text-shadow</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">0</span><span class="dt">px</span> <span class="cn">#000000</span><span class="op">;</span>} <span class="pp">#app</span>{<span class="kw">background-image</span>:<span class="fu">url(</span><span class="st">linkhere</span><span class="fu">)</span><span class="op">;</span>}&quot;</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true"></a>}</span></code></pre></div>
+<h3 id="editing-the-hypebot-elements">Editing the HypeBot elements</h3>
+<p>Edit these classes in the CSS block.</p>
+<pre><code>comment-avatar
+Always present on element. Can be used to set an image that will be used regardless of state
+
+comment-avatar-speaking
+The element has this class when the text box is visible and not doing the &quot;...&quot; thing
+
+comment-avatar-speaking-active
+The element has this class when streaming is in progress, and for a variable (based on generated characters) amount of after a generation completes
+
+comment-avatar-thinking
+The element has this while generating with streaming off, or before the first token when streaming is on. This is where it does the &quot;...&quot;
+
+comment-avatar-idle
+The element has this class when there is no text box. This only happens when you have it set to permanantly show up.
+
+comment-name
+Can be used to set the name via the ::after pseudo-class
+e.g
+.comment-name::after {
+    content: &#39;Name&#39; !important;
+}
+</code></pre>
+<h3 id="list-of-all-element-ids">List of all Element IDs</h3>
+<p>Keep in mind that all of these must be preceded by a period when edited in the <strong>global</strong> field, except #app and div. elements.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>&quot;global&quot;<span class="in">:</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a><span class="co">/* Name space for all the edits that require overrides. EVERYTHING in this MUST be contained in a single line string. */</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="co">/*Interface Sliders &amp; Buttons*/</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>slider </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a> thin-slider <span class="co">/* Sliders whose body is thinner than the button */</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a> thick-slider <span class="co">/* Sliders whose body is as thick as the button. (Randomness, Max Output, Repetition Penalty) */</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a>button <span class="co">/* This is ALL buttons. All buttons from the input box, but also clickables in the side tabs. */</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a><span class="co">/*Modal Menus (i.e &#39;popup&#39; menus)*/</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a>modal</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a> modal-compact <span class="co">/* Subscription details display, patch notes display, ephemeral context menu. */</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a> modal-regular <span class="co">/* Account settings / Customization settings / Hotkeys menu. Also AI modules menu and Context Viewer */</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a> modal-large  <span class="co">/* Lorebook container. */</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a> modal-overlay <span class="co">/* The overlay put on the screen while a modal is active. */</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true"></a> modal-header <span class="co">/* Tab buttons for popups, like the account settings menu and the context viewer. */</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true"></a> theme-editor</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true"></a><span class="co">/*Side Tabs*/</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true"></a>menubar <span class="co">/* Story Library, i.e the tab on the left. */</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true"></a> new-story-button</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true"></a> story-list</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true"></a>infobar <span class="co">/* Options, i.e the tab on the right. */</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true"></a></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true"></a> toggler <span class="co">/* Buttons to open the side tabs. Little icons in the top corners. */</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true"></a>  menubar-toggler <span class="co">/* Story library toggler (the one with a quill) */</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true"></a>  infobar-toggler <span class="co">/* Options toggler (the one with a cog) */</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true"></a></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true"></a>lorebook</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true"></a></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true"></a></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true"></a><span class="co">/*Input &amp; Main Text Box*/</span></span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true"></a></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true"></a>conversation <span class="co">/* The main text box, it&#39;s frame, and all of its dependencies. */</span></span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true"></a> conversation-input-container <span class="co">/* The element that contains the text boxes and its parent settings. */</span></span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true"></a> conversation-main <span class="co">/* Main text box&#39;s text area. */</span></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true"></a> conversation-editor <span class="co">/* Main text box&#39;s input layer. */</span></span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true"></a> div<span class="fu">.ProseMirror</span> <span class="co">/* Where the text proper is stored in the text area. */</span></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true"></a> div<span class="fu">.ProseMirror-focused</span> <span class="co">/* Text area when you click on it. */</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true"></a> userText</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true"></a> editText</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true"></a> aiText</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true"></a> promptText</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true"></a></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true"></a>conversation-controls-container <span class="co">/* Area that contains the buttons AND the input box. */</span></span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true"></a> conversation-controls <span class="co">/* Area with the Input Box Buttons */</span></span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true"></a> conversation-controls-content <span class="co">/* Input Box Buttons proper. */</span></span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true"></a> conversation-error <span class="co">/* Where &quot;err: timeout&quot; and such is displayed. */</span></span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true"></a> redo-menu <span class="co">/* Redo tree. */</span></span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true"></a></span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true"></a>conversation-content <span class="co">/* text in the main box, probably */</span></span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true"></a></span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true"></a>loading-bar <span class="co">/* Shiny thing just under the text box that lights up during generations. */</span></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true"></a></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true"></a></span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true"></a><span class="co">/* General */</span></span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true"></a><span class="pp">#app</span> <span class="co">/* Background of the site. */</span></span></code></pre></div>
+<p>THIS IS FOR ARCHIVAL PURPOSE. ALL OF THESE ARE DEPRECATED. IF AN ID IS NOT PRESENT ABOVE, YOU CAN USE INSPECT ELEMENT TO FIND THE CONTAINER THAT AFFECTS WHAT YOU WANT TO CHANGE.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="pp">#General</span> Popups</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>(Context<span class="op">,</span> Settings<span class="op">,</span> Lorebook)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>Big Popup</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a><span class="fu">.sc-eKYRIR</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>Big Popup Header</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a><span class="fu">.sc-eKYRIR</span> - Old<span class="op">,</span> now used by Big Popup Windows<span class="fu">.</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true"></a><span class="fu">.sc-fuISkM</span> - New</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true"></a>Big Popup Body</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true"></a><span class="fu">.sc-fbIWvP</span> - Old</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true"></a><span class="fu">.sc-hmbstg</span> - New</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true"></a><span class="pp">#Subscription</span>/Ephemeral</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true"></a>Small Popup Body</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true"></a><span class="fu">.sc-fXazdy</span> - Old</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true"></a><span class="fu">.sc-bTDOke</span> - New</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true"></a><span class="pp">#Misc</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true"></a>Semi-transparent Overlay</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true"></a><span class="fu">.sc-gGLxEB</span> - Old</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true"></a><span class="fu">.sc-amiJK</span> - New</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true"></a><span class="pp">#Output</span>/Input</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true"></a>Text Box Background</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true"></a><span class="fu">.sc-iTVJFM</span> - Old</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true"></a><span class="fu">.sc-Arkif</span> - New</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true"></a>Text Box Borders</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true"></a><span class="fu">.sc-jXcxbT</span> - Old</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true"></a><span class="fu">.sc-khIgEk</span> - New</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true"></a></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true"></a>Full-Space Button/Input Container</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true"></a><span class="fu">.sc-gkCoMD</span> - Old</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true"></a><span class="fu">.sc-cKRKFl</span> - New</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true"></a></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true"></a>Inner Button/Input Container</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true"></a><span class="fu">.sc-flUlpA</span> - Old</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true"></a><span class="fu">.sc-iIgjPs</span> - New</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true"></a></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true"></a>Text Box/Button Separator</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true"></a><span class="fu">.sc-eWnToP</span> - Old</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true"></a><span class="fu">.sc-cwiweh</span> - New</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true"></a></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true"></a>Shared Button Container</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true"></a><span class="fu">.sc-eXuyPJ</span> - Old</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true"></a><span class="fu">.sc-gstuGz</span> - New</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true"></a></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true"></a>Small Left/Right Button Container</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true"></a><span class="fu">.sc-iGkqmO</span> - Old</span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true"></a><span class="fu">.sc-amkrK</span> - New</span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true"></a></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true"></a>Input Box</span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true"></a><span class="fu">.sc-eIXEph</span> - Old</span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true"></a><span class="fu">.sc-kizEQm</span> - New</span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true"></a></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true"></a><span class="pp">#Lorebook</span> Only</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true"></a>Lorebook Popup Window</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true"></a><span class="fu">.sc-csTbgd</span></span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true"></a></span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true"></a>Lorebook Container</span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true"></a><span class="fu">.sc-fkmfBh</span></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true"></a></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true"></a>Left Container</span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true"></a><span class="fu">.sc-enrZtP</span></span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true"></a></span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true"></a>Left Container Header</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true"></a><span class="fu">.sc-leehGg</span></span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true"></a></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true"></a>Left Container Search Bar</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true"></a><span class="fu">.sc-iuhXDa</span></span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true"></a></span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true"></a>Left Container Separator</span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true"></a><span class="fu">.sc-hlXxXZ</span></span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true"></a></span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true"></a>Right Parent Container</span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true"></a><span class="fu">.sc-bwcZwS</span></span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true"></a></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true"></a>Right Container</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true"></a><span class="fu">.sc-hxyAeK</span></span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true"></a></span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true"></a>Right Container Header</span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true"></a><span class="fu">.sc-ekA-drt</span></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true"></a></span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true"></a>Right Container Body</span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true"></a><span class="fu">.sc-hWZktu</span></span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true"></a></span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true"></a>Entry Settings Container</span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true"></a><span class="fu">.sc-hUhoqY</span></span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true"></a></span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true"></a>Entry Settings Text Box</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true"></a><span class="fu">.sc-cSiAOC</span></span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true"></a></span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true"></a>Entry Settings Keys</span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true"></a><span class="fu">.sc-ojivU</span></span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true"></a></span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true"></a>Entry Advanced Settings Container</span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true"></a><span class="fu">.sc-fJxALz</span></span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true"></a></span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true"></a>Entry Advanced Settings Button (Modify at your own risk!)</span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true"></a><span class="fu">.sc-ezzafa</span> (used by all small buttons<span class="op">,</span> be warned!) </span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true"></a>/and/</span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true"></a><span class="fu">.sc-lgWdIC</span></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true"></a></span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true"></a>Entry Advanced Settings Sub-containers</span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true"></a>sc-jYKCQm</span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true"></a></span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true"></a><span class="pp">#Left</span> Tab Only</span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true"></a>Left Tab</span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true"></a><span class="fu">.sc-kmIPcE</span> - Old</span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true"></a><span class="fu">.sc-cGKJhA</span> - New</span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true"></a></span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true"></a>Left Tab Header</span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true"></a><span class="fu">.sc-dkuGKe</span> - Old</span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true"></a><span class="fu">.sc-gGGFjW</span> - New</span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true"></a></span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true"></a>Left Tab Search Bar</span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true"></a><span class="fu">.sc-hYRTwp</span> - Old</span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true"></a><span class="fu">.sc-iXquSf</span> - New</span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true"></a></span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true"></a>Left Tab Popup Container</span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true"></a><span class="fu">.sc-iXeHaJ</span> - Old</span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true"></a><span class="fu">.sc-juXuNZ</span> - New</span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true"></a></span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true"></a>Left Tab Body</span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true"></a><span class="fu">.sc-cGKJhA</span> - Old</span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true"></a><span class="fu">.sc-hYIrvc</span> - New</span>
+<span id="cb20-129"><a href="#cb20-129" aria-hidden="true"></a></span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true"></a>Story Container</span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true"></a><span class="fu">.sc-hkoqWR</span> - Old</span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true"></a><span class="fu">.sc-cVJgsR</span> - New</span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true"></a></span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true"></a>Left Tab Pull Tab</span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true"></a><span class="fu">.sc-fKgJPi</span> - Old</span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true"></a><span class="fu">.sc-JsfZP</span> - New</span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true"></a></span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true"></a></span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true"></a>New Story Button Container</span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true"></a><span class="fu">.sc-bShgHC</span> - Old</span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true"></a><span class="fu">.sc-kHVIJG</span> - New</span>
+<span id="cb20-142"><a href="#cb20-142" aria-hidden="true"></a></span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true"></a>New Story Button</span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true"></a><span class="fu">.sc-juXuNZ</span> - Old</span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true"></a><span class="fu">.sc-ktvWjP</span> - New</span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true"></a></span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true"></a><span class="pp">#Right</span> Tab Only</span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true"></a>Right Tab</span>
+<span id="cb20-149"><a href="#cb20-149" aria-hidden="true"></a><span class="fu">.sc-iJCRrE</span> - Old</span>
+<span id="cb20-150"><a href="#cb20-150" aria-hidden="true"></a><span class="fu">.sc-jcwpoC</span> - New</span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true"></a></span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true"></a>Right Tab Button</span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true"></a><span class="fu">.sc-ezzafa</span> - Old</span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true"></a><span class="fu">.sc-iBzEeX</span> - New</span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true"></a></span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true"></a>Right Tab Pull Tab</span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true"></a><span class="fu">.sc-carFqZ</span></span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true"></a></span>
+<span id="cb20-159"><a href="#cb20-159" aria-hidden="true"></a><span class="pp">#Right</span> Tab Story Only</span>
+<span id="cb20-160"><a href="#cb20-160" aria-hidden="true"></a>Story Text Box Container</span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true"></a><span class="fu">.sc-hndLF</span> - Old</span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true"></a>??? - New</span>
+<span id="cb20-163"><a href="#cb20-163" aria-hidden="true"></a></span>
+<span id="cb20-164"><a href="#cb20-164" aria-hidden="true"></a>Story Text Box Title Container</span>
+<span id="cb20-165"><a href="#cb20-165" aria-hidden="true"></a><span class="fu">.sc-geBCVM</span> - Old</span>
+<span id="cb20-166"><a href="#cb20-166" aria-hidden="true"></a>??? - New</span>
+<span id="cb20-167"><a href="#cb20-167" aria-hidden="true"></a></span>
+<span id="cb20-168"><a href="#cb20-168" aria-hidden="true"></a>Story Text Box Title</span>
+<span id="cb20-169"><a href="#cb20-169" aria-hidden="true"></a><span class="fu">.sc-clGGWX</span> - Old</span>
+<span id="cb20-170"><a href="#cb20-170" aria-hidden="true"></a>??? - New</span>
+<span id="cb20-171"><a href="#cb20-171" aria-hidden="true"></a></span>
+<span id="cb20-172"><a href="#cb20-172" aria-hidden="true"></a><span class="pp">#AI</span> Module Only</span>
+<span id="cb20-173"><a href="#cb20-173" aria-hidden="true"></a>Module Container</span>
+<span id="cb20-174"><a href="#cb20-174" aria-hidden="true"></a><span class="fu">.sc-eTTT1e</span></span>
+<span id="cb20-175"><a href="#cb20-175" aria-hidden="true"></a></span>
+<span id="cb20-176"><a href="#cb20-176" aria-hidden="true"></a><span class="pp">#Used</span> in Settings and Right Tab</span>
+<span id="cb20-177"><a href="#cb20-177" aria-hidden="true"></a>Title Container</span>
+<span id="cb20-178"><a href="#cb20-178" aria-hidden="true"></a><span class="fu">.sc-kHHWYL</span> - Old</span>
+<span id="cb20-179"><a href="#cb20-179" aria-hidden="true"></a><span class="fu">.sc-GvhzO</span> - New</span>
+<span id="cb20-180"><a href="#cb20-180" aria-hidden="true"></a></span>
+<span id="cb20-181"><a href="#cb20-181" aria-hidden="true"></a>Window Name</span>
+<span id="cb20-182"><a href="#cb20-182" aria-hidden="true"></a><span class="fu">.sc-hOPeYd</span> - Old</span>
+<span id="cb20-183"><a href="#cb20-183" aria-hidden="true"></a><span class="fu">.sc-gsWcmt</span> - New</span>
+<span id="cb20-184"><a href="#cb20-184" aria-hidden="true"></a></span>
+<span id="cb20-185"><a href="#cb20-185" aria-hidden="true"></a>Buttons Header</span>
+<span id="cb20-186"><a href="#cb20-186" aria-hidden="true"></a><span class="fu">.sc-giAqhP</span> - Old</span>
+<span id="cb20-187"><a href="#cb20-187" aria-hidden="true"></a><span class="fu">.sc-hiKfDv</span> - New</span>
+<span id="cb20-188"><a href="#cb20-188" aria-hidden="true"></a></span>
+<span id="cb20-189"><a href="#cb20-189" aria-hidden="true"></a>(Formerly Sliders)</span>
+<span id="cb20-190"><a href="#cb20-190" aria-hidden="true"></a>Parent Tab Container </span>
+<span id="cb20-191"><a href="#cb20-191" aria-hidden="true"></a><span class="fu">.sc-bYwzuL</span> - Old</span>
+<span id="cb20-192"><a href="#cb20-192" aria-hidden="true"></a><span class="fu">.sc-cBoqAE</span> - New</span>
+<span id="cb20-193"><a href="#cb20-193" aria-hidden="true"></a></span>
+<span id="cb20-194"><a href="#cb20-194" aria-hidden="true"></a>Tab Container</span>
+<span id="cb20-195"><a href="#cb20-195" aria-hidden="true"></a><span class="fu">.sc-kLojOw</span> - Old</span>
+<span id="cb20-196"><a href="#cb20-196" aria-hidden="true"></a><span class="fu">.sc-ciSkZP</span> - New</span>
+<span id="cb20-197"><a href="#cb20-197" aria-hidden="true"></a></span>
+<span id="cb20-198"><a href="#cb20-198" aria-hidden="true"></a>Settings Separator</span>
+<span id="cb20-199"><a href="#cb20-199" aria-hidden="true"></a><span class="fu">.sc-hBezlf</span> - Old</span>
+<span id="cb20-200"><a href="#cb20-200" aria-hidden="true"></a><span class="fu">.sc-cdlubJ</span> - New</span>
+<span id="cb20-201"><a href="#cb20-201" aria-hidden="true"></a></span>
+<span id="cb20-202"><a href="#cb20-202" aria-hidden="true"></a>Setting Container</span>
+<span id="cb20-203"><a href="#cb20-203" aria-hidden="true"></a><span class="fu">.sc-eSoXWK</span> - Old</span>
+<span id="cb20-204"><a href="#cb20-204" aria-hidden="true"></a><span class="fu">.sc-gLwjMs</span> - New</span>
+<span id="cb20-205"><a href="#cb20-205" aria-hidden="true"></a></span>
+<span id="cb20-206"><a href="#cb20-206" aria-hidden="true"></a>Setting Text</span>
+<span id="cb20-207"><a href="#cb20-207" aria-hidden="true"></a><span class="fu">.sc-aiooD</span> - Old</span>
+<span id="cb20-208"><a href="#cb20-208" aria-hidden="true"></a><span class="fu">.sc-cOohKt</span> - New</span>
+<span id="cb20-209"><a href="#cb20-209" aria-hidden="true"></a></span>
+<span id="cb20-210"><a href="#cb20-210" aria-hidden="true"></a>Setting Value</span>
+<span id="cb20-211"><a href="#cb20-211" aria-hidden="true"></a><span class="fu">.sc-eYKchh</span> - Old</span>
+<span id="cb20-212"><a href="#cb20-212" aria-hidden="true"></a><span class="fu">.sc-fDUjSr</span> - New</span>
+<span id="cb20-213"><a href="#cb20-213" aria-hidden="true"></a></span>
+<span id="cb20-214"><a href="#cb20-214" aria-hidden="true"></a># Settings Only</span>
+<span id="cb20-215"><a href="#cb20-215" aria-hidden="true"></a>Themes Container</span>
+<span id="cb20-216"><a href="#cb20-216" aria-hidden="true"></a><span class="fu">.sc-dPzuq</span> - Old</span>
+<span id="cb20-217"><a href="#cb20-217" aria-hidden="true"></a><span class="fu">.sc-IMZDC</span> - New</span></code></pre></div>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

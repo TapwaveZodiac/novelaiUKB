@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>End of Input Tips</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">End of Input Tips</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#the-importance-of-the-final-token">The Importance of the Final Token</a></li>
+<li><a href="#typography-symbols">Typography Symbols</a>
+<ul>
+<li><a href="#basic-symbols-basic_symbols">Basic Symbols {#basic_symbols}</a></li>
+<li><a href="#other-symbols">Other Symbols</a></li>
+</ul></li>
+</ul>
+</nav>
+<p><strong>This page was conceived during the Euterpe Era of NovelAI. Some tech here might not be relevant anymore, but some tips can still be useful. Refer to <a href="The-Rabbit-Hole-(Clio).html">The Rabbit Hole (Clio)</a> For the current model.</strong></p>
+<p>This page contains <strong>community-researched</strong> content and aims to provide in-depth tips to improve your experience with the AI.</p>
+<p>This is an <strong>expert</strong> guide. There will be much less hand-holding from now on. Terms and tools will not be explained if they were defined in the feature pages and <a href="Writing-Help.html">Writing Help</a>, so make sure you have fully read these two pages before continuing.</p>
+<hr />
+<h2 id="the-importance-of-the-final-token">The Importance of the Final Token</h2>
+<p>Regardless of what is in the rest of your context, the absolute final token is by far the most important to the generation.You can lead the AI into different directions depending on your phrasing.</p>
+<p>Consider the following example:</p>
+<p><code>Bryan is in the kitchen.</code></p>
+<p>The text ends on a period, which ends the sentence. There is nothing after it. As a result, the pool of potential continuations to this sentence can get rather large.</p>
+<p>Most of the time, when people say that "The AI is going into random directions!", this is often a symptom of ending your input like this.</p>
+<p>Now, consider this alternative:</p>
+<p><code>Bryan is in the kitchen. He</code></p>
+<p>This will put the onus of the next sentence on Bryan. He will be forced to act, think, or say something, as <em>he</em> refers to Bryan by virtue of proximity. This can help direct the AI rather well, especially if your generation length is rather low. At longer generation length, the AI <em>can</em> get a little off-topic with a small context.</p>
+<p>Now try something akin to this:</p>
+<p><code>Bryan is in the kitchen. "</code></p>
+<p>This opening quote here will forcefully initiate dialogue. It may be from Bryan, but it has a chance to come from another character entirely. Usually this sticks to the latest named person, but has a chance of relying on another previously named character as well.</p>
+<p>Now look at this example:</p>
+<pre><code>Bryan is in the kitchen. 
+
+</code></pre>
+<p>What we did here is create a <strong>linebreak</strong>. Linebreaks are powerful tools. The important part is that this creates a break in the text, which pushes the AI to move on to something else. It can be moving forward in time, changing speaker, changing scene, and many other things.</p>
+<p>If you go to your <strong>Account Settings</strong>, you'll find an option called <strong>Trim Trailing Spaces</strong>. You should absolutely enable it, but even if it is, multiple spaces might not be trimmed. So why is that a problem?</p>
+<p>A <strong>lot</strong> of tokens are words that <strong>start with a space.</strong> if you end on a space, the AI might trip over itself because it is struggling to find a word to start with, and a lot of continuations will behave erratically, such as suddenly inserting newlines, or using words that aren't connected to the current clause. Avoid trailing spaces as much as you can!</p>
+<p>The conclusion here is that <strong>you should initiate for the AI as much as possible, even if it's using a single symbol to do so.</strong> Any sort of hand-holding helps the AI stay on track much better than leaving it to its own devices and expecting it to guess what you want. (Hint: it won't.)</p>
+<hr />
+<h2 id="typography-symbols">Typography Symbols</h2>
+<p>There is a wealth of**<a href="https://en.wikipedia.org/wiki/Category:Typographical_symbols">Symbols</a>** used in books that we can make use of.</p>
+<h3 id="basic-symbols-basic_symbols">Basic Symbols {#basic_symbols}</h3>
+<p>Let's starts with the basics. English mostly uses 7 punctuation marks.</p>
+<ul>
+<li><p>The <strong>Period</strong> ( . ) symbolizes the end of a sentence.</p>
+<ul>
+<li>Good for concluding dialogue, as it tends to generate an end quote if you finish on one.</li>
+<li>Good for making the AI talk about something slightly different, or push it to continue the scene.</li>
+<li>Good for ending lists or paragraphs.</li>
+</ul></li>
+<li><p>The <strong>Comma</strong> ( , ) symbolizes the end of a clause, or an item in a list.</p>
+<ul>
+<li>Good for asking the AI to continue on a very similar track. Less of a <em>push-forward</em> effect than the period.</li>
+<li>Good for setting up and continuing lists.</li>
+<li>Good for keeping the current speaker in dialogue.</li>
+</ul></li>
+<li><p>The <strong>Colon</strong> ( : ) symbolizes the introduction of a name, an example or a list, or separates the speaker from the dialogue.</p>
+<ul>
+<li>Good for theatrical or chat-like writing where the speakers are clearly labelled.</li>
+<li>Good for chapter titles, sub titles, and any other header.</li>
+<li>Good for beginning a list or answering a previously asked question. <code>The answer? It's simple:</code></li>
+</ul></li>
+<li><p>The <strong>Semicolon</strong> ( ; ) is uncommon and mostly used to separate large clauses that are all subordinate to the same one, such as long items in a list.</p>
+<ul>
+<li>Good for separating large elements in a list, especially with incomplete linebreaks (just pressing enter once).</li>
+<li>Good for code, too, since a lot of languages use semicolons.</li>
+</ul></li>
+<li><p>The <strong>Ellipse</strong> ( ... ) symbolizes a trailing sentence, thoughtfulness, etc. Generally, incompleteness, or interruption.</p>
+<ul>
+<li>Good to have someone trail off during their dialogue, or to sound like they're nervous or stammering.</li>
+<li>Good for ending a paragraph thoughtfully... or leading straight into a surprise, sometimes!</li>
+</ul></li>
+<li><p>The <strong>Interrogation Mark</strong> ( ? ) is for asking questions.</p>
+<ul>
+<li>Good for dialogue, as it tends to either ask another question for emphasis, or switch speakers to get an answer.</li>
+<li>Good for getting more information from the AI about whatever the question is about.</li>
+</ul></li>
+<li><p>The <strong>Exclamation Mark</strong> ( ! ) works exactly like a period but has a strong <em>tonal</em> effect.</p>
+<ul>
+<li>Good for switching the tone to something "louder", making characters scream, get upset, excitable narration, so on and so forth.</li>
+</ul></li>
+</ul>
+<p>=== Whitespace ===</p>
+<p>This is basically any character like spaces and linebreaks.</p>
+<ul>
+<li><p><strong>Single Spaces</strong> should be kept away from the end of your text.</p>
+<ul>
+<li>This is because a lot of tokens start with a space included inside them. Leaving a dangling space means that the AI needs to find another token, which might be very difficult depending on your settings, and can result in strange stuff being generated.</li>
+<li>Dangling spaces can be trimmed with a toggle you can find in your <strong>Account settings.</strong></li>
+<li><strong>Unbreakable Spaces</strong> ( ) [ALT+NUM2,NUM5,NUM5] are automatically converted to normal spaces.</li>
+</ul></li>
+<li><p><strong>Em and En</strong> spaces are used specifically for Poetry verse and citations/quotes, respectively.</p></li>
+<li><p><strong>Incomplete linebreaks</strong>, as in, a linebreak that does not create a <em>full blank line</em>.</p>
+<ul>
+<li>Good for AI 'push-forward' without going too far. Stronger than a single period.</li>
+<li>Good for creating a split between two speakers in dialogue.</li>
+</ul></li>
+<li><p><strong>Full Linebreaks</strong>, as in, a linebreak that creates a <strong>single, full blank line.</strong></p>
+<ul>
+<li><strong>Avoid those as much as possible unless going for special formatting. Their effect on writing quality is noticeable.</strong></li>
+</ul></li>
+</ul>
+<h3 id="other-symbols">Other Symbols</h3>
+<p>These are used more specifically in NovelAI due to how its finetune is prepared.</p>
+<ul>
+<li><p><strong>Parentheses</strong> ( ) are used to denote side comments or side thoughts.</p>
+<ul>
+<li>These can change the writing style a little, but make sure not to abuse them.</li>
+</ul></li>
+<li><p><strong>Brackets</strong> [ ] in NovelAI are a little special because they are banned from generation by default. They can be used as markers for <strong>notes outside of the main text</strong>.</p>
+<ul>
+<li>Keep in mind that you need to put <strong>spaces after opening brackets and before closing brackets for them to work properly.</strong></li>
+<li>Usually found at the beginning of chapters, square brackets can be used to set the scene, as in <code>[ London, 1820 ]</code>.</li>
+<li>They can be used to easily switch the protagonist mid-story, if you insert the name of the character in brackets on a new row, as in <code>[ John ]</code>.</li>
+<li>They may also be used to influence the direction of the story or give details --- think stage directions --- though this is not the intended usage.</li>
+</ul></li>
+<li><p><strong>Curly Braces</strong> { } are usually used in code and very uncommon in anything that isn't math or computing related.</p>
+<ul>
+<li>Thus, you can use them to talk about those subjects.</li>
+<li>They are used for "strict" token selections for Ban Token and Phrase Bias.</li>
+<li>Snek uses them extensively to generate Python code.</li>
+</ul></li>
+<li><p><strong>Bullet Points</strong> • are used to mark elements of a list. One per line.</p></li>
+<li><p><strong>Single dashes</strong> ( - ) are used for discrete lists.</p>
+<ul>
+<li>Very practical if you want to present neatly indented lists.</li>
+</ul></li>
+<li><p><strong>Less Than and More Than</strong> &lt; &gt; are used in the finetune to <em>encase telepathic communication, or thoughts.</em></p>
+<ul>
+<li>As such, you can use them to denote when a character is thinking.</li>
+</ul></li>
+<li><p><strong>More Than</strong> ( &gt; ) When used to start a new row, &gt; denotes text and computer console messages. It is also used by Text Adventure, though it's not always displayed.</p></li>
+<li><p>The hilariously named <strong>Dinkus</strong> ( ** ) is a symbol used to denote a section break in a text.</p>
+<ul>
+<li>Consider it as powerful "break from current scene" device.</li>
+<li>Often interpreted as a time skip or even a switch to a different character, depending on the preceding text. Experiment.</li>
+</ul></li>
+<li><p><strong>Asterisms</strong> (⁂) are a symbol used to separate sections of a single text, but for NovelAI, it's used to separate <em>whole texts.</em>. It is also the symbol used if you append a Preface to your text.</p>
+<ul>
+<li>As a result, it has a very strong "breaking from current scene" effect.</li>
+<li>Note that an asterism is almost always followed by square brackets in the data (containing the story title etc) and as such this does not function well when the bracket ban is enabled.</li>
+</ul></li>
+<li><p><strong>Horizontal line</strong> ( ─ ) is used for LitRPG format, such as stat blocks and MMORPG style skills.</p>
+<ul>
+<li>Note that this heavily influences the output, usually making the protagonist aware that they're in a game-like world.</li>
+</ul></li>
+<li><p><strong>Em space</strong> (   ) is used for poetry and lyrics.</p>
+<ul>
+<li>Simply starting a new row with this will typically generate a poem.</li>
+</ul></li>
+</ul>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

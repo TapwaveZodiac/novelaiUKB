@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Directing the Narrative</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Directing the Narrative</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#directing-the-ai">Directing the AI</a>
+<ul>
+<li><a href="#describing-peopleplacesthings">Describing People/Places/Things</a></li>
+<li><a href="#describing-actions">Describing Actions</a></li>
+</ul></li>
+<li><a href="#writing-with-style">Writing with Style</a>
+<ul>
+<li><a href="#author-directions">Author Directions</a></li>
+<li><a href="#style-directions-style_directions">Style Directions {#style_directions}</a></li>
+</ul></li>
+<li><a href="#put-the-style-last">Put the Style Last</a></li>
+<li><a href="#advanced-concepts">Advanced Concepts</a>
+<ul>
+<li><a href="#everything-is-effective">Everything is Effective</a></li>
+<li><a href="#quotes-for-adherence">Quotes for Adherence</a></li>
+<li><a href="#discovering-new-styles">Discovering New Styles</a></li>
+</ul></li>
+</ul>
+</nav>
+<p><em>By placebomancer</em></p>
+<p>This guide will teach you how to direct the AI to describe characters, items, locations, and even actions and events. Additionally, you will learn how to direct the AI to <em>stylize</em> the descriptions it generates.</p>
+<h2 id="directing-the-ai">Directing the AI</h2>
+<h3 id="describing-peopleplacesthings">Describing People/Places/Things</h3>
+<p>Describing people, places, and things is relatively easy. To describe a farm, you might write a direction like:</p>
+<pre><code>Description of the farm:
+</code></pre>
+<p>Note that you can add a newline to the example above so that the description is written on the line <em>beneath</em> the direction. I'll be doing that for the remaining examples.</p>
+<p>It sometimes helps to begin the description yourself with the subject:</p>
+<pre><code>Description of the farm:
+The farm
+</code></pre>
+<p>The AI completes the description with:</p>
+<pre><code>Description of the farm:
+The farm was a large one, covering almost half a hectare of land. A large house of a rustic, primitive design sat in the middle of it, surrounded by fields and gardens.
+</code></pre>
+<p>Now delete the direction line, leaving only the generated description:</p>
+<pre><code>The farm was a large one, covering almost half a hectare of land. A large house of a rustic, primitive design sat in the middle of it, surrounded by fields and gardens.
+</code></pre>
+<p>If you leave the direction in the story, the AI <em>will</em> start generating directions---and you don't want that, do you?</p>
+<h3 id="describing-actions">Describing Actions</h3>
+<p>Actions are a bit trickier. Sometimes, the AI will mistakenly treat the direction as an event that already happened. The best results are obtained from writing the direction in the present tense, like so:</p>
+<pre><code>Description of John chopping down the tree:
+</code></pre>
+<p>Sometimes, a <code>Description of how … :</code> direction works better:</p>
+<pre><code>Description of how John chops down the tree:
+</code></pre>
+<p>One method will often perform better than the other, but either approach may require retries. Again, it can help to start the description for the AI if i's having difficulties:</p>
+<pre><code>Description of how John chops down the tree:
+John
+</code></pre>
+<p>Allowing the AI to complete the text produced:</p>
+<pre><code>Description of how John chops down the tree:
+John swung his axe and brought it down in the center of the trunk. The tree shuddered from the force of the blow. The blade went all the way through the trunk.
+</code></pre>
+<p>Remember to delete the direction!</p>
+<h2 id="writing-with-style">Writing with Style</h2>
+<h3 id="author-directions">Author Directions</h3>
+<p>One way to impart style to a direction is to use an author the AI is familiar with:</p>
+<pre><code>Description of the sky in the style of H.P. Lovecraft:
+</code></pre>
+<p>The author doesn't actually have to be in the fine-tune, as long as the AI is familiar with their style.</p>
+<p>It may be helpful to add a comma for clarity to more complex directions:</p>
+<pre><code>Description of Harold walking through the field, in the style of Jane Austen:
+</code></pre>
+<p>Sometimes <em>style</em> can be confusing to the AI:</p>
+<pre><code>Description of how Marie drinks the gin in the style of F. Scott Fitzgerald:
+</code></pre>
+<p>It may help to use a comma and specify that we are interested in Fitzgerald's <em>writing style</em> rather than his manner of drinking:</p>
+<pre><code>Description of how Marie drinks the gin, in the writing style of F. Scott Fitzgerald:
+</code></pre>
+<p>This direction produced the text:</p>
+<pre><code>Marie, a dark-haired, slender woman with big, brown eyes and an impish, naughty smile, sipped her gin slowly, languorously, while she flirted with her audience.
+</code></pre>
+<h3 id="style-directions-style_directions">Style Directions {#style_directions}</h3>
+<p>What if we don't want to use a specific author, but we know the sort of writing style we want to generate? We can use style directions:</p>
+<pre><code>Description of Anna in a style that is terse:
+</code></pre>
+<p>All the same tips apply from <em>Author Directions</em>. Use commas and clarify <em>style</em> when it might confuse the AI. For instance:</p>
+<pre><code>Description of Anna in a style that is elegant:
+</code></pre>
+<p>Is the description elegant or is Anna dressed in an elegant fashion? It's best to clarify:</p>
+<pre><code>Description of Anna, in a writing style that is elegant:
+</code></pre>
+<p>This direction produced the text:</p>
+<pre><code>The eyes of my Anna were two of the most beautiful things I&#39;ve ever seen. They were a deep, vibrant, blue that made the rest of the world pale in comparison.
+</code></pre>
+<h4 id="very-style-much-wow">Very Style, Much Wow</h4>
+<p>We can also use words like <em>very</em> or <em>extremely</em> before the style to great effect:</p>
+<pre><code>Description of the moon in a style that is very gothic:
+</code></pre>
+<p>The results can be surprising and sometimes rather comical, so I'd recommend experimenting before throwing <em>very</em> on every style.</p>
+<h2 id="put-the-style-last">Put the Style Last</h2>
+<p>The above examples might seem rather wordy. There is a reason:</p>
+<p><strong>The last word in the direction has the strongest influence on the description</strong>.</p>
+<p>For example:</p>
+<pre><code>Description of the sun in a terse style:
+The sun is a sphere of hot iron, glowing and shining in the sky.
+</code></pre>
+<p>This direction is less effective at imparting terseness because the influence of <em>style</em> overpowers it. Compare:</p>
+<pre><code>Description of the sun in a style that is terse:
+The sun is a sphere with a diameter of 864,000 miles.
+</code></pre>
+<p>I tested a large number of direction variations and the one factor that granted the style the strongest influence on the generated description was <em>putting the style last</em>.</p>
+<h2 id="advanced-concepts">Advanced Concepts</h2>
+<h3 id="everything-is-effective">Everything is Effective</h3>
+<p><em>Every word/token in the direction has some effect on the generated description</em>. The effect may not always be especially apparent, but it's there. As already mentioned, words near the end of the direction usually have more effect on the description. The examples provided so far attempt to maximize the impact of a single chosen style on the generation while ensuring the AI is reasonably confident in what we're asking for. But everything involves trade-offs, and there are other variations that may produce output you prefer, even if the chosen style isn't imparting its maximum effect on the description.</p>
+<h4 id="punctuation">Punctuation</h4>
+<p>As already mentioned, commas in your direction can help clarify your intent to the AI---but they also increase the probability of commas showing up in your description. Yes, <em>even the punctuation in a direction stylistically affects the description</em>. The same is true of em dashes (---), which also work if you're as fond of them as I am.</p>
+<h4 id="the-elements-of-style">The Elements of Style</h4>
+<p>Every word added to a description provides an additional effect, whether desired or not. As mentioned earlier, it is sometimes helpful to specify <em>writing style</em> for clarity. However, this has an effect that competes somewhat with the chosen style. You might not mind this effect. Adding words like <em>author</em> or <em>writer</em> can provide a more literary description:</p>
+<pre><code>Describe the mountain in the style of an author whose writing is flowery:
+</code></pre>
+<p>Feel free to mix it up and add additional words to the direction, noting that each word competes with or reinforces the others.</p>
+<h4 id="describe-vs-description-of">Describe vs Description Of</h4>
+<p><code>Describe … :</code> works as well as <code>Description of … :</code> directions for people, places, and things. The only reason it isn't mentioned earlier in this guide is because it's not nearly as effective for actions. Of course, like anything, choosing one over the other imparts some stylistic effects. For example, <code>Describe … :</code> makes the description of a character more likely to begin with a pronoun than a name. Broadly speaking, descriptions generated with <code>Describe … :</code> are a bit more terse and those generated with <code>Description of … :</code> are a bit more wordy.</p>
+<h3 id="quotes-for-adherence">Quotes for Adherence</h3>
+<p>Directions with a starting double quote adhere more closely to the given instructions than those without an opening quote:</p>
+<pre><code>Description of the sun in the style of H. P. Lovecraft: &quot;
+</code></pre>
+<p>However, quotes have some drawbacks:</p>
+<ul>
+<li>Quotes work particularly well with Krake and Sigurd, but Euterpe tends towards shorter output with an opening quote</li>
+<li>The AI may assume the quote represents the start of dialog, rather than the start of a description</li>
+<li>If an author is specified, the generated description is more likely to be in the author's preferred tense and POV</li>
+<li>Any dialog generated inside the quotes is likely to use single quotes, which you may have to change to double quotes (unless you're from the UK)</li>
+<li>You have to remove the opening and closing quotes after generation</li>
+</ul>
+<p>Despite these problems, the effect really is noticeably stronger with Krake and Sigurd and the improved quality is often worth the effort of rewriting the description into your preferred tense.</p>
+<p>Here are some tips to avoid the AI interpreting the opening quote as dialog:</p>
+<ul>
+<li>Always prefer <code>Description of … :</code> over <code>Describe … :</code></li>
+<li>Use words like <em>author</em>, <em>writing</em>, and <em>style</em> in the direction to give the AI hints about what we expect: <code>Description of the watch, in the style of an author whose writing is evocative: "</code> (it needn't be this elaborate)</li>
+</ul>
+<p>While I haven't tested it thoroughly, you may try substituting a starting single quote for a double quote as well. When dialog is generated inside a single quote, the AI will usually generate it with double quotes. However, this <em>Britishism</em> likely has some stylistic effect on the generated descriptions.</p>
+<h3 id="discovering-new-styles">Discovering New Styles</h3>
+<p>So you can impart stylistic effects on the descriptions the AI generates, but what if you're not sure what styles to try? Here are some ways to mine the AI for ideas. Not all of the styles you discover will work well, of course, but you can't try out new things until you have a list of things to try!</p>
+<p>Additionally, this process must be done separately for each model: just because Krake understands a word one way doesn't mean Euterpe has an identical understanding of the word.</p>
+<p>All of these methods involve looking at token probabilities. If you want to see more than just the top 10 tokens, ban the ones that have already been generated and retry to get 10 more.</p>
+<p><strong>Synonyms:</strong></p>
+<p><code>A synonym of "descriptive" is "</code> or <code>A synonym for a writing style that is terse is "</code></p>
+<p><strong>Antonyms:</strong></p>
+<p><code>The opposite of loquacious is</code></p>
+<p><strong>Definitions:</strong></p>
+<p><code>A style of writing that engages all the senses, including sight, sound, emotion, touch, smell, and taste is called "</code></p>
+<p><strong>Authors:</strong></p>
+<p><code>Ernest Hemingway has a writing style that is often described as</code></p>
+<p><strong>Finding authors:</strong></p>
+<p><code>One author whose writing style is often described as lucid is</code> (note that this one is very biased towards popular authors, to the point that the top tokens may not be accurate at all---once you have a list of authors, test them against the Authors prompt above this one)</p>
+<p><strong>Lists:</strong></p>
+<p><code>Synonyms for "evocative" include</code> (each generated item biases the list, which is fine if you're looking for a generally broad set of related concepts)</p>
+<p>These are not exhaustive, by any means; many, many variations are possible. Be aware that not every style you discover will work well; they always need to be tested against prompts like <code>Description of the farm in a writing style that is synesthetic: "</code>. And one style might seem to work terribly when it actually works great and you just had five unlucky generations in a row---<em>and vice versa</em>. But you will undoubtedly discover some really interesting effects doing this, and broaden your vocabulary while you're at it!</p>
+<h4 id="prose-for-pros">Prose for Pros</h4>
+<p><em>Can't you just find styles using [INSERT FORMAT HERE]?</em></p>
+<p>Well ... <em>kinda</em>? Feel free to experiment, but the ones I've tested don't compare well with simple prose for this task. Try it out for yourself:</p>
+<pre><code>[ Author: Ernest Hemingway; Style:
+</code></pre>
+<p>or</p>
+<pre><code>Author: Ernest Hemingway
+Writing Style:
+</code></pre>
+<p>Try whatever variations you like: <em>Style</em> vs <em>Writing Style</em>, lowercase attributes, &amp;c. Then compare the likely tokens to <code>Ernest Hemingway has a writing style that is often described as</code>. Prose provides results closer to the sort of styles we're looking for and the styles generated by prose seem more applicable to Ernest Hemingway.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

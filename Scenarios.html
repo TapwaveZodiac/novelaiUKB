@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Scenarios</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Scenarios</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#placeholders">Placeholders</a>
+<ul>
+<li><a href="#placeholders-in-lorebook-entries">Placeholders in Lorebook entries</a></li>
+<li><a href="#order-of-the-placeholders">Order of the Placeholders</a></li>
+<li><a href="#placeholder-table-of-contents">Placeholder Table of Contents</a></li>
+</ul></li>
+</ul>
+</nav>
+<p>Scenarios use <strong>Placeholders</strong> to offer customization opportunities to the end user. Think of them as Choose your own Adventure prompts.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/4749fb25-7ce1-47ff-b198-17fa790de0ef" alt="image" /></p>
+<h2 id="placeholders">Placeholders</h2>
+<p>You can add a placeholder anywhere within your story's prompt, memory, author's note and lorebook entries.</p>
+<p>Placeholders have to be written in this format:</p>
+<p><code>${1#placeholder[I'm a default value]Title goes here:Put the description here}</code></p>
+<p>The placeholder is divided into five parts:</p>
+<ul>
+<li>order: the order in which the placeholders will be displayed. 1 goes first, then 2, etc.</li>
+<li>id: the only mandatory part of the placeholder, it has to be unique. If you have more than one instance of the id, it will use the same value for each of the placeholders.</li>
+<li>default: the default content of the field when importing the value.</li>
+<li>title: The title used in the placeholder import window to tell the user what they need to fill in.</li>
+<li>description: the text displayed above the input field when importing the value. If there is no description set, the text displayed will be the id. You may want to word this like a question for ease.</li>
+</ul>
+<p>You cannot put these characters inside the text fields of the placeholder: $ {} [] # : @ ^ |</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e96701fe-59e0-449b-9a38-4c3b3954a5b1" alt="image" /></p>
+<h3 id="placeholders-in-lorebook-entries">Placeholders in Lorebook entries</h3>
+<p>For the lorebook entries, you can add placeholders in the <strong>Title</strong> of an entry, its <strong>Description</strong> and its <strong>Keys</strong>. If you want to use <a href="Using-Regex.html">regex</a> for your keys, you have to prefix the expression with a $. For example to match with the name of a character, you have to write $/${name}/</p>
+<h3 id="order-of-the-placeholders">Order of the Placeholders</h3>
+<p>Placeholders are requested to be completed by the user in the alphabetical order of their ID. This means that if you start their id with a number that increments with each placeholder, they will be requested in the order of that number.</p>
+<p>Example: ${1Age} ${2Name} ${4Gender} ${3Job} <strong>Job</strong> will be requested before <strong>Gender</strong>, because its ID comes before it.</p>
+<p>You can also define the order by preceding the id with a number, followed by a pound sign (#):</p>
+<p><code>${1#Maincharacter[Jack]Main Character:Name the main character.}</code></p>
+<p>If different entries have the same Order number, they will be processed <strong>alphabetically according to their id</strong>.</p>
+<h3 id="placeholder-table-of-contents">Placeholder Table of Contents</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/fb34fc09-c732-4ccf-81b2-395e8d471f87" alt="image" /></p>
+<p>You can create a Table of Contents for placeholders where you can insert a large amount of them in advance, allowing you to easily keep track of all the placeholders you have defined.</p>
+<p>The syntax is identical to normal placeholders, with these notable differences:</p>
+<ul>
+<li>It must be inserted at the absolute top of the prompt.</li>
+<li>The initiating symbol is a percentage sign (%) rather than a dollar sign.</li>
+<li>Every Placeholder must be on its own new line.</li>
+</ul>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

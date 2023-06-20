@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Lorebook Generation Tutorial</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lorebook Generation Tutorial</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#general-concept-and-theme-general_concept_and_theme">General Concept and Theme {#general_concept_and_theme}</a></li>
+<li><a href="#factions">Factions</a></li>
+<li><a href="#characters">Characters</a></li>
+<li><a href="#locations">Locations</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</nav>
+<p><em>By: OccultSage, help from Cass, Pause</em></p>
+<h3 id="general-concept-and-theme-general_concept_and_theme">General Concept and Theme {#general_concept_and_theme}</h3>
+<p>So, we have the barest glimmering of a scenario idea or theme.</p>
+<p>We want it to be surrealistic, almost like Alice in Wonderland. There's an AI module for that, so we go ahead and select our user-made module <em>OccultSage's Surrealistic Look Through the Looking-glass</em> from the Modules drop down. This was downloaded and added at a prior time.</p>
+<p>Let's demonstrate the in-line capabilities, so we type the following into the story text: <code>Carnival of Souls</code></p>
+<p>We highlight, and right-click (or ctrl-click on mobile devices with a keyboard). This should pop up a context menu. We then click -&gt; <strong>Generate Lore...</strong> -&gt; <strong>Concept</strong></p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7086fa16-e765-4230-b717-edb306c1c14b" alt="image" /></p>
+<p>This pops up a <strong>New Lorebook Entry</strong> view in the Lorebook manager, and fills in the <strong>Description</strong> field with <code>Carnival of Souls</code> automatically. It will generate the first entry automatically, and we get back:</p>
+<pre><code>An ancient ritual where souls travel back to Earth on Halloween night, making this one of the few holidays celebrated year round. On Halloween night, people dress up grotesquely and go out trick-or treating; however, no candy is given because humans don&#39;t believe in spirits. Rather, children receive tokens known as &quot;Carnival tickets.&quot;
+</code></pre>
+<p>Hmm, let's try again. We hit the circle arrow <strong>Retry</strong> button. On the next generation, we got:</p>
+<pre><code>A carnival has many attractions for visitors; but if you go too far down one path, you may end up lost forever. That is what happened to Edgar Allan Poe while he attended a local amusement park. Though he loved attending the rides, his interest shifted toward darker things once he came across some dark poetry written by Robert Southey.
+</code></pre>
+<p>Eh, uninteresting. Let's try again.</p>
+<pre><code>According to legend, every year, thousands of souls pass over Styx Bridge en route for Hades&#39; realm. Unfortunately, this bridge only exists during Mardi Gras celebrations. It connects Bourbon Street to Canal Street, where many businesses remain open until dawn despite being closed all day long.
+</code></pre>
+<p>This is really interesting. Let's click on the <strong>Generate Entry</strong> that looks like a <strong>&gt;</strong> to get it to generate more on top of that:</p>
+<pre><code>The Carnival is a time when the mortal world comes together with its counterpart in Hell—the underworld&#39;s version of New Orleans and its citizens become as one.
+
+There are two kinds of people who come here: those looking to have fun (and get drunk) at any cost; and those seeking salvation from their sins.
+</code></pre>
+<p>Wow, this is a really good concept! Way to go, Sigurd. Let's keep going. Click on the <strong>Generate Entry</strong> button to continue from here.</p>
+<pre><code>Those who cross Styx will never be seen again. However, if they survive the experience, they may ascend back up into Heaven to find joy and happiness once more. And that brings us to...
+
+&quot;I don&#39;t know how I&#39;m going to make it through tonight,&quot; Carlos said quietly after taking another sip from his flask. &quot;What was I thinking?&quot;
+</code></pre>
+<p>So, let's trim the dialog off, and we have a nice lorebook entry describing the <strong>Concept</strong> of our scenario or world.</p>
+<p>The sum total of our <strong>Concept</strong> entry is:</p>
+<pre><code>According to legend, every year, thousands of souls pass over Styx Bridge en route for Hades&#39; realm. Unfortunately, this bridge only exists during Mardi Gras celebrations. It connects Bourbon Street to Canal Street, where many businesses remain open until dawn despite being closed all day long.
+
+The Carnival is a time when the mortal world comes together with its counterpart in Hell—the underworld&#39;s version of New Orleans and its citizens become as one.
+
+There are two kinds of people who come here: those looking to have fun (and get drunk) at any cost; and those seeking salvation from their sins. Those who cross Styx will never be seen again. However, if they survive the experience, they may ascend back up into Heaven to find joy and happiness once more.
+</code></pre>
+<p>Nice! Let's give the lorebook entry the name of <code>Carnival of Souls</code>, and key it to <code>Carnival</code> and <code>Souls</code> under <strong>Keys</strong>.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e0c52543-c809-485e-920b-0f77e200cc50" alt="image" /></p>
+<hr />
+<h3 id="factions">Factions</h3>
+<p>Now that we have a general theme defined, lets create a <strong>Faction</strong>. We click on <strong>+ Add Entry</strong> and create a new blank entry. We select <code>Faction</code> from the <strong>Category</strong> drop down.</p>
+<p>We want to make sure that our <strong>Concept</strong> entry is included in the context, so we click on the <strong>Add Context (advanced)</strong> button in the upper right corner. This will pop down something that looks like:</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/5f6a2fba-2137-43c2-bd75-4cd1e1de738b" alt="image" /></p>
+<p>We click on the <strong>Lorebook keys</strong> text entry box, and type in <code>Carnival of Souls</code>. This will cause the Lorebook Generator to pull the entry we just made into its context.</p>
+<p>What kind of people/group would work at the Carnival of Souls? Ah-ha, <strong>Carnies</strong>, the workers in the Carnival of Souls. We type <code>the Carnies (workers)</code>, and click on <strong>Generate Entry</strong>/<strong>&gt;</strong> to submit the text and lorebook entry for generation.</p>
+<p><strong>NOTE:</strong> Preceding the text with <strong>a</strong>, <strong>an</strong> or <strong>the</strong> has special meaning to the generator! It will more accurately generate for concepts or groups of people rather than a specific entity.</p>
+<p><strong>NOTE2:</strong> The generator works best if short tags are used inside parentheses <code>()</code>, divided by commas, such as <code>(workers)</code></p>
+<hr />
+<p>On the first generation we get the following output:</p>
+<pre><code>Most carnival workers aren&#39;t very skilled or experienced laborers. Some, however, do possess skills needed by the circus industry—such as acrobatics or working animals. These men and women dress like clowns, and act out exaggerated versions of everyday activities such as eating popcorn or juggling balls. Many wear masks, gloves, and colorful costumes to complete their performances.
+</code></pre>
+<p>We generate more, and we get the following added:</p>
+<pre><code>The most common jobs among these performers include Clown Alley Managers, Ringmasters, Big Top Supervisors, Circus Performers, Animal Caretakers, Dancers, Entertainer Trainees, Tilt-A-Whirl Operators, Carpenters, Stagehands, and Truck Drivers.
+</code></pre>
+<p>Hmm, we're getting there. But it's not really tied to a <code>Carnival of Souls</code>, so let's add a tag, <code>demonic</code>, so that our entry looks like <code>the Carnies (workers, demonic)</code>. We delete the text, and click on <strong>Generate Entry</strong> again. After multiple generation we get the following:</p>
+<pre><code>There used to be dozens of carnival sideshows across the Old World, each run by independent owners. Some held the rights to perform specific acts while others specialized in particular attractions like fortune-telling tents, freak shows, and even torture devices. These days there are very few carnivals left, due to the efforts of the Church Universal and Triumphant to stamp out evil wherever they find it. They&#39;ve outlawed most forms of entertainment that aren&#39;t directly related to worshiping Satan or spreading his word. This means no traveling actors, mimes, jugglers, musicians, magicians, acrobats, dancers... you name it. Even licensed carnival workers can lose their licenses if caught performing an act deemed &quot;unholy.&quot; So now there are just a handful of carnival sideshow operators still running around the globe. Most use their profits to fund underground operations such as demonology research. If anyone needs them, they&#39;re usually available.
+
+The work isn&#39;t always glamorous but, unlike most other jobs, working on a carnival side show doesn&#39;t require much training.
+</code></pre>
+<p>This is really interesting, but not quite what we're looking for. So we reverse the order of tags: <code>the Carnies (demonic, workers)</code>, and press <strong>Retry</strong>:</p>
+<pre><code>After hundreds of years of service, carnival entertainers were given demonic contracts so that they would continue performing even if forced out of Hell. These demons now work alongside humans in the mortal realm, providing entertainment while aiding humanity in battle against evil entities like vampires and serial killers. Most carnivals still feature human performers but some carnivals have begun hiring demon employees instead. Some examples include Circus Maximus in Las Vegas, which hires both demons and traditional circus stars alike. Other carnivals hire professional clowns, jugglers, acrobats and trapeze artists. In addition, there are also small-scale carnival events that take place around large cities such as Seattle or San Francisco, these smaller events often focus on live music performances by local bands.
+</code></pre>
+<p>OK, wow! This is exactly the sort of thing we want, so let's store this lorebook entry. We save it as <code>Faction: Carnies</code>, keyed to <code>workers</code>, <code>sideshow</code>, and <code>Carnies</code>.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/5ff5de2e-ac1b-42b1-96fc-bc342c0a4286" alt="image" /></p>
+<p>So let's generate another faction: <code>the Carnival Management</code>. We click on <strong>+ Add Entry</strong>, and then we select <code>Faction</code> from the <strong>Category</strong> drop-down, and we key in our prior keys, <code>carnies, carnival</code> in the <strong>Lorebook keys' field to give the</strong>Lorebook Generator''' more context.</p>
+<p>We then type in <code>the Management (carnival, demonic)</code> -- it takes a few tries to get the right sort of vibe we're looking for, but we get:</p>
+<pre><code>Many demons seek employment with carnivals because of how well paid and stable jobs tend to be compared to working under someone else. Others come simply because they enjoy entertaining crowds. Still others come merely to escape boredom. Either way, carnivals provide everything necessary to sustain life in Hell. Demons earn money enough to keep themselves fed and clothed without ever lifting a finger. They can spend most of the rest of each day lounging about doing nothing important, save perhaps enjoying a nice meal. As far as amusements go, few things could possibly satisfy them better than carnivals. Every single attraction has been painstakingly designed to make demons smile.
+
+The management of a carnival consists mostly of high level demons called &quot;masters.&quot; Masters oversee operations across multiple locations and manage the various attractions within specific areas. All masters receive gifts from God upon reaching Level 50. Their duties consist mainly of overseeing security forces and making sure no damage occurs to any part of the carnival grounds. If anything does happen, it must first be reported to an officer before going through proper channels.
+</code></pre>
+<p>This generated good content for demons, so we split the first paragraph into a new Lorebook entry, <code>Species: Demon</code>, and we save the second paragraph as <code>Faction: Management</code>.</p>
+<p>Now would be a good time to show the <strong>Generation History</strong> feature -- it will show the last 50 generations across contexts.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a5217e70-76b2-4423-a4fd-905babeb1c3c" alt="image" /></p>
+<p>Thus far, we now have the following Lorebook entries:</p>
+<ul>
+<li><code>Faction: Carnies</code> (keys: Carnies, sideshow, workers)</li>
+<li><code>Faction: Management</code> (keys: management, manager)</li>
+<li><code>Species: Demon</code> (keys: demon, demons)</li>
+<li><code>The Carnival of Souls</code> (keys: Carnival, Souls) <img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a6c5eb89-6b40-4d34-bad9-7f78873d0573" alt="image" /></li>
+</ul>
+<hr />
+<h3 id="characters">Characters</h3>
+<p>Now that we have the basic skeleton of <strong>Concept</strong>, <strong>Faction</strong> and <strong>Species</strong>, let's create a few characters!</p>
+<p>We click on <strong>+ Add Entry</strong>, select from the <strong>Category</strong> drop down <code>Person</code>.</p>
+<p>We make sure that our lorebook keys incorporate all our entries: <code>carnival, demon, carnies, management</code></p>
+<p>Hmm, we need a ringmaster! So, we type in <code>the Ringmaster (demonic, management)</code>. And because of all the context we've built up so far, it actually gives us an interesting and relevant character on the first shot!</p>
+<pre><code>Lord Samhain is one of the highest ranking demons living in Hell. He oversees several different types of carnivals throughout the land. One of these carnivals includes Circus Maximus, one of the largest circuses currently operating in the mortal realm. The carnival served as a training ground for Lord Samhain himself, allowing him to hone the skills needed to run one of these massive operations.
+</code></pre>
+<p>Good enough, so let's save this as <code>Character: Lord Samhain</code>, keyed to <code>ringmaster</code>, <code>samhain</code>, <code>lord</code>, and <code>management</code>. We also insert <code>is the Ringmaster</code> in the text to tell Sigurd that this is our Ringmaster, ending up with the following sentence: <code>Lord Samhain is the Ringmaster, and one of the highest ranking demons living in Hell.</code></p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/c0adfd45-b9f3-4b3f-93be-ec97aa4c9969" alt="image" /></p>
+<p>Let's create a lower level employee, maybe a sideshow attraction? We follow the same steps above to create a new <code>Person</code> lorebook entry, and we enter in <code>a sideshow attraction (carnie, worker)</code></p>
+<p>We get the following output on the first attempt:</p>
+<pre><code>The Freakshow hosts a number of attractions, including displays of body modification, hypnotism, contortionists, fire eaters, and more. There are plenty of freaks here, too. Many of them have unusual abilities, some more surprising than others. Some of the freakiest exhibits include Miss Lizzie West—an incredibly talented female illusionist whose ability allows her to control light; Mr. Bones —a skeleton soldier who fights using his own bone gun; and Dr. Frankenstein...who makes you forget your name! But he&#39;s not alone. His assistant, Igor, knows more tricks than anyone alive. For example, did you know that Igor can turn invisible? And that he&#39;ll steal your soul right off your bones?! The ringmaster is always watching.
+</code></pre>
+<p>OK, this didn't generate a specific character, but this makes a neat lorebook entry for <code>Location: The Freakshow</code>, so we store that entry and key it to <code>freakshow</code>, <code>carnies</code>, <code>carny</code>.</p>
+<p>Let's use the neat characters in the <code>Location: Freakshow</code> above to generate more lorebook entries. We click on <strong>+ Add Entry</strong>, and for the description entry: <code>Miss Lizzie West (female illusionist, freakshow)</code>. This demonstrates as well that the description itself will invoke lorebook keys, such as <code>freakshow</code>.</p>
+<p>We get on the first shot:</p>
+<pre><code>Miss Elizabeth &quot;Lizzie&quot; West is a young girl who works at Circus Maximus. She began performing magic tricks at age six, after discovering she loved entertaining people. Since then, she has developed many new illusions using both sleight of hand and stagecraft techniques. After performing at several carnivals across America, she eventually made her way to Circus Maximus. While there, she performed many shows, earning herself quite a reputation among the other guests. According to the manager, Miss West is the best magician in all of the American carnival circuit.
+
+Her talent lies in creating elaborate illusions that hide secrets inside of objects. Her favorite trick involves hiding tiny, hidden compartments filled with gold coins behind seemingly ordinary props like playing cards, fruits, and eggs.
+</code></pre>
+<p>Nice! So let's store this as <code>Character: Miss Lizzie West</code>, and key it to <code>Lizzie</code>, <code>West</code>, <code>Elizabeth</code>, <code>illusionist</code>.</p>
+<p>Next up, we create <code>Mr. Bones</code>. Same process to create a new entry, and we type in <code>Mr. Bones (skeleton, freakshow)</code>.</p>
+<p>And, nice output from Sigurd!</p>
+<pre><code>Mr. Bones likes to think that he isn&#39;t really dead after all. No matter what happens, he just needs another chance to start over again. That said, when people see him coming down the street, they usually scream in fear. This causes many people to avoid walking past the entrance of the circus, despite the fact it would be much easier if they didn&#39;t. Instead, they choose to hide behind buildings or trees, hoping that the skeletons won&#39;t notice them. Even then, they don&#39;t want to walk very close. After all, Mr. Bones doesn&#39;t need eyes to track people down.
+
+Since his arrival at Circus Maximus, Mr. Bones has learned quite a bit about the practice of magic. While he hasn&#39;t mastered it yet, he certainly understands the principles. Due to this knowledge, he plans to use his newly discovered talents to help other members of the circus. Perhaps if everyone worked together, they might stand a chance against enemies like Dracula.
+</code></pre>
+<p>We save this as <code>Character: Mr. Bones</code>, keyed to <code>skeleton</code>, <code>bones</code>.</p>
+<p>And now for the final freakshow character, <code>Dr. Franky</code>! We've renamed him from <code>Frankenstein</code> so that it doesn't draw from Mary Shelly's work. Same process as before, but this time we type: <code>Dr. Franky (mind control, freakshow)</code>.</p>
+<p>Sigurd gave us the following nice output:</p>
+<pre><code>Dr. Franky uses mind-controlling drugs to create illusions and distractions while performing feats of superhuman strength. Unlike many other carnival performers, however, he isn&#39;t just trying to entertain people; rather, he wants to help humans gain power over their minds. To do this, he needs to trick everyone into thinking they&#39;ve witnessed something incredible—something that they won&#39;t soon forget. This is why he doesn&#39;t need to perform flashy tricks or use strong muscles to impress onlookers. Instead, he relies on magic to confuse the audience. By means of clever misdirection, magical effects, and hypnosis, Dr. Franky draws attention away from what really matters. Then, after the crowd becomes distracted, he plucks out whatever information he desires.
+</code></pre>
+<p>Awesome. We store it as <code>Character: Dr. Franky</code>, keyed to <code>franky</code>, <code>doctor</code>.</p>
+<p>We could get into <code>Igor</code>, his assistant, but to keep this tutorial shorter, we won't. We now have four very interesting characters:</p>
+<ul>
+<li><code>Dr. Franky</code> (keys: franky, doctor)</li>
+<li><code>Lord Samhein</code> (keys: Samhein, ringmaster, lord)</li>
+<li><code>Miss Lizzie</code> (keys: Lizzie, Lizzie West, Elizabeth, illusionist)</li>
+<li><code>Mr. Bones</code> (keys: bones, skeleton)</li>
+</ul>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/433c4670-7f0e-4527-b5aa-7a26bc6f747b" alt="image" /></p>
+<hr />
+<h3 id="locations">Locations</h3>
+<p>We already have one <strong>Location</strong> by fortuitous happenstance earlier, so maybe we need to describe the <code>Bridge of Souls</code> mentioned in the <strong>Concept</strong> generation earlier?</p>
+<p>So, we create a new entry, select <code>Place</code>, and type in: <code>Bridge of Souls (Bourbon street)</code>. And on the <strong>first generation</strong>, we get an awesome description, because of all the lore we've built up!</p>
+<pre><code>Bourbon Street runs parallel to Canal Street, connecting New Orleans Proper with the French Quarter. Amongst the many bars and clubs along this strip, one stands out above all others. Known simply as &quot;the Bridge,&quot; it spans over Styx River in order to connect Bourbon Street directly with the underworld below. Most tourists visit this bridge exclusively for sightseeing purposes; however, locals know that crossing Styx Bridge is actually the best way to reach the afterlife. From here, travelers can use the bridge to travel between the two realms in seconds rather than hours. The Bridge is made entirely of steel, concrete, and stone. Its height varies depending on the season, ranging anywhere from ten feet to twenty feet tall.
+</code></pre>
+<p>We store this as <code>Location: Bridge of Souls</code> keyed to: <code>bridge</code>, <code>souls</code>, <code>canal</code>, <code>bourbon</code>.</p>
+<hr />
+<h3 id="testing">Testing</h3>
+<p>Now that we've pulled together <strong>Concept</strong>, <strong>Factions</strong>, <strong>Characters</strong>, and <strong>Locations</strong>, let's run a test prompt in our story!</p>
+<pre><code>I&#39;ve heard a lot about the Carnival of Souls, and I&#39;m rather curious about it. So I arrive at Bourbon Street in New Orleans, and I see the Freakshow placed at the entrance.
+</code></pre>
+<p>We generate, and we get back:</p>
+<pre><code>A sign hangs overhead reading:
+
+Welcome to the Freaksville Circus of Souls. Come one, come all! We&#39;re having an amazing show tonight! Don&#39;t miss it!
+
+&quot;Wow!&quot; I exclaim aloud. This place really does seem like something straight out of a fairytale or nightmare. As I approach, a man dressed as a clown calls my attention. He waves me over.
+
+&quot;Hey there, stranger. What brings you to our little circus?&quot; asks the Clown.
+
+&quot;Well...&quot; My eyes dart around nervously. &quot;...I was just wondering what kind of shows go on here.&quot;
+
+The Clown laughs heartily. &quot;Oh boy, do we ever! You&#39;ll love &#39;em, trust me! Now, let&#39;s get inside so we don&#39;t keep everyone waiting.&quot;
+</code></pre>
+<p>Hmm, the Clown seems like an interesting character. So let's create a lorebook entry for him. We highlight <code>the Clown</code> and right click on the context menu -&gt; <strong>Generate Lore</strong> -&gt; <strong>Person</strong>. As it uses the lorebook keys we have been carrying from generation to generation, we get back:</p>
+<pre><code>Willard, originally known as &quot;Clown,&quot; is a male circus performer. Originally hailing from Earth, Clown left behind family and friends when he came to live among the other clowns in Hell. Now, Clown works alongside fellow demons to entertain crowds while keeping evil spirits at bay. Despite working closely together, Clown tends to avoid social interaction. This helps to protect his identity, as Clown doesn&#39;t want to risk outing himself to anyone outside the circus. In addition to fighting evil spirits, Clown uses his magic acts to help the denizens of Hell achieve enlightenment and return home after death. By summoning powerful spirits to aid in battles, Clown can throw whole armies into disarray.
+</code></pre>
+<p>Nice! So, let's store this Lorebook entry under <code>Character: the Clown</code>, keyed to <code>Willard</code> and <code>clown</code>. We also add <code>freakshow</code> to the key, to make sure he's with that group.</p>
+<p>We continue generating the story, and we get:</p>
+<pre><code>We enter through the front door and walk down a dark corridor lit by flickering torches. Finally, we stop before a large wooden double-door. The Clown knocks twice, then opens both doors simultaneously. The crowd erupts into cheers.
+
+Inside, the venue resembles a small stadium. In the center of the arena sits a raised stage surrounded by several tiers of seating. Several dozen performers are already seated upon these platforms. They wear colorful costumes and dance wildly to the music playing throughout the room.
+
+A number of people sit atop the lowest tier, watching the performance. Others stand nearby, drinking drinks that appear to be made entirely from alcohol. There is even someone who appears to have been turned completely black; they are dancing with a white woman wearing nothing but body paint. All of them laugh loudly as their bodies move rhythmically.
+
+A few feet away from this group stands another cluster of revelers. These people are laughing uproariously, slapping each other on the back and hugging each other tightly. It seems almost as though they were enjoying some sort of religious experience.
+
+Other groups of people gather in different areas of the stadium.
+</code></pre>
+<p>It's safe to call this a success.</p>
+<hr />
+<h3 id="conclusion">Conclusion</h3>
+<p>We've come from the glimmerings of an idea to a neat immersive world -- using text generated purely by Sigurd and a strategic choice of modules! We've created eleven lorebook keys, encompassing the beginnings of an awesome scenario.</p>
+<p>This is a general outline intended to follow other service's <strong>World Generator</strong> flow, but other workflows can be used.</p>
+<hr />
+<p>The lorebook generated for this tutorial has been attached here as a PNG for your perusal.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/dc506e5f-3081-45f5-9ce0-0a3a830d62a7" alt="image" /></p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>

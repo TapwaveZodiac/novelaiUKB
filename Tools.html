@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tools</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Tools</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#anlas">Anlas</a></li>
+<li><a href="#module-training">Module Training</a></li>
+<li><a href="#tokenizer">Tokenizer</a></li>
+<li><a href="#token-probability-viewer">Token Probability Viewer</a></li>
+</ul>
+</nav>
+<p>This page lists specific tools provided by NovelAI.</p>
+<h1 id="anlas">Anlas</h1>
+<p>All tools that create content, such as images, or modules, require <strong>Anlas</strong>, NovelAI's generative currency. The term comes from the Turkish word for "Understanding".</p>
+<p>You get a <strong>renewable stipend</strong> of Anlas per subscription period. This is <strong>not</strong> a fixed amount per month, instead, your amount of "<strong>Free Anlas</strong>" is refilled to 1.000(Tablet, Scroll) or 10.000(Opus) every month. Any <strong>Anlas</strong> not spent is lost, so make sure you use them every month.</p>
+<p><strong>Anlas</strong> that are specifically bought directly never expire and remain forever until used.</p>
+<h1 id="module-training">Module Training</h1>
+<p><strong>Consult <a href="Datasetting-for-AI-Modules.html">Datasetting for AI Modules</a> for more information on how to prepare files for Module training.</strong></p>
+<p><strong>AI Module training</strong> can be accessed from the <em>Story Library</em>, then clicking on the Goose button (<strong>🦆</strong>), then <strong>Module Training</strong>.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/62e5e81f-7189-45dd-bd59-cef3671cb107" alt="image" /></p>
+<p>The left part of the interface contains the <strong>dataset</strong>. Files supported are <em>raw text <strong>only</strong>, encoded in <strong>UTF-8</strong>.</em></p>
+<p>Upload all the files necessary for your module with the <strong>Select File</strong> button. Give your module a <strong>Name and Description</strong> on the right-hand side.</p>
+<p>Choose the model that your module is for. <strong>Modules for Sigurd are not compatible with Euterpe!</strong></p>
+<p>The <strong>Total # of steps needed to train:</strong> field will display the estimate number of steps for <em>100% coverage of all text files.</em> It is not necessary to set the number of training steps to that number. A good soft limit is <strong>~3000 steps.</strong> You may also overfit your module by using more than the estimate.</p>
+<p>This can have problematic or useful effects depending on what you seek to achieve.</p>
+<p>Select the number of steps using the slider, then click <strong>Train!</strong> to start the training. It will take several minutes before the module is produced. Once done, you can save it and import it like any other story, scenario or generation set.</p>
+<hr />
+<h1 id="tokenizer">Tokenizer</h1>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e9fab4cc-4a9c-4c51-ad3f-d1de1d4ee9c9" alt="image" /></p>
+<p>The <em>Tokenizer</em> is a feature that allows you to check how your text is split into tokens before being sent to the AI. It can be accessed by pressing ALT+T or clicking on the Goose button (<strong>🦆</strong>), then then "Tokenizer".</p>
+<p>The <strong>Text</strong> tab will highlight each token in sequence, using a different color to make it more visible.</p>
+<p><strong>Token IDs</strong> will display the Token Identification Code that the AI uses. This is very useful for banning specific tokens (without any space addition and case insensitivity) using <strong>Ban Token ID</strong>.</p>
+<hr />
+<h1 id="token-probability-viewer">Token Probability Viewer</h1>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/3ed3c18a-65e4-49c0-bd33-e54963f8763f" alt="image" /></p>
+<p><strong>To enable this feature, you must enable it in the AI Settings panel of the Account Settings window. This will create a 🧠 button, which lets you access the Probability Viewer.</strong></p>
+<p>The <strong>Token Probability Viewer</strong> is a powerful diagnosis tool that ,allows you to see what choices the AI considers before committing to a generation. This is hugely useful for fine-tuning generation settings, and checking why the AI keeps outputting the same response.</p>
+<p>The left side of the interface displays the response text. You can ,switch between displaying the text proper, or the Token IDs. Cooler ,colors represent tokens with a low likelihood to appear, while hotter ,colors represent tokens highly likely to appear.</p>
+<p>If you click a token, the right panel will update to show you tokens that were considered by the AI, before the generation settings, biases, ,bans and modules and after them.</p>
+<p>Only the 10 most likely tokens are shown. The remainder is grouped up as a whole entity to save on processing time.</p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>
