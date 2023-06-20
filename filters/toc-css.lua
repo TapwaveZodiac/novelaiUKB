@@ -23,13 +23,13 @@ css = [[
 <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
 <style>
 body {
-  padding-left: 1cm;
+  padding-left: 1.5cm;
   padding-right: 1cm;
   transition: 0.5s;
 }
 nav {
-  width: 1em;
-  margin-left: -1cm;
+  width: 1cm;
+  margin-left: -1.5cm;
   font-size: smaller;
   color: grey;
   transition: 0.5s;
@@ -41,6 +41,7 @@ nav {
   overflow: hidden;
   overflow-y: scroll;
   transition: 0.5s;
+  z-index: 10;
 }
 nav::-webkit-scrollbar {
   display: none;
@@ -99,9 +100,6 @@ nav ul li ul  {
   transition: 0.5s;
   background-color: rgba(255, 255, 255, 0.95);
 }
-.navside > span {
-  visibility: visible;
-}
 .subShow > ul {
   visibility: visible;
   display: block;
@@ -111,8 +109,15 @@ nav ul li ul  {
 .subShow > a:not(:only-child):before {
   content: " ▾ ";
 }
-.invisible {
+
+.toc-invisible {
   visibility: hidden;
+}
+.navside > .toc-invisible {
+  visibility: visible;
+}
+.navshown > .toc-invisible {
+  visibility: visible;
 }
 </style>
 ]]
@@ -180,6 +185,9 @@ script = [[
     li.classList.add('subShow');
   };
 
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
   // show full nav on tab, hide full nav on escape
   document.addEventListener("keydown", function (e) {
     if (e.which === 27) {
@@ -193,7 +201,7 @@ script = [[
   });
 
   // insert key info
-  n.insertAdjacentHTML("beforeend", "<span class='invisible'> \
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
                                      <br/> \
                                      <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
                                      <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
