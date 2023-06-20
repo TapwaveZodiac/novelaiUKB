@@ -21,6 +21,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 css = [[
 <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+<!-- TODO: try doing sometthing in px instead of cm to make it more device independent -->
 <style>
 body {
   padding-left: 1.5cm;
@@ -154,6 +155,11 @@ script = [[
 
   // show/hide TOC on resize
   window.onresize = function () {
+    // scrolling on mobile devices triggers resize, so we disable it altogether (for now)
+    if (typeof window.orientation !== 'undefined') {
+      return;
+    };
+
     if (window.innerWidth > 1000) {
       b.classList.add("paddingleft");
       n.classList.add("navside");
