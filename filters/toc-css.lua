@@ -122,6 +122,17 @@ script = [[
   const n = document.querySelector("nav");
   const buttonsize = 15;
 
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
   // by default show TOC in large window
   window.onload = function() {
     if (window.innerWidth > 1000) {
@@ -177,8 +188,8 @@ script = [[
 
   // insert key info
   n.insertAdjacentHTML("beforeend", "<br/> \
-                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
-                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p>");
+                                     <p>&nbsp;Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>&nbsp;Presss <kbd>Esc</kbd> to go back to normal width.</p>");
 
   // hide full nav when clicked outside
   document.addEventListener("click", function(e) {
