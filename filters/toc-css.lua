@@ -92,7 +92,7 @@ nav ul li ul  {
   transition: 0.5s;
 }
 .navside h2:after {
-  content: " ▸";
+  content: " ▸ ";
 }
 .navshown {
   width: 50%;
@@ -106,7 +106,7 @@ nav ul li ul  {
   margin-left: -1em;
 }
 .subShow > a:not(:only-child):before {
-  content: "▾ ";
+  content: " ▾ ";
 }
 </style>
 ]]
@@ -120,7 +120,7 @@ script = [[
 
   const b = document.querySelector("body");
   const n = document.querySelector("nav");
-  const buttonsize = 20;
+  const buttonsize = 15;
 
   // by default show TOC in large window
   window.onload = function() {
@@ -146,11 +146,16 @@ script = [[
 
   for (const li of allLis) {
     li.addEventListener('click', function (e) {
-      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
         li.classList.toggle('subShow');
         e.preventDefault();
       };
-      if (e.clientX > e.currentTarget.getBoundingClientRect().left + 3*buttonsize) {
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
         n.classList.remove("navshown");
       };
     });
@@ -169,6 +174,11 @@ script = [[
       e.preventDefault();
     };
   });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p>");
 
   // hide full nav when clicked outside
   document.addEventListener("click", function(e) {
