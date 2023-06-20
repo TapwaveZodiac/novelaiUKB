@@ -1,0 +1,6 @@
+# Compilation output
+build/
+
+# IDEs
+.idea
+.vscode

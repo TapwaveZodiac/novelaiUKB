@@ -1,5 +1,6 @@
 COMMAND = pandoc
-ARGS = --from gfm --to html --standalone --lua-filter filters/convert_link.lua
+FILTERS = $(foreach filter,$(wildcard filters/*.lua),--lua-filter $(filter))
+ARGS = --from gfm --to html --standalone $(FILTERS) --toc
 SRC_DIR = docs
 BUILD_DIR = build
 
@@ -10,3 +11,6 @@ $(BUILD_DIR)/%.html: $(SRC_DIR)/%.md | build
 
 build:
 	@mkdir $(BUILD_DIR)
+
+clean:
+	@rm -rf $(BUILD_DIR)
