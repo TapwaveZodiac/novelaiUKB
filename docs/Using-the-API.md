@@ -307,8 +307,7 @@ identifier, which you can usually find by exporting a scenario using
 this module and looking into the file. Official modules have a simple
 identifier (e.g. "general_crossgenre"), while custom modules have a
 longer one containing the model, location, and password of the encrypted
-module (e.g.
-"6B-v4:c6021aaa523e2dcb8588848b5fd4e2516dd4bb7107268aaa6050b5430c3a4b47:b764a71f139d0d829ed0f3077f026db43fdb25bc6b45ac508e85dd4c405a2fae").
+module (e.g. "6B-v4:c6021...").
 All custom modules are encrypted and stored server-side.
 
 ### 2.5.2. /ai/generate-prompt
