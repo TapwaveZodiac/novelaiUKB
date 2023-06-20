@@ -1,0 +1,23 @@
+name: Pandoc build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Pandoc
+      run: sudo apt-get install pandoc
+
+    - name: Build HTML
+      run: make
+
+    - name: Deploy on Github Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build
