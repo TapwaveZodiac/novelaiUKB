@@ -145,8 +145,12 @@ script = [[
     };
   });
 
+  var sizeReal = window.innerWidth;
+
   // by default show TOC in large window
   window.onload = function() {
+    sizeReal = window.innerWidth;
+
     if (window.innerWidth > 1000) {
       b.classList.add("paddingleft");
       n.classList.add("navside");
@@ -154,7 +158,6 @@ script = [[
   };
 
   // show/hide TOC on resize
-  var sizeReal = window.innerWidth;
   window.onresize = function () {
     var sizeNew = window.innerWidth;
 
