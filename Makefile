@@ -6,10 +6,10 @@ BUILD_DIR = build
 
 all: $(patsubst $(SRC_DIR)/%.md,$(BUILD_DIR)/%.html,$(wildcard $(SRC_DIR)/*.md)) Makefile
 
-$(BUILD_DIR)/%.html: $(SRC_DIR)/%.md | build
+$(BUILD_DIR)/%.html: $(SRC_DIR)/%.md | build_dir
 	$(COMMAND) $(ARGS) $< --output $@
 
-build:
+build_dir:
 	@mkdir $(BUILD_DIR)
 
 clean:
