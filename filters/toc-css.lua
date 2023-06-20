@@ -154,6 +154,8 @@ script = [[
         n.classList.remove("navshown");
       };
     });
+
+    li.classList.add('subShow');
   };
 
   // show full nav on tab, hide full nav on escape
