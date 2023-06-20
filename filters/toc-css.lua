@@ -122,17 +122,6 @@ script = [[
   const n = document.querySelector("nav");
   const buttonsize = 20;
 
-  // click on "toc-title" to show TOC to the side
-  document.querySelector("#toc-title").addEventListener("click", function(e) {
-    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
-      n.classList.toggle("navshown");
-    } else {
-      b.classList.toggle("paddingleft");
-      n.classList.toggle("navside");
-      n.classList.remove("navshown");
-    };
-  });
-
   // by default show TOC in large window
   window.onload = function() {
     if (window.innerWidth > 1000) {
