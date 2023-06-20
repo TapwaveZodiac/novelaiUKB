@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Installing NovelAI on Mobile</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
+  <style>
+  body {
+    padding-left: 1.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  nav {
+    width: 1cm;
+    margin-left: -1.5cm;
+    font-size: smaller;
+    color: grey;
+    transition: 0.5s;
+    float: left;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: 0.5s;
+    z-index: 10;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav a, nav a:visited {
+    color: grey;
+  }
+  nav h2:before {
+    content: "≡ ";
+    font-size: 150%;
+  }
+  nav h2:after {
+    content: " ◂";
+  }
+  nav li {
+    margin-left: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav li > a:not(:only-child):before {
+    content: "▸ ";
+  }
+  nav li > a:only-child {
+    margin-left: 0.75em;
+  }
+  nav li li {
+    margin-left: 1em;
+  }
+  nav li li li {
+    margin-left: 0.5em;
+    font-size: smaller;
+  }
+  nav ul li ul  {
+    visibility: hidden;
+    display: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    transition: 0.5s;
+  }
+  .paddingleft {
+    padding-left: 9cm;
+    transition: 0.5s;
+  }
+  .navside {
+    width: 7cm;
+    margin-left: -8.5cm;
+    padding-right: 1cm;
+    transition: 0.5s;
+  }
+  .navside h2:after {
+    content: " ▸ ";
+  }
+  .navshown {
+    width: 50%;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+  .subShow > ul {
+    visibility: visible;
+    display: block;
+    transition: 0.5s;
+    margin-left: -1em;
+  }
+  .subShow > a:not(:only-child):before {
+    content: " ▾ ";
+  }
+
+  .toc-invisible {
+    visibility: hidden;
+  }
+  .navside > .toc-invisible {
+    visibility: visible;
+  }
+  .navshown > .toc-invisible {
+    visibility: visible;
+  }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Installing NovelAI on Mobile</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Contents</h2>
+<ul>
+<li><a href="#installation-on-android">Installation on Android</a></li>
+<li><a href="#installation-on-ios">Installation on IOS</a></li>
+</ul>
+</nav>
+<p>Currently there is no application on the Google Play store, or the Apple App Store for NovelAI. However, NovelAI is available as a <a href="https://en.wikipedia.org/wiki/Progressive_web_application">Progressive Web Application</a>.</p>
+<h2 id="installation-on-android">Installation on Android</h2>
+<p>To install a PWA, you need to open <a href="https://novelai.net">NovelAI's webpage</a> in your mobile browser.</p>
+<p>After that, open the browser's menu and look for an option like "<strong>Install</strong>" or "<strong>Add to home screen</strong>".</p>
+<p>This will add a new icon to your home screen (it might be sent to a different page if it's full) to open up NovelAI. This removes all the browser headers and leaves more space for the interface.</p>
+<h2 id="installation-on-ios">Installation on IOS</h2>
+<p>The procedure is similar to installing NovelAI on Android, the option is just found in the "<strong>add to</strong>" section: <strong>Add to Home Screen.</strong></p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/d199293d-0049-4f14-a0fd-061fa11a2d95" alt="image" /><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e63b2f1e-ae4d-44ec-b864-05a973c30951" alt="image" /><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/55edd66f-e85a-44a1-93a4-f966057cc416" alt="image" /></p>
+<!-- Javascript added by darkmode.lua to allow dark mode button -->
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const darkmode_options = {
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      label: '🌓',
+    }
+
+    new Darkmode(darkmode_options).showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<!-- Javascript added by toc-css.lua to make TOC expandable on click -->
+<script>
+
+  const b = document.querySelector("body");
+  const n = document.querySelector("nav");
+  const buttonsize = 15;
+
+  // click on "toc-title" to show TOC to the side
+  document.querySelector("#toc-title").addEventListener("click", function(e) {
+    if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize) {
+      n.classList.toggle("navshown");
+    } else {
+      b.classList.toggle("paddingleft");
+      n.classList.toggle("navside");
+      n.classList.remove("navshown");
+    };
+  });
+
+  // by default show TOC in large window
+  window.onload = function() {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    };
+  };
+
+  // show/hide TOC on resize
+  window.onresize = function () {
+    if (window.innerWidth > 1000) {
+      b.classList.add("paddingleft");
+      n.classList.add("navside");
+    } else {
+      b.classList.remove("paddingleft");
+      n.classList.remove("navside");
+    };
+  };
+
+  // show/hide subsections
+  const allLis = document.querySelectorAll("nav li");
+
+  for (const li of allLis) {
+    li.addEventListener('click', function (e) {
+      // show/hide subsection if arrow is clicked
+      if (e.clientX < e.currentTarget.getBoundingClientRect().left + buttonsize
+        && e.clientY < e.currentTarget.getBoundingClientRect().top + buttonsize) {
+
+        li.classList.toggle('subShow');
+        e.preventDefault();
+      };
+
+      // hide full nav if clicked outside
+      if (e.currentTarget.getBoundingClientRect().left + 3*buttonsize < e.clientX) {
+        n.classList.remove("navshown");
+      };
+    });
+
+    li.classList.add('subShow');
+  };
+
+  // hide ToC if no overruling
+  document.querySelector("nav ul").classList.add("toc-invisible");
+
+  // show full nav on tab, hide full nav on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.which === 27) {
+      n.classList.remove("navshown");
+      e.preventDefault();
+    };
+    if (e.which === 9) {
+      n.classList.add("navshown");
+      e.preventDefault();
+    };
+  });
+
+  // insert key info
+  n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
+
+  // hide full nav when clicked outside
+  document.addEventListener("click", function(e) {
+    if (n.classList.contains("navshown")) {
+      if (!n.contains(e.target)) {
+        n.classList.remove("navshown");
+      };
+    };
+  });
+
+</script>
+</body>
+</html>
