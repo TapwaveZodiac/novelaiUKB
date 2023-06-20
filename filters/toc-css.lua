@@ -22,6 +22,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 css = [[
 <!-- CSS added by filter 'toc-css.lua' for TOC hovering to the side -->
 <style>
+<!-- TODO: try doing sometthing in px instead of cm to make it more device independent -->
 body {
   padding-left: 1.5cm;
   padding-right: 1cm;
@@ -153,7 +154,17 @@ script = [[
   };
 
   // show/hide TOC on resize
+  var sizeReal = window.innerWidth;
   window.onresize = function () {
+    var sizeNew = window.innerWidth;
+
+    // scrolling on mobile devices triggers resize, but we don't want to do anything
+    if (sizeNew == sizeReal) {
+      return;
+    };
+
+    sizeReal = sizeNew;
+
     if (window.innerWidth > 1000) {
       b.classList.add("paddingleft");
       n.classList.add("navside");
