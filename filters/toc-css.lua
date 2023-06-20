@@ -99,6 +99,9 @@ nav ul li ul  {
   transition: 0.5s;
   background-color: rgba(255, 255, 255, 0.95);
 }
+.navside > span {
+  visibility: visible;
+}
 .subShow > ul {
   visibility: visible;
   display: block;
@@ -107,6 +110,9 @@ nav ul li ul  {
 }
 .subShow > a:not(:only-child):before {
   content: " ▾ ";
+}
+.invisible {
+  visibility: hidden;
 }
 </style>
 ]]
@@ -187,9 +193,11 @@ script = [[
   });
 
   // insert key info
-  n.insertAdjacentHTML("beforeend", "<br/> \
-                                     <p>&nbsp;Press <kbd>Tab</kbd> to show extended width TOC.</p> \
-                                     <p>&nbsp;Presss <kbd>Esc</kbd> to go back to normal width.</p>");
+  n.insertAdjacentHTML("beforeend", "<span class='invisible'> \
+                                     <br/> \
+                                     <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
+                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     </span>");
 
   // hide full nav when clicked outside
   document.addEventListener("click", function(e) {
