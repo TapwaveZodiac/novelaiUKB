@@ -23,7 +23,7 @@ This guide offers a comprehensive beginner\'s overlook on using NovelAI.
 -   📰[Official Medium Blog](https://novelai.medium.com/)
 -   💲[Official Patreon](https://patreon.com/novelai)
 
--   **📱 [Installing NovelAI on Mobile](Installing_NovelAI_on_Mobile)**
+-   **📱 [Installing NovelAI on Mobile](Installing-NovelAI-on-Mobile)**
 -   **👩🏿‍🔬 [TravellingRobot\'s Research Wiki](https://github.com/TravellingRobot/NAI_Community_Research/wiki)**
 
 ***
