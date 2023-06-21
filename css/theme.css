@@ -137,7 +137,6 @@
 *, *:after, *:before {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -357,9 +356,6 @@ p, main > ul, main > ol, div.sourceCode, main > pre, img, table {
   margin-bottom: var(--line-height)
 }
 
-ul:not(.task-list) {
-  margin-left: var(--ul-indent-size);
-}
 ol {
   margin-left: var(--ol-indent-size);
 }
@@ -807,105 +803,34 @@ table > caption code {
   padding-bottom: var(--line-height);
 }
 
-nav#TOC {
-  margin-bottom: var(--line-height);
-  border-left: 1px solid var(--color-text-secondary);
-  padding-left: 1.5rem;
-}
-
-nav#TOC input {
-  display: none;
-}
-
 nav#TOC label {
   color: var(--color-link);
   cursor: pointer;
 }
 
-nav#TOC > ul {
-  display: none;
+nav#TOC code,
+nav#TOC a,
+nav#TOD a:link,
+nav#TOD a:visited {
+  color: var(--color-text-secondary);
 }
 
-nav#TOC > input:checked + ul {
-  display: block;
+header {
+  margin-bottom: var(--line-height);
 }
 
-@media print {
-  nav#TOC > input + ul {
-    display: block;
-  }
+.date.before-toc {
+  padding-bottom: initial;
 }
 
-/* Unfortunately, variables aren't in scope here.
- * 745px = --main-width
- * 52px = 2 * --line-height
- * 206px = side note min width
- */
-@media screen and (min-width: calc(745px + 2 * (52px + 206px + 52px) - 1px)) {
-  header {
-    margin-bottom: var(--line-height);
-  }
+nav#TOC code {
+  font-size: var(--nav-toc-code-font-size);
+}
 
-  .date.before-toc {
-    padding-bottom: initial;
-  }
-
-  nav#TOC {
-    /* Unset some styles for small screen width */
-    margin-bottom: initial;
-    border-left: initial;
-    padding-left: initial;
-
-    position: sticky;
-    margin-top: calc(var(--nav-toc-baseline-offset));
-    float: left;
-    top: var(--line-height);
-
-    font-size: var(--nav-toc-font-size);
-    color: var(--color-text-secondary);
-
-    margin-left: var(--line-height);
-
-    max-width: calc((100vw - var(--main-width)) / 2 - 2 * var(--line-height));
-    max-height: calc(100vh - 2 * var(--line-height));
-    overflow-y: auto;
-  }
-
-  nav#TOC label {
-    display: none;
-  }
-
-  nav#TOC ul {
-    display: block;
-    list-style: none;
-    margin-left: var(--nav-toc-indent);
-  }
-  nav#TOC > ul {
-    margin-left: 0;
-  }
-
-  nav#TOC li {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  nav#TOC code {
-    font-size: var(--nav-toc-code-font-size);
-  }
-
-  nav#TOC code,
-  nav#TOC a,
-  nav#TOD a:link,
-  nav#TOD a:visited {
-    color: var(--color-text-secondary);
-  }
-
-  nav#TOC a:hover,
-  nav#TOC a:hover code {
-    text-decoration: none;
-    color: var(--color-link);
-  }
+nav#TOC a:hover,
+nav#TOC a:hover code {
+  text-decoration: none;
+  color: var(--color-link);
 }
 
 /* }}} */
@@ -989,15 +914,6 @@ nav#TOC > input:checked + ul {
  * 206px = side note min width
  */
 @media screen and (min-width: calc(52px + 745px + 52px + 206px + 52px)) and (max-width: calc(745px + 2 * (52px + 206px + 52px) - 1px)) {
-  header,
-  nav#TOC,
-  main,
-  footer {
-    margin-left: calc(2 * var(--line-height));
-    max-width: var(--main-width);
-    margin-right: auto;
-  }
-
   .sidenote,
   .marginnote {
     --margin-left: calc(2 * var(--line-height));
@@ -1055,15 +971,6 @@ nav#TOC > input:checked + ul {
  * 169px = side note min width narrow
  */
 @media screen and (min-width: calc(26px + 550px + 26px + 169px + 26px)) and (max-width: calc(52px + 745px + 52px + 206px + 52px - 1px)) {
-  header,
-  nav#TOC,
-  main,
-  footer {
-    margin-left: var(--line-height);
-    max-width: calc(max(var(--main-width-narrow), 100vw - (3 * var(--line-height)) - var(--side-note-max-width)));
-    margin-right: auto;
-  }
-
   .sidenote,
   .marginnote {
     --margin-left: var(--line-height);
@@ -1101,26 +1008,9 @@ nav#TOC > input:checked + ul {
  * See calculations above.
  */
 @media screen and (max-width: calc(26px + 550px + 26px + 169px + 26px - 1px)) {
-  header,
-  nav#TOC,
-  main,
-  footer {
-    margin-left: var(--line-height);
-    margin-right: var(--line-height);
-  }
-
   .sidenote,
   .marginnote {
     display: none;
-  }
-
-  .margin-toggle:checked + .sidenote,
-  .margin-toggle:checked + .marginnote {
-    display: block;
-    float: left;
-    clear: both;
-    width: 100%;
-    max-width: 100%;
   }
 
   .wide {
@@ -1213,14 +1103,6 @@ nav#TOC > input:checked + ul {
     padding-top: 0;
     /* To make room for line numbers in left margin. */
     padding-left: 0.25in;
-  }
-
-  header,
-  nav#TOC,
-  main,
-  footer {
-    width: 5.25in;
-    margin-right: auto;
   }
 
   .sidenote,

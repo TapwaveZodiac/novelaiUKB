@@ -31,7 +31,6 @@ body {
 nav {
   width: 1cm;
   margin-left: -1.5cm;
-  font-size: smaller;
   color: grey;
   transition: 0.5s;
   float: left;
@@ -57,23 +56,24 @@ nav h2:before {
 nav h2:after {
   content: " ◂";
 }
+nav > ul {
+  padding-left: 1em;
+}
 nav li {
   margin-left: 1em;
+  padding-left: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+nav ul {
+  padding-left: 1em;
+  margin-left: 0;
+}
 nav li > a:not(:only-child):before {
   content: "▸ ";
 }
-nav li > a:only-child {
-  margin-left: 0.75em;
-}
-nav li li {
-  margin-left: 1em;
-}
 nav li li li {
-  margin-left: 0.5em;
   font-size: smaller;
 }
 nav ul li ul  {
@@ -84,13 +84,13 @@ nav ul li ul  {
   transition: 0.5s;
 }
 .paddingleft {
-  padding-left: 9cm;
+  padding-left: 11cm;
   transition: 0.5s;
 }
 .navside {
-  width: 7cm;
-  margin-left: -8.5cm;
-  padding-right: 1cm;
+  width: 10cm;
+  margin-left: -10.5cm;
+  padding-right: 1em;
   transition: 0.5s;
 }
 .navside h2:after {
@@ -99,13 +99,12 @@ nav ul li ul  {
 .navshown {
   width: 50%;
   transition: 0.5s;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(16, 13, 13, 0.95);
 }
 .subShow > ul {
   visibility: visible;
   display: block;
   transition: 0.5s;
-  margin-left: -1em;
 }
 .subShow > a:not(:only-child):before {
   content: " ▾ ";
