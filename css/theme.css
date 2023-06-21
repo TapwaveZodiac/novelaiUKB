@@ -98,7 +98,7 @@
 
   /* --- Layout --- */
 
-  --main-width: 745px;
+  --main-width: 745px * 2;
   /* The name doesn't indicate it, but this variable actually specifies an
    * effective minimum width. (It didn't previously behave this way, but the
    * change to do so was made in a backwards-compatible way, so the variable
