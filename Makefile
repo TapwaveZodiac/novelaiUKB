@@ -1,6 +1,7 @@
 COMMAND = pandoc
 FILTERS = $(foreach filter,$(wildcard filters/*.lua),--lua-filter $(filter))
-ARGS = --from gfm --to html --standalone $(FILTERS) --toc
+CSS = $(foreach css,$(wildcard css/*.css),--metadata css=$(css))
+ARGS = --from gfm --to html5+smart --standalone $(FILTERS) $(CSS) --toc --template template
 SRC_DIR = docs
 BUILD_DIR = build
 
