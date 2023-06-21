@@ -5,13 +5,15 @@ Welcome to the **Unofficial *NovelAI* Knowledge Base**.
 While some content is reviewed by developers, this is NOT an official resource.
 *NovelAI* is not accountable for any content on this site.
 
-# **💡[Quickstart](Quickstart)**
+# **💡 [Quickstart](Quickstart)**
 
 This guide offers a comprehensive beginner\'s overlook on using NovelAI.
 
-### **[Glossary](Glossary)**
+## **🔠 [Glossary](Glossary)**
 
-## 🔗Useful Links & Resources
+
+
+## 🔗 Useful Links & Resources
 
 -   🌎[Official Website](https://novelai.net/)
 
