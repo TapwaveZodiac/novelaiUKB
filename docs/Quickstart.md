@@ -168,7 +168,7 @@ Here is an example:
 Ja'arkael is a male night elf, his rival is Yaenaen.
 Yaenaen is a female human.
 Ja'arkael and Yaenaen want an artifact from the dungeon.
-***```
+```
 
 #### Lorebook
 
