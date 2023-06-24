@@ -8,7 +8,10 @@ BUILD_DIR = build
 all: $(patsubst $(SRC_DIR)/%.md,$(BUILD_DIR)/%.html,$(wildcard $(SRC_DIR)/*.md)) Makefile
 
 $(BUILD_DIR)/%.html: $(SRC_DIR)/%.md | build_dir
-	$(COMMAND) $(ARGS) --metadata title="$(subst -, ,$(patsubst $(SRC_DIR)/%.md,%,$<))" $< --output $@
+	$(COMMAND) $(ARGS) \
+	--metadata title="$(subst -, ,$(patsubst $(SRC_DIR)/%.md,%,$<))" \
+	--metadata date=$(shell git log -n 1 --pretty=format:%ct -- $<) \
+	$< --output $@
 
 build_dir:
 	@mkdir $(BUILD_DIR)
