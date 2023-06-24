@@ -15,4 +15,4 @@ To contibute to the repository, you can submit a Pull Request. The relevant part
 * [docs/](docs/): where the content is located, with one HTML page per Markdown file
 * [filters/](filters/): where the lua filters for the Pandoc generation are located
 * [css/](css/): where the CSS stylesheets are located
-* [template.html5](template): the template used for the Pandoc generation
+* [template](template.html5): the template used for the Pandoc generation
