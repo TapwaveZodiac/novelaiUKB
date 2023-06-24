@@ -1,7 +1,8 @@
 function convert_timestamp(meta)
   local timestamp = meta.date
-  local date = os.date("%d/%m/%Y %H:%M:%S", timestamp)
-  meta.date = "Updated last " .. date
+  local day = os.date("%d/%m/%Y", timestamp)
+  local hour = os.date("%H:%M", timestamp)
+  meta.date = "Last updated " .. day .. " at " .. hour
 
   return meta
 end
