@@ -14,7 +14,7 @@ Rather than ban tokens outright, this is more of a direction to produce specific
 
 Bias is collected in **Groups** with a certain **Bias Level**, which is applied to all phrases and tokens put in the **Group**.
 
-To create a new **Bias Group**, click the âž• button. The currently selected group can be deleted by clicking ðŸ—‘ï¸.
+To create a new **Bias Group**, click the ➕ button. The currently selected group can be deleted by clicking 🗑️.
 
 To enter a new phrase or token in the Group, enter it in the text box and press Enter.
 
