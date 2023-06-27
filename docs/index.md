@@ -128,6 +128,8 @@ NovelAI before reading them.**
 
 ### **👨‍🏫 [End of Input Tips](End-of-Input-Tips)**
 
+### **🐇 [The Rabbit Hole](The-Rabbit-Hole)**
+
 ### **✒️ [Narrative Example Tutorial](Narrative-Example-Tutorial)** (Outdated)
 
 ### **🖊️ [Directing the Narrative](Directing-the-Narrative)**
