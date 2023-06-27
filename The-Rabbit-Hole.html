@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc-markdown-css-theme" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Directing AI Generation</title>
+  <title>The Rabbit Hole</title>
   <style>
   :root {
     --solarized-base03:  #002b36;
@@ -1313,7 +1313,7 @@
 <body>
 
 <header>
-<h1 class="title">Directing AI Generation</h1>
+<h1 class="title">The Rabbit Hole</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 27/06/2023 at 20:00">Last updated 27/06/2023 at 20:00</time></p>
 </blockquote>
@@ -1322,262 +1322,97 @@
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#tags--metadata">Tags &amp; Metadata</a>
+    <li><a href="#setting-up-a-story">Setting Up a Story</a>
     <ul>
-    <li><a href="#categories">Categories</a></li>
-    <li><a href="#layering">Layering</a></li>
+    <li><a href="#separating-data-and-story">Separating Data and Story</a></li>
+    <li><a href="#setting-up-biases">Setting up Biases</a></li>
     </ul></li>
-    <li><a href="#tag-discovery">Tag Discovery</a>
+    <li><a href="#stage-directions">Stage Directions</a>
     <ul>
-    <li><a href="#formatting">Formatting</a></li>
-    <li><a href="#tags-associated-with-an-author">Tags Associated with an Author</a></li>
-    <li><a href="#authors-associated-with-a-tag">Authors Associated with a Tag</a></li>
-    <li><a href="#tag-starting-a-prompt">Tag-starting a Prompt</a></li>
-    <li><a href="#give-me-a-story-any-story">Give me a Story, any Story</a></li>
-    <li><a href="#seeded-prompt-generation">Seeded Prompt Generation</a></li>
+    <li><a href="#style-and-writing-type-directions">Style and Writing Type Directions</a></li>
+    <li><a href="#setting-directions">Setting Directions</a></li>
+    <li><a href="#chapter-headings">Chapter Headings</a></li>
     </ul></li>
-    <li><a href="#tips">Tips</a></li>
-    <li><a href="#scaffolding">Scaffolding</a></li>
+    <li><a href="#getting-feedback-from-the-model">Getting Feedback from the Model</a></li>
     </ul>
 </nav>
 
 <main>
-<p><strong>This section is based on community findings using Sigurd V3. This is based on outdated information and mostly kept as a historical snapshot. Techniques shown here can apply to newer models but may have unexpected results..</strong></p>
-<p>Thanks go to <strong>Cass</strong> for putting together the initial draft, <strong>OccultSage</strong> for formatting and enriching this, <strong>Kalmarr</strong> and <strong>TravelingRobot</strong> for experimentation, and the folks of #community-research who went through hundred of permutations in the name of research!</p>
+<p>This page contains <strong>community-researched</strong> content and aims to provide in-depth tips to improve your experience with the AI.</p>
+<p>This is an amalgamation of general use tips for the Clio model. Consider this a vulgarization of advanced theorycrafting and less a "best practice" guide.</p>
+<p>There are no best practices than the ones you are comfortable with.</p>
+<h2 id="setting-up-a-story">Setting Up a Story</h2>
+<p>Many people tend to remark that a model "doesn't generate like they want to" and then present a very short prompt, or a lack of biases, or a lack of proper codification of the style they desire.</p>
+<p>Before you start writing, ask yourself the following: <strong>Do I only want story text, or do I want to use additional "data" elements to support generation?</strong></p>
+<h3 id="separating-data-and-story">Separating Data and Story</h3>
+<p>As a rule of thumb, Data (i.e Text Injections such as the <em>Lorebook, Memory and Author's Note</em>) should mix with your story text as little as possible. Interference between "Data" text and "Story" text will lead to degraded story output.</p>
+<p>The first element to consider is if you are using the <strong>Lorebook</strong> or not. This will decide how your <strong>Memory</strong> will look like.</p>
+<p>If you <em>are</em> using lorebook entries, then the <strong>default insertion settings</strong> will put <strong>Memory</strong> below all <strong>Lorebook</strong> entries. In that case, your <strong>Memory</strong> should look like this:</p>
 <hr />
-<h2 id="tags--metadata">Tags &amp; Metadata</h2>
-<p>The finetune team has done a lot of work tagging the NovelAI model's finetune data with metadata such as <em>Genre</em>, <em>Author</em>, or <em>Tags</em>. Additionally, the trained model itself has emergent properties that strongly associates certain words and styles, making them useful as metadata tags.</p>
-<p>These tags can have a profound influence on your stories if included in the <strong>Author's Note section</strong>, or in the <strong>prompt itself</strong>.</p>
-<p>The people in #community-research on the Discord server have been experimenting with various formats. The below list are <strong>attribute-tag pairings</strong> that can be used to generate prompts.</p>
-<p>Please note that <strong>Capitalization: Matters!</strong> As does whether there is a space <em>before</em> the closing ] <em>or not</em>. The <strong>ordering of tags</strong> within an attribute can also make a profound difference!</p>
-<p>Try various combinations! Some of us have discovered that <strong>including prose descriptions associated with the attributes</strong> have worked better.</p>
-<p>These tags work best with either <em>some context</em> already present in the prompt, or <em>with narrative direction</em>. <em>Capitalization</em>, <em>Bracket use</em>, <em>Spacing</em>, and <em>Order</em> can all make a small or large difference.</p>
-<h3 id="categories">Categories</h3>
-<ul>
-<li><p><code>[ Genre: Word ]</code> (whether or not it is capitalized can have an influence)</p></li>
-<li><p><code>[ Tags: word, word, word ]</code> (flexible, usually lowercase, adding a space after a word may help)</p></li>
-<li><p><code>[ Author: Name]</code> or <code>[ Author: Name ]</code> (single author may work better)</p></li>
-<li><p><code>[ cast: Name ]</code> (for a list of characters)</p></li>
-<li><p><code>[ setting: word ]</code> (very flexible, try various capitalization and spacing,)</p></li>
-<li><p><code>[ Style: word, word ]</code></p></li>
-<li><p><code>[ tone: word, word ]</code></p></li>
-<li><p><code>[ place: word ]</code> or <code>[ Location: word ]</code></p></li>
-<li><p><code>[ theme: word ]</code></p></li>
-<li><p><code>[ pairings: Name 1 / Name 2 ]</code> (flexible, can use Name 1/Name 2 or switch order)</p></li>
-<li><p><code>[ Do: action ]</code></p></li>
-</ul>
-<h4 id="examples">Examples</h4>
-<pre><code>[ Style: poetic, descriptive, sensual, deviant ]
+<pre><code>[ Author: Blah mc Blashson; Title: Heckin\&#39; Creativity;
+Tags: sicknasty tutti-frutti prose; Genre: Epic \]
 
-[ Genre: Pulp, pulp ]
-
-[ Author: Sylvia Day ]
-</code></pre>
-<pre><code>[ Style: Verbose, epic ]
-
-[ Tags: combat, talking animals, animal protagonist ]
-
-[ Do: War between geese and rats breaks out. ]
-</code></pre>
-<pre><code>[ Style: poetic, descriptive, romantic ]
-
-[ Author: Sylvia Day ]
-
-- A boy named Brian.
-
-- A girl named Ashley.
-
-- A tree in the middle of the land.
-
-- Ashley and Brian are neighbors.
-
-- Brian has a crush on Ashley.
-
-[ Tell me a story about Brian meeting Ashley under the tree and
-confessing his love for her. ] 
+ \*\*\*
 </code></pre>
 <hr />
-<h3 id="layering">Layering</h3>
-<p>Layering categories on each line may produce a stronger effect. You can also use layering to combine two different Genres. You can swap them too!</p>
-<p><code>[ Genre: Cyberpunk ]</code> <code>[ Genre: Space Western ]</code></p>
-<ul>
-<li>When layering, it seems the AI will prioritize the bottom one (most of the time).</li>
-</ul>
+<p>If you are writing something that isn't prose, (such as a poem, or a stat block, etc), you can substitute the <strong>Dinkus (***)</strong> with a <strong>Separator (----)</strong>.</p>
+<p>If you aren't using the lorebook, you can simply put the ATTG block in memory <em>without a dinkus</em>.</p>
+<h3 id="setting-up-biases">Setting up Biases</h3>
+<p>Generally, you want to keep your biases minimal, and use them for very precise changes to things that you cannot control easily. <strong>It is always better to lead the AI by example in order to preserve its creativity</strong>. However, biases can be useful for prompting the AI until it "gets" the style you desire.</p>
+<p>It's easy to overdo biases and damage the model's creativity. What you should focus on are mostly punctuation symbols.</p>
+<h4 id="n">\n</h4>
+<p>Backdash-n is the "newline" token. Lightly downbiasing it is usually the best way of forcing the model to output longer paragraphs early on. Afterwards, you can turn it off.</p>
+<h4 id="-------endoftext">***, ----, ⁂, <code>&lt;endoftext&gt;</code></h4>
+<p>Downbiasing those is generally not needed. If those show up regularly, there is a problem with your preset, or your prompt is too short.</p>
+<h4 id="space">(space)"</h4>
+<p>Most dialogue begins with a space-quote token. Downbiasing it decreases the likelihood of dialogue appearing. Upbiasing it will lead to more rapidfire dialogue.</p>
+<h2 id="stage-directions">Stage Directions</h2>
+<p>Clio is smart enough to recognize punctual <strong>"Stage Directions"</strong> much more than Sigurd, Euterpe and Krake could in the past. Nonetheless, those should have a fixed position in the text, and it's better you do not use the Author's Note for them.</p>
+<p>You can put those in your memory when starting as well. Keep in mind that if the Direction in your <strong>Memory</strong> and one in your <strong>Story Text</strong> are conflicting, this can cause issues. Make sure you remove Directions that are not relevant anymore.</p>
+<h3 id="style-and-writing-type-directions">Style and Writing Type Directions</h3>
+<p>Shifting the style or type of document that will be generated can be achieved using the following:</p>
 <hr />
-<ul>
-<li>Genres may get stronger if you layer them.</li>
-</ul>
+<p><code>[ style: poem ]</code></p>
 <hr />
-<ul>
-<li>Using a term on multiple categories may have a stronger effect.</li>
-</ul>
+<p>Add a linebreak afterwards, and the writing should shift to the one specified. Keep in mind that this is an <em>emergent feature</em>: Not all styles might work, and some that were not trained for can work for some reason. Here are some that were suggested:</p>
 <hr />
-<h2 id="tag-discovery">Tag Discovery</h2>
-<p>The most frequently asked question was, "How do I discover what tags, genres, and authors there are?" This set us out on another journey of discovery.</p>
-<p>All testing was done with Sigurd v3 on <strong>default settings</strong>, with <strong>Max Output Length set to 60 tokens</strong>. Sigurd v3 is where a lot of the finetune team's tagging and cleanup work happened.</p>
-<h3 id="formatting">Formatting</h3>
-<p>The most important thing to do is: <strong>enable bracket generation</strong> -- if you have this disabled, it will throw out the highest scoring alternates, and go for the highest score without brackets. You should also <strong>disable trimming incomplete sentences</strong>.</p>
-<p>The metadata that the finetune team tagged is of the following format:</p>
-<p><code>[ Author: ***; Title: ***; Tags: ***, ***, ***; Genre: ***, *** ]</code></p>
-<p>If you write your prompt in the above format, you will have very powerful results. Tags are almost always <strong>lower-case</strong>, and <em>case matters</em>! <em>The semicolon ; delimiter is important, as is spacing.</em></p>
-<h3 id="tags-associated-with-an-author">Tags Associated with an Author</h3>
-<p>As an example, you want to discover the tags associated with an Author. You should write:</p>
-<p><code>[ Author: CJ Cherryh; Tags:</code></p>
-<p>It will result in something like the following:</p>
-<pre><code>[ Author: CJ Cherryh; Tags: aliens, gender roles,
-military, space opera, time travel ]
+<pre><code>text adventure, chat, lyrics, prose, blog post, actual
+play, review, email, creepypasta
 
-The ship was small. It had been built to carry a crew of five and a
-cargo hold that could be filled with enough supplies for two months in
-the wilderness or three weeks on an expedition. That was how long it
-would take ...
-</code></pre>
-<h3 id="authors-associated-with-a-tag">Authors Associated with a Tag</h3>
-<p>If you want to know what authors are associated with a tag:</p>
-<p><code>[ Tags: space opera, Authors:</code></p>
-<p>Resulted in the following:</p>
-<p><code>[ Tags: space opera, Authors: David Brin and Jack McDevitt ]</code></p>
-<h3 id="tag-starting-a-prompt">Tag-starting a Prompt</h3>
-<p>If you start a story prompt with all the metadata attributes, you will have a very powerful kick-start!</p>
-<p><code>[ Author: David Brin; Tags: space opera ]</code></p>
-<p>Generated the following:</p>
-<p><code>The first time I saw the sky, it was blue. Not a deep azure like that of Earth's oceans or an oceanic midnight blue, but a pale, delicate shade of cobalt. It was so beautiful and pristine that my breath caught in wonder at its color and clarity. The sun above me seemed to be made from light rather than heat. But this wasn't the real world. This was one of those virtual worlds where people could go exploring and see things they'd never seen before. I had been flying through space for hours now, searching for something on a map. My ...</code></p>
-<hr />
-<h3 id="give-me-a-story-any-story">Give me a Story, any Story</h3>
-<p>If you put the following: <code>[ Author: ; Tags: ; Genre: ]</code> in a prompt all on its own, it will generate surprisingly coherent stories from any random genre.</p>
-<pre><code>[ Author: ; Tags: ; Genre: ]
+first person, second person, third person
 
-The sun was setting. The wind had died down, and the only sounds were of
-birdsong from the trees around them. They sat on a hill overlooking the
-village below; it looked like an idyllic scene to her. It wasn&#39;t until
-she saw the first person come out of the tavern that she realized just
-how wrong things could be. 
-</code></pre>
-<pre><code>[ Author: ; Tags: ; Genre: ]
-
-&quot;You&#39;re going to be late.&quot; The words were spoken in a voice that was
-both familiar and yet completely different. It had been so long since
-I&#39;d heard it, but the tone of the voice itself hadn&#39;t changed at all.
-The same words were being said by my little sister as they always were
-when she scolded me for something.
-
-My name is Haruhi Suzumiya.
-</code></pre>
-<h4 id="further-refinement">Further Refinement</h4>
-<p>You can fill the Author, Tags, or Genre: variables individually, and leave the other ones blank.</p>
-<p><strong>Author:</strong></p>
-<pre><code>[ Author: Issac Asimov; Tags: ; Genre: ]
-
-The three men and one woman sat around the table in a small conference
-room. The walls were covered with glass, but it was too dark to see
-anything through them. The only light came from several small lamps on
-the table. One of the women wore white gloves that reached almost to her
-elbows. She had long blonde hair pulled back into a ponytail. Her eyes
-were blue-gray like sapphires. A large diamond glittered at her
-throat.
-</code></pre>
-<p><strong>Tags:</strong></p>
-<pre><code>[ Author: ; Tags: space opera; Genre: ]
-
-The Rask were an alien race that had invaded the galaxy from beyond
-their own star system. The invasion of Earth by a vast armada of these
-strange, insectile creatures was one of the great turning points in
-human history and would forever change humanity&#39;s relationship with its
-neighbors. Nowadays it is commonly believed that the aliens&#39; intentions
-were benign, but at the time there was widespread panic on both sides of
-the conflict.
-</code></pre>
-<p><strong>Genre:</strong></p>
-<pre><code>[ Author: ; Tags: ; Genre: Sci-fi ]
-
-&quot;This is the future, right?&quot; I asked. &quot;The one where everything&#39;s
-powered by magic? Where we have flying cars and robots that look like
-giant insects?&quot; &quot;That&#39;s correct,&quot; said the robot as it walked past
-us. It was a lot smaller than I expected, but still bigger than me or my
-sister. Its body was covered in shiny metal plates with two arms
-sticking out from its sides.
-</code></pre>
-<p><strong>Author, Tags, and Genre:</strong></p>
-<pre><code>[ Author: Issac Asimov; Tags: space opera; Genre: Sci-fi
-]
-
-&quot;You&#39;re too young to be here.&quot; The man&#39;s voice was a deep rumble.
-&quot;I don&#39;t allow children in the library.&quot; He stood, his face hidden
-behind an opaque visor that left only two slits for eyes and mouth. His
-hands were huge---the size of hams---and covered with thick black
-gloves. The child shrank back from him, but did not run away. She had
-been taught never to show fear or weakness before anyone bigger than
-herself.
-</code></pre>
-<h4 id="other-attributes">Other Attributes</h4>
-<p>The consensus in #community-research is not as conclusive here, but evidence suggests that any additional metadata that you want to add should be in the same [] as the Author, Tags, and Genre attributes.</p>
-<pre><code> [ Author: ; Tags: ; Genre: Sci-fi; style: poetic,
-descriptive ]
-
-The last of the three moons rose over a vast plain. A thousand miles in
-width and stretching to infinity, it was a landscape devoid of life or
-even vegetation. Yet there were signs that something had once lived
-here---the remains of ancient cities scattered across its surface like
-broken toys. The only thing moving on this barren land was the
-wind.
+simple, archaic, SFW
 </code></pre>
 <hr />
-<h3 id="seeded-prompt-generation">Seeded Prompt Generation</h3>
-<p>You can use a random string of numbers and characters to make a "<strong>seed</strong>". The AI will use that to create a prompt. Setting <strong>Top-K Sampling</strong> to 1 (and disabling others), you will be able to see the exact same answer on Sig v3 using the same seed.</p>
-<pre><code>[ d7893qhf37hg345h7g ]
-
-&quot;I&#39;m sorry, but I can&#39;t do that,&quot; she said. &quot;You&#39;re not a member
-of the family.&quot;
+<h3 id="setting-directions">Setting Directions</h3>
+<p>Changing the current location, time, or POV can be done using a stage direction. Here are some examples:</p>
+<p><strong>Time</strong></p>
+<hr />
+<p><code>[ 1990 ], [ 7am ], [ 3 hours later ]</code></p>
+<hr />
+<p><strong>Place</strong></p>
+<hr />
+<p><code>[ London ], [ Deep underground ], [ Meanwhile, in Buckingham Palace ]</code></p>
+<hr />
+<p><strong>POV</strong></p>
+<hr />
+<p><code>[ Tom ], [ Jack's POV ], [ Jenny's Thoughts ]</code></p>
+<hr />
+<h3 id="chapter-headings">Chapter Headings</h3>
+<p>Chapter headings can be used as stage instructions to steer generation according to the underlying concepts of the title.</p>
+<hr />
+<p><code>[ The Ambush ]</code></p>
+<hr />
+<h2 id="getting-feedback-from-the-model">Getting Feedback from the Model</h2>
+<p>You can request different manners of feedback from the AI by inputting a <strong>Dinkus</strong> and specific headers.</p>
+<p>For example, you can request a summary of what happened by doing the following:</p>
+<hr />
+<pre><code>Summary:
 </code></pre>
-<p>Your seed can also be comprised of words, or even a request, although <strong>this will severely reduce the scope of randomness.</strong></p>
-<p><code>[ artificialmechanicalostriches ]</code></p>
-<p><code>[ Generate fictional planet using seed: h1f45a688j9kk ]</code></p>
 <hr />
-<h2 id="tips">Tips</h2>
-<ul>
-<li>The big 3 elements are <strong>Genre</strong>, <strong>Tags</strong>, and <strong>Author</strong>. They tend to work better when capitalized (e.g. Genre).</li>
-</ul>
-<hr />
-<ul>
-<li>The other categories tend to work better <strong>lowercase</strong>.</li>
-</ul>
-<hr />
-<ul>
-<li>The "Words" have a different effect depending on if they are <strong>capitalized</strong> or if there's a <strong>space after them</strong>.</li>
-</ul>
-<hr />
-<ul>
-<li>Most categories can have more than one tag, separated by <strong>commas</strong> or <strong>semicolons</strong>.</li>
-</ul>
-<hr />
-<ul>
-<li>Using too many tags on one line may dilute their effect.</li>
-</ul>
-<hr />
-<ul>
-<li>You can use blank tags too! (e.g. [ Genre: ]).</li>
-</ul>
-<hr />
-<h2 id="scaffolding">Scaffolding</h2>
-<p>Scaffolding is the mystical art of organizing things depending on how relevant they are to what you need <em>right now.</em></p>
-<p>Conceptually, it is very simple. Imagine you have a queue. Every entry takes a ticket and gets in line. The first in line is at the bottom of the context window, then number 1 on top of it, number 2 on top of that, so on and so forth.</p>
-<p>All of these settings are set through the <a href="Context.html#context-viewer">Context Viewer</a> and <a href="Lorebook.html">Lorebook</a>.</p>
-<p>This is your <strong>Insertion Order</strong> setting. Story is <strong>0</strong>.</p>
-<p>What you want to do, is that anything that is very important should be as close to 0 as possible.</p>
-<p>In order to make sure you still have room for the story, however, you'll need to make sure you have a certain amount of tokens reserved. By default, the story has <strong>512</strong> tokens. That is half the window on Tablet tier. If you are on Scroll or Opus, you can easily raise that to <strong>1024</strong>.</p>
-<p>This is your <strong>Reserved Tokens</strong> setting. You only need to edit these two settings for an easy scaffold.</p>
-<p>In order to set it up, create <strong>Categories</strong> in your lorebook. Each Category should have its <strong>Subcontext</strong> enabled. The settings you will edit are the settings of the <strong>Subcontext</strong> only.</p>
-<p>Here is an example which <em>Bunray</em> uses for <em>Akyuu's Knowledge for NovelAI</em>.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/ca19fb0e-20bd-4e33-9f64-daa6b6eb1bfc" alt="image" /></p>
-<p><strong>Note:</strong> This scaffold has 1612 tokens allocated. If you are on tablet tier, reduce the categories' reserved tokens to 100 (with 50 for low priority categories).</p>
-<p>This will position everything in a stack, just like in the table. Things that should be close together are kept together.</p>
-<p>The <strong>Prefix</strong> field is set to <strong>[</strong> and the <strong>Suffix</strong> field is set to <strong>]n</strong>. This will effectively "encase" all categories in a bracket block, and separate them with a newline.</p>
-<p>You can add <code>***</code> to the suffix of the <strong>Objects</strong> block to reinforce the separation between data and story, but this usually isn't necessary.</p>
-<p>OnePunchVAM offered the following sheet. Insertion order and position columns are flipped, to be consistent with NovelAI's.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f41b0d19-de6f-46f2-927a-abccc2e4ddde" alt="image" /></p>
-<p>This means that your story will be limited to 512 tokens, and the rest of the context will be filled with as much information as possible. <strong>All Forced Active entries will be inserted as ideally as possible.</strong> After that, it will be following the insertion order, going from the closest to 0, to the furthest from 0.</p>
-<p>You can adjust that scaffolding to your liking. If you don't need to define certain things, simply spend the token budget on others until you reach 2048-200 total tokens, or 1024-100 total tokens. (The context window is 1900 tokens on Krake.)</p>
-<p>Kalmarr offers several Scaffolding examples and more indepth information on his <a href="https://github.com/Kalmarr120/Kalmarr_NAI_Public/wiki/Format--and-Customization-Research#lorebook-settings">Research Page.</a></p>
+<p>You can also prompt this with:</p>
+<pre><code>The Story so Far:`&lt;/code&gt;`
+</code></pre>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
