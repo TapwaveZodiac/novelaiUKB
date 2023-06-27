@@ -3,7 +3,7 @@ The Context is effectively the AI's memory. Understanding how it works will grea
 # Context Window
 
 The context window is comprised:
-- On older models (Calliope, Sigurd, Euterpe, Krake, Snek, Genji) of **2048** Tokens, or **1024** if you are subscribed under the Tablet tier.
+- On older models (Sigurd, Euterpe, Krake, Snek, Genji) of **2048** Tokens, or **1024** if you are subscribed under the Tablet tier.
 - On Clio, of **3072** Tokens for Tablet, **6144** tokens for Scroll and **8192** for Opus.
 
 *View Last Context* at the top of the **Advanced** tab of the settings panel opens a window which displays all the tokens sent to the AI for the previous generation. This helps you check if anything you feel is important was omitted. *View Current Context* does the same, but for the input you're about to send.
