@@ -2,25 +2,25 @@ This page contains **community-researched** content and aims to provide
 in-depth tips to improve your experience with the AI.
 
 This is an amalgamation of general use tips for the Clio model. Consider
-this a vulgarization of advanced theorycrafting and less a \"best
-practice\" guide.
+this a vulgarization of advanced theorycrafting and less a "best
+practice" guide.
 
 There are no best practices than the ones you are comfortable with.
 
 ## Setting Up a Story
-Many people tend to remark that a model \"doesn\'t generate like they
-want to\" and then present a very short prompt, or a lack of biases, or
+Many people tend to remark that a model "doesn't generate like they
+want to" and then present a very short prompt, or a lack of biases, or
 a lack of proper codification of the style they desire.
 
 Before you start writing, ask yourself the following: **Do I only want
-story text, or do I want to use additional \"data\" elements to support
+story text, or do I want to use additional "data" elements to support
 generation?**
 
 ### Separating Data and Story
 
 As a rule of thumb, Data (i.e Text Injections such as the *Lorebook,
-Memory and Author\'s Note*) should mix with your story text as little as
-possible. Interference between \"Data\" text and \"Story\" text will
+Memory and Author's Note*) should mix with your story text as little as
+possible. Interference between "Data" text and "Story" text will
 lead to degraded story output.
 
 The first element to consider is if you are using the **Lorebook** or
@@ -32,18 +32,18 @@ case, your **Memory** should look like this:
 
 ***
 ```
-[ Author: Blah mc Blashson; Title: Heckin\' Creativity;
-Tags: sicknasty tutti-frutti prose; Genre: Epic \]
+[ Author: Blah mc Blashson; Title: Heckin' Creativity;
+Tags: sicknasty tutti-frutti prose; Genre: Epic ]
 
- \*\*\*
+ ***
 ```
 
 ***
-If you are writing something that isn\'t prose, (such as a poem, or a
-stat block, etc), you can substitute the **Dinkus (\*\*\*)** with a
-**Separator (\-\-\--)**.
+If you are writing something that isn't prose, (such as a poem, or a
+stat block, etc), you can substitute the **Dinkus (***)** with a
+**Separator (----)**.
 
-If you aren\'t using the lorebook, you can simply put the ATTG block in
+If you aren't using the lorebook, you can simply put the ATTG block in
 memory *without a dinkus*.
 
 ### Setting up Biases
@@ -51,19 +51,19 @@ memory *without a dinkus*.
 Generally, you want to keep your biases minimal, and use them for very
 precise changes to things that you cannot control easily. **It is always
 better to lead the AI by example in order to preserve its creativity**.
-However, biases can be useful for prompting the AI until it \"gets\" the
+However, biases can be useful for prompting the AI until it "gets" the
 style you desire.
 
-It\'s easy to overdo biases and damage the model\'s creativity. What you
+It's easy to overdo biases and damage the model's creativity. What you
 should focus on are mostly punctuation symbols.
 
-#### \\n
+#### n
 
-Backdash-n is the \"newline\" token. Lightly downbiasing it is usually
+Backdash-n is the "newline" token. Lightly downbiasing it is usually
 the best way of forcing the model to output longer paragraphs early on.
 Afterwards, you can turn it off.
 
-#### \*\*\*, \-\-\--, ⁂, `<endoftext>`
+#### ***, ----, ⁂, `<endoftext>`
 
 Downbiasing those is generally not needed. If those show up regularly,
 there is a problem with your preset, or your prompt is too short.
@@ -76,10 +76,10 @@ rapidfire dialogue.
 
 ## Stage Directions
 
-Clio is smart enough to recognize punctual **\"Stage Directions\"** much
+Clio is smart enough to recognize punctual **"Stage Directions"** much
 more than Sigurd, Euterpe and Krake could in the past. Nonetheless,
-those should have a fixed position in the text, and it\'s better you do
-not use the Author\'s Note for them.
+those should have a fixed position in the text, and it's better you do
+not use the Author's Note for them.
 
 You can put those in your memory when starting as well. Keep in mind
 that if the Direction in your **Memory** and one in your **Story Text**
@@ -160,5 +160,5 @@ Summary:
 You can also prompt this with:
 
 ```
-The Story so Far:`</code>`
+The Story so Far:
 ```
