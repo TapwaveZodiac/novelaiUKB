@@ -83,9 +83,9 @@ won't.)
 
 ## Typography Symbols
 
-There is a wealth of**[Symbols](https://en.wikipedia.org/wiki/Category:Typographical_symbols)** used in books that we can make use of.
+There is a wealth of **[Symbols](https://en.wikipedia.org/wiki/Category:Typographical_symbols)** used in books that we can make use of.
 
-### Basic Symbols {#basic_symbols}
+### Basic Symbols
 
 Let's starts with the basics. English mostly uses 7 punctuation marks.
 
@@ -136,7 +136,7 @@ Let's starts with the basics. English mostly uses 7 punctuation marks.
     -   Good for switching the tone to something "louder", making
         characters scream, get upset, excitable narration, so on and so forth.
 
-=== Whitespace ===
+### Whitespace
 
 This is basically any character like spaces and linebreaks.
 
