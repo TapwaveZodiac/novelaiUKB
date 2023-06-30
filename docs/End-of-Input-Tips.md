@@ -1,7 +1,6 @@
 **This page was conceived during the Euterpe Era of
 NovelAI. Some tech here might not be relevant anymore, but some tips can
-still be useful. Refer to [The Rabbit Hole
-(Clio)](The-Rabbit-Hole-(Clio)) For the current
+still be useful. Refer to [The Rabbit Hole](The-Rabbit-Hole) For the current
 model.**
 
 This page contains **community-researched** content and aims to provide
@@ -209,7 +208,7 @@ prepared.
 -   **More Than** ( > ) When used to start a new row, > denotes text
     and computer console messages. It is also used by Text Adventure, though it's not always displayed.
 
--   The hilariously named **Dinkus** ( ** ) is a symbol used to
+-   The hilariously named **Dinkus** ( `***` ) is a symbol used to
     denote a section break in a text.
     -   Consider it as powerful "break from current scene" device.
     -   Often interpreted as a time skip or even a switch to a different
