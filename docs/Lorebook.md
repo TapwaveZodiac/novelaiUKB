@@ -21,7 +21,7 @@ You will be presented with this window:
 
 ***
 
-#### Entries
+### Entries
 
 A lore entry is composed of two main elements: **Entry Text** and **Keys**.
 
@@ -31,7 +31,7 @@ The **Default Settings** will be applied to all new entries, but they can be cha
 
 You can mass-select entries with the checkbox ☑️ to **delete** 🗑️, **export** 📤, or **export to image** 🖼️ several entries at once.
 
-#### Keys
+### Keys
 
 **Enabled** determines if the entry will be inserted in the context if detected. If it is disabled, it won't trigger regardless of keys. This is useful to reduce context cluttering if you don't need details about specific things.
 
@@ -43,7 +43,7 @@ To make a Key case-sensitive, preface it with `/` and close it by `/`: `/Entry/`
 
 If it is part of a placeholder, add a **\$** at the very beginning before the first dash.
 
-#### Lore Generation
+### Lore Generation
 
 Click the 💡 **Generate** button to enter the [Lore Generator](Lorebook#lore-generator).
 
