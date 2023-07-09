@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Lorebook</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 04/07/2023 at 11:28">Last updated 04/07/2023 at 11:28</time></p>
+  <p class="date before-toc"><time datetime="Last updated 09/07/2023 at 18:46">Last updated 09/07/2023 at 18:46</time></p>
 </blockquote>
 </header>
 
@@ -1378,6 +1378,7 @@
 <p>You may also use a <code>\n</code> (a <strong>newline marker</strong>), which helps isolate the entry further by separating it with a full newline.</p>
 <ul>
 <li><strong>Token Budget:</strong> Keeps this number of tokens in the context window for this entry. <em>This will overwrite other content if necessary!</em> It's recommended to set it a litter lower than the entry's full size.</li>
+<li><strong>Reserved Tokens:</strong> Preserves this many tokens for this entry. This does not need to be equal to the size of the entry itself, you can set this limit to specifically cover a part of it. If this value is <strong>between 0 and 1 inclusive</strong> (i.e 0.2, 0.5...) then this will be interpreted as a <strong>percentage of the total context size</strong>.</li>
 <li><strong>Insertion Order:</strong> The higher this number, the earlier the entry is processed. Entries with a low value may be dropped to save space for those with a higher value. If you have three entries, with order <em>500,0 and -500</em>, they will be processed from highest (500) to lowest (-500).</li>
 <li><strong>Insertion Position:</strong> How far <em>from the top</em> (if positive) or <em>the bottom</em> (if negative) will the entry be inserted in the window. The unit is defined in <strong>Insertion Type</strong>. It can be a number of <strong>tokens</strong>, <strong>sentences</strong>, and <strong>newlines</strong>.</li>
 </ul>
