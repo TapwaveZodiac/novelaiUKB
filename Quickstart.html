@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Quickstart</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 09/07/2023 at 18:46">Last updated 09/07/2023 at 18:46</time></p>
+  <p class="date before-toc"><time datetime="Last updated 14/07/2023 at 18:57">Last updated 14/07/2023 at 18:57</time></p>
 </blockquote>
 </header>
 
@@ -1335,7 +1335,19 @@
     <li><a href="#context">Context</a>
     <ul>
     <li><a href="#elements">Elements</a></li>
+    <li><a href="#input-and-output">Input and Output</a></li>
     </ul></li>
+    <li><a href="#ai-writing-essentials">AI Writing Essentials</a>
+    <ul>
+    <li><a href="#prompting">Prompting</a></li>
+    <li><a href="#formats">Formats</a></li>
+    </ul></li>
+    <li><a href="#data-and-privacy">Data and Privacy</a>
+    <ul>
+    <li><a href="#storage">Storage</a></li>
+    <li><a href="#data-privacy">Data Privacy</a></li>
+    </ul></li>
+    <li><a href="#customization">Customization</a></li>
     </ul></li>
     </ul>
 </nav>
@@ -1420,10 +1432,10 @@
 <h3 id="elements">Elements</h3>
 <p>The Context is built from four blocks.</p>
 <ul>
-<li>The <strong><a href="Detailed-Concepts.html#memory">Memory</a></strong>.</li>
-<li>The <strong><a href="Detailed-Concepts.html#lorebook">LoreBook</a> entries</strong> that have been triggered.</li>
+<li>The <strong><a href="https://tapwavezodiac.github.io/novelaiUKB/Context.html#memory">Memory</a></strong>.</li>
+<li>The <strong><a href="https://tapwavezodiac.github.io/novelaiUKB/Lorebook.html">Lorebook</a> entries</strong> that have been triggered.</li>
 <li>The remaining text that can fit.</li>
-<li>The <strong><a href="Detailed-Concepts.html#authors-note">Author's Note</a></strong>, inserted three new-lines before the end of the text.</li>
+<li>The <strong><a href="https://tapwavezodiac.github.io/novelaiUKB/Context.html#authors-note">Author's Note</a></strong>, inserted three new-lines before the end of the text.</li>
 </ul>
 <h4 id="authors-note">Author's Note</h4>
 <p>The <strong>Author's Note</strong>, or "<strong>A/N</strong>" is a comment which serves to describe how the AI should write in terms of style. By default, the <strong>A/N</strong> is inserted <em>three newlines from the bottom</em>, though its position may be adjusted for a stronger (closer to the bottom) or a weaker (further to the top) effect.</p>
@@ -1432,279 +1444,164 @@
 <p><strong>A/N</strong> can also be used to signal that something needs to happen shortly.</p>
 <p>Here is an example:</p>
 <pre><code>[ Style: purple prose, poetry ]
-[ Jack gets stabbed ]```
-
-#### Memory
-
-The **Memory** is inserted at the top of the **Context** by default, though its position may be adjusted for a stronger (closer to the bottom) or a weaker (further to the top) effect. It is mostly used to give broad Context information.
-
-Use it to keep important things in the AI&#39;s mind regardless of the current situation. It is also useful for starting a story without prior inputs.
-
-It is best to use short, curt sentences focusing on the most important details, and to update it regularly.
-
-Here is an example:
+[ Jack gets stabbed ]
 </code></pre>
-<p>Ja'arkael is a male night elf, his rival is Yaenaen. Yaenaen is a female human. Ja'arkael and Yaenaen want an artifact from the dungeon.</p>
-<pre><code>
-#### Lorebook
-
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/0a3de88e-1487-462d-9640-9be102de2679)
-
-The **Lorebook** is a powerful tool that allows you to define entries for practically anything, letting the AI look up what is mentioned in the text and use your written definitions to keep information in mind.
-
-You can access it by clicking the **Lorebook icon** (📘) on the left of the input bar, or by clicking **View All** above the Lorebook search field.
-
-The **Lorebook** is an advanced feature and has a more detailed guide [Here](Lorebook)!
-
-#### Leaking
-
-&quot;Leaking&quot; is a minor anomaly where contents of the **Memory**, **Author&#39;s Note** or **Lorebook**, which are likely to be written differently than the rest of the text, shows up in the AI&#39;s generated text.
-
+<h4 id="memory">Memory</h4>
+<p>The <strong>Memory</strong> is inserted at the top of the <strong>Context</strong> by default, though its position may be adjusted for a stronger (closer to the bottom) or a weaker (further to the top) effect. It is mostly used to give broad Context information.</p>
+<p>Use it to keep important things in the AI's mind regardless of the current situation. It is also useful for starting a story without prior inputs.</p>
+<p>It is best to use short, curt sentences focusing on the most important details, and to update it regularly.</p>
+<p>Here is an example:</p>
+<pre><code>Ja&#39;arkael is a male night elf, his rival is Yaenaen.
+Yaenaen is a female human.
+Ja&#39;arkael and Yaenaen want an artifact from the dungeon.
 </code></pre>
-<p>The mighty warlord turned to face his foe.</p>
-<p>Style: Epic, Grandiose, Wuxia;</p>
-<pre><code>
-With the size of *NovelAI*&#39;s Context window, and the finetune of its models, this only rarely happens. If it is a recurring issue, you can close the Memory and Author&#39;s Note with with a **dinkus**: `***`, and use **brackets** in your **Author&#39;s Note**.
-
-#### Limits of Context
-
-NovelAI&#39;s Context window is limited by it&#39;s AI model&#39;s.
-
-Depending on your subscription level, your token ceiling might be lower (1024 for older models, and 3072 for Clio), which goes up all the way to 2048 (old) / 8192 (Clio) tokens. This means around *38000* English characters for Clio on Opus, and ~*9000* on Tablet!
-
-If the token ceiling is reached, less of the main text will be used as part of the **Context**, to ensure there is room for the **Memory**, the **Author&#39;s Note**, and any **Lorebook** entries necessary.
-
-It is also important to note that the AI is similar to a text prediction AI. Such a model has no true formal understanding of grammar or syntax. Instead, it operates on inter-twinning probabilities to replicate human language and its structure.
-
-As a result, it does not completely understand what you write. It operates deductively based on the words you have written.
-
-***
-
-### Input and Output
-
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a5e5507e-9add-4ce9-9d85-822cc03dc397)
-
-The input is all the tokens you send to the AI. The Output is the tokens the AI sends back to you, also known as a Generation. This section explains what the buttons of the interface do.
-
-- Send ➡
-
-This sends the **Current Context** to the AI, and asks it to respond.
-
-You can find what the **Current Context** is by opening the **Advanced Tab** on the right panel, and clicking **Current Context** at the bottom.
-
-You can also check what Context was sent for your previous output with **Last Context**.
-
-- Retry 🔁
-
-Deletes the latest output and creates a new one.
-
-Every time you click **Retry**, the counter next to the Redo button increments by 1. By clicking that counter, you can access all the previous tries the AI offered. This is known as the Retry Tree.
-
-If you edit the text in any way, this counter will reset. Retry will grey out, since you have started a new step.
-
-- Undo and Redo ↩ ↪
-
-↩ **Undo** moves one step back in the edit history.
-
-↪ **Redo** moves one step forward in the edit history.
-
-If you edit the text, you cannot **Redo**. (Think of it like time travel paradoxes!)
-
-If you modify the text after doing retries, you can **Undo** until you go back to the moment you made these retries to access the **Retry** Tree again.
-
-- Pressing Enter
-
-If you press Enter in the **Input box**, it will send the input. If you want to create a linebreak, hold SHIFT then press Enter.
-
-If you enter text in the **Story box** and want to ask the AI to generate, you can hold CTRL / CMD⌘ then press Enter. Pressing Enter in the main text box creates a linebreak.
-
-When your cursor is in the main text box, pressing CTRL / CMD⌘ + SHIFT + ENTER will ignore all text after the cursor, and replace all highlighted text with a new generation. The text generated will be inserted at the cursor position, rather than at the end.
-
-Consult the [Shortcuts and Hotkeys](Shortcuts-and-Hotkeys) page for more detail.
-
-***
-
-## AI Writing Essentials
-
-This section will explain what you need to know about typing with the
-AI, which is different to typing on your own.
-
-### Prompting
-
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/25a1815f-4053-457c-b6a4-961958f5df19)
-
-You begin your story by Prompting the AI. The Prompt is easily the most important thing you will write, because this the only thing the AI will be able to work with, even with all the information in Author&#39;s Note and Memory.
-
-A Prompt may be as long as you wish. It can be a single word, or several paragraphs long. 
-
-#### Priming (X-Shotting)
-
-The AI will read your Prompt and try to discern several types of information.
-
-    Writing format. (Prose? Verse?)
-
-    Writing style. (How are your sentences built?)
-
-    Writing Perspective. (Who is speaking? Using what person?)
-
-    Lexical fields. (What vocabulary is used?)
-
-    Tonal elements. (What helps convey emotion and tone?)
-
-    Situational components. (Environment, characters, etc)
-
-As a result, the way you write the Prompt will directly affect how the AI will respond. It will attempt to replicate your style to the best of its ability.
-
-The more data you give to the AI, the better it can do this. This is known as **Priming** or increasing the number of **Shots**. A **Shot** in AI terminology is basically an example. The more examples it has, the better.
-
-Having many **Shots** might be detrimental to creativity if you&#39;re not sure of where to go. Sometimes it&#39;s good to give it as little as possible and let it improvise! 
-
-#### Dangling Prompts
-
-The AI will go off of the last Token you provided. If it is the end of a sentence, it will start a new one.
-
-However, if you end a Prompt like this:
-
-    He pulls the curtain aside and is blinded by a bright light. After he gets used to the brightness, he
-
-The AI will try to complete your sentence. You can do this at any point in your story, not just at the end of the Prompt. This is very useful for guiding the AI into doing specific actions.
-
-#### Perspective
-
-If you used similar services to *NovelAI*, you&#39;re likely used to using **Second Person Perspective**. This is when the main character is referred to as **You** and everyone else in third person (He/She/It).
-
-*NovelAI*&#39;s models are trained mostly on literature written in **First Person** and **Third Person**. Second person can work, but is likely to perform less reliably.
-
-##### First Person
-
-First person acts as if the main character is you. You are speaking,thinking, and acting, as if talking to yourself. As a result, your pronoun will be **I**.
-
-Everyone else will be referred to using their name or third person pronouns: He, She, It or They.
-
-##### Second Person
-
-Second person acts as if someone that has no presence in the story is describing the story as happening to *you* directly.
-
-As a result, the main character is referred to as **You** like in a text adventure game. (Think of &#39;Zork&#39;.) Everyone *else* is referred to by their name or a third person pronoun: He, She, It or They.
-
-##### Third Person
-
-Third person acts as if someone that has no presence in the story is describing the story **without** speaking to *you* directly.
-
-As a result, everyone is referred to by their name or a third person pronoun: He, She, It or They.
-
-#### Prose, Verse and Writing structure
-
-**Prose** is text that is written without a particular structure.
-**Verse** is based on a structure of *length*, *rhythm* or *rhyme*.
-(There are exceptions, but this is the gist of it.)
-
-*NovelAI* can recognize the difference between common structures. If you start writing a poem using stanzas, it will attempt to replicate it. This works for a myriad of things: Haikus, Sonnets, and even theatrical plays!
-
-Keep in mind the AI has no concept of phonetics and thus doesn&#39;t know how to rhyme or how to use an accent meter (like Shakespeare). You&#39;ll need to curate output heavily.
-
-Non-prose formats might need a lot of shots to perform well.
-
-***
-
-### Formats
-
-A **format** is the term used in AI writing to refer to a specific way of writing and organize information to maximize its impact on the AI.
-This is almost exclusively for the **Author&#39;s Note** and **Lore Book**.
-
-Think of it as &#39;speaking to the AI&#39; in a way that the AI can understand better.
-
-The purpose of using Formats in **Author&#39;s Note** and **Lore Book** is to help them influence the AI&#39;s output more strongly, reducing how many retries you may need to have the AI give you an output you find appropriate.
-
-It&#39;s important to note that with NAI&#39;s large context window, **using formats is not necessary most of the time** You can write your Author&#39;s Note and Lore Book entries in natural prose. Just be aware ofthe following points:
-
-- The use and combination of adjectives with specific words (style,
-  prose, theme, situation) is important.
-
-- Consistency in how you organize information is important.
-
-- Focus strongly on the specific things that you want. Vocabulary is
-  important.
-
-- Commas, semicolons, periods and square brackets especially have a
-  strong effect. Punctuation is important.
-
-Keep in mind that **formats are not magic**. NAI does not specifically support nor recommend any format. Feel free to [explore what has been researched](https://github.com/valahraban/AID-World-Info-research-sheet/blob/main/AID%20WI%20Research%20Sheet.md#preface) and use what you feel is best for you.
-
-***
-
-## Data and Privacy
-
-This section will explain the basics of what you should know about the security of your information with *NovelAI*.
-
-### Storage
-
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/303ce935-977e-4547-96fd-28bf34dd2c0f)
-
-
-Stories used with *NovelAI* can be stored either locally or remotely, depending on the user choice. **By default, all your Stories are stored locally**.
-
-#### Local Storage
-
-By default, *NovelAI* stores your stories locally, in your browser&#39;s local database. If you have heard of **cookies**, this is similar, but not quite the same thing.
-
-This implies the following:
-
-- Your stories are only stored on the current device. If you switch to your phone, or another computer, you won&#39;t have access to them.
-- If you deny all third party data (by using private/incognito mode), *NovelAI* will not be able to store anything, which means the story will disappear when you close the tab.
-- If you purge your browser data, all your local stories will be deleted.
-
-#### Managing your local storage
-
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/50890833-c28e-4325-86ad-7f5a3eb83529)
-
-At the bottom of the **options** Tab, you can export your story to your clipboard or to a file in JSON for importing. You can also delete the story if you want.
-
-You can import .story and other types files or simply drag and drop them to the window.
-
-Stories exported in .story JSON will preserve their Memory, Author&#39;s Note, and Lore Book Entries. Plaintext **will not**.
-
-#### Serverside Storage
-
-You can opt to store your story on the server. This will let you access it on any device from your account.
-
-Simply click the tickbox above the import options labelled **Remote Storage** to make it switch from *Local Storage* to *Serverside Storage*.
-
-You can also set this to be the default in your **Account Settings**.
-
-Your Serverside storage is encrypted using your credentials, so if you change your password, **all your stories will be inaccessible!**
-
-***
-
-### Data Privacy
-
-One of the chief concerns in the creation of *NovelAI* was ensuring a high standard of privacy for user data.
-
-#### Wait, NovelAI Staff can read my content?!
-
-**No**, NovelAI staff cannot read your stories. They are under multiple layers of encryption, and the keys cannot be accessed remotely by staff.
-
-#### Encryption
-
-The only parts of the process that have any access to unencrypted content are the backend and the processing Cloud GPU.
-While the requests aren&#39;t encrypted, they only contain the context tokens, and no other identifying data as a default. NovelAI&#39;s servers also do not log any of these requests unless you specifically ask them to for debugging purposes.
-
-**The encryption is done on your machine**. The server has no controlover it. Developers *are* able to request the email address associated with a specific subscription plan ID, but that&#39;s about it.
-
-Keep in mind that *exported content is unencrypted*! Don&#39;t share things you don&#39;t want to be made public!
-
-For further details about how the Encryption works, read project lead ***Kurumuz&#39;s***&#39;[Open Beta blogpost](https://novelai.medium.com/the-first-month-of-novelai-30a4a551a4ba), which explains it more thoroughly.
-
-***
-
-## Customization
-
-Themes allow you to bring a high level of customization to your *NovelAI* experience. **Themes** allow you to instantly change the look of the entire [**frontend**](https://en.wikipedia.org/wiki/Front_end_and_back_end) with the click of a button! There are a number of Themes to choose, all available in the **Customization** section of the **Options Menu**, accessible from the **Story Library** pane.
-
-The Themes area also allows you to adjust your [font size](https://en.wikipedia.org/wiki/Point_(typography)), as well as the **paragraph indent**. The indent causes every new paragraph to begin to the right of other text by the amount specified in the setting.
-
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7ea2d4f9-79d8-4d11-84d2-7bb8121adb13)
+<h4 id="lorebook">Lorebook</h4>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/0a3de88e-1487-462d-9640-9be102de2679" alt="image" /></p>
+<p>The <strong>Lorebook</strong> is a powerful tool that allows you to define entries for practically anything, letting the AI look up what is mentioned in the text and use your written definitions to keep information in mind.</p>
+<p>You can access it by clicking the <strong>Lorebook icon</strong> (📘) on the left of the input bar, or by clicking <strong>View All</strong> above the Lorebook search field.</p>
+<p>The <strong>Lorebook</strong> is an advanced feature and has a more detailed guide <a href="Lorebook.html">Here</a>!</p>
+<h4 id="leaking">Leaking</h4>
+<p>"Leaking" is a minor anomaly where contents of the <strong>Memory</strong>, <strong>Author's Note</strong> or <strong>Lorebook</strong>, which are likely to be written differently than the rest of the text, shows up in the AI's generated text.</p>
+<pre><code>The mighty warlord turned to face his foe.
+
+Style: Epic, Grandiose, Wuxia;
 </code></pre>
+<p>With the size of <em>NovelAI</em>'s Context window, and the finetune of its models, this only rarely happens. If it is a recurring issue, you can close the Memory and Author's Note with with a <strong>dinkus</strong>: <code>***</code>, and use <strong>brackets</strong> in your <strong>Author's Note</strong>.</p>
+<h4 id="limits-of-context">Limits of Context</h4>
+<p>NovelAI's Context window is limited by it's AI model's.</p>
+<p>Depending on your subscription level, your token ceiling might be lower (1024 for older models, and 3072 for Clio), which goes up all the way to 2048 (old) / 8192 (Clio) tokens. This means around <em>38000</em> English characters for Clio on Opus, and ~<em>9000</em> on Tablet!</p>
+<p>If the token ceiling is reached, less of the main text will be used as part of the <strong>Context</strong>, to ensure there is room for the <strong>Memory</strong>, the <strong>Author's Note</strong>, and any <strong>Lorebook</strong> entries necessary.</p>
+<p>It is also important to note that the AI is similar to a text prediction AI. Such a model has no true formal understanding of grammar or syntax. Instead, it operates on inter-twinning probabilities to replicate human language and its structure.</p>
+<p>As a result, it does not completely understand what you write. It operates deductively based on the words you have written.</p>
+<hr />
+<h3 id="input-and-output">Input and Output</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a5e5507e-9add-4ce9-9d85-822cc03dc397" alt="image" /></p>
+<p>The input is all the tokens you send to the AI. The Output is the tokens the AI sends back to you, also known as a Generation. This section explains what the buttons of the interface do.</p>
+<ul>
+<li>Send ➡</li>
+</ul>
+<p>This sends the <strong>Current Context</strong> to the AI, and asks it to respond.</p>
+<p>You can find what the <strong>Current Context</strong> is by opening the <strong>Advanced Tab</strong> on the right panel, and clicking <strong>Current Context</strong> at the bottom.</p>
+<p>You can also check what Context was sent for your previous output with <strong>Last Context</strong>.</p>
+<ul>
+<li>Retry 🔁</li>
+</ul>
+<p>Deletes the latest output and creates a new one.</p>
+<p>Every time you click <strong>Retry</strong>, the counter next to the Redo button increments by 1. By clicking that counter, you can access all the previous tries the AI offered. This is known as the Retry Tree.</p>
+<p>If you edit the text in any way, this counter will reset. Retry will grey out, since you have started a new step.</p>
+<ul>
+<li>Undo and Redo ↩︎ ↪</li>
+</ul>
+<p>↩︎ <strong>Undo</strong> moves one step back in the edit history.</p>
+<p>↪ <strong>Redo</strong> moves one step forward in the edit history.</p>
+<p>If you edit the text, you cannot <strong>Redo</strong>. (Think of it like time travel paradoxes!)</p>
+<p>If you modify the text after doing retries, you can <strong>Undo</strong> until you go back to the moment you made these retries to access the <strong>Retry</strong> Tree again.</p>
+<ul>
+<li>Pressing Enter</li>
+</ul>
+<p>If you press Enter in the <strong>Input box</strong>, it will send the input. If you want to create a linebreak, hold SHIFT then press Enter.</p>
+<p>If you enter text in the <strong>Story box</strong> and want to ask the AI to generate, you can hold CTRL / CMD⌘ then press Enter. Pressing Enter in the main text box creates a linebreak.</p>
+<p>When your cursor is in the main text box, pressing CTRL / CMD⌘ + SHIFT + ENTER will ignore all text after the cursor, and replace all highlighted text with a new generation. The text generated will be inserted at the cursor position, rather than at the end.</p>
+<p>Consult the <a href="Shortcuts-and-Hotkeys.html">Shortcuts and Hotkeys</a> page for more detail.</p>
+<hr />
+<h2 id="ai-writing-essentials">AI Writing Essentials</h2>
+<p>This section will explain what you need to know about typing with the AI, which is different to typing on your own.</p>
+<h3 id="prompting">Prompting</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/25a1815f-4053-457c-b6a4-961958f5df19" alt="image" /></p>
+<p>You begin your story by Prompting the AI. The Prompt is easily the most important thing you will write, because this the only thing the AI will be able to work with, even with all the information in Author's Note and Memory.</p>
+<p>A Prompt may be as long as you wish. It can be a single word, or several paragraphs long.</p>
+<h4 id="priming-x-shotting">Priming (X-Shotting)</h4>
+<p>The AI will read your Prompt and try to discern several types of information.</p>
+<pre><code>Writing format. (Prose? Verse?)
+
+Writing style. (How are your sentences built?)
+
+Writing Perspective. (Who is speaking? Using what person?)
+
+Lexical fields. (What vocabulary is used?)
+
+Tonal elements. (What helps convey emotion and tone?)
+
+Situational components. (Environment, characters, etc)
+</code></pre>
+<p>As a result, the way you write the Prompt will directly affect how the AI will respond. It will attempt to replicate your style to the best of its ability.</p>
+<p>The more data you give to the AI, the better it can do this. This is known as <strong>Priming</strong> or increasing the number of <strong>Shots</strong>. A <strong>Shot</strong> in AI terminology is basically an example. The more examples it has, the better.</p>
+<p>Having many <strong>Shots</strong> might be detrimental to creativity if you're not sure of where to go. Sometimes it's good to give it as little as possible and let it improvise!</p>
+<h4 id="dangling-prompts">Dangling Prompts</h4>
+<p>The AI will go off of the last Token you provided. If it is the end of a sentence, it will start a new one.</p>
+<p>However, if you end a Prompt like this:</p>
+<pre><code>He pulls the curtain aside and is blinded by a bright light. After he gets used to the brightness, he
+</code></pre>
+<p>The AI will try to complete your sentence. You can do this at any point in your story, not just at the end of the Prompt. This is very useful for guiding the AI into doing specific actions.</p>
+<h4 id="perspective">Perspective</h4>
+<p>If you used similar services to <em>NovelAI</em>, you're likely used to using <strong>Second Person Perspective</strong>. This is when the main character is referred to as <strong>You</strong> and everyone else in third person (He/She/It).</p>
+<p><em>NovelAI</em>'s models are trained mostly on literature written in <strong>First Person</strong> and <strong>Third Person</strong>. Second person can work, but is likely to perform less reliably.</p>
+<h5 id="first-person">First Person</h5>
+<p>First person acts as if the main character is you. You are speaking,thinking, and acting, as if talking to yourself. As a result, your pronoun will be <strong>I</strong>.</p>
+<p>Everyone else will be referred to using their name or third person pronouns: He, She, It or They.</p>
+<h5 id="second-person">Second Person</h5>
+<p>Second person acts as if someone that has no presence in the story is describing the story as happening to <em>you</em> directly.</p>
+<p>As a result, the main character is referred to as <strong>You</strong> like in a text adventure game. (Think of 'Zork'.) Everyone <em>else</em> is referred to by their name or a third person pronoun: He, She, It or They.</p>
+<h5 id="third-person">Third Person</h5>
+<p>Third person acts as if someone that has no presence in the story is describing the story <strong>without</strong> speaking to <em>you</em> directly.</p>
+<p>As a result, everyone is referred to by their name or a third person pronoun: He, She, It or They.</p>
+<h4 id="prose-verse-and-writing-structure">Prose, Verse and Writing structure</h4>
+<p><strong>Prose</strong> is text that is written without a particular structure. <strong>Verse</strong> is based on a structure of <em>length</em>, <em>rhythm</em> or <em>rhyme</em>. (There are exceptions, but this is the gist of it.)</p>
+<p><em>NovelAI</em> can recognize the difference between common structures. If you start writing a poem using stanzas, it will attempt to replicate it. This works for a myriad of things: Haikus, Sonnets, and even theatrical plays!</p>
+<p>Keep in mind the AI has no concept of phonetics and thus doesn't know how to rhyme or how to use an accent meter (like Shakespeare). You'll need to curate output heavily.</p>
+<p>Non-prose formats might need a lot of shots to perform well.</p>
+<hr />
+<h3 id="formats">Formats</h3>
+<p>A <strong>format</strong> is the term used in AI writing to refer to a specific way of writing and organize information to maximize its impact on the AI. This is almost exclusively for the <strong>Author's Note</strong> and <strong>Lore Book</strong>.</p>
+<p>Think of it as 'speaking to the AI' in a way that the AI can understand better.</p>
+<p>The purpose of using Formats in <strong>Author's Note</strong> and <strong>Lore Book</strong> is to help them influence the AI's output more strongly, reducing how many retries you may need to have the AI give you an output you find appropriate.</p>
+<p>It's important to note that with NAI's large context window, <strong>using formats is not necessary most of the time</strong> You can write your Author's Note and Lore Book entries in natural prose. Just be aware ofthe following points:</p>
+<ul>
+<li><p>The use and combination of adjectives with specific words (style, prose, theme, situation) is important.</p></li>
+<li><p>Consistency in how you organize information is important.</p></li>
+<li><p>Focus strongly on the specific things that you want. Vocabulary is important.</p></li>
+<li><p>Commas, semicolons, periods and square brackets especially have a strong effect. Punctuation is important.</p></li>
+</ul>
+<p>Keep in mind that <strong>formats are not magic</strong>. NAI does not specifically support nor recommend any format. Feel free to <a href="https://github.com/valahraban/AID-World-Info-research-sheet/blob/main/AID%20WI%20Research%20Sheet.md#preface">explore what has been researched</a> and use what you feel is best for you.</p>
+<hr />
+<h2 id="data-and-privacy">Data and Privacy</h2>
+<p>This section will explain the basics of what you should know about the security of your information with <em>NovelAI</em>.</p>
+<h3 id="storage">Storage</h3>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/303ce935-977e-4547-96fd-28bf34dd2c0f" alt="image" /></p>
+<p>Stories used with <em>NovelAI</em> can be stored either locally or remotely, depending on the user choice. <strong>By default, all your Stories are stored locally</strong>.</p>
+<h4 id="local-storage">Local Storage</h4>
+<p>By default, <em>NovelAI</em> stores your stories locally, in your browser's local database. If you have heard of <strong>cookies</strong>, this is similar, but not quite the same thing.</p>
+<p>This implies the following:</p>
+<ul>
+<li>Your stories are only stored on the current device. If you switch to your phone, or another computer, you won't have access to them.</li>
+<li>If you deny all third party data (by using private/incognito mode), <em>NovelAI</em> will not be able to store anything, which means the story will disappear when you close the tab.</li>
+<li>If you purge your browser data, all your local stories will be deleted.</li>
+</ul>
+<h4 id="managing-your-local-storage">Managing your local storage</h4>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/50890833-c28e-4325-86ad-7f5a3eb83529" alt="image" /></p>
+<p>At the bottom of the <strong>options</strong> Tab, you can export your story to your clipboard or to a file in JSON for importing. You can also delete the story if you want.</p>
+<p>You can import .story and other types files or simply drag and drop them to the window.</p>
+<p>Stories exported in .story JSON will preserve their Memory, Author's Note, and Lore Book Entries. Plaintext <strong>will not</strong>.</p>
+<h4 id="serverside-storage">Serverside Storage</h4>
+<p>You can opt to store your story on the server. This will let you access it on any device from your account.</p>
+<p>Simply click the tickbox above the import options labelled <strong>Remote Storage</strong> to make it switch from <em>Local Storage</em> to <em>Serverside Storage</em>.</p>
+<p>You can also set this to be the default in your <strong>Account Settings</strong>.</p>
+<p>Your Serverside storage is encrypted using your credentials, so if you change your password, <strong>all your stories will be inaccessible!</strong></p>
+<hr />
+<h3 id="data-privacy">Data Privacy</h3>
+<p>One of the chief concerns in the creation of <em>NovelAI</em> was ensuring a high standard of privacy for user data.</p>
+<h4 id="wait-novelai-staff-can-read-my-content">Wait, NovelAI Staff can read my content?!</h4>
+<p><strong>No</strong>, NovelAI staff cannot read your stories. They are under multiple layers of encryption, and the keys cannot be accessed remotely by staff.</p>
+<h4 id="encryption">Encryption</h4>
+<p>The only parts of the process that have any access to unencrypted content are the backend and the processing Cloud GPU. While the requests aren't encrypted, they only contain the context tokens, and no other identifying data as a default. NovelAI's servers also do not log any of these requests unless you specifically ask them to for debugging purposes.</p>
+<p><strong>The encryption is done on your machine</strong>. The server has no controlover it. Developers <em>are</em> able to request the email address associated with a specific subscription plan ID, but that's about it.</p>
+<p>Keep in mind that <em>exported content is unencrypted</em>! Don't share things you don't want to be made public!</p>
+<p>For further details about how the Encryption works, read project lead <em><strong>Kurumuz's</strong></em>'<a href="https://novelai.medium.com/the-first-month-of-novelai-30a4a551a4ba">Open Beta blogpost</a>, which explains it more thoroughly.</p>
+<hr />
+<h2 id="customization">Customization</h2>
+<p>Themes allow you to bring a high level of customization to your <em>NovelAI</em> experience. <strong>Themes</strong> allow you to instantly change the look of the entire <a href="https://en.wikipedia.org/wiki/Front_end_and_back_end"><strong>frontend</strong></a> with the click of a button! There are a number of Themes to choose, all available in the <strong>Customization</strong> section of the <strong>Options Menu</strong>, accessible from the <strong>Story Library</strong> pane.</p>
+<p>The Themes area also allows you to adjust your <a href="https://en.wikipedia.org/wiki/Point_(typography)">font size</a>, as well as the <strong>paragraph indent</strong>. The indent causes every new paragraph to begin to the right of other text by the amount specified in the setting.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7ea2d4f9-79d8-4d11-84d2-7bb8121adb13" alt="image" /></p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
