@@ -132,11 +132,11 @@ The **Context** helps the AI understand the current writing style, the character
 
 The Context is built from four blocks.
 
-- The **[Memory](Detailed-Concepts#memory)**.
-- The **[LoreBook](Detailed-Concepts#lorebook) entries** that
+- The **[Memory](https://tapwavezodiac.github.io/novelaiUKB/Context.html#memory)**.
+- The **[Lorebook](https://tapwavezodiac.github.io/novelaiUKB/Lorebook.html) entries** that
   have been triggered.
 - The remaining text that can fit.
-- The **[Author's Note](Detailed-Concepts#authors-note)**,
+- The **[Author's Note](https://tapwavezodiac.github.io/novelaiUKB/Context.html#authors-note)**,
   inserted three new-lines before the end of the text.
 
 #### Author's Note
@@ -153,7 +153,8 @@ Here is an example:
 
 ```
 [ Style: purple prose, poetry ]
-[ Jack gets stabbed ]```
+[ Jack gets stabbed ]
+```
 
 #### Memory
 
