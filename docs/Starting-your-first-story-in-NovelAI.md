@@ -176,11 +176,59 @@ Is there a list of Attribute types? Not really, use whatever you want! It's impo
 But wait, you must have noticed the four dashes at the end, this "----" part. This is a **separator** and we'll use this to make entries distinct from one another without using a **Dinkus** (but you can use one. That's cool too.)
 
 ## Story
+
+Okay, time to actually write your story! Wait, what the hell do we do now?!
+
 ### Style
+Write your story how you want it to be written. The AI will follow your style. Sadly, this means that **Skill is important**. Want something to follow a style? ATTG and Style directions help, but fundamentally, you'll need to put in the work.
+Sometimes you can pull this off with no memory or entries or **anything else**. Just write in a very stylized way and it'll pick it up right away.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/d1a54c6b-ec9f-4552-8274-d741309a87ea)
+
+
 ### Prompting
+Prompting is basically setting down the rails of your story. Just write something that establishes a scene, or characters, and you'll get something usable most of the time. This can be used to establish text formats, as an example, for a TV show script:
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/254860f9-b313-49a1-92b3-fb27d4cfa01c)
+
+
 ### Directing
 
+Now that you have your thing going on, it's important to know how you can effectively generate things in a specific direction. Let's say you have your buddy **Bryan** and you want to find out where the hell he's gone.
+Don't do this.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/5a2b2207-6fff-4db5-a459-bdd52e39cc4e)
+
+Guide the AI by giving it an incomplete sentence to finish for you.
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2fa2be5c-34f0-4404-998b-a9781cb0b3df)
+
+Incomplete sentences are going to be your meat and potatoes. **Try not to finish your input on a full stop or a line break. The AI generally has trouble figuring out where to go from there. Leave your stuff unfinished.**
+
 # Adjustments
+
+You've played around and now something terrible has happened.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/84fc73f0-60f2-4325-aed4-2aebd5024f55)
+
+The AI is having trouble breaking out of something! The sentences are too short and lack detail! What can we do?
+
 ## Presets
+Just change the preset for a kick to the AI's ass. It may work.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/56c48145-db0d-4d7d-bb63-a7d9230e3240)
+
+If that still doesn't break repetitions, **fix your things! Input stuff!** The AI's biggest weakness is *generating for a long time unassisted*. It's normal, and expected, to fix things.
+
 ## Biases
-  
+Let's say there's something you want to see more of. Or less off. Enough Iraq in this story, but let's not ban it, Iraq has a right to exist, after all.
+If you click the **advanced** tab on the right, you'll see your context window viewer, which lets you see all the stuff we've written together so far. But it also has the **Bias** tool.
+Let's pur Iraq in there and make it a bit less likely. Like this.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/0b062bc8-6795-438a-a7ef-d478e64a85f3)
+
+Now click (the second) plus to add it to active biases. There we go!
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b494cd69-b2d7-403f-adb7-119d742b8ed6)
+
+
+#### All these tools should let you write a story the way you want it to go. If you need any help, explore this wiki for explanations on any tool you may want to use, or ask on the [Discord](https://discord.gg/novelai).
