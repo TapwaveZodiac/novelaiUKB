@@ -11,7 +11,7 @@ This guide offers a comprehensive beginner\'s overlook on using NovelAI.
 
 #  **🔰 [Starting your First Story in NovelAI](Starting-your-first-story-in-NovelAI)**
 
-A qsuick crash course on all the general use techniques you may have heard of.
+A quick crash course on all the general use techniques you may have heard of.
 
 ## **🔠 [Glossary](Glossary)**
 
