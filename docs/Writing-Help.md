@@ -102,7 +102,7 @@ titles, as in: `[ Leaping Across the Chasm ]`
 -   Delayed, potentially no result
 -   Does not help with pacing
 
-**
+***
 
 ## Getting More Detail
 
