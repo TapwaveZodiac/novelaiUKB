@@ -1,5 +1,6 @@
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/144e3f9b-5275-4e4b-97a0-6e67524eaf1d)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/204b16f6-c387-4b06-9f9b-a3f4f744f7ff)
+
 
 ## Generation Presets
 In order to make selecting the AI's various generation settings easier, NovelAI offers several generation presets.
@@ -93,6 +94,10 @@ Typical is atypical compared to other sampling methods, as it cuts *both likely 
 
 Lowering the value makes the thresholds for cutting off tokens harsher. Increasing it loosens the thresholds, allowing for more tokens.
 
+### CFG Scale
+
+**Classifier Free Guidance** is a type of [guidance](https://arxiv.org/abs/2306.17806) which relies on a "negative prompt". You may have noticed something similar in the image generation part of NovelAI with "Unwanted Content". The implementation is comparable but not identical, for text. Using CFG at all will double generation time. You do not need to provide a negative prompt, but if you do, write something that is completely in the wrong style and uses words you don't want to see. Effectively, your negative prompt should be the antithesis of your actual writing. The stronger the **Scale** parameter, the stronger the guidance.
+
 ### Change Settings Order
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8)
@@ -106,6 +111,10 @@ Allows you to enable or disable sampling types, as well as select the order in w
 
 Repetition Penalty is applied to the probability of tokens when they appear in context. This is to avoid generation loops, or overuse of single terms. On the flipside, penalizing important words too heavily when they are important and expected to show up regularly can have odd side effects.
 
+### Repetition Whitelist
+
+A default whitelist is offered, which ignores most grammatical terms, modal verbs, possessive contractions, etc. This can help prevent grammatical collapse if repetition penalty is strong.
+
 ### Repetition Penalty Range
 
 Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more
@@ -118,3 +127,11 @@ When **Enabled**, the Repetition Penalty is **only applied to the story.** All t
 ### Repetition Penalty Slope
 
 The penalty to repeated tokens is applied differently based on distance from the final token. The distribution of that penalty follows a S-shaped curve. If the sloping is set to 0, that curve will be completely flat. All tokens will be penalized equally. If it is set to a very high value, it'll act more like two steps: Early tokens will receive little to no penalty, but later ones will be considerably penalized.
+
+## Phrase Repetition Penalty
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b8a714b9-21fb-4317-997b-e93033aba0de)
+
+Phrase Repetition Penalty, or **PRP** is a system similar to Repetition Penalty, but it penalizes **sequences of tokens** as opposed to single tokens. This helps prevent repetition at the scale of the clause or sentence, or even paragraph, preventing large-scale loops from happening without causing unwanted divergence at the smaller scale. By default, this is set to Very Light, but if your preset has **no** Repetition Penalty, you should set this to a high value, as it is fairly weak on its own.
+
+**You can combine both Phrase and normal Repetition Penalty.**
