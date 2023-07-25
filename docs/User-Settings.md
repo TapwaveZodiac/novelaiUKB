@@ -33,7 +33,7 @@ The **User Settings** can be accessed from the *Story Library*, then clicking on
 ***
 
 ## Interface Tab
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/eaa8d27f-445b-4e42-a0c6-2829e0c63b9c)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/58900a72-8938-4cfa-9881-688da962618c)
 
 - **Gesture Controls**: Enables swipe-based controls for the side tabs and the input box on mobile devices and touchscreens.
 - **Swap Context Menu Controls**: If on, use the NAI context menu on right click. Browser's default context menu is used if off.
@@ -45,7 +45,12 @@ The **User Settings** can be accessed from the *Story Library*, then clicking on
 - **Show lorebook keys in the output box**: When enabled, text that triggered a lorebook key will be shown in **bold**. This can have a performance impact.
 - **Show story title**: Displays the title of the story at the top of the screen if enabled.
 - **Show Tips**: Displays tips under the story box if enabled.
+- **Show Identicon**: Each account has a randomly generated Identicon. If you turn this one, the Goose button at the top left which opens the toolbox will become the Identicon instead.
+- **Show Minibar**: Displays a small bar on the left side of the page, which allows you to quickly switch to your recently opened stories.
 - **Use EditorV2 for new Stories**: Turns on the Experimental Story Editor for any story created with this setting on. This allows for text formatting, a more mobile-friendly interface, mouse-only inline generations, and performance improvements. However, not all features are available currently, check the list when turning on this feature for more information.
+- **Show Editor Toolbox**: When using EditorV2, selecting text will open a custom mini-menu which allows you to quickly format text, generate at this specific spot, use Text to Speech, and open NAI's dropdown menu.
+- **Highlight Speech**: When enabled, turns text between quotes into italics. If Inverted is selected, text between quotes will not be formatted, but everything else will be in italics.
+- **Paragraph Visibility Range**: Measures, in **pixels**, the vertical range **beyond the visible screen area** inside which text will be kept into memory. Anything else will be unloaded, saving performance. If this is set to an extremely high value, it may cause your browser to lag!
 
 ## Theme
 
