@@ -80,13 +80,13 @@ Temperature, Sampling and penalties.
 
 ***
 
-#### **🤝 [Scenarios](Sharing)**
+#### **🤝 [Scenarios](Scenarios)**
 
 Share scenarios to let your users customize their experience.
 
 ***
 
-#### **🧰 [User Settings](User-settings)**
+#### **🧰 [User Settings](User-Settings)**
 
 All the settings that can be accessed from the Account Settings menu.
 
