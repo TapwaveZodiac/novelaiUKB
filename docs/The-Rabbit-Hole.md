@@ -162,3 +162,44 @@ You can also prompt this with:
 ```
 The Story so Far:
 ```
+
+# Creating Presets
+
+Creating a preset requires use of the Token Probability viewer (the 🧠 button), as this will let you see the effects of your settings).
+
+**Kayra buckets its probabilities. That means it groups tokens together in "steps" of probabilities." This is something it learned on its own, and you can't turn it off. It just works like that.**
+
+## The pillars of Preset Design
+
+Presets are founded on three core principles: 
+- **Openness**, or "how many tokens are considered at a time",
+- **Confidence**, or "how top-heavy or normalized the probabilities are",
+- **Constriction**, or "how much you negatively influence probabilities through penalties and such".
+
+After that, you have four **qualities** that you seek to achieve through this preset:
+- **Complexity / Color**, or "how varied and interesting the vocabulary and grammatical structures used are",
+- **Consistency**, or "does it actually respect what you write, how well, and is it written in a way that makes any sense",
+- **Creativity**, or "does it write anything original and pleasant to read".
+
+You *absolutely cannot have all at once*. Your preset will seek to achieve a balance of those qualities in a way that is pleasing to you and the preset's users, but you will have to focus on something and make compromises.
+
+Fundamentally, all principles are contradictory to at least one quality. It's up to you to figure out how to arrange them in a way that leads to a good result.
+
+- **Openness** leads to **Complexity and Creativity** but takes away from **Consistency**.
+- **Confidence** leads to **Consistency**, but takes away from **Creativity** (and sometimes **Complexity** as well.)
+- **Constriction** can take OR add to *any* of the qualities depending on how strong it is.
+
+To arrange a preset, there are three phases. **Sampling**, **Temperature** and **Penalties**. CFG is not considered because CFG is overly powerful and kind of does its own job so strongly that it heavily reduces what a preset does, but the philosophy is the same.
+
+**Samplers** can be easily understood as the following:
+- TOPK: Checks every token in order of probability. Once Token N°TOPK is reached, everything after is removed. Probabilities are then recaculated to 100% across the new, smaller pool.
+- NUCL: Same as TOPK but it only checks for probabilities. Starts at the most likely, then adds ups probabilities until NUCL% is reached. Probabilities are then recaculated to 100% across the new, smaller pool.
+- TOPA: Like TOPK but it is more flexible. If The Top token is less confident, then the pool is bigger. If it is very confident, then the pool is smaller. Basically, TOPA reinforces confidence if it already exists.
+- TFS: Cuts off the weakest tokens. The higher it is set to, the less it cuts off.
+- TYP: Reduces overconfidence. Checks for deviation from the norm and increases unlikely tokens. The higher it is set to, the wider the pool will be.
+
+The more samplers you stack, the less tokens you'll have.
+
+**Randomness** takes the pool and then **decreases confidence** if high, and **increases confidence** if low. You can use this to select a small pool but make it less confident, and thus "feel" more colorful by putting randomness AFTER sampling.
+
+**Penalties** are what the Repetition Penalties do. Strong penalties actually **force** creativity but it creates inconsistency in structure, style, and content. Weak penalties can cause the writing to be samey because repetition reinforces repetition.
