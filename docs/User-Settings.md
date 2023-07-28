@@ -18,7 +18,7 @@ The **User Settings** can be accessed from the *Story Library*, then clicking on
 
 - **Continue Response to End of Sentence**: If ON, the generation will continue for up to 20 tokens more or until it creates a sentence delimiter (. or ;)
 
-- **Preamble**: Adds a small amount of "marker" tokens before the entire context. This improves quality when the context window isn't full by telling the AI "this is a new story". **If the context is empty, a preamble is always added even if this is set to OFF.**
+- **Preamble**: Adds a small amount of "marker" tokens before the entire context. This improves quality when the context window isn't full by telling the AI "this is a new story". **If the context is empty, a preamble is always added even if this is set to OFF.** Kayra does **not** use a Preamble in story mode, but instead has a specific module.
 
 - **Trim Excess Whitespace**: If a loose space or repeated newline is detected at the end of the text, it will be cleaned up. Trailing whitespace can cause generation inconsistency.
 
