@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Glossary</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 25/07/2023 at 14:37">Last updated 25/07/2023 at 14:37</time></p>
+  <p class="date before-toc"><time datetime="Last updated 28/07/2023 at 18:48">Last updated 28/07/2023 at 18:48</time></p>
 </blockquote>
 </header>
 
@@ -1333,7 +1333,7 @@
     <li><a href="#canvas">Canvas</a></li>
     <li><a href="#cascading-activation">Cascading Activation</a></li>
     <li><a href="#caveman-format">Caveman Format</a></li>
-    <li><a href="#clio">Clio</a></li>
+    <li><a href="#clio-model">Clio (Model)</a></li>
     <li><a href="#context">Context</a></li>
     <li><a href="#context-window">Context Window</a></li>
     <li><a href="#context-viewer">Context Viewer</a></li>
@@ -1353,8 +1353,10 @@
     <li><a href="#image-resolution">Image Resolution</a></li>
     <li><a href="#image-to-image-img2img">Image To Image (Img2Img)</a></li>
     <li><a href="#inline-generation">Inline Generation</a></li>
+    <li><a href="#instruct">Instruct</a></li>
     <li><a href="#inpainting">Inpainting</a></li>
     <li><a href="#lore-generator">Lore Generator</a></li>
+    <li><a href="#kayra-model">Kayra (Model)</a></li>
     <li><a href="#krake-model">Krake (Model)</a></li>
     <li><a href="#lorebook">Lorebook</a></li>
     <li><a href="#lorebook-keys">Lorebook Keys</a></li>
@@ -1456,7 +1458,7 @@
 <h2 id="caveman-format">Caveman Format</h2>
 <p><em>Writing, Technique</em></p>
 <p>Writing while removing most grammatical words, and focusing only on words that carry semantic meaning. As an example, <code>John usually wears a bright blue coat which he likes dearly</code> would become <code>john wear bright blue coat, john like coat</code>. It is used for lorebook entries to reinforce connections between subjects and objects and reduce token use at the expense of writing quality. Caveman is mostly obsolete in advanced models.</p>
-<h2 id="clio">Clio</h2>
+<h2 id="clio-model">Clio (Model)</h2>
 <p><em>AI</em></p>
 <p>A in-house model trained by NovelAI. It boasts a much larger context and higher performance than Krake with only 3 Billion parameters.</p>
 <h2 id="context">Context</h2>
@@ -1518,12 +1520,18 @@
 <h2 id="inline-generation">Inline Generation</h2>
 <p><em>Feature, Generation</em></p>
 <p>An action performed by pressing Ctrl + Shift + Enter or ⌘ + Shift + Enter, with the text cursor located in the main text box. This will generate a response where the text cursor is, rather than at the end. Content after the text cursor is ignored by the AI.</p>
+<h2 id="instruct">Instruct</h2>
+<p><em>Generation</em></p>
+<p>A moduel which lets the AI read instructions between {curly braces} and try to answer the request as best as possible, allowing you to directly tell the AI what to do.</p>
 <h2 id="inpainting">Inpainting</h2>
 <p><em>Image Generation</em></p>
 <p>Selecting an area of an image and prompting the Image Generation AI to redraw only this area, alternatively, providing an image with a missing chunk on its inside, and telling the Image Generation AI to complete the missing chunk.</p>
 <h2 id="lore-generator">Lore Generator</h2>
 <p><em>Feature, Generation</em></p>
 <p>A feature of the Lorebook that uses the current module (and if desired, the Memory, Author's Note, and other lorebook entries) to generate lore for concepts, objects, people, factions, and much more.</p>
+<h2 id="kayra-model">Kayra (Model)</h2>
+<p><em>AI</em></p>
+<p>A in-house model trained by NovelAI. A further development of the proof of concept established by Clio. It has 13B parameters and the same large context size, boasting superior knowledge and creative ability.</p>
 <h2 id="krake-model">Krake (Model)</h2>
 <p><em>AI</em></p>
 <p>A finetune of EleutherAI's 20B GPT-NeoX model. It offers similar geenral metrics to Euterpe but has a different set of strengths, namely in terms of real world knowledge, and style-matching abilities.</p>
