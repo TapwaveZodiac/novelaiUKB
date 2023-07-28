@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">The Rabbit Hole</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 28/07/2023 at 19:12">Last updated 28/07/2023 at 19:12</time></p>
+  <p class="date before-toc"><time datetime="Last updated 28/07/2023 at 19:37">Last updated 28/07/2023 at 19:37</time></p>
 </blockquote>
 </header>
 
@@ -1334,6 +1334,10 @@
     <li><a href="#chapter-headings">Chapter Headings</a></li>
     </ul></li>
     <li><a href="#getting-feedback-from-the-model">Getting Feedback from the Model</a></li>
+    <li><a href="#creating-presets">Creating Presets</a>
+    <ul>
+    <li><a href="#the-pillars-of-preset-design">The pillars of Preset Design</a></li>
+    </ul></li>
     </ul>
 </nav>
 
@@ -1413,6 +1417,41 @@ simple, archaic, SFW
 <p>You can also prompt this with:</p>
 <pre><code>The Story so Far:
 </code></pre>
+<h1 id="creating-presets">Creating Presets</h1>
+<p>Creating a preset requires use of the Token Probability viewer (the 🧠 button), as this will let you see the effects of your settings).</p>
+<p><strong>Kayra buckets its probabilities. That means it groups tokens together in "steps" of probabilities." This is something it learned on its own, and you can't turn it off. It just works like that.</strong></p>
+<h2 id="the-pillars-of-preset-design">The pillars of Preset Design</h2>
+<p>Presets are founded on three core principles:</p>
+<ul>
+<li><strong>Openness</strong>, or "how many tokens are considered at a time",</li>
+<li><strong>Confidence</strong>, or "how top-heavy or normalized the probabilities are",</li>
+<li><strong>Constriction</strong>, or "how much you negatively influence probabilities through penalties and such".</li>
+</ul>
+<p>After that, you have four <strong>qualities</strong> that you seek to achieve through this preset:</p>
+<ul>
+<li><strong>Complexity / Color</strong>, or "how varied and interesting the vocabulary and grammatical structures used are",</li>
+<li><strong>Consistency</strong>, or "does it actually respect what you write, how well, and is it written in a way that makes any sense",</li>
+<li><strong>Creativity</strong>, or "does it write anything original and pleasant to read".</li>
+</ul>
+<p>You <em>absolutely cannot have all at once</em>. Your preset will seek to achieve a balance of those qualities in a way that is pleasing to you and the preset's users, but you will have to focus on something and make compromises.</p>
+<p>Fundamentally, all principles are contradictory to at least one quality. It's up to you to figure out how to arrange them in a way that leads to a good result.</p>
+<ul>
+<li><strong>Openness</strong> leads to <strong>Complexity and Creativity</strong> but takes away from <strong>Consistency</strong>.</li>
+<li><strong>Confidence</strong> leads to <strong>Consistency</strong>, but takes away from <strong>Creativity</strong> (and sometimes <strong>Complexity</strong> as well.)</li>
+<li><strong>Constriction</strong> can take OR add to <em>any</em> of the qualities depending on how strong it is.</li>
+</ul>
+<p>To arrange a preset, there are three phases. <strong>Sampling</strong>, <strong>Temperature</strong> and <strong>Penalties</strong>. CFG is not considered because CFG is overly powerful and kind of does its own job so strongly that it heavily reduces what a preset does, but the philosophy is the same.</p>
+<p><strong>Samplers</strong> can be easily understood as the following:</p>
+<ul>
+<li>TOPK: Checks every token in order of probability. Once Token N°TOPK is reached, everything after is removed. Probabilities are then recaculated to 100% across the new, smaller pool.</li>
+<li>NUCL: Same as TOPK but it only checks for probabilities. Starts at the most likely, then adds ups probabilities until NUCL% is reached. Probabilities are then recaculated to 100% across the new, smaller pool.</li>
+<li>TOPA: Like TOPK but it is more flexible. If The Top token is less confident, then the pool is bigger. If it is very confident, then the pool is smaller. Basically, TOPA reinforces confidence if it already exists.</li>
+<li>TFS: Cuts off the weakest tokens. The higher it is set to, the less it cuts off.</li>
+<li>TYP: Reduces overconfidence. Checks for deviation from the norm and increases unlikely tokens. The higher it is set to, the wider the pool will be.</li>
+</ul>
+<p>The more samplers you stack, the less tokens you'll have.</p>
+<p><strong>Randomness</strong> takes the pool and then <strong>decreases confidence</strong> if high, and <strong>increases confidence</strong> if low. You can use this to select a small pool but make it less confident, and thus "feel" more colorful by putting randomness AFTER sampling.</p>
+<p><strong>Penalties</strong> are what the Repetition Penalties do. Strong penalties actually <strong>force</strong> creativity but it creates inconsistency in structure, style, and content. Weak penalties can cause the writing to be samey because repetition reinforces repetition.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
