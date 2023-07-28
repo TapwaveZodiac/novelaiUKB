@@ -1,6 +1,5 @@
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/25e7a750-baf8-415a-8f2d-1a29bab3e6bd)
-
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f87c7c56-2b1e-423e-879e-ca9e272d996b)
 
 This section of the interface controls settings **specific to your currently active Story**. There are three tabs here - **Story** and **Advanced** and **Generation Settings**. This page focuses on the first.
 
@@ -24,7 +23,9 @@ As a reminder, parameter count is **not representative of quality** - Clio has s
 
 Each module is similar to a "mini-fine-tune", a corpus of text that was used to adjust the AI based on how it is written. Different modules have different effects, which depend on your own writing and the ideas, characters and scenarios you write about.
 
-There are three types of modules: **Style**, **Theme** and **Inspiration**.
+#### Older Models
+
+For **Krake, Euterpe and Sigurd**, There are three types of modules: **Style**, **Theme** and **Inspiration**.
 
 - Styles are based on multiple works from the same author.
 - Themes are based on multiple works, from multiple authors, but from the same genre.
@@ -35,6 +36,32 @@ Experiment to find what works best with what you enjoy and want to write about!
 
 Further information on cleaning and preparing a dataset for use in training AI Modules can be found at the [Datasetting for AI
 Modules](Datasetting-for-AI-Modules) section.
+
+#### Newer Models
+
+For **Clio and Kayra**, there are only *two* modules you can specifically set, outside of Text Adventure mode:
+  - **Instruct** lets you give instructions to the AI directly by encasing your request paragraph between {curly braces}. The AI will signal the end of its performance with **{{}}**.
+  - **Prose Enhancer** helps increase the complexity of the AI's output and requires no special priming.
+
+There are two modules that cannot be selected, **Openings**, which replaces the old Preamble and helps start stories, and **Pedia**, which is used for Attributes-like entry generation.
+  
+These modules are automatically loaded if the following conditions are present:
+```
+Openings Module
+IF no module selected
+AND IF context is less than 200 tokens
+AND IF the first line of context isn't "====="
+AND IF no line of the context contains "Style:" of "Knowledge:"
+AND IF the first line starts with [ but is not followed by " Author:", " Title:", " Tags:", of " Genre:"
+
+Pedia Module
+IF no module selected
+AND IF one of the last three lines is "----"
+AND IF no line after the "----" is "***"
+
+Instruct Module
+IF and paragraph that ends within the last 1000 characters starts with { and ends with }
+```
 
 ***
 
