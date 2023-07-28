@@ -7,6 +7,7 @@ This section of the interface controls settings **specific to your currently act
 
 Allows you to choose between the following models:
 
+  - **Kayra**, a fine-tuned NAI-LM 13B model.
   - **Clio**, a fine-tuned NAI-LM 3B model.
   - **Krake**, a fine-tuned GPT-NeoX 20B model. (Only available on Opus.)
   - **Euterpe**, a fine-tuned Fairseq GPT-13B model.
