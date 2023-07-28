@@ -97,7 +97,7 @@ lorebook entries to reinforce connections between subjects and objects
 and reduce token use at the expense of writing quality. Caveman is
 mostly obsolete in advanced models.
 
-## Clio
+## Clio (Model)
 
 *AI*
 
@@ -272,6 +272,12 @@ Enter, with the text cursor located in the main text box. This will
 generate a response where the text cursor is, rather than at the end.
 Content after the text cursor is ignored by the AI.
 
+## Instruct
+
+*Generation*
+
+A moduel which lets the AI read instructions between {curly braces} and try to answer the request as best as possible, allowing you to directly tell the AI what to do.
+
 ## Inpainting
 
 *Image Generation*
@@ -288,6 +294,12 @@ missing chunk.
 A feature of the Lorebook that uses the current module (and if desired,
 the Memory, Author's Note, and other lorebook entries) to generate lore
 for concepts, objects, people, factions, and much more.
+
+## Kayra (Model)
+
+*AI*
+
+A in-house model trained by NovelAI. A further development of the proof of concept established by Clio. It has 13B parameters and the same large context size, boasting superior knowledge and creative ability.
 
 ## Krake (Model)
 
