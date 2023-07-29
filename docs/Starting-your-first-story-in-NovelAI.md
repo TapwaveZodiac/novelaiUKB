@@ -1,7 +1,7 @@
 # Intro
 You just discovered NovelAI for the first time. You click "New story". The full might of the AI is displayed before you.
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/95104081-7653-433a-b842-3c3071fa3b56)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/32cc877e-b167-4ec1-b38d-03221ee72945)
 
 You are struck with terror. Cold sweats run down your body. What are all these fields? What is this? Where do I begin? What am I supposed to do?!
 Blank page anxiety has struck! You die...! Do you want your possessions identified?
