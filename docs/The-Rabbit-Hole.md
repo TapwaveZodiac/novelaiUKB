@@ -27,14 +27,13 @@ The first element to consider is if you are using the **Lorebook** or
 not. This will decide how your **Memory** will look like.
 
 If you *are* using lorebook entries, then the **default insertion
-settings** will put **Memory** below all **Lorebook** entries. In that
+settings** will put **Memory** *above* all **Lorebook** entries. In that
 case, your **Memory** should look like this:
 
 ***
 ```
 [ Author: Blah mc Blashson; Title: Heckin' Creativity;
 Tags: sicknasty tutti-frutti prose; Genre: Epic ]
-
  ***
 ```
 
@@ -45,6 +44,8 @@ stat block, etc), you can substitute the **Dinkus (***)** with a
 
 If you aren't using the lorebook, you can simply put the ATTG block in
 memory *without a dinkus*.
+
+Alternatively, by setting all your lorebook entries' insertion position to 0, and order under 400, you'll make them appear before Memory, allowing you to use Memory as the "footer" of the Data block. This is a practice I recommend but not one that is necessary per se.
 
 ### Setting up Biases
 
@@ -57,7 +58,7 @@ style you desire.
 It's easy to overdo biases and damage the model's creativity. What you
 should focus on are mostly punctuation symbols.
 
-#### n
+#### \n
 
 Backdash-n is the "newline" token. Lightly downbiasing it is usually
 the best way of forcing the model to output longer paragraphs early on.
@@ -161,6 +162,12 @@ You can also prompt this with:
 
 ```
 The Story so Far:
+```
+
+You can also request musings from the model about what the text is about, or even para-textual notes, by inputting the following at the end of your story text:
+```
+Notes:
+-
 ```
 
 # Creating Presets
