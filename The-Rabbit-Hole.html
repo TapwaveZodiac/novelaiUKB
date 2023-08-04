@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">The Rabbit Hole</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 29/07/2023 at 09:58">Last updated 29/07/2023 at 09:58</time></p>
+  <p class="date before-toc"><time datetime="Last updated 04/08/2023 at 11:13">Last updated 04/08/2023 at 11:13</time></p>
 </blockquote>
 </header>
 
@@ -1351,20 +1351,20 @@
 <h3 id="separating-data-and-story">Separating Data and Story</h3>
 <p>As a rule of thumb, Data (i.e Text Injections such as the <em>Lorebook, Memory and Author's Note</em>) should mix with your story text as little as possible. Interference between "Data" text and "Story" text will lead to degraded story output.</p>
 <p>The first element to consider is if you are using the <strong>Lorebook</strong> or not. This will decide how your <strong>Memory</strong> will look like.</p>
-<p>If you <em>are</em> using lorebook entries, then the <strong>default insertion settings</strong> will put <strong>Memory</strong> below all <strong>Lorebook</strong> entries. In that case, your <strong>Memory</strong> should look like this:</p>
+<p>If you <em>are</em> using lorebook entries, then the <strong>default insertion settings</strong> will put <strong>Memory</strong> <em>above</em> all <strong>Lorebook</strong> entries. In that case, your <strong>Memory</strong> should look like this:</p>
 <hr />
 <pre><code>[ Author: Blah mc Blashson; Title: Heckin&#39; Creativity;
 Tags: sicknasty tutti-frutti prose; Genre: Epic ]
-
  ***
 </code></pre>
 <hr />
 <p>If you are writing something that isn't prose, (such as a poem, or a stat block, etc), you can substitute the <strong>Dinkus (</strong><em>)</em>* with a <strong>Separator (----)</strong>.</p>
 <p>If you aren't using the lorebook, you can simply put the ATTG block in memory <em>without a dinkus</em>.</p>
+<p>Alternatively, by setting all your lorebook entries' insertion position to 0, and order under 400, you'll make them appear before Memory, allowing you to use Memory as the "footer" of the Data block. This is a practice I recommend but not one that is necessary per se.</p>
 <h3 id="setting-up-biases">Setting up Biases</h3>
 <p>Generally, you want to keep your biases minimal, and use them for very precise changes to things that you cannot control easily. <strong>It is always better to lead the AI by example in order to preserve its creativity</strong>. However, biases can be useful for prompting the AI until it "gets" the style you desire.</p>
 <p>It's easy to overdo biases and damage the model's creativity. What you should focus on are mostly punctuation symbols.</p>
-<h4 id="n">n</h4>
+<h4 id="n">\n</h4>
 <p>Backdash-n is the "newline" token. Lightly downbiasing it is usually the best way of forcing the model to output longer paragraphs early on. Afterwards, you can turn it off.</p>
 <h4 id="-------endoftext">***, ----, ⁂, <code>&lt;endoftext&gt;</code></h4>
 <p>Downbiasing those is generally not needed. If those show up regularly, there is a problem with your preset, or your prompt is too short.</p>
@@ -1416,6 +1416,10 @@ simple, archaic, SFW
 <hr />
 <p>You can also prompt this with:</p>
 <pre><code>The Story so Far:
+</code></pre>
+<p>You can also request musings from the model about what the text is about, or even para-textual notes, by inputting the following at the end of your story text:</p>
+<pre><code>Notes:
+-
 </code></pre>
 <h1 id="creating-presets">Creating Presets</h1>
 <p>Creating a preset requires use of the Token Probability viewer (the 🧠 button), as this will let you see the effects of your settings).</p>
