@@ -1,6 +1,5 @@
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/204b16f6-c387-4b06-9f9b-a3f4f744f7ff)
-
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1f5e8530-bd28-4144-9de9-d3b883800660)
 
 ## Generation Presets
 In order to make selecting the AI's various generation settings easier, NovelAI offers several generation presets.
@@ -86,6 +85,10 @@ Increasing A results in a stricter limit. Lowering A results in a looser limit.
 
 This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.
 
+### Top-G Sampling
+
+This specifically applies tp **Kayra**, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has *G* steps.
+
 ### Typical Sampling
 
 Typical Sampling is complicated to explain, as it uses an advanced concept known as [conditional entropy](https://en.wikipedia.org/wiki/Conditional_entropy). It calculates an entropy average, shifts the probabilities of tokens, and then checks which values shifted the most. Those are removed from the pool.
@@ -97,6 +100,16 @@ Lowering the value makes the thresholds for cutting off tokens harsher. Increasi
 ### CFG Scale
 
 **Classifier Free Guidance** is a type of [guidance](https://arxiv.org/abs/2306.17806) which relies on a "negative prompt". You may have noticed something similar in the image generation part of NovelAI with "Unwanted Content". The implementation is comparable but not identical, for text. Using CFG at all will double generation time. You do not need to provide a negative prompt, but if you do, write something that is completely in the wrong style and uses words you don't want to see. Effectively, your negative prompt should be the antithesis of your actual writing. The stronger the **Scale** parameter, the stronger the guidance.
+
+### Mirostat
+
+Mirostat is an advanced sampler which has a very strong effect on its own. It is strongly recommended you keep other samplers to a minimum to make its effect more appreciable.
+
+Rather than simply limit the pool of tokens, Mirostat attempts to direct that pool to be representative of the text's expected complexity. 
+
+**Tau** represents that level. High Tau will aim for higher complexity, while low Tau will aim for simpler output. 
+
+**Learning Rate** is the influence of your context. The higher it is set, the more gradual the changes will be. 1 is instantaneous.
 
 ### Change Settings Order
 
