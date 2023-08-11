@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Generation Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 11/08/2023 at 19:48">Last updated 11/08/2023 at 19:48</time></p>
+  <p class="date before-toc"><time datetime="Last updated 11/08/2023 at 20:01">Last updated 11/08/2023 at 20:01</time></p>
 </blockquote>
 </header>
 
@@ -1335,8 +1335,10 @@
     <li><a href="#nucleus-sampling">Nucleus Sampling</a></li>
     <li><a href="#tail-free-sampling">Tail-Free Sampling</a></li>
     <li><a href="#top-a-sampling">Top-A Sampling</a></li>
+    <li><a href="#top-g-sampling">Top-G Sampling</a></li>
     <li><a href="#typical-sampling">Typical Sampling</a></li>
     <li><a href="#cfg-scale">CFG Scale</a></li>
+    <li><a href="#mirostat">Mirostat</a></li>
     <li><a href="#change-settings-order">Change Settings Order</a></li>
     </ul></li>
     <li><a href="#repetition-penalty-1">Repetition Penalty</a>
@@ -1350,7 +1352,7 @@
 </nav>
 
 <main>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/204b16f6-c387-4b06-9f9b-a3f4f744f7ff" alt="image" /></p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1f5e8530-bd28-4144-9de9-d3b883800660" alt="image" /></p>
 <h2 id="generation-presets">Generation Presets</h2>
 <p>In order to make selecting the AI's various generation settings easier, NovelAI offers several generation presets.</p>
 <p>Settings are divided into three categories:</p>
@@ -1397,12 +1399,19 @@
 <p>The calculation is as follows: <code>limit = max(token_probs)^2 * A.</code></p>
 <p>Increasing A results in a stricter limit. Lowering A results in a looser limit.</p>
 <p>This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.</p>
+<h3 id="top-g-sampling">Top-G Sampling</h3>
+<p>This specifically applies tp <strong>Kayra</strong>, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has <em>G</em> steps.</p>
 <h3 id="typical-sampling">Typical Sampling</h3>
 <p>Typical Sampling is complicated to explain, as it uses an advanced concept known as <a href="https://en.wikipedia.org/wiki/Conditional_entropy">conditional entropy</a>. It calculates an entropy average, shifts the probabilities of tokens, and then checks which values shifted the most. Those are removed from the pool.</p>
 <p>Typical is atypical compared to other sampling methods, as it cuts <em>both likely and unlikely tokens</em>, based on their deviation from the expected base line of entropy. Extremes are considered by the math behind the sampling to be too "random" or "noisy", and thus carrying less "information".</p>
 <p>Lowering the value makes the thresholds for cutting off tokens harsher. Increasing it loosens the thresholds, allowing for more tokens.</p>
 <h3 id="cfg-scale">CFG Scale</h3>
 <p><strong>Classifier Free Guidance</strong> is a type of <a href="https://arxiv.org/abs/2306.17806">guidance</a> which relies on a "negative prompt". You may have noticed something similar in the image generation part of NovelAI with "Unwanted Content". The implementation is comparable but not identical, for text. Using CFG at all will double generation time. You do not need to provide a negative prompt, but if you do, write something that is completely in the wrong style and uses words you don't want to see. Effectively, your negative prompt should be the antithesis of your actual writing. The stronger the <strong>Scale</strong> parameter, the stronger the guidance.</p>
+<h3 id="mirostat">Mirostat</h3>
+<p>Mirostat is an advanced sampler which has a very strong effect on its own. It is strongly recommended you keep other samplers to a minimum to make its effect more appreciable.</p>
+<p>Rather than simply limit the pool of tokens, Mirostat attempts to direct that pool to be representative of the text's expected complexity.</p>
+<p><strong>Tau</strong> represents that level. High Tau will aim for higher complexity, while low Tau will aim for simpler output.</p>
+<p><strong>Learning Rate</strong> is the influence of your context. The higher it is set, the more gradual the changes will be. 1 is instantaneous.</p>
 <h3 id="change-settings-order">Change Settings Order</h3>
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8" alt="image" /></p>
 <p>Allows you to enable or disable sampling types, as well as select the order in which they are processed.</p>
