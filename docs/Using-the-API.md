@@ -294,7 +294,7 @@ found.
 For parameters.order, the sampling methods are **ordered**, the disabled
 ones are **removed**, and they are then arranged into an array with
 temperature => 0, top_k => 1 , top_p => 2, tfs => 3, top_a => 4,
-typical_p => 5
+typical_p => 5, cfg => 6, top_g => 7, mirostat => 8
 
 The number of lobprobs per token is set by parameters.num_logprobs. If
 this field is not set, no logprob will be sent with the response.
@@ -307,7 +307,8 @@ identifier, which you can usually find by exporting a scenario using
 this module and looking into the file. Official modules have a simple
 identifier (e.g. "general_crossgenre"), while custom modules have a
 longer one containing the model, location, and password of the encrypted
-module (e.g. "6B-v4:c6021...").
+module (e.g. "6B-v4:c6021..."). The full list of official modules can be
+found [here](https://github.com/Aedial/novelai-api/blob/main/docs/source/novelai_api/Full_list_of_modules.md).
 All custom modules are encrypted and stored server-side.
 
 ### 2.5.2. /ai/generate-prompt
@@ -472,4 +473,5 @@ Buy Anlas (steps) using your payment processor information.
 -   C# - <https://github.com/Draco18s/NovelAPI>
 -   Golang - <https://github.com/wbrown/novelai-research-tool> (more of
     a tool than an API, but uses the API)
+-   Javascript - <https://www.npmjs.com/package/@ibaraki-douji/novelai>, <https://github.com/Chanka0/novelapi>
 -   Python - <https://github.com/Aedial/novelai-api>
