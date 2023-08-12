@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Using the API</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 11/08/2023 at 20:01">Last updated 11/08/2023 at 20:01</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/08/2023 at 17:12">Last updated 12/08/2023 at 17:12</time></p>
 </blockquote>
 </header>
 
@@ -1496,10 +1496,10 @@
 <h3 id="251-aigenerate">2.5.1. /ai/generate</h3>
 <p>Generate using one of the text AIs. For the input and output, see parameters.use_string. The most relevant generation options can be viewed in <a href="Generation-Settings.html#generation-options">Generation Settings</a>.</p>
 <p>The input you send will be all the AI sees, which mean any context building needs to be done before sending the request. The maximum length (in tokens) you can send to the model depends on the selected model, your subscription tier, the generation length (parameters.max_length), if a module v1 is loaded, and if generate until sentence (parameters.generate_until_sentence) is true. For example, if the chosen model and your tier give you 2048 tokens of context, you need to remove the generation length (up to 150 tokens), 20 tokens if a module v1 is loaded, and 20 tokens if generate until sentence is true. Any additional token above this limit is truncated, starting from the top of context. If parameters.generate_until_sentence is true, the model will try to generate up to 20 tokens past the generation length, until a period is found.</p>
-<p>For parameters.order, the sampling methods are <strong>ordered</strong>, the disabled ones are <strong>removed</strong>, and they are then arranged into an array with temperature =&gt; 0, top_k =&gt; 1 , top_p =&gt; 2, tfs =&gt; 3, top_a =&gt; 4, typical_p =&gt; 5</p>
+<p>For parameters.order, the sampling methods are <strong>ordered</strong>, the disabled ones are <strong>removed</strong>, and they are then arranged into an array with temperature =&gt; 0, top_k =&gt; 1 , top_p =&gt; 2, tfs =&gt; 3, top_a =&gt; 4, typical_p =&gt; 5, cfg =&gt; 6, top_g =&gt; 7, mirostat =&gt; 8</p>
 <p>The number of lobprobs per token is set by parameters.num_logprobs. If this field is not set, no logprob will be sent with the response.</p>
 <p>Stop sequences (parameters.stop_sequences) and Banned tokens (parameters.bad_words_ids) both expect a list of tokenized word(s).</p>
-<p>Modules can be selected through parameters.prefix, and have a unique identifier, which you can usually find by exporting a scenario using this module and looking into the file. Official modules have a simple identifier (e.g. "general_crossgenre"), while custom modules have a longer one containing the model, location, and password of the encrypted module (e.g. "6B-v4:c6021..."). All custom modules are encrypted and stored server-side.</p>
+<p>Modules can be selected through parameters.prefix, and have a unique identifier, which you can usually find by exporting a scenario using this module and looking into the file. Official modules have a simple identifier (e.g. "general_crossgenre"), while custom modules have a longer one containing the model, location, and password of the encrypted module (e.g. "6B-v4:c6021..."). The full list of official modules can be found <a href="https://github.com/Aedial/novelai-api/blob/main/docs/source/novelai_api/Full_list_of_modules.md">here</a>. All custom modules are encrypted and stored server-side.</p>
 <h3 id="252-aigenerate-prompt">2.5.2. /ai/generate-prompt</h3>
 <p>Unknown, unused yet.</p>
 <h3 id="253-aigenerate-stream">2.5.3. /ai/generate-stream</h3>
@@ -1552,6 +1552,7 @@
 <ul>
 <li>C# - <a href="https://github.com/Draco18s/NovelAPI">https://github.com/Draco18s/NovelAPI</a></li>
 <li>Golang - <a href="https://github.com/wbrown/novelai-research-tool">https://github.com/wbrown/novelai-research-tool</a> (more of a tool than an API, but uses the API)</li>
+<li>Javascript - <a href="https://www.npmjs.com/package/@ibaraki-douji/novelai">https://www.npmjs.com/package/@ibaraki-douji/novelai</a>, <a href="https://github.com/Chanka0/novelapi">https://github.com/Chanka0/novelapi</a></li>
 <li>Python - <a href="https://github.com/Aedial/novelai-api">https://github.com/Aedial/novelai-api</a></li>
 </ul>
 
