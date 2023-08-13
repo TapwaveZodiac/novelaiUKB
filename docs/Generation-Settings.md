@@ -152,3 +152,8 @@ The penalty to repeated tokens is applied differently based on distance from the
 Phrase Repetition Penalty, or **PRP** is a system similar to Repetition Penalty, but it penalizes **sequences of tokens** as opposed to single tokens. This helps prevent repetition at the scale of the clause or sentence, or even paragraph, preventing large-scale loops from happening without causing unwanted divergence at the smaller scale. By default, this is set to Very Light, but if your preset has **no** Repetition Penalty, you should set this to a high value, as it is fairly weak on its own.
 
 **You can combine both Phrase and normal Repetition Penalty.**
+
+## Alternative Repetition Penalty
+It has 2 parameters: *Presence* and *Frequency*. It works by multiplying how many time a token appears in the range by *Frequency*, then add *Presence* if the token presented in the range.
+
+In other words, the higher *Frequency* will penalize the repeated tokens more while the *Presence* acts like an addition penalty if the token appeared even once.
