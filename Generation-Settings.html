@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Generation Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 12/08/2023 at 17:12">Last updated 12/08/2023 at 17:12</time></p>
+  <p class="date before-toc"><time datetime="Last updated 15/08/2023 at 07:33">Last updated 15/08/2023 at 07:33</time></p>
 </blockquote>
 </header>
 
@@ -1420,6 +1420,7 @@
 <p>Repetition Penalty is applied to the probability of tokens when they appear in context. This is to avoid generation loops, or overuse of single terms. On the flipside, penalizing important words too heavily when they are important and expected to show up regularly can have odd side effects.</p>
 <h3 id="repetition-whitelist">Repetition Whitelist</h3>
 <p>A default whitelist is offered, which ignores most grammatical terms, modal verbs, possessive contractions, etc. This can help prevent grammatical collapse if repetition penalty is strong.</p>
+<p>As of 2023/07/10, the tokens in the whitelist are: "'", '"', ',', ':', '\n', 've', 's', 't', 'n', 'd', 'll', 're', 'm', '-', '*', ')', ' the', ' a', ' an', ' and', ' or', ' not', ' no', ' is', ' was', ' were', ' did', ' does', ' isn', ' wasn', ' weren', ' didn', ' doesn', ' him', ' her', ' his', ' hers', ' their', ' its', ' could', ' couldn', ' should', ' shouldn', ' would', ' wouldn', ' have', ' haven', ' had', ' hadn', ' has', ' hasn', ' can', ' cannot', ' are', ' aren', ' will', ' won', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '."', ',"', '====', and ' '. The list may change in the future.</p>
 <h3 id="repetition-penalty-range">Repetition Penalty Range</h3>
 <p>Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more tokens are checked.</p>
 <h4 id="dynamic-penalty-range">Dynamic Penalty Range</h4>
