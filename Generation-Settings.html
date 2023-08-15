@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Generation Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 15/08/2023 at 07:33">Last updated 15/08/2023 at 07:33</time></p>
+  <p class="date before-toc"><time datetime="Last updated 15/08/2023 at 07:38">Last updated 15/08/2023 at 07:38</time></p>
 </blockquote>
 </header>
 
@@ -1348,6 +1348,7 @@
     <li><a href="#repetition-penalty-slope">Repetition Penalty Slope</a></li>
     </ul></li>
     <li><a href="#phrase-repetition-penalty">Phrase Repetition Penalty</a></li>
+    <li><a href="#alternative-repetition-penalty">Alternative Repetition Penalty</a></li>
     </ul>
 </nav>
 
@@ -1431,6 +1432,12 @@
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b8a714b9-21fb-4317-997b-e93033aba0de" alt="image" /></p>
 <p>Phrase Repetition Penalty, or <strong>PRP</strong> is a system similar to Repetition Penalty, but it penalizes <strong>sequences of tokens</strong> as opposed to single tokens. This helps prevent repetition at the scale of the clause or sentence, or even paragraph, preventing large-scale loops from happening without causing unwanted divergence at the smaller scale. By default, this is set to Very Light, but if your preset has <strong>no</strong> Repetition Penalty, you should set this to a high value, as it is fairly weak on its own.</p>
 <p><strong>You can combine both Phrase and normal Repetition Penalty.</strong></p>
+<h2 id="alternative-repetition-penalty">Alternative Repetition Penalty</h2>
+<p><em>Note: ARP has an extremely strong effect and can make your output strange if not set to relatively low values.</em></p>
+<p>Alternate Repetition Penalty uses two parameters: <em>Presence</em> and <em>Frequency</em>.</p>
+<p>The math is as follows: <code>(Number of times the token appears in the range * Frequency) + Presence = Penalty Intensity</code></p>
+<p><em>Frequency</em> penalizes recurring tokens with an increasing intensity for each occurence. <em>Presence</em> penalizes all tokens that are present even once with the same intensity.</p>
+<p>You can mix this with PRP and normal repetition penalty, but this is not recommended, as ARP is very strong on its own.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
