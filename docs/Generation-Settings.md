@@ -128,6 +128,10 @@ Repetition Penalty is applied to the probability of tokens when they appear in c
 
 A default whitelist is offered, which ignores most grammatical terms, modal verbs, possessive contractions, etc. This can help prevent grammatical collapse if repetition penalty is strong.
 
+As of 2023/07/10, the tokens in the whitelist are:
+"'", '"', ',', ':', '\n', 've', 's', 't', 'n', 'd', 'll', 're', 'm', '-', '*', ')', ' the', ' a', ' an', ' and', ' or', ' not', ' no', ' is', ' was', ' were', ' did', ' does', ' isn', ' wasn', ' weren', ' didn', ' doesn', ' him', ' her', ' his', ' hers', ' their', ' its', ' could', ' couldn', ' should', ' shouldn', ' would', ' wouldn', ' have', ' haven', ' had', ' hadn', ' has', ' hasn', ' can', ' cannot', ' are', ' aren', ' will', ' won', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '."', ',"', '====', and ' '. 
+The list may change in the future.
+
 ### Repetition Penalty Range
 
 Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more
