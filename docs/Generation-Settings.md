@@ -87,7 +87,9 @@ This means that if the top token has a moderate likelihood of appearing, the poo
 
 ### Top-G Sampling
 
-This specifically applies tp **Kayra**, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has *G* steps.
+**This setting is deprecated since Kayra V1.1 and this entry is kept for historical purposes.**
+
+This specifically applies to **Kayra V1**, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has *G* steps.
 
 ### Typical Sampling
 
