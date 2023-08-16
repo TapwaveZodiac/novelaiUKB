@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Generation Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 16/08/2023 at 17:34">Last updated 16/08/2023 at 17:34</time></p>
+  <p class="date before-toc"><time datetime="Last updated 16/08/2023 at 17:36">Last updated 16/08/2023 at 17:36</time></p>
 </blockquote>
 </header>
 
@@ -1401,7 +1401,8 @@
 <p>Increasing A results in a stricter limit. Lowering A results in a looser limit.</p>
 <p>This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.</p>
 <h3 id="top-g-sampling">Top-G Sampling</h3>
-<p>This specifically applies tp <strong>Kayra</strong>, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has <em>G</em> steps.</p>
+<p><strong>This setting is deprecated since Kayra V1.1 and this entry is kept for historical purposes.</strong></p>
+<p>This specifically applies to <strong>Kayra V1</strong>, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has <em>G</em> steps.</p>
 <h3 id="typical-sampling">Typical Sampling</h3>
 <p>Typical Sampling is complicated to explain, as it uses an advanced concept known as <a href="https://en.wikipedia.org/wiki/Conditional_entropy">conditional entropy</a>. It calculates an entropy average, shifts the probabilities of tokens, and then checks which values shifted the most. Those are removed from the pool.</p>
 <p>Typical is atypical compared to other sampling methods, as it cuts <em>both likely and unlikely tokens</em>, based on their deviation from the expected base line of entropy. Extremes are considered by the math behind the sampling to be too "random" or "noisy", and thus carrying less "information".</p>
