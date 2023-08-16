@@ -174,8 +174,6 @@ Notes:
 
 Creating a preset requires use of the Token Probability viewer (the 🧠 button), as this will let you see the effects of your settings).
 
-**Kayra buckets its probabilities. That means it groups tokens together in "steps" of probabilities." This is something it learned on its own, and you can't turn it off. It just works like that.**
-
 ## The pillars of Preset Design
 
 Presets are founded on three core principles: 
@@ -195,6 +193,8 @@ Fundamentally, all principles are contradictory to at least one quality. It's up
 - **Openness** leads to **Complexity and Creativity** but takes away from **Consistency**.
 - **Confidence** leads to **Consistency**, but takes away from **Creativity** (and sometimes **Complexity** as well.)
 - **Constriction** can take OR add to *any* of the qualities depending on how strong it is.
+
+- **Mirostat** and **CFG** have an extremely strong and distinctive effect. It is recommended to experiment with other sampling types first before using them. If you wish to use either, make sure that any other sampling is minimal (TFS and Typical is recommended).
 
 To arrange a preset, there are three phases. **Sampling**, **Temperature** and **Penalties**. CFG is not considered because CFG is overly powerful and kind of does its own job so strongly that it heavily reduces what a preset does, but the philosophy is the same.
 
