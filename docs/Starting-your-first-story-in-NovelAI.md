@@ -148,7 +148,8 @@ This will make it so all your entries in that category will be bunched up togeth
 Setting Insertion Order to a single digit will make all the entries in that category appear before the memory. After that, higher number means it's closer to the story, and thus more important. Imagine it reads 'priority' instead of order.
 Setting the position to 0 means it'll be put at the top. And now...
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b5a87675-5789-4856-9cd0-ed724964068c)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1ecdf49c-938a-40fb-8ee4-c214437c9eae)
+
 
 Your story is ready to go!
 
