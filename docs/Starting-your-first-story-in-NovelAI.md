@@ -61,7 +61,10 @@ ATTG stands for:
 
 You don't need to use all of them. In fact, you can use only one or two of them! It's better to keep them in the same order. This is okay:
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/0281d169-a6bf-474e-8111-bd03fad03cfb) ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/3facdc82-3876-4a0c-bcc8-ff08acd54b39)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f2824f57-35b7-4372-b9ed-a18984b234af)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/67fd29db-9179-4e37-8519-628bc0d348ff)
+
+(Keep in mind that it's just text being line-wrapped, there is no need to press Enter.)
 
 Put this in your **Memory** field.
 
