@@ -138,7 +138,7 @@ actions that would lead to acquiring information. Use verbs related to
 *intent*, and so many more will help refine what kind of information you
 will receive.
 
-**
+***
 
 ## Dialogue
 
@@ -191,7 +191,7 @@ high level of detail.
 
 ***
 
-## Keeping Track {#keeping_track}
+## Keeping Track
 
 Stories longer than the **Current Context** will require some input from
 the user to maintain narrative cohesion. This is because the AI can only
@@ -223,7 +223,7 @@ changes as it does. For example, if you have gold and receive some more,
 it's best to immediately update this if you're keeping track: so *you*
 don't forget!
 
-### Working with the Lorebook {#working_with_the_lorebook}
+### Working with the Lorebook
 
 While the Lorebook can provide additional information to the AI, it
 **only triggers on words present in the Story itself**. Because of this,
@@ -238,7 +238,7 @@ you're keeping track of this in the Memory, you'd simply refer to them
 at least once as `Seren (sly undercover gang spy)`, so the AI knows the
 basics when introducing them.
 
-### How to Format Memory {#how_to_format_memory}
+### How to Format Memory
 
 There is no set standard to *NovelAI*'s Memory formatting. That said,
 you will find the best results by following a few simple guidelines:
@@ -307,7 +307,7 @@ POV) represented in your Story. There are three perspectives - [**First Person**
 [**Second Person**](https://en.wikipedia.org/wiki/Narration#Second-person) and
 [**Third Person**](https://en.wikipedia.org/wiki/Narration#Third-person).
 
-### First Person {#first_person}
+### First Person
 
 In this perspective, the narrator is both a participant and
 self-referential in the Story. They will typically refer to themselves
@@ -338,11 +338,12 @@ retelling their tale would have no way of authoring the Story.
 
 `I approached the door, held out my trembling hand, and reached for the handle...`
 
-  NOMINATIVE   RELATIVE   POSSESSIVE   REFLEXIVE
-  ------------ ---------- ------------ -----------
-  I            Me         My           Myself
+  * NOMINATIVE:  I
+  * RELATIVE: Me
+  * POSSESSIVE:  My
+  * REFLEXIVE:  Myself
 
-### Second Person {#second_person}
+### Second Person
 
 This perspective is especially popular with the **Choose Your Own
 Adventure** (**CYOA**) variety of literature. Also known as gamebooks,
@@ -365,11 +366,12 @@ protagonist's position.
 
 `You approached the door, held out your trembling hand, and reached for the handle...`
 
-  NOMINATIVE   RELATIVE   POSSESSIVE   REFLEXIVE
-  ------------ ---------- ------------ -----------
-  You          You        Your         Yourself
+  * NOMINATIVE: You
+  * RELATIVE: You
+  * POSSESSIVE:  Your
+  * REFLEXIVE:  Yourself
 
-### Third Person {#third_person}
+### Third Person
 
 This perspective is by far the most plentiful in fiction, owing to its
 versatility in scope and capacity for [**omniscient narration**](https://en.wikipedia.org/wiki/Narration#Omniscient_or_limited).
@@ -398,14 +400,14 @@ on a specific character in the Story.
 important even in traditional literature to regularly re-establish the
 identity of the subject or object.**
 
-  REFERENT          NOMINATIVE   RELATIVE   POSSESSIVE   REFLEXIVE
-  ----------------- ------------ ---------- ------------ ------------
-  Name ♀            She          Her        Her          Herself
-  Name ♂            He           Him        His          Himself
-  Name ⚥ / Plural   They         Them       Their        Themselves
-  Non-person        It           It         Its          Itself
+In Male, Female, Neutral order:
 
-### Changing Perspective {#changing_perspective}
+  * NOMINATIVE:  He / She / They
+  * RELATIVE: Him / Her / Them
+  * POSSESSIVE:  His / Her / Their
+  * REFLEXIVE:  Himself / Herself / Themselves
+
+### Changing Perspective
 
 It is also possible to switch perspective during your Story. This allows
 you to experience the world presented in your Story from a different
@@ -447,7 +449,7 @@ In Euterpe, all you need for POV switching is a simple character tag:
 This will switch the active character to Gary. Note that this works best
 for names that the AI recognizes as names.
 
-## Custom Pronouns {#custom_pronouns}
+## Custom Pronouns
 
 It should be noted that training material including pronouns outside of
 those specified above is sparse. As such, the AI will rarely ever refer
@@ -555,28 +557,19 @@ Modals can be used to carry notions, but also probability. They are
 placed before both the verb and any auxiliaries it might have:
 `He might have been eating at one PM.`
 
-  Modal    Notion                                              Strength of Probability
-  -------- --------------------------------------------------- ------------------------------
-  WILL     Future, Powerful intent                             Extremely strong
-  WOULD    Hypothetical, Potential                             Moderate (mostly fictional)
-  MUST     Obligation (External)                               Extremely strong
-  SHALL    Obligation (Internal)                               Strong
-  SHOULD   Suggestion, Hypothetical                            Weak (mostly fictional)
-  CAN      Possibility, Ability                                Weak
-  COULD    Lost or fictional Possibility, Ability              Very Weak (mostly fictional)
-  MAY      Considering an action, Polite request if question   Moderate
-  MIGHT    Unlikely, Theoretical                               Extremely Weak
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/916d15f2-a177-4452-be26-4c326d576bd4)
+
 
 ***
 
-## Steering the Plot {#steering_the_plot}
+## Steering the Plot
 
 Occasionally, you may wish to have the Story progress in a certain
 direction. There are three methods of steering the plot; using
 **Memory**/**Lorebook**, using the **Author's Note**, and adding to the
 **Story** directly.
 
-### What to Write {#what_to_write}
+### What to Write
 
 As always, you should decide whether to use **square brackets** ([ and ]). Doing so has a tendency to reduce the "presence" of the text that
 is being added, so that it isn't interpreted as part of the story.
@@ -600,7 +593,7 @@ the Story by default. Example:
 
 `The barbarian appears to be powerful.`
 
-#### Using the Memory/Lorebook {#using_the_memorylorebook}
+#### Using the Memory/Lorebook
 
 Although Memory and Lorebook take the **lowest priority** by default,
 and are the least effective method of steering the plot unless their
@@ -610,7 +603,7 @@ outcome of events in the Story.
 -   Low priority
 -   Permanent until removed
 
-#### Using the Author's Note {#using_the_authors_note}
+#### Using the Author's Note
 
 Because it takes a **higher priority** than Memory by default, Author's
 Note is very powerful. Use it with moderation! It is very much capable
@@ -620,7 +613,7 @@ of derailing things due to its strength.
 -   Permanent until removed
 -   Can cause derailing if not used sparingly
 
-#### Using the Story {#using_the_story}
+#### Using the Story
 
 Editing the Story directly is the most effective method of steering the
 plot, because **the last line is always the most relevant to the next
@@ -635,7 +628,7 @@ way is to match the existing prose. Example:
 -   Will require you to remind the AI later using Memory or Author's
     note
 
-## Why Negation and Denial is Hard {#why_negation_and_denial_is_hard}
+## Why Negation and Denial is Hard
 
 Considering how a GPT model works, it is important to note that
 **stating things in the negative** is counterproductive. If a word is in
