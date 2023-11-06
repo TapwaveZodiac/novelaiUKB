@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 11/09/2023 at 09:43">Last updated 11/09/2023 at 09:43</time></p>
+  <p class="date before-toc"><time datetime="Last updated 06/11/2023 at 22:32">Last updated 06/11/2023 at 22:32</time></p>
 </blockquote>
 </header>
 
@@ -1325,7 +1325,7 @@
     <li><a href="#how-is-the-ai-trained">How is the AI trained?</a></li>
     <li><a href="#tag-based-prompting">Tag-based Prompting</a>
     <ul>
-    <li><a href="#quality-tags">Quality Tags</a></li>
+    <li><a href="#quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</a></li>
     <li><a href="#counting-characters-and-gender">Counting Characters and Gender</a></li>
     <li><a href="#character-reference-and-artist-reference">Character Reference and Artist Reference</a></li>
     <li><a href="#tag-interaction">Tag Interaction</a></li>
@@ -1345,10 +1345,13 @@
 <p>Anlatan already provides an in-depth guide to using their Image Generation service <a href="https://docs.novelai.net/">here</a>. It is highly recommended you read it thoroughly because it explains every functionality and all pieces of the UI in great detail.</p>
 <p>You should also read <a href="https://github.com/TravelingRobot/NAI_Community_Research/wiki/NAI-Diffusion:-Various-Tips-&amp;-Tricks">Traveling Robot's research notes</a> as well. This guide expounds on some of them.</p>
 <p>This guide aims to provide with more in depth information for power users.</p>
-<p><strong>For people looking for the magic voodoo to create NSFW artwork: Add NSFW to the prompt. Anywhere.</strong></p>
-<p>The default Unwanted Content is as follows:</p>
+<p>**For people looking for the magic voodoo to create NSFW artwork: Add NSFW to the prompt. Anywhere.</p>
+<p>If the Unwanted Content field is completely empty, "lowres" will be automatically added by the site. This is why it displays as having a token when it is empty. You can make it completely empty by adding a comma.**</p>
+<p>The default Unwanted Content <strong>for V2</strong> is as follows:</p>
+<p>Heavy: <code>lowres, bad, text, error, missing, extra, fewer, cropped, jpeg artifacts, worst quality, bad quality, watermark, displeasing, unfinished, chromatic aberration, scan, scan artifacts</code> Light: <code>lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
+<p>The default Unwanted Content <strong>for V1</strong> is as follows:</p>
 <p><strong>Low Quality:</strong> <code>lowres, text, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry</code></p>
-<p><strong>Low Quality +Bad Anatomy:</strong> <code>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry</code></p>
+<p><strong>Low Quality + Bad Anatomy:</strong> <code>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry</code></p>
 <hr />
 <h1 id="how-is-the-ai-trained">How is the AI trained?</h1>
 <p>The AI was trained on tagged images, based on the Danbooru standard. Boorus are "imageboards", sites where large amounts of images are saved in order to catalogue the body of work of artists. This stemmed from a difficulty to find and archive art reliably, as Japanese artists have a very different relationship with their works than Western cultures do.</p>
@@ -1360,15 +1363,20 @@
 <p>To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use commas to separate tags. While tags on Boorus use underscores instead of spaces, the parser replaced all underscores 'with spaces' to make it easier to write prompts.</p>
 <p>Thus, write prompts with spaces in them if they use multiple words, and bound them with commas. Forgetting a comma might cause the prompt to be interpreted incorrectly.</p>
 <p>Something that is important to note is that prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, but the rest is more or less normalized in strength.</p>
-<p><strong>When weighing tags with curly braces or square brackets, stacking them has a multiplicative effect, rather than additive</strong>.</p>
+<p><strong>When weighing tags with curly braces or square brackets, stacking them has a multiplicative effect, rather than additive. The multiplier is 1.05 per pair of brackets</strong>.</p>
 <p>Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts.</p>
 <p>There are several tag categories that are important to know, due to how extensively they were used in tagging.</p>
-<h3 id="quality-tags">Quality Tags</h3>
+<h3 id="quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</h3>
 <p>You may have heard of the <code>masterpiece</code> tag being used to "improve generation quality". This goes a little bit more in depth.</p>
-<p>Images were classified according to a percentile "quality score". Different tags were then applied to training images based on that score. From highest percentiles to lowest percentiles:</p>
+<p>Images were classified according to a percentile "quality score". Different tags were then applied to training images based on that score.</p>
+<p><strong>For V1</strong>, from highest percentiles to lowest percentiles:</p>
 <p><code>masterpiece, best quality, high quality, normal quality, low quality, worst quality</code></p>
-<p>If you use any of the Unwanted Content default filters, the latter two are automatically put in Unwanted Content. You can disable the filter or write them in your prompt to activate them anyway.</p>
-<p>You only need one tag, though generally you won't need one. It is better to downbias bad things than overly bias "good" things, as this may damage creativity. Generally just using the default Unwanted Content filters will be fine.</p>
+<p><strong>For V2</strong>, from highest percentiles to lowest percentiles:</p>
+<p><code>best quality, amazing quality, great quality, normal quality, bad quality, worst quality</code></p>
+<p>Keep in mind that "amazing quality" incidentally has more NSFW content, so it may be more appropriate to use for NSFW images, as opposed to "best quality". (This also explains why it tends to generate beaches and people in swimsuits.)</p>
+<p>If you use any of the Unwanted Content default filters, the latter two are <strong>automatically inserted in Unwanted Content</strong>. You can disable the filter or write them in your prompt to activate them anyway.</p>
+<p><strong>Aesthetic tags</strong> are used exclusively in V2 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are: <code>very aesthetic, aesthetic, displeasing, very displeasing</code> Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.</p>
+<p>You only need one tag for quality and one for aesthtics, though generally you won't need one. It is better to downbias bad things than overly bias "good" things, as this may damage creativity. Generally just using the default Unwanted Content filters will be fine.</p>
 <h3 id="counting-characters-and-gender">Counting Characters and Gender</h3>
 <p>One of the ubiquitous booru tags is the gender count tag. Whenever there is a number of characters in frame, then they are counted by gender.</p>
 <p>The tag format is always the same. A number from one to 6 (with a plus if more than 6), followed immediately by the gender. <code>1boy, 2girls</code></p>
