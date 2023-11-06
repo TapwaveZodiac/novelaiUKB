@@ -21,6 +21,7 @@ If the Unwanted Content field is completely empty, "lowres" will be automaticall
 The default Unwanted Content **for V2** is as follows:
 
 Heavy: `lowres, bad, text, error, missing, extra, fewer, cropped, jpeg artifacts, worst quality, bad quality, watermark, displeasing, unfinished, chromatic aberration, scan, scan artifacts`
+
 Light: `lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing`
 
 The default Unwanted Content **for V1** is as follows:
