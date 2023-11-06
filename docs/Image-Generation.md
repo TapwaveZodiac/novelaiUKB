@@ -14,14 +14,21 @@ This guide aims to provide with more in depth information for power
 users.
 
 **For people looking for the magic voodoo to create NSFW artwork: Add
-NSFW to the prompt. Anywhere.**
+NSFW to the prompt. Anywhere.
 
-The default Unwanted Content is as follows:
+If the Unwanted Content field is completely empty, "lowres" will be automatically added by the site. This is why it displays as having a token when it is empty. You can make it completely empty by adding a comma.**
+
+The default Unwanted Content **for V2** is as follows:
+
+Heavy: `lowres, bad, text, error, missing, extra, fewer, cropped, jpeg artifacts, worst quality, bad quality, watermark, displeasing, unfinished, chromatic aberration, scan, scan artifacts`
+Light: `lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing`
+
+The default Unwanted Content **for V1** is as follows:
 
 **Low Quality:**
 `lowres, text, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry`
 
-**Low Quality +Bad Anatomy:**
+**Low Quality + Bad Anatomy:**
 `lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry`
 
 ***
@@ -65,7 +72,7 @@ first has more weight, but the rest is more or less normalized in
 strength.
 
 **When weighing tags with curly braces or square brackets, stacking them
-has a multiplicative effect, rather than additive**.
+has a multiplicative effect, rather than additive. The multiplier is 1.05 per pair of brackets**.
 
 Tag-based prompts tends to lead to consistent designs. However, they
 come out stylistically different and less diverse than Prose-based
@@ -74,22 +81,33 @@ prompts.
 There are several tag categories that are important to know, due to how
 extensively they were used in tagging.
 
-### Quality Tags
+### Quality Tags And Aesthetic Tags
 
 You may have heard of the `masterpiece` tag being used to "improve
 generation quality". This goes a little bit more in depth.
 
 Images were classified according to a percentile "quality score".
 Different tags were then applied to training images based on that score.
-From highest percentiles to lowest percentiles:
+
+**For V1**, from highest percentiles to lowest percentiles:
 
 `masterpiece, best quality, high quality, normal quality, low quality, worst quality`
 
+**For V2**, from highest percentiles to lowest percentiles:
+
+`best quality, amazing quality, great quality, normal quality, bad quality, worst quality`
+
+Keep in mind that "amazing quality" incidentally has more NSFW content, so it may be more appropriate to use for NSFW images, as opposed to "best quality". (This also explains why it tends to generate beaches and people in swimsuits.)
+
 If you use any of the Unwanted Content default filters, the latter two
-are automatically put in Unwanted Content. You can disable the filter or
+are **automatically inserted in Unwanted Content**. You can disable the filter or
 write them in your prompt to activate them anyway.
 
-You only need one tag, though generally you won't need one. It is
+**Aesthetic tags** are used exclusively in V2 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are:
+`very aesthetic, aesthetic, displeasing, very displeasing`
+Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.
+
+You only need one tag for quality and one for aesthtics, though generally you won't need one. It is
 better to downbias bad things than overly bias "good" things, as this
 may damage creativity. Generally just using the default Unwanted Content
 filters will be fine.
