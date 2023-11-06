@@ -14,9 +14,9 @@ This guide aims to provide with more in depth information for power
 users.
 
 **For people looking for the magic voodoo to create NSFW artwork: Add
-NSFW to the prompt. Anywhere.
+NSFW to the prompt. Anywhere.**
 
-If the Unwanted Content field is completely empty, "lowres" will be automatically added by the site. This is why it displays as having a token when it is empty. You can make it completely empty by adding a comma.**
+**If the Unwanted Content field is completely empty, "lowres" will be automatically added by the site. This is why it displays as having a token when it is empty. You can make it completely empty by adding a comma.**
 
 The default Unwanted Content **for V2** is as follows:
 
