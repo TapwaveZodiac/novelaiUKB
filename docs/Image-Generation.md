@@ -100,7 +100,7 @@ Different tags were then applied to training images based on that score.
 
 Keep in mind that "amazing quality" incidentally has more NSFW content, so it may be more appropriate to use for NSFW images, as opposed to "best quality". (This also explains why it tends to generate beaches and people in swimsuits.)
 
-If you use any of the Unwanted Content default filters, the latter two
+If you use any of the Unwanted Content default filters, `worst quality, bad quality,`
 are **automatically inserted in Unwanted Content**. You can disable the filter or
 write them in your prompt to activate them anyway.
 
