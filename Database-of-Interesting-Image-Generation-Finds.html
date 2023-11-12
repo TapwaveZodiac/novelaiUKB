@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Database of Interesting Image Generation Finds</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 06/11/2023 at 22:35">Last updated 06/11/2023 at 22:35</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/11/2023 at 09:51">Last updated 12/11/2023 at 09:51</time></p>
 </blockquote>
 </header>
 
@@ -1337,23 +1337,23 @@
 <blockquote>
 <p>freckled skin</p>
 </blockquote>
-<p>Much more reliable and artifact-free freckles. Generally subtle, cheeks/shoulders.</p>
+<p>V1: Much more reliable and artifact-free freckles. Generally subtle, cheeks/shoulders. V2: use <code>freckled body</code> instead.</p>
 <blockquote>
 <p>braces + fangs / sharp teeth / razor teeth</p>
 </blockquote>
-<p>Generally leads to more detailed sharp teeth that are more consistently shaped.</p>
+<p>V1: Generally leads to more detailed sharp teeth that are more consistently shaped. V2: Unnecessary. Fangs generates sharp canines, sharp teeth generates seesaw teeth as expected.</p>
 <blockquote>
 <p>rigid teeth</p>
 </blockquote>
-<p>"Cringing" or gritting teeth. Without facial expression, generally has a note of disgust/disappointment.</p>
+<p>V1: "Cringing" or gritting teeth. Without facial expression, generally has a note of disgust/disappointment. V2: Makes the character yawn (slightly squinted eyes and open mouth with teeth above and below), better than then <code>yawning</code> tag.</p>
 <blockquote>
 <p>lion hair</p>
 </blockquote>
-<p>Very voluminous and wild hair like you'd expect out of a lion girl's mane. Animal ears will tend to generate, so put them in UC if you don't want them.</p>
+<p>Very voluminous and wild hair like you'd expect out of a lion girl's mane. Animal ears will tend to generate, so put them in UC if you don't want them. V2: <code>Lion girl</code> tends to generate that kind of hair by default.</p>
 <blockquote>
 <p>shaped pupils</p>
 </blockquote>
-<p>Usually leads to white/light colored pupils with dense iris detail.</p>
+<p>Usually leads to white/light colored pupils with dense iris detail. V2: Mostly makes pupils white, and sometimes shapes them like hearts, or slits.</p>
 <blockquote>
 <p>X-Y-Z-hair</p>
 </blockquote>
@@ -1361,32 +1361,48 @@
 <blockquote>
 <p>Detailed Skin</p>
 </blockquote>
-<p>As opposed to "Detailed" which often damages quality by itself, this can lead to faces with greater texturing and more fancy-looking eyes. Tends to give lipstick to characters, so Lipstick can be put in UC.</p>
+<p>V1: As opposed to "Detailed" which often damages quality by itself, this can lead to faces with greater texturing and more fancy-looking eyes. Tends to give lipstick to characters, so Lipstick can be put in UC. V2: Affects the general texturing, and has a stronger effect on outfits than skin. Tends to change facial anatomy quite strongly.</p>
+<blockquote>
+<p>white inner eye</p>
+</blockquote>
+<p>V2: brightens irises. Combine with <code>empty eyes</code> to create irises that are bright and flat colored.</p>
 <h2 id="magic-ucs">Magic UCs</h2>
 <blockquote>
-<p>petite,loli</p>
+<p>petite, loli</p>
 </blockquote>
 <p>Severely reduced youthfulness for all. Should always be used when generating anyone adult-looking.</p>
 <blockquote>
 <p>幼児化</p>
 </blockquote>
-<p>Infantilization in Japanese. Adds maturity to the subject.</p>
+<p>Infantilization in Japanese. Adds maturity to the subject. V2: less effective.</p>
 <blockquote>
 <p>claw</p>
 </blockquote>
-<p>Gives softer angles and shape to fingers.</p>
+<p>Tends to improve hand anatomy by reducing sharp angles.</p>
 <blockquote>
 <p>tears</p>
 </blockquote>
-<p>Reduces eye artifacts when using tags like <code>colored eyelashes, eyeliner, eyeshadow</code></p>
+<p>Reduces eye artifacts when using tags like <code>colored eyelashes, eyeliner, eyeshadow</code> v2: Not necessary.</p>
 <blockquote>
 <p>sanpaku</p>
 </blockquote>
-<p>Seems to break away from "NAIDiffusion style" with default quality tags. More detailed eyes.</p>
+<p>Seems to break away from "NAIDiffusion style" with default quality tags. More detailed eyes. V2: Increases iris size as expected, but no other notable effect.</p>
 <blockquote>
 <p>jpeg artifacts</p>
 </blockquote>
 <p>Already in default UC but worth reinforcing when using very low scale and more painterly styles like <code>watercolor, ink sketch</code></p>
+<blockquote>
+<p>red eyeliner, red eyeshadow</p>
+</blockquote>
+<p>V2: <code>Eyeliner</code> and <code>Eyeshadow</code> tend to create red outlines around the eyes of characters. If you want thick eyelashes, try <code>mascara</code></p>
+<blockquote>
+<p>chromatic aberration</p>
+</blockquote>
+<p>Improves outline clarity and reduces color artifacting around them.</p>
+<blockquote>
+<p>genshin impact</p>
+</blockquote>
+<p>V2: Strongly interferes with some prompts, it may be worth using if you feel the style is stilted with your current prompt.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
