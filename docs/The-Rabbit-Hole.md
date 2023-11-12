@@ -39,7 +39,7 @@ Tags: sicknasty tutti-frutti prose; Genre: Epic ]
 
 ***
 If you are writing something that isn't prose, (such as a poem, or a
-stat block, etc), you can substitute the **Dinkus (***)** with a
+stat block, etc), you can substitute the **Dinkus (`***`)** with a
 **Separator (----)**.
 
 If you aren't using the lorebook, you can simply put the ATTG block in
@@ -110,8 +110,20 @@ first person, second person, third person
 
 simple, archaic, SFW
 ```
+It is suggested to put Style direction in the **Author's note.**
 
 ***
+### Knowledge Domains
+
+You can tell the model to focus on specific subjects by using the Knowledge element:
+***
+`[ knowledge: 90s Computer RPGs ]`
+***
+
+It is suggested to put Knowledge elements in the **Memory**.
+
+***
+
 ### Setting Directions
 
 Changing the current location, time, or POV can be done using a stage
