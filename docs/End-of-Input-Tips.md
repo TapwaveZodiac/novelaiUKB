@@ -162,10 +162,7 @@ This is basically any character like spaces and linebreaks.
     -   **Avoid those as much as possible unless going for special
         formatting. Their effect on writing quality is noticeable.**
 
-### Other Symbols
-
-These are used more specifically in NovelAI due to how its finetune is
-prepared.
+### Encasers
 
 -   **Parentheses** ( ) are used to denote side comments or side
     thoughts.
@@ -174,42 +171,45 @@ prepared.
 
 -   **Brackets** [ ] in NovelAI are a little special because they are
     banned from generation by default. They can be used as markers for
-    **notes outside of the main text**.
+    **notes outside of the main text**. Extensively detailed in [The Rabbit Hole](https://tapwavezodiac.github.io/novelaiUKB/The-Rabbit-Hole.html#stage-directions).
     -   Keep in mind that you need to put **spaces after opening
         brackets and before closing brackets for them to work
-        properly.**
-    -   Usually found at the beginning of chapters, square brackets can
-        be used to set the scene, as in `[ London, 1820 ]`.
-    -   They can be used to easily switch the protagonist mid-story, if
-        you insert the name of the character in brackets on a new row,
-        as in `[ John ]`.
+        properly.** Their uses outside of Author/Title/Tags/Genre are:
     -   They may also be used to influence the direction of the story or
-        give details --- think stage directions --- though this is not
+        give details, think stage directions, though this is not
         the intended usage.
-
--   **Curly Braces** { } are usually used in code and very uncommon in
-    anything that isn't math or computing related.
-    -   Thus, you can use them to talk about those subjects.
-    -   They are used for "strict" token selections for Ban Token and
-        Phrase Bias.
-    -   Snek uses them extensively to generate Python code.
-
--   **Bullet Points** • are used to mark elements of a list. One per
-    line.
-
--   **Single dashes** ( - ) are used for discrete lists.
-    -   Very practical if you want to present neatly indented lists.
 
 -   **Less Than and More Than** < > are used in the finetune to *encase
     telepathic communication, or thoughts.*
     -   As such, you can use them to denote when a character is
         thinking.
+        
+-   **Curly Braces** { } are used specifically for instructions in Kayra. For other models, they are used for code.
+    -   You only need to open the brace, not close it.
+    -   Snek uses them extensively to generate Python code.
+
+### Headers
+
+-   **Bullet Points** ( • ) are used to mark elements of a list. One per
+    line.
+
+-   **Single dashes** ( - ) are used for discrete lists.
+    -   Very practical if you want to present neatly indented lists.
 
 -   **More Than** ( > ) When used to start a new row, > denotes text
     and computer console messages. It is also used by Text Adventure, though it's not always displayed.
 
--   The hilariously named **Dinkus** ( `***` ) is a symbol used to
-    denote a section break in a text.
+-   **Em Dash** ( ─ ) is used for LitRPG format, such as stat
+    blocks and MMORPG style skills.
+    -   Note that this heavily influences the output, usually making the
+        protagonist aware that they're in a game-like world.
+
+-   **Double pound sign** ( ## ) is used for commented out text that will not be processed by the AI.
+    - Any paragraph starting with a double pound sign will not be considered part of the context.      
+
+####  Separators
+
+ -   **Dinkuses** ( `***` ) are used to denote a section break in a text, and separate stories.
     -   Consider it as powerful "break from current scene" device.
     -   Often interpreted as a time skip or even a switch to a different
         character, depending on the preceding text. Experiment.
@@ -224,11 +224,14 @@ prepared.
         such this does not function well when the bracket ban is
         enabled.
 
--   **Horizontal line** ( ─ ) is used for LitRPG format, such as stat
-    blocks and MMORPG style skills.
-    -   Note that this heavily influences the output, usually making the
-        protagonist aware that they're in a game-like world.
+-    **Four dashes** (----) are used to separate blocks of non-story data, and Attribute blocks.
+    - To return to Story text, use a Dinkus (***).
 
--   **Em space** (   ) is used for poetry and lyrics.
-    -   Simply starting a new row with this will typically generate a
-        poem.
+-    **Six equal signs** or "double bar" (======) are used to separate forum posts or email blocks.
+    - Optionally combine with `Thread: (thread name)` before the first double bar to set its subject.
+    - Follow the double bar immediately on the **next line** with the user name.
+     ```
+     Thread: What's the deal with airline food?
+     ======
+     Seinfeld
+     ```
