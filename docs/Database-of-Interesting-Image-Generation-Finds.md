@@ -9,23 +9,28 @@ Leads to gem-like and colorful elements. Can be combined with specific objects o
 
 > freckled skin
 
-Much more reliable and artifact-free freckles. Generally subtle, cheeks/shoulders.
+V1: Much more reliable and artifact-free freckles. Generally subtle, cheeks/shoulders.
+V2: use `freckled body` instead.
 
 > braces + fangs / sharp teeth / razor teeth
 
-Generally leads to more detailed sharp teeth that are more consistently shaped.
+V1: Generally leads to more detailed sharp teeth that are more consistently shaped.
+V2: Unnecessary. Fangs generates sharp canines, sharp teeth generates seesaw teeth as expected.
 
 > rigid teeth
 
-"Cringing" or gritting teeth. Without facial expression, generally has a note of disgust/disappointment.
+V1: "Cringing" or gritting teeth. Without facial expression, generally has a note of disgust/disappointment.
+V2: Makes the character yawn (slightly squinted eyes and open mouth with teeth above and below), better than then `yawning` tag.
 
 > lion hair
 
 Very voluminous and wild hair like you'd expect out of a lion girl's mane. Animal ears will tend to generate, so put them in UC if you don't want them.
+V2: `Lion girl` tends to generate that kind of hair by default.
 
 > shaped pupils
 
 Usually leads to white/light colored pupils with dense iris detail.
+V2: Mostly makes pupils white, and sometimes shapes them like hearts, or slits.
 
 > X-Y-Z-hair
 
@@ -33,30 +38,50 @@ Can be used for tri-tone hair. Order is not always respected, and it generally g
 
 > Detailed Skin
 
-As opposed to "Detailed" which often damages quality by itself, this can lead to faces with greater texturing and more fancy-looking eyes. Tends to give lipstick to characters, so Lipstick can be put in UC.
+V1: As opposed to "Detailed" which often damages quality by itself, this can lead to faces with greater texturing and more fancy-looking eyes. Tends to give lipstick to characters, so Lipstick can be put in UC.
+V2: Affects the general texturing, and has a stronger effect on outfits than skin. Tends to change facial anatomy quite strongly.
+
+> white inner eye
+
+ V2: brightens irises. Combine with `empty eyes` to create irises that are bright and flat colored.
 
 ## Magic UCs
 
-> petite,loli
+> petite, loli
 
 Severely reduced youthfulness for all. Should always be used when generating anyone adult-looking.
 
 > 幼児化
 
 Infantilization in Japanese. Adds maturity to the subject.
+V2: less effective.
 
 > claw
 
-Gives softer angles and shape to fingers.
+Tends to improve hand anatomy by reducing sharp angles.
 
 > tears
 
 Reduces eye artifacts when using tags like `colored eyelashes, eyeliner, eyeshadow`
+v2: Not necessary.
 
 > sanpaku
 
 Seems to break away from "NAIDiffusion style" with default quality tags. More detailed eyes.
+V2: Increases iris size as expected, but no other notable effect.
 
 > jpeg artifacts
 
 Already in default UC but worth reinforcing when using very low scale and more painterly styles like `watercolor, ink sketch`
+
+> red eyeliner, red eyeshadow
+
+V2: `Eyeliner` and `Eyeshadow` tend to create red outlines around the eyes of characters. If you want thick eyelashes, try `mascara`
+
+> chromatic aberration
+
+Improves outline clarity and reduces color artifacting around them.
+
+> genshin impact
+
+V2: Strongly interferes with some prompts, it may be worth using if you feel the style is stilted with your current prompt.
