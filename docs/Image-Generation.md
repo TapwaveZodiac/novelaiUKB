@@ -313,16 +313,20 @@ If your steps and Strength are too low compared to your Noise, your image will s
 Image to Image is best used for the following purposes:
 
 • Fixing a detail that was badly rendered, like an extra finger or a messed up frill.
-○ Recommended edit: Obscure or paint over with surrounding color palette. 0 noise, 0.2-0.35 strength. (Lower if you trust your detail-fixing skills better.)
+
+○ *Recommended edit: Obscure or paint over with surrounding color palette. 0 noise, 0.2-0.35 strength. (Lower if you trust your detail-fixing skills better.)*
 
 • Keeping the same pose but changing lots of misshapen or artifacted elements.
-○ Recommended edit: None. 0-0.1 noise, 0.7-0.85 strength.
+
+○ *Recommended edit: None. 0-0.1 noise, 0.7-0.85 strength.*
 
 • Adding a new element to a "good enough" base image.
-○ Recommended edit: Draw shape of object using colors similar to surrounding palette. 0 noise, 0.4-0.6 strength. Keep in mind your image will look substantially different.
+
+○ *Recommended edit: Draw shape of object using colors similar to surrounding palette. 0 noise, 0.4-0.6 strength. Keep in mind your image will look substantially different.*
 
 • Drawing a foundation for inpainting.
-○ Recommended edit: Draw the general shape/background of what you want. Do not generate a new image. Instead, click "Inpaint image" on the **left**, and select the area you drew on.
+
+○ *Recommended edit: Draw the general shape/background of what you want. Do not generate a new image. Instead, click "Inpaint image" on the **left**, and select the area you drew on.*
 
 ***
 
