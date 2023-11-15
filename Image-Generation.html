@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 12/11/2023 at 21:59">Last updated 12/11/2023 at 21:59</time></p>
+  <p class="date before-toc"><time datetime="Last updated 15/11/2023 at 22:10">Last updated 15/11/2023 at 22:10</time></p>
 </blockquote>
 </header>
 
@@ -1323,13 +1323,24 @@
       <h2 id="toc-title">Contents</h2>
     <ul>
     <li><a href="#how-is-the-ai-trained">How is the AI trained?</a></li>
+    <li><a href="#diffusion-models">Diffusion Models</a>
+    <ul>
+    <li><a href="#noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler: Steps, Scale/Guidance and Seed</a></li>
+    <li><a href="#the-limits-of-guidance">The limits of Guidance</a></li>
+    </ul></li>
     <li><a href="#tag-based-prompting">Tag-based Prompting</a>
     <ul>
     <li><a href="#quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</a></li>
     <li><a href="#counting-characters-and-gender">Counting Characters and Gender</a></li>
     <li><a href="#character-reference-and-artist-reference">Character Reference and Artist Reference</a></li>
-    <li><a href="#tag-interaction">Tag Interaction</a></li>
+    <li><a href="#tag-interaction">Tag Interaction</a>
+    <ul>
+    <li><a href="#incomplete-interactions">Incomplete Interactions</a></li>
+    <li><a href="#priority-interference">Priority Interference</a></li>
+    <li><a href="#mutual-dependencies">Mutual Dependencies</a></li>
     <li><a href="#facial-expressions">Facial Expressions</a></li>
+    </ul></li>
+    <li><a href="#strenghtening-and-weakning-math">Strenghtening and Weakning Math</a></li>
     </ul></li>
     <li><a href="#prose-prompting">Prose Prompting</a>
     <ul>
@@ -1346,20 +1357,34 @@
 <p>You should also read <a href="https://github.com/TravelingRobot/NAI_Community_Research/wiki/NAI-Diffusion:-Various-Tips-&amp;-Tricks">Traveling Robot's research notes</a> as well. This guide expounds on some of them.</p>
 <p>This guide aims to provide with more in depth information for power users.</p>
 <p><strong>For people looking for the magic voodoo to create NSFW artwork: Add NSFW to the prompt. Anywhere.</strong></p>
-<p><strong>If the Unwanted Content field is completely empty, "lowres" will be automatically added by the site. This is why it displays as having a token when it is empty. You can make it completely empty by adding a comma.</strong></p>
-<p>The default Unwanted Content <strong>for V2</strong> is as follows:</p>
-<p>Heavy: <code>lowres, bad, text, error, missing, extra, fewer, cropped, jpeg artifacts, worst quality, bad quality, watermark, displeasing, unfinished, chromatic aberration, scan, scan artifacts</code></p>
-<p>Light: <code>lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
-<p>The default Unwanted Content <strong>for V1</strong> is as follows:</p>
-<p><strong>Low Quality:</strong> <code>lowres, text, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry</code></p>
-<p><strong>Low Quality + Bad Anatomy:</strong> <code>lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry</code></p>
-<hr />
 <h1 id="how-is-the-ai-trained">How is the AI trained?</h1>
 <p>The AI was trained on tagged images, based on the Danbooru standard. Boorus are "imageboards", sites where large amounts of images are saved in order to catalogue the body of work of artists. This stemmed from a difficulty to find and archive art reliably, as Japanese artists have a very different relationship with their works than Western cultures do.</p>
 <p>As a result, these sites were created to host as many images as possible, and make them easy to find by applying tags. These tags describe elements of the image, such as character design elements (hair, eyes, etc), poses, objects, and much more.</p>
+<p>There are two parts to training: Quality training, and Aesthetic training. This will be explained in the next section.</p>
 <p>If you are going to go and trawl Danbooru's tag database, keep in mind that the site is <strong>extremely unsafe for work!</strong></p>
 <p>If you are using the Furry model, <strong>you'll need to use E621's tags.</strong> This means all the following information will not work for this specific model. E621 is just as extremely unsafe for work.</p>
 <hr />
+<h1 id="diffusion-models">Diffusion Models</h1>
+<p>A diffusion model works by resolving noise into an image. If you ever used a photo editing tool to remove noise from an image, the idea is the same, except pushed to its logical extreme. You are giving the AI nothing <em>but</em> noise, and ask it to denoise it into a full image.</p>
+<p>This has several implications:</p>
+<p>• The AI has <strong>no grasp</strong> of where is what element. It knows what it's trying to make, but it does not know where things start and end <em>exactly</em>.</p>
+<p>• The AI does not have pure semantic understanding of tags. It just knows that this tag tends to lead to those shapes and those colors. It does not understand what hair <em>is</em>, but just how it <em>looks</em> and is usually drawn.</p>
+<p>• The AI does not know the bounds of elements in the image, this means you can't tell it "I want this, but ONLY for this character". This is why it can struggle with multiple characters in long prompts.</p>
+<h2 id="noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler: Steps, Scale/Guidance and Seed</h2>
+<p>Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps).</p>
+<p>Steps are carried by a <strong>Sampler</strong>, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are <em>Ancestral</em>, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers.</p>
+<p>(That does not mean they perform better <strong>in general</strong>, just that it costs less to get them to look decent.)</p>
+<p>Scale/Guidance affects <em>how much</em> the prompt affects the Sample steps, but not their "intensity" or their "length". <strong>All steps are equal in terms of compute</strong>. Guidance thus does <em>not</em> affect cost.</p>
+<p>However, <strong>Negative Guidance Scale</strong> <em>does</em>, because it uses additional processing power to run <strong>CFG</strong> or <strong>Classifier-Free Guidance</strong>. If the Negative Guidance is equal to Positive Guidance, then there is no need for extra compute, and the cost is the same.</p>
+<p><strong>Noise</strong> is the primordial soup from which the AI will unravel an image. <strong>Seed</strong> is what decides the base noise pattern, however, <strong>Noise Schedule</strong> in Advanced Settings changes how that noise is generated and interpreted by the sampler, resulting in different outputs with the same seed.</p>
+<p>Effectively, Noise Schedules are variations of the same Sampler's algorithm.</p>
+<p><code>native</code>, <code>exponential</code> and <code>polyexponential</code> are <em>mostly</em> the same, with Polyexponential being the most similar to <code>native</code> in its output. <code>karras</code> leads to very different generations on the same seed.</p>
+<h2 id="the-limits-of-guidance">The limits of Guidance</h2>
+<p>Guidance is nice and all, but V2 and <strong>especially V3</strong> work best at a narrow band of scale. V2 works well from 3 to 11, while V3 works best at 2-6.</p>
+<p>Guidance is much stronger on V3 because it uses a different base model, which is more reactive than V2.</p>
+<p>Higher scale leads to stronger contrast, stronger outlines, and all around stronger "bounding" of elements. This can also cause some elements to overpower others more readily. This is why low scale is considered more "painterly", because noise is resolved more loosely, which leads to the aesthetic "blurriness" of mediums like watercolor, oil paint, etc.</p>
+<p>To allow for a stronger Prompt Guidance without having those issues, the advanced setting <strong>Prompt Guidance Rescale</strong> attempts to compensate for them, but this will result in a blurrier output. You can always use image 2 image to refine the picture once you feel the base is good enough.</p>
+<p>Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1.</p>
 <h1 id="tag-based-prompting">Tag-based Prompting</h1>
 <p>To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use commas to separate tags. While tags on Boorus use underscores instead of spaces, the parser replaced all underscores 'with spaces' to make it easier to write prompts.</p>
 <p>Thus, write prompts with spaces in them if they use multiple words, and bound them with commas. Forgetting a comma might cause the prompt to be interpreted incorrectly.</p>
@@ -1367,7 +1392,7 @@
 <p><strong>When weighing tags with curly braces or square brackets, stacking them has a multiplicative effect, rather than additive. The multiplier is 1.05 per pair of brackets</strong>.</p>
 <p>Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts.</p>
 <p>There are several tag categories that are important to know, due to how extensively they were used in tagging.</p>
-<h3 id="quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</h3>
+<h2 id="quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</h2>
 <p>You may have heard of the <code>masterpiece</code> tag being used to "improve generation quality". This goes a little bit more in depth.</p>
 <p>Images were classified according to a percentile "quality score". Different tags were then applied to training images based on that score.</p>
 <p><strong>For V1</strong>, from highest percentiles to lowest percentiles:</p>
@@ -1378,39 +1403,56 @@
 <p>If you use any of the Unwanted Content default filters, <code>worst quality, bad quality,</code> are <strong>automatically inserted in Unwanted Content</strong>. You can disable the filter or write them in your prompt to activate them anyway.</p>
 <p><strong>Aesthetic tags</strong> are used exclusively in V2 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are: <code>very aesthetic, aesthetic, displeasing, very displeasing</code> Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.</p>
 <p>You only need one tag for quality and one for aesthtics, though generally you won't need one. It is better to downbias bad things than overly bias "good" things, as this may damage creativity. Generally just using the default Unwanted Content filters will be fine.</p>
-<h3 id="counting-characters-and-gender">Counting Characters and Gender</h3>
+<h2 id="counting-characters-and-gender">Counting Characters and Gender</h2>
 <p>One of the ubiquitous booru tags is the gender count tag. Whenever there is a number of characters in frame, then they are counted by gender.</p>
 <p>The tag format is always the same. A number from one to 6 (with a plus if more than 6), followed immediately by the gender. <code>1boy, 2girls</code></p>
 <p>You can also use <code>other</code> as a gender for androgynous or transgender characters. Generally, they will look rather feminine nonetheless.</p>
 <p>This tag is almost universally put in first position because it starts with a number rather than a letter, but you can put it anywhere. Those tags are <strong>very</strong> powerful, so you might not even need to use them, if you simply describe a character. It is mostly to make sure you have that number of characters in frame, or reinforce gender expectations.</p>
 <p>If you are looking to generate gender noncomforming characters, here are a few tags.</p>
 <p><code>twink, otoko no ko, "girl, flat chest"</code> can help generate soft boys.</p>
-<p><code>masculine, tough</code> can help generate butch girls.</p>
-<h3 id="character-reference-and-artist-reference">Character Reference and Artist Reference</h3>
-<p>After you specified quality and character number/gender, you'll want to specify, if applicable, the <strong>Reference Character</strong>, if you are generating a known character from another franchise. After that, append <code>by</code> and the artist name.</p>
+<p><code>toned female, tomboy, tough</code> can help generate butch girls.</p>
+<h2 id="character-reference-and-artist-reference">Character Reference and Artist Reference</h2>
+<p>After you specified quality and character number/gender, you'll want to specify, if applicable, the <strong>Reference Character</strong>, followed by its <strong>source franchise</strong>. Keep in mind that Boorus use Japanese name order, meaning that family name comes first for Japanese characters.</p>
+<p><code>yor briar, spy x family</code></p>
+<p><code>yamamura sadako, the ring</code></p>
+<p>If you wish to use an artist's style, use <code>artist:(artistname)</code>.</p>
 <p>For example, if you want to generate Makoto Kusanagi in the style of the latest Ghost in the Shell production, you would use:</p>
-<p><code>Kusanagi Makoto by Ilya Kuvshinov</code></p>
-<p>Keep in mind that Boorus use Japanese name order, meaning that family name comes first.</p>
+<p><code>Kusanagi Makoto, ghost in the shell, Artist:Ilya Kuvshinov,</code></p>
 <p>You can, of course, put this information anywhere else, this is simply how file names are generally arranged.</p>
-<h3 id="tag-interaction">Tag Interaction</h3>
+<h2 id="tag-interaction">Tag Interaction</h2>
 <p>An easy way to mess up your generations ( or improve them!) is to have tags that interact. One common example of tags overwriting each other is as follows:</p>
 <p><code>1girl, brown hair, blue eyes, sleeping, eyes closed, laying down</code></p>
-<p>While the problem is not immediately apparent, specifying an eye colour <em>and</em> them being closed means that one will be ignored in favour of the other. Make sure you don't specify information about things that are not in frame.</p>
+<p>While the problem is not immediately apparent, specifying an eye colour <em>and</em> them being closed means that one will be ignored in favour of the other. <strong>Make sure you don't specify information about things that are not in frame.</strong> Images on Danbooru follow the "tag what you see" guideline.</p>
 <p>A more positive example is:</p>
 <p><code>1girl, black hair, blue highlights, blue eyes,</code></p>
 <p>Putting a color highlight next to the hair color will give you colored strands and bangs. Adjust the wording until you get the sepcifics you like!</p>
-<h4 id="incomplete-interactions">Incomplete Interactions</h4>
+<h3 id="incomplete-interactions">Incomplete Interactions</h3>
 <p>Breaking up interactions that occur naturally can result in artifacts or odd elements. It is easy to achieve if you strengthen a specific part of a tag rather than the whole tag.</p>
 <p><code>1girl, black hair, {{{orange}}} eyes</code></p>
 <p>This can lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame. Whether or not this is a bad thing is up to you.</p>
-<h4 id="mutual-dependencies">Mutual Dependencies</h4>
+<h3 id="priority-interference">Priority Interference</h3>
+<p>As tags placed earlier in the prompt have more strength, colors and other elements tend to leak.</p>
+<p><code>blue eyes, black hair</code></p>
+<p>Can lead to the hair being tinted blue, or being blue outright. Eyes tend to have powerful color influence on other elements, as most character designers tend to match palette to the eyes. Thus, it may be better to write the hair tags first to avoid that.</p>
+<h3 id="mutual-dependencies">Mutual Dependencies</h3>
 <p>Some tags implicitly require each other and can lead to artifacts or tags being ignored if one of them is banned through Undesired Content. For example, requesting <code>gloves</code> but having <code>hands</code> in Undesired Content can lead to weird generations. Make sure you account for these dependencies to avoid this!</p>
 <h3 id="facial-expressions">Facial Expressions</h3>
-<p>You'll quickly realize that facial expression tags are non-intuitive and lead to odd faces. This is because emotions aren't often tagged, and their vectors are surprisingly strong. Try <code>tired</code> and you'll see what this leads to. Some like <code>pensive</code> work fine as is.</p>
-<p>Thus, make sure you always reduce the strength of your facial expression vectors. This also goes for <code>crying, tears</code>, and anything that is extremely powerful on its own.</p>
-<p>To do so, add square brackets around the tag: <code>[tired]</code> add more brackets if necessary.</p>
+<p>You'll quickly realize that facial expression tags are non-intuitive and lead to odd faces. This is because emotions aren't often tagged, and their vectors are surprisingly strong. Try putting <code>shy</code> in UC and you'll see what this leads to. Some like <code>pensive</code> work fine as is.</p>
 <p>There are various emotes that can be used as facial expressions, with fairly strong vectors: <code>:), :(, :3</code> and so on.</p>
 <p>Be aware that some, like :|, can break the prompt. Try using an emoji instead: 😐</p>
+<p>Having characters look in certain directions also tends to force certain poses. <code>looking back</code> has a strong tendency to partially obscure the face with the shoulder, and make the character bend over.</p>
+<h2 id="strenghtening-and-weakning-math">Strenghtening and Weakning Math</h2>
+<p>You may have seen curly braces and square brackets be used to make a tag stronger or weaker. Here is a more direct explanation.</p>
+<p>Each tag has a base value of 1.</p>
+<p>If <code>]</code> or <code>{</code> is present, multiply the value of all tags following it by 1.05 (a 5% increase). If <code>}</code> or <code>[</code> is present, divide the value of all tags following it by 1.05 (a 5% decrease).</p>
+<p>This operation is <strong>multiplicative</strong>, and <strong>mathematically imperfect.</strong> In the following examples:</p>
+<p><code>blue eyes, black hair</code></p>
+<p><code>{[{[blue eyes, black hair]}]}</code> Will lead to different results on the same seed and settings.</p>
+<p>You do not need to close bracket pairs. Hell, you don't even need to open them!</p>
+<p><code>{blue eyes, black hair</code></p>
+<p>and</p>
+<p><code>]blue eyes, black hair</code></p>
+<p>Are fundamentally the same.</p>
 <hr />
 <h1 id="prose-prompting">Prose Prompting</h1>
 <p>To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to keep clauses short and using as little grammatical words as possible. Try to phrase your sentences so that you use vocabulary close to Booru tags.</p>
