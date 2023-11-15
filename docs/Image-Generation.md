@@ -297,6 +297,53 @@ You can, with some slight adjustments, copy paste excerpts from your
 story and use them as prompts. There might be some fine tuning needed,
 but you should get something similar to what was described.
 
+***
+
+# Image to Image Practices
+
+Variations are just Image to Image queued multiple times for the same image.
+
+Image to Image uses a base image as opposed to Noise. This helps keeps elements you like in a picture that is good, but not good *enough*. 
+Noise adds more noise to the base image, causing it to change more substantially as you add noise. 
+
+Strength is actually, for once, the intensity of the steps. Strong steps will take more compute (and thus more Anlas).
+
+If your steps and Strength are too low compared to your Noise, your image will stay noisy, because the noise was not sufficiently resolved! Make sure you keep the Noise/Processing ratio to a minimum.
+
+Image to Image is best used for the following purposes:
+
+• Fixing a detail that was badly rendered, like an extra finger or a messed up frill.
+○ Recommended edit: Obscure or paint over with surrounding color palette. 0 noise, 0.2-0.35 strength. (Lower if you trust your detail-fixing skills better.)
+
+• Keeping the same pose but changing lots of misshapen or artifacted elements.
+○ Recommended edit: None. 0-0.1 noise, 0.7-0.85 strength.
+
+• Adding a new element to a "good enough" base image.
+○ Recommended edit: Draw shape of object using colors similar to surrounding palette. 0 noise, 0.4-0.6 strength. Keep in mind your image will look substantially different.
+
+• Drawing a foundation for inpainting.
+○ Recommended edit: Draw the general shape/background of what you want. Do not generate a new image. Instead, click "Inpaint image" on the **left**, and select the area you drew on.
+
+***
+
+# Bounding & Prompting for Inpainting
+
+## Bounding
+
+Make sure you select areas carefully and include some of the "edges" of what you're filling in. This will help the generated content "fit in" better and reduce artifacting. Do not try to select very precisely, instead, go for clean polygonal shapes.
+
+It is better to inpaint large areas as opposed to small ones, details are best handled by Image to Image. Very small Inpaint canvases are very difficult for the AI to handle.
+
+## Prompting
+
+A common issue that people encounter when inpainting is confusion as to what you should prompt for.
+
+When inpainting, **only** prompt for what must appear in the inpainted area. Do not use your full prompt! This may cause the model to try and cram all these things into the inpainting area, which will look messy and wrong.
+
+You should avoid using any UC outside of default UC when inpainting as well, for the same reason.
+
+***
+
 ### CLIP Interrogator
 
 [Clip Interrogator](https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb#scrollTo=YQk0eemUrSC7)
