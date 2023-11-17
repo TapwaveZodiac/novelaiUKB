@@ -174,10 +174,8 @@ This is basically any character like spaces and linebreaks.
     **notes outside of the main text**. Extensively detailed in [The Rabbit Hole](https://tapwavezodiac.github.io/novelaiUKB/The-Rabbit-Hole.html#stage-directions).
     -   Keep in mind that you need to put **spaces after opening
         brackets and before closing brackets for them to work
-        properly.** Their uses outside of Author/Title/Tags/Genre are:
-    -   They may also be used to influence the direction of the story or
-        give details, think stage directions, though this is not
-        the intended usage.
+        properly.**
+    -   If you want to give instructions to the AI, use a curly brace instead.
 
 -   **Less Than and More Than** < > are used in the finetune to *encase
     telepathic communication, or thoughts.*
