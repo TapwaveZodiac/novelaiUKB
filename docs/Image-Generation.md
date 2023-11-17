@@ -83,6 +83,14 @@ To allow for a stronger Prompt Guidance without having those issues, the advance
 
 Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1.
 
+## SMEA
+
+SMEA is an application of Euler Ancestra sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**.
+
+SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to **increased Anlas costs**. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you are unable to find a good base cheaply, then regenerate with SMEA.
+
+As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.
+
 # Tag-based Prompting
 
 To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use
