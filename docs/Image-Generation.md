@@ -361,3 +361,17 @@ amount of pictures, you can combine a prose prompt and tags appends in
 order to obtain something closer to the desired result.
 
 `a picture of {ayanami} from azur lane, white hair, red eyes, ponytail,`
+
+# In-depth UI info
+
+## Anlas Cost Calculation
+
+The calculation for Anlas cost uses the following algorithms:
+
+V3
+```
+r = w * h
+smea_factor = !smea (1.0) else if smea (1.2) else if smea_dyn (1.4)
+
+per_sample = math.ceil(2951823174884865e-21 * r + 5.753298233447344e-7 * r * steps) * smea_factor
+```
