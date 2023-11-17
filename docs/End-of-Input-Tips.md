@@ -1,8 +1,3 @@
-**This page was conceived during the Euterpe Era of
-NovelAI. Some tech here might not be relevant anymore, but some tips can
-still be useful. Refer to [The Rabbit Hole](The-Rabbit-Hole) For the current
-model.**
-
 This page contains **community-researched** content and aims to provide
 in-depth tips to improve your experience with the AI.
 
