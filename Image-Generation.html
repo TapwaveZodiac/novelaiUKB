@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 17/11/2023 at 17:38">Last updated 17/11/2023 at 17:38</time></p>
+  <p class="date before-toc"><time datetime="Last updated 17/11/2023 at 19:17">Last updated 17/11/2023 at 19:17</time></p>
 </blockquote>
 </header>
 
@@ -1355,6 +1355,10 @@
     <li><a href="#clip-interrogator">CLIP Interrogator</a></li>
     </ul></li>
     <li><a href="#combo-prompting">Combo Prompting</a></li>
+    </ul></li>
+    <li><a href="#in-depth-ui-info">In-depth UI info</a>
+    <ul>
+    <li><a href="#anlas-cost-calculation">Anlas Cost Calculation</a></li>
     </ul></li>
     </ul>
 </nav>
@@ -1498,6 +1502,15 @@
 <h2 id="combo-prompting">Combo Prompting</h2>
 <p>If you are generating an image of a specific character that has a small amount of pictures, you can combine a prose prompt and tags appends in order to obtain something closer to the desired result.</p>
 <p><code>a picture of {ayanami} from azur lane, white hair, red eyes, ponytail,</code></p>
+<h1 id="in-depth-ui-info">In-depth UI info</h1>
+<h2 id="anlas-cost-calculation">Anlas Cost Calculation</h2>
+<p>The calculation for Anlas cost uses the following algorithms:</p>
+<p>V3</p>
+<pre><code>r = w * h
+smea_factor = !smea (1.0) else if smea (1.2) else if smea_dyn (1.4)
+
+per_sample = math.ceil(2951823174884865e-21 * r + 5.753298233447344e-7 * r * steps) * smea_factor
+</code></pre>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
