@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 17/11/2023 at 19:17">Last updated 17/11/2023 at 19:17</time></p>
+  <p class="date before-toc"><time datetime="Last updated 17/11/2023 at 20:28">Last updated 17/11/2023 at 20:28</time></p>
 </blockquote>
 </header>
 
@@ -1327,6 +1327,7 @@
     <ul>
     <li><a href="#noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler: Steps, Scale/Guidance and Seed</a></li>
     <li><a href="#the-limits-of-guidance">The limits of Guidance</a></li>
+    <li><a href="#smea">SMEA</a></li>
     </ul></li>
     <li><a href="#tag-based-prompting">Tag-based Prompting</a>
     <ul>
@@ -1397,6 +1398,10 @@
 <p>Higher scale leads to stronger contrast, stronger outlines, and all around stronger "bounding" of elements. This can also cause some elements to overpower others more readily. This is why low scale is considered more "painterly", because noise is resolved more loosely, which leads to the aesthetic "blurriness" of mediums like watercolor, oil paint, etc.</p>
 <p>To allow for a stronger Prompt Guidance without having those issues, the advanced setting <strong>Prompt Guidance Rescale</strong> attempts to compensate for them, but this will result in a blurrier output. You can always use image 2 image to refine the picture once you feel the base is good enough.</p>
 <p>Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1.</p>
+<h2 id="smea">SMEA</h2>
+<p>SMEA is an application of Euler Ancestra sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at <strong>larger resolutions than the base resolutions</strong>.</p>
+<p>SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to <strong>increased Anlas costs</strong>. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you are unable to find a good base cheaply, then regenerate with SMEA.</p>
+<p>As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.</p>
 <h1 id="tag-based-prompting">Tag-based Prompting</h1>
 <p>To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use commas to separate tags. While tags on Boorus use underscores instead of spaces, the parser replaced all underscores 'with spaces' to make it easier to write prompts.</p>
 <p>Thus, write prompts with spaces in them if they use multiple words, and bound them with commas. Forgetting a comma might cause the prompt to be interpreted incorrectly.</p>
