@@ -282,6 +282,30 @@ and
 
 Are fundamentally the same.
 
+## Unwanted Content, or "Negative Prompting"
+
+Unwanted Content is a way to direct the generation away from things you'd like to avoid. By virtue of how it works, UC is rather "destructive", so you should keep it as short and focused as possible. Generate with a short UC, then narrow it down based on what you need per image.
+
+There are multiple default UC presets, we will focus on V3's specifically to explain what each element does.
+
+Light: `nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing`
+
+Heavy: `nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]`
+
+* nsfw: Prevents generating explicit pictures without explicit request from the user.
+* lowres: Reduces artifacts caused by upscaling low-res images to larger canvas sizes.
+* {bad}: Part of several tags such as `bad anatomy`, used on its own to avoid using multiple tags starting with "bad", and including things like `bad hands` which can result in hands not being drawn at all.
+* error, artistic error: Reduces potential artistic mistakes.
+* fewer, extra and missing: Similar to bad, used to reduce the occurence of missing digits and limbs, or extraneous anatomy. `extra digits` reinforces `extra` specifically for hands in order to avoid hands with 6+ fingers.
+* worst quality and bad quality: Used to tell the model not to generate images in a similar style to training material with low score.
+* jpeg artifacts: Reduces pixelation, palletization and dithering artifacts caused by heavy JPEG compression.
+* watermark, signature, username: Reduces text and logo artifacts that the model cannot generate cleanly.
+* unfinished: Reduces the frequency of broken, irregular, and missing outlines. Also tends to reduce the frequency of digits being sketched but left unfinished.
+* (very) displeasing: Like `worst quality, bad quality` but for Aesthetic tuning.
+* chromatic aberration: Reduces color artifacting that can occur in blue, red, and mixed hues thereof. Especially happens on outlines. (This is an effect similar to Bicolor 3D stereoscopy.)
+* scan: Reduces scan-induced artifacts such as odd banded lighting and messy outlines.
+* `[abstract]`: Reduces overly geometric and amorphous shaping of objects and people.
+
 ***
 # Prose Prompting
 
