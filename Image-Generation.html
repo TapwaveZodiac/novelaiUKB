@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 17/11/2023 at 20:28">Last updated 17/11/2023 at 20:28</time></p>
+  <p class="date before-toc"><time datetime="Last updated 21/11/2023 at 20:18">Last updated 21/11/2023 at 20:18</time></p>
 </blockquote>
 </header>
 
@@ -1342,6 +1342,7 @@
     <li><a href="#facial-expressions">Facial Expressions</a></li>
     </ul></li>
     <li><a href="#strenghtening-and-weakning-math">Strenghtening and Weakning Math</a></li>
+    <li><a href="#unwanted-content-or-negative-prompting">Unwanted Content, or "Negative Prompting"</a></li>
     </ul></li>
     <li><a href="#prose-prompting">Prose Prompting</a>
     <ul>
@@ -1470,6 +1471,26 @@
 <p>and</p>
 <p><code>]blue eyes, black hair</code></p>
 <p>Are fundamentally the same.</p>
+<h2 id="unwanted-content-or-negative-prompting">Unwanted Content, or "Negative Prompting"</h2>
+<p>Unwanted Content is a way to direct the generation away from things you'd like to avoid. By virtue of how it works, UC is rather "destructive", so you should keep it as short and focused as possible. Generate with a short UC, then narrow it down based on what you need per image.</p>
+<p>There are multiple default UC presets, we will focus on V3's specifically to explain what each element does.</p>
+<p>Light: <code>nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
+<p>Heavy: <code>nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]</code></p>
+<ul>
+<li>nsfw: Prevents generating explicit pictures without explicit request from the user.</li>
+<li>lowres: Reduces artifacts caused by upscaling low-res images to larger canvas sizes.</li>
+<li>{bad}: Part of several tags such as <code>bad anatomy</code>, used on its own to avoid using multiple tags starting with "bad", and including things like <code>bad hands</code> which can result in hands not being drawn at all.</li>
+<li>error, artistic error: Reduces potential artistic mistakes.</li>
+<li>fewer, extra and missing: Similar to bad, used to reduce the occurence of missing digits and limbs, or extraneous anatomy. <code>extra digits</code> reinforces <code>extra</code> specifically for hands in order to avoid hands with 6+ fingers.</li>
+<li>worst quality and bad quality: Used to tell the model not to generate images in a similar style to training material with low score.</li>
+<li>jpeg artifacts: Reduces pixelation, palletization and dithering artifacts caused by heavy JPEG compression.</li>
+<li>watermark, signature, username: Reduces text and logo artifacts that the model cannot generate cleanly.</li>
+<li>unfinished: Reduces the frequency of broken, irregular, and missing outlines. Also tends to reduce the frequency of digits being sketched but left unfinished.</li>
+<li>(very) displeasing: Like <code>worst quality, bad quality</code> but for Aesthetic tuning.</li>
+<li>chromatic aberration: Reduces color artifacting that can occur in blue, red, and mixed hues thereof. Especially happens on outlines. (This is an effect similar to Bicolor 3D stereoscopy.)</li>
+<li>scan: Reduces scan-induced artifacts such as odd banded lighting and messy outlines.</li>
+<li><code>[abstract]</code>: Reduces overly geometric and amorphous shaping of objects and people.</li>
+</ul>
 <hr />
 <h1 id="prose-prompting">Prose Prompting</h1>
 <p>To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to keep clauses short and using as little grammatical words as possible. Try to phrase your sentences so that you use vocabulary close to Booru tags.</p>
