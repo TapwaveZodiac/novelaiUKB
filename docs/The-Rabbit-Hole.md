@@ -1,9 +1,9 @@
 This page contains **community-researched** content and aims to provide
 in-depth tips to improve your experience with the AI.
 
-This is an amalgamation of general use tips for the Clio model. Consider
-this a vulgarization of advanced theorycrafting and less a "best
-practice" guide.
+This is an amalgamation of general use tips for the Clio model, which should be 
+applicable to Kayra in many cases. Consider this a vulgarization of 
+advanced theorycrafting and less a "best practice" guide.
 
 There are no best practices than the ones you are comfortable with.
 
@@ -77,8 +77,8 @@ rapidfire dialogue.
 
 ## Stage Directions
 
-Clio is smart enough to recognize punctual **"Stage Directions"** much
-more than Sigurd, Euterpe and Krake could in the past. Nonetheless,
+Clio and Kayra are smart enough to recognize punctual **"Stage Directions"** 
+much more than Sigurd, Euterpe and Krake could in the past. Nonetheless,
 those should have a fixed position in the text, and it's better you do
 not use the Author's Note for them.
 
