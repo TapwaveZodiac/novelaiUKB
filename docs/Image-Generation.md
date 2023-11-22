@@ -85,7 +85,7 @@ Much like Negative Prompt Guidance, you should adjust Rescale in very small incr
 
 ## SMEA
 
-SMEA is an application of Euler Ancestra sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**.
+SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**.
 
 SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to **increased Anlas costs**. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you are unable to find a good base cheaply, then regenerate with SMEA.
 
