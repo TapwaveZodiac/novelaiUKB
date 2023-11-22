@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 21/11/2023 at 20:18">Last updated 21/11/2023 at 20:18</time></p>
+  <p class="date before-toc"><time datetime="Last updated 22/11/2023 at 16:25">Last updated 22/11/2023 at 16:25</time></p>
 </blockquote>
 </header>
 
@@ -1400,7 +1400,7 @@
 <p>To allow for a stronger Prompt Guidance without having those issues, the advanced setting <strong>Prompt Guidance Rescale</strong> attempts to compensate for them, but this will result in a blurrier output. You can always use image 2 image to refine the picture once you feel the base is good enough.</p>
 <p>Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1.</p>
 <h2 id="smea">SMEA</h2>
-<p>SMEA is an application of Euler Ancestra sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at <strong>larger resolutions than the base resolutions</strong>.</p>
+<p>SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at <strong>larger resolutions than the base resolutions</strong>.</p>
 <p>SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to <strong>increased Anlas costs</strong>. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you are unable to find a good base cheaply, then regenerate with SMEA.</p>
 <p>As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.</p>
 <h1 id="tag-based-prompting">Tag-based Prompting</h1>
