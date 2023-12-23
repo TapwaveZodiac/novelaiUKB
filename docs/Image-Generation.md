@@ -47,17 +47,17 @@ A diffusion model works by resolving noise into an image. If you ever used a pho
 
 This has several implications:
 
-• The AI has **no grasp** of where is what element. It knows what it's trying to make, but it does not know where things start and end *exactly*.
+• The AI has **no grasp** of the position and boundaries of image elements. It knows what it's trying to make, but it does not know where things start and end *exactly*.
 
-• The AI does not have pure semantic understanding of tags. It just knows that this tag tends to lead to those shapes and those colors. It does not understand what hair *is*, but just how it *looks* and is usually drawn.
+• The AI does not have pure semantic understanding of tags. It just knows that this tag tends to lead to those shapes and those colors. It does not understand what hair *is*, but just how it *looks* and how it is usually drawn.
 
-• The AI does not know the bounds of elements in the image, this means you can't tell it "I want this, but ONLY for this character". This is why it can struggle with multiple characters in long prompts.
+• The AI does not know what applies to what in the image, this means you can't tell it "I want this, but ONLY for this character". This is why it can struggle with multiple characters in long prompts.
 
 ## Noise V. Sampler:  Steps, Scale/Guidance and Seed
 
 Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps).
 
-Steps are carried by a **Sampler**, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are *Ancestral*, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers. 
+Steps are carried out by a **Sampler**, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are *Ancestral*, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers. 
 
 (That does not mean they perform better **in general**, just that it costs less to get them to look decent.)
 
@@ -87,7 +87,7 @@ Much like Negative Prompt Guidance, you should adjust Rescale in very small incr
 
 SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**.
 
-SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to **increased Anlas costs**. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you are unable to find a good base cheaply, then regenerate with SMEA.
+SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to **increased Anlas costs**. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you cannot try and find a good base cheaply, then regenerate it with SMEA.
 
 As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.
 
@@ -139,7 +139,7 @@ If you use any of the Unwanted Content default filters, `worst quality, bad qual
 are **automatically inserted in Unwanted Content**. You can disable the filter or
 write them in your prompt to activate them anyway.
 
-**Aesthetic tags** are used exclusively in V2 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are:
+**Aesthetic tags** are used exclusively in V2 and V3 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are:
 `very aesthetic, aesthetic, displeasing, very displeasing`
 Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.
 
@@ -168,7 +168,7 @@ number of characters in frame, or reinforce gender expectations.
 If you are looking to generate gender noncomforming characters, here are
 a few tags.
 
-`twink, otoko no ko, "girl, flat chest"` can help generate soft boys.
+`twink, otoko no ko,` or `1girl, flat chest` can help generate soft boys.
 
 `toned female, tomboy, tough` can help generate butch girls.
 
@@ -195,7 +195,7 @@ how file names are generally arranged.
 
 ## Tag Interaction
 
-An easy way to mess up your generations ( or improve them!) is to have
+An easy way to mess up your generations (or improve them!) is to have
 tags that interact. One common example of tags overwriting each other is
 as follows:
 
@@ -204,14 +204,14 @@ as follows:
 While the problem is not immediately apparent, specifying an eye colour
 *and* them being closed means that one will be ignored in favour of the
 other. **Make sure you don't specify information about things that are
-not in frame.** Images on Danbooru follow the "tag what you see" guideline.
+not in frame.** Images on Danbooru follow the **"tag what you *see*"** guideline.
 
 A more positive example is:
 
 `1girl, black hair, blue highlights, blue eyes,`
 
 Putting a color highlight next to the hair color will give you colored
-strands and bangs. Adjust the wording until you get the sepcifics you
+strands and bangs. Adjust the wording until you get the specifics you
 like!
 
 ### Incomplete Interactions
@@ -252,7 +252,7 @@ There are various emotes that can be used as facial expressions, with
 fairly strong vectors: `:), :(, :3` and so on.
 
 Be aware that some, like :|, can break the prompt. Try using an emoji
-instead: 😐
+instead: 😐, or look up the tag database. (For instance, this would be `expressionless`)
 
 Having characters look in certain directions also tends to force certain poses. `looking back` has a strong tendency to partially obscure the face with the shoulder, and make the character bend over.
 
@@ -265,7 +265,7 @@ Each tag has a base value of 1.
 If `]` or `{` is present, multiply the value of all tags following it by 1.05 (a 5% increase).
 If `}` or `[` is present, divide the value of all tags following it by 1.05 (a 5% decrease).
 
-This operation is **multiplicative**, and **mathematically imperfect.** In the following examples:
+This operation is **multiplicative**, and **make generations partially non-deterministic.** In the following examples:
 
 `blue eyes, black hair`
 
