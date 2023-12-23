@@ -292,6 +292,8 @@ Light: `nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very dis
 
 Heavy: `nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]`
 
+Human Focus: `lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes`
+
 * nsfw: Prevents generating explicit pictures without explicit request from the user.
 * lowres: Reduces artifacts caused by upscaling low-res images to larger canvas sizes.
 * {bad}: Part of several tags such as `bad anatomy`, used on its own to avoid using multiple tags starting with "bad", and including things like `bad hands` which can result in hands not being drawn at all.
@@ -305,6 +307,7 @@ Heavy: `nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg a
 * chromatic aberration: Reduces color artifacting that can occur in blue, red, and mixed hues thereof. Especially happens on outlines. (This is an effect similar to Bicolor 3D stereoscopy.)
 * scan: Reduces scan-induced artifacts such as odd banded lighting and messy outlines.
 * `[abstract]`: Reduces overly geometric and amorphous shaping of objects and people.
+* ` @_@, mismatched pupils, heart-shaped pupils, glowing eyes`: Several eye-related tags that may incidentally leak into a generation. Reducing their influence means that eyes should generate "cleaner" most of the time.
 
 ***
 # Prose Prompting
