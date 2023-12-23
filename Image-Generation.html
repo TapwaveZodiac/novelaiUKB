@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 22/11/2023 at 16:25">Last updated 22/11/2023 at 16:25</time></p>
+  <p class="date before-toc"><time datetime="Last updated 23/12/2023 at 18:49">Last updated 23/12/2023 at 18:49</time></p>
 </blockquote>
 </header>
 
@@ -1476,6 +1476,7 @@
 <p>There are multiple default UC presets, we will focus on V3's specifically to explain what each element does.</p>
 <p>Light: <code>nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
 <p>Heavy: <code>nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]</code></p>
+<p>Human Focus: <code>lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code></p>
 <ul>
 <li>nsfw: Prevents generating explicit pictures without explicit request from the user.</li>
 <li>lowres: Reduces artifacts caused by upscaling low-res images to larger canvas sizes.</li>
@@ -1490,6 +1491,7 @@
 <li>chromatic aberration: Reduces color artifacting that can occur in blue, red, and mixed hues thereof. Especially happens on outlines. (This is an effect similar to Bicolor 3D stereoscopy.)</li>
 <li>scan: Reduces scan-induced artifacts such as odd banded lighting and messy outlines.</li>
 <li><code>[abstract]</code>: Reduces overly geometric and amorphous shaping of objects and people.</li>
+<li><code> @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code>: Several eye-related tags that may incidentally leak into a generation. Reducing their influence means that eyes should generate "cleaner" most of the time.</li>
 </ul>
 <hr />
 <h1 id="prose-prompting">Prose Prompting</h1>
