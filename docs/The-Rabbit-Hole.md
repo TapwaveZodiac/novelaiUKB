@@ -161,19 +161,21 @@ according to the underlying concepts of the title.
 You can request different manners of feedback from the AI by inputting a
 **Dinkus** and specific headers.
 
-For example, you can request a summary of what happened by doing the
+For example, you can request a digest of what happened by doing the
 following:
 
 ***
 ```
-Summary:
+***
+The story so far:
 ```
 
 ***
-You can also prompt this with:
+You can also do the reverse, anticipating future events this with:
 
 ```
-The Story so Far:
+***
+Summary: (Summary without linebreaks)
 ```
 
 You can also request musings from the model about what the text is about, or even para-textual notes, by inputting the following at the end of your story text:
