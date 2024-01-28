@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Story Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 13/01/2024 at 13:40">Last updated 13/01/2024 at 13:40</time></p>
+  <p class="date before-toc"><time datetime="Last updated 28/01/2024 at 16:20">Last updated 28/01/2024 at 16:20</time></p>
 </blockquote>
 </header>
 
@@ -1376,8 +1376,8 @@
 IF no module selected
 AND IF context is less than 200 tokens
 AND IF the first line of context isn&#39;t &quot;=====&quot;
-AND IF no line of the context contains &quot;Style:&quot; of &quot;Knowledge:&quot;
-AND IF the first line starts with [ but is not followed by &quot; Author:&quot;, &quot; Title:&quot;, &quot; Tags:&quot;, of &quot; Genre:&quot;
+AND IF no line of the context contains &quot;Style:&quot; or &quot;Knowledge:&quot;
+AND IF the first line starts with [ but is not followed by &quot; Author:&quot;, &quot; Title:&quot;, &quot; Tags:&quot;, or &quot; Genre:&quot;
 
 Pedia Module
 IF no module selected
@@ -1385,7 +1385,7 @@ AND IF one of the last three lines is &quot;----&quot;
 AND IF no line after the &quot;----&quot; is &quot;***&quot;
 
 Instruct Module
-IF and paragraph that ends within the last 1000 characters starts with { and ends with }
+IF a paragraph that ends within the last 1000 characters starts with { and ends with }
 </code></pre>
 <hr />
 <h3 id="storys-memory">Story's Memory</h3>
