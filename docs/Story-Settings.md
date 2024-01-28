@@ -52,8 +52,8 @@ Openings Module
 IF no module selected
 AND IF context is less than 200 tokens
 AND IF the first line of context isn't "====="
-AND IF no line of the context contains "Style:" of "Knowledge:"
-AND IF the first line starts with [ but is not followed by " Author:", " Title:", " Tags:", of " Genre:"
+AND IF no line of the context contains "Style:" or "Knowledge:"
+AND IF the first line starts with [ but is not followed by " Author:", " Title:", " Tags:", or " Genre:"
 
 Pedia Module
 IF no module selected
@@ -61,7 +61,7 @@ AND IF one of the last three lines is "----"
 AND IF no line after the "----" is "***"
 
 Instruct Module
-IF and paragraph that ends within the last 1000 characters starts with { and ends with }
+IF a paragraph that ends within the last 1000 characters starts with { and ends with }
 ```
 
 ***
