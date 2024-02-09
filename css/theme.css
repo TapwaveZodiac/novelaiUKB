@@ -17,7 +17,7 @@
   --highlight-purple: #351c75;
 
   --color-inline-code: #f7f5f2;
-  --color-inline-code-bg: #242121;
+  --color-inline-code-bg: #062b35;
 
   --color-border: #393635;
   --color-border-heavy: #524f4d;
@@ -478,8 +478,8 @@ code {
 
 pre code {
   /* Reset some changes meant to be inline-only */
-  color: inherit;
-  background-color: inherit;
+  color: var(--color-inline-code);
+  background-color: var(--color-inline-code-bg);
   font-size: var(--code-block-font-size);
   line-height: var(--line-height);
   margin: initial;
