@@ -32,8 +32,7 @@ case, your **Memory** should look like this:
 
 ***
 ```
-[ Author: Blah mc Blashson; Title: Heckin' Creativity;
-Tags: sicknasty tutti-frutti prose; Genre: Epic ]
+[ Author: Blah mc Blashson; Title: Heckin' Creativity; Tags: sicknasty tutti-frutti prose; Genre: Epic ]
  ***
 ```
 
@@ -103,11 +102,14 @@ reason. Here are some that were suggested:
 
 ***
 ```
-text adventure, chat, lyrics, prose, blog post, actual
-play, review, email, creepypasta
+text adventure, chat, lyrics, prose, blog post, actual play, review, email, creepypasta
+```
 
+```
 first person, second person, third person
+```
 
+```
 simple, archaic, SFW
 ```
 It is suggested to put Style direction in the **Author's note.**
