@@ -62,7 +62,7 @@ AND IF no line after the "----" is "***"
 Openings Module
 IF no module selected
 AND IF context is less than 200 tokens
-UNLESS ( the first line of context is "====="
+UNLESS ( the first line of context is "======"
 OR any line of the context contains "Style:" or "Knowledge:"
 OR any line of the context contains "Tags:" and "pedia"
 OR the first line starts with [ but is not followed by " Author:", " Title:", " Tags:", or " Genre:" )
