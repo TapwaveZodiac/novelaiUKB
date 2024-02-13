@@ -48,20 +48,24 @@ There are two modules that cannot be selected, **Openings**, which replaces the 
   
 These modules are automatically loaded if the following conditions are present:
 ```
-Openings Module
-IF no module selected
-AND IF context is less than 200 tokens
-AND IF the first line of context isn't "====="
-AND IF no line of the context contains "Style:" or "Knowledge:"
-AND IF the first line starts with [ but is not followed by " Author:", " Title:", " Tags:", or " Genre:"
+Priority: instruct>pedia>openings
+
+Instruct Module
+IF a paragraph that ends within the last 1000 characters starts with { and ends with }
 
 Pedia Module
 IF no module selected
 AND IF one of the last three lines is "----"
 AND IF no line after the "----" is "***"
 
-Instruct Module
-IF a paragraph that ends within the last 1000 characters starts with { and ends with }
+
+Openings Module
+IF no module selected
+AND IF context is less than 200 tokens
+UNLESS ( the first line of context is "====="
+OR any line of the context contains "Style:" or "Knowledge:"
+OR any line of the context contains "Tags:" and "pedia"
+OR the first line starts with [ but is not followed by " Author:", " Title:", " Tags:", or " Genre:" )
 ```
 
 ***
