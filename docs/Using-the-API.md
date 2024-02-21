@@ -1,4 +1,4 @@
-***Written by *Aedial***
+**Written by *Aedial***
 
 # 1. Introduction
 
@@ -38,7 +38,7 @@ aspects.
 Here is a breakdown of each endpoint, but **with only the *undocumented*
 arguments, types, and schemas**. Documented args, types and schemas are
 present in the documentation. **Each** endpoint should be prepended with
-"https://api.novelai.net".
+"https://api.novelai.net" for **text**, and "https://image.novelai.net" for images.
 
 Several responses can come from any endpoint:
 
