@@ -397,6 +397,20 @@ order to obtain something closer to the desired result.
 
 `a picture of {ayanami} from azur lane, white hair, red eyes, ponytail,`
 
+# Vibe Transfer
+
+Vibe Transfer is a feature that reads an existing image and attempts to apply existing elements from it onto a new generation. This is not **quite** Image to Image, as it lets you generate new content, rather than mapping off of the existing image.
+
+While this can be compared to [Image Prompt Adapter](https://huggingface.co/h94/IP-Adapter), or [Textual Embedding](https://ieeexplore.ieee.org/document/10377571), Vibe Transfer is its own technology and uses a trained model. The details are as of yet kept confidential.
+
+Two settings are at play when using Vibe Transfer to prepare a generation: **Reference Strength** and the **Information Extracted** Factor.
+
+**Reference Strength** is the inverse of Image to Image Strength. The higher it is, the closer the generation will be to the VT Reference image. Since the image itself is not used as-is, it will not be replicated, but excessive strength will cause prompt vectors to be overpowered by the VT Reference's content, generating something very similar to it in terms of content, even if you did not prompt for it.
+
+**Information Extracted** is best compared to using a Magic Wand selector in an image editing software. Instead of selecting pixels based on color, you select an increasing amount of "meaning" from the image. It is theorized that simpler elements are included sooner than more complex ones, but as this is nascent technology, it is unclear how this proceeds, or if it has any consistency.
+
+Experiment and perhaps contribute your research efforts to this wiki!
+
 # In-depth UI info
 
 ## Anlas Cost Calculation
