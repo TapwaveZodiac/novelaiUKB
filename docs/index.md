@@ -152,6 +152,8 @@ NovelAI before reading them.**
 
 ## **🖼️ [Image Generation](Image-Generation)**
 
+### **📳 [Vibe Transfer](Vibe-Transfer)**
+
 ### **🗄️ [Database of Interesting Image Generation Finds](Database-of-Interesting-Image-Generation-Finds)**
 
 ### **🎞️ [Carlyone\'s Aesthetics Gallery](https://zele.st/NovelAI/)**
