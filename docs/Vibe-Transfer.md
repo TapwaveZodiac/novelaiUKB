@@ -96,7 +96,7 @@ Reference Strength is the influence of the VT relative to your prompt. With a St
 
 Using the same settings and prompt as before, we'll now adjust Strength only, and leave IE at 100%.
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2af6d4f1-c7f8-40b7-ba0b-ee042fe5ead4)
+![ref3](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b19a605c-7da5-40f1-bc09-71c9d2041b19)
 
 The thresholds are somewhat comparable at first, but it is clear that the parameter scales higher than IE does.
 
