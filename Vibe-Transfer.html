@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Vibe Transfer</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 22/02/2024 at 14:42">Last updated 22/02/2024 at 14:42</time></p>
+  <p class="date before-toc"><time datetime="Last updated 22/02/2024 at 15:20">Last updated 22/02/2024 at 15:20</time></p>
 </blockquote>
 </header>
 
@@ -1329,6 +1329,8 @@
     <li><a href="#when-vibe-transfer">When Vibe Transfer?</a></li>
     <li><a href="#how-vibe-transfer">How Vibe Transfer?</a></li>
     <li><a href="#information-extraction">Information Extraction</a></li>
+    <li><a href="#reference-strength">Reference Strength</a></li>
+    <li><a href="#other-recommendations">Other Recommendations</a></li>
     </ul></li>
     </ul>
 </nav>
@@ -1373,11 +1375,11 @@
 <h2 id="information-extraction">Information Extraction</h2>
 <p>The best way to illustrate the influence of information extraction is to generate an image with an extremely short prompt with VT, and see how much you "retrieve" from the VT image without prompting for it as you adjust the setting.</p>
 <p>For this example, we are using Aini's illustration of Clio. This is useful because Aini's illustrations have very complex shading, a definite and identifiable style, and makes use of small details quite extensively.</p>
-<p>We are using the same settings as my artist analysis sheet. This means Seed <strong>1</strong>, <strong>25</strong> Steps, Guidance of <strong>5</strong>, <strong>100%</strong> UC strength, and the <strong>Euler</strong> sampler with <strong>Native</strong> scheduling.</p>
+<p>We are using the same settings as my artist analysis sheet. This means Seed <strong>1</strong>, <strong>25</strong> Steps, Guidance of <strong>5</strong>, <strong>100%</strong> UC strength, and the <strong>Euler</strong> sampler with <strong>Native</strong> scheduling. Reference Strength is set to the default of <strong>0.6</strong></p>
 <p>The prompt here is <code>[amazing quality, very aesthetic], 1girl, blonde hair, aqua eyes, adjusting hair</code>. UC is <code>worst quality, low quality, bad image, displeasing, [abstract], bad anatomy, very displeasing, extra, unfocused, jpeg artifacts, unfinished, chromatic aberration, womb tattoo,</code></p>
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7c085a8c-3ab4-40c5-8421-75a72aaf06d5" alt="Ref1" /></p>
 <p>As you can see, there are <em>Information Extracted</em> thresholds where notable changes happen. Composition switches closer to the reference image at 2.955%, Style starts to carry over around 7%, and more detailed elements of shading and texture are present from 14% onwards.</p>
-<p>Returns are sensibly diminishing past that, with 30% and 100% having extremely similar outputs. Tests for 40-99% were carried out and have sensibly similar images.</p>
+<p>Returns are sensibly diminishing past that, with 30% and 100% having extremely similar outputs. Tests for 40-99% were carried out and have remarkably similar images.</p>
 <p>These thresholds are not, however, perfectly consistent. Here is a comparator with the same settings, but with the following prompt: <code>sidelocks, braided bangs, no bangs, braided bun, single hair bun, forehead, medium hair, platinum blonde hair, aqua eyes, laurel crown, laurels, leaf on head, aqua shawl, aqua choker, white dress, {{{sideless outfit}}}, cross-laced corset, golden bangle, gold ring, sandals, {{{{medium breasts}}}}, [[[[small breasts]]]], greek goddess</code> UC: <code>parted bangs, gold leaves</code></p>
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2e4ce97f-70df-4b96-89d3-da6e786022f8" alt="ref2" /></p>
 <p>In general, there are thresholds in the areas listed, but those shift about based on prompt complexity. It appears that order of Information selected is, more or less:</p>
@@ -1386,6 +1388,17 @@
 <li>Details</li>
 <li>Shading and Coloring</li>
 </ul>
+<h2 id="reference-strength">Reference Strength</h2>
+<p>Reference Strength is the influence of the VT relative to your prompt. With a Strength of <strong>1</strong>, your prompt is effectively disregarded entirely. This is not the same as Image to Image with no Strength.</p>
+<p>Using the same settings and prompt as before, we'll now adjust Strength only, and leave IE at 100%.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2af6d4f1-c7f8-40b7-ba0b-ee042fe5ead4" alt="image" /></p>
+<p>The thresholds are somewhat comparable at first, but it is clear that the parameter scales higher than IE does.</p>
+<p>To compare, here are the same settings, but IE is set at 50% instead of 100%.</p>
+<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8b86b1e8-a24a-4f9b-94f6-f1def5918b8d" alt="image" /></p>
+<p>As with all settings, remember to fine-tune based on your preference. Start small and do increments of ~5% at most until you find your happy medium.</p>
+<h2 id="other-recommendations">Other Recommendations</h2>
+<p>Not organized. Just things worth experimenting with</p>
+<p>@shambibble: Since VT image doesn't need to match the size of the generated image, you can collate images with elements you want together as one big image, and feed it into VT.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
