@@ -5,11 +5,11 @@ Vibe Transfer is a feature that NovelAI Diffusion V3 offers. It is its own techn
 
 ## What Vibe Transfer?
 
-Vibe Transfer is *probably* best described as "semantic extraction from existing image which is then used as a prompt".
+Vibe Transfer is *probably* best described as "semantic extraction from existing image which is then used as a prompt". It is **not** a LORA, Image-Prompt Adapter, or Textual Inversion Embedding, but its own technology.
 
-It is **not** a LORA, Image-Prompt Adapter, or Textual Inversion Embedding.
+This produces semantic data which is used **concurrently** with your prompt. It is not mixed and averaged with it. Instead, the relative strength of the semantic data is determined by the *Reference Strength* parameter.
 
-To make this simpler, we can compare it to Image To Image and Inpainting.
+To make the explanation simpler, we can compare it to Image To Image and Inpainting.
 
 **Image to Image**
 
@@ -21,7 +21,7 @@ To make this simpler, we can compare it to Image To Image and Inpainting.
 
 **Inpainting**
 
-• Ignores everyting that is in the mask area.
+• Uses the surrounding area to the mask, but ignores everyting that is in the mask area.
 
 • Interprets the surrounding elements to the mask and attempts to generate something that melds into it.
 
@@ -37,15 +37,9 @@ To make this simpler, we can compare it to Image To Image and Inpainting.
 
 ## Why Vibe Transfer?
 
-You may remember **Prompt Mixing** (which you can still do). Vibe Transfer does more or less the same thing, but:
+You may remember **Prompt Mixing** (which you can still do). Vibe Transfer does more or less the same thing, but it is more effective, doesn't require tag-searching, and also uses **no** tokens, and **no** extra Anlas.
 
-• Is more effective.
-
-• Requires less tag-searching.
-
-• Uses **no** tokens, and **no** extra Anlas.
-
-As a result, using "Key images" for Vibe Transfer is a much more versatile and stress-free way to tune your generations. Instead of using an image entirely as a base through Image To Image, you are using an image's *elements* as a base.
+As a result, using "Key images" for Vibe Transfer is a much more versatile and stress-free way to tune your generations. Instead of using an image entirely as a base through Image To Image, you are using an image's *elements* as a base for *new* generations.
 
 This allows you to replicate style from artists that aren't well represented in the finetune, or characters that have a low amount of art. This is done in a way that actually respects the content, whereas Image To Image fundamentally applies the existing model vectors to the image, which makes you *lose* information.
 
@@ -55,8 +49,43 @@ Vibe Transfer is best used to affect your generations until you get something cl
 
 1. Use the image as is, because you feel it is good enough.
 
-2. Disable Vibe Transfer, and use Image to Image and Inpainting to make corrections that do not require extensive processing.
+2. Disable Vibe Transfer, and use Image to Image to make corrections that do not require extensive processing.
 
-3. Use Image to Image/Inpainting **and** Vibe Transfer simultaneously if you have trouble "preserving" the content that VT provided you.
+3. Use Image to Image **and** Vibe Transfer simultaneously if you have trouble "preserving" the content that VT provided you. The Image to Image generation will be affected by VT and hopefully preseve that information not normally present in the model.
 
-If the information you extracted out of VT was mostly **style**, you shouldn't need to keep it enabled for further processing, but if it was content and complex details, then keeping it on is probably a good idea.
+**VT is not used when inpainting.**
+
+In general, if the information you extracted out of VT was mostly **style**, you shouldn't need to keep it enabled for further processing, but if it was **content and complex details**, then keeping it on is probably a good idea.
+
+## How Vibe Transfer?
+
+In actual use, Vibe Transfer works like a concurrent prompt, which is processed along with your normal Positive/Negative prompt.
+
+**Reference Strength** is how strong this concurrent prompt is. The higher you go, the less your Positive and Negative prompts matter. Too high, and you're just using extracting the prompt out of the image, more or less.
+
+**Information Extracted** is the "quantity of information" that the VT model retrieves from the base image. Think of it as using a magic wand selector in image processing, and the setting is the tolerance. Higher tolerance means it'll retrieve more.
+
+## Information Extraction
+
+The best way to illustrate the influence of information extraction is to generate an image with an extremely short prompt with VT, and see how much you "retrieve" from the VT image without prompting for it as you adjust the setting.
+
+For this example, we are using Aini's illustration of Clio. This is useful because Aini's illustrations have very complex shading, a definite and identifiable style, and makes use of small details quite extensively.
+
+We are using the same settings as my artist analysis sheet. This means Seed **1**, **25** Steps, Guidance of **5**, **100%** UC strength, and the **Euler** sampler with **Native** scheduling.
+
+The prompt here is ```[amazing quality, very aesthetic], 1girl, blonde hair, aqua eyes, adjusting hair```. UC is ```worst quality, low quality, bad image, displeasing, [abstract], bad anatomy, very displeasing, extra, unfocused, jpeg artifacts, unfinished, chromatic aberration, womb tattoo,```
+
+![Ref1](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7c085a8c-3ab4-40c5-8421-75a72aaf06d5)
+
+As you can see, there are *Information Extracted* thresholds where notable changes happen. Composition switches closer to the reference image at 2.955%, Style starts to carry over around 7%, and more detailed elements of shading and texture are present from 14% onwards.
+
+Returns are sensibly diminishing past that, with 30% and 100% having extremely similar outputs. Tests for 40-99% were carried out and have sensibly similar images.
+
+These thresholds are not, however, perfectly consistent. Here is a comparator with the same settings, but with the following prompt: ```sidelocks, braided bangs, no bangs, braided bun, single hair bun, forehead, medium hair, platinum blonde hair, aqua eyes, laurel crown, laurels, leaf on head, aqua shawl, aqua choker, white dress, {{{sideless outfit}}}, cross-laced corset, golden bangle, gold ring, sandals, {{{{medium breasts}}}}, [[[[small breasts]]]], greek goddess``` UC: ```parted bangs, gold leaves```
+
+![ref2](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2e4ce97f-70df-4b96-89d3-da6e786022f8)
+
+In general, there are thresholds in the areas listed, but those shift about based on prompt complexity. It appears that order of Information selected is, more or less:
+* Composition
+* Details
+* Shading and Coloring
