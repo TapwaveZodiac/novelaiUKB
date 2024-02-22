@@ -71,7 +71,7 @@ The best way to illustrate the influence of information extraction is to generat
 
 For this example, we are using Aini's illustration of Clio. This is useful because Aini's illustrations have very complex shading, a definite and identifiable style, and makes use of small details quite extensively.
 
-We are using the same settings as my artist analysis sheet. This means Seed **1**, **25** Steps, Guidance of **5**, **100%** UC strength, and the **Euler** sampler with **Native** scheduling.
+We are using the same settings as my artist analysis sheet. This means Seed **1**, **25** Steps, Guidance of **5**, **100%** UC strength, and the **Euler** sampler with **Native** scheduling. Reference Strength is set to the default of **0.6**
 
 The prompt here is ```[amazing quality, very aesthetic], 1girl, blonde hair, aqua eyes, adjusting hair```. UC is ```worst quality, low quality, bad image, displeasing, [abstract], bad anatomy, very displeasing, extra, unfocused, jpeg artifacts, unfinished, chromatic aberration, womb tattoo,```
 
@@ -79,7 +79,7 @@ The prompt here is ```[amazing quality, very aesthetic], 1girl, blonde hair, aqu
 
 As you can see, there are *Information Extracted* thresholds where notable changes happen. Composition switches closer to the reference image at 2.955%, Style starts to carry over around 7%, and more detailed elements of shading and texture are present from 14% onwards.
 
-Returns are sensibly diminishing past that, with 30% and 100% having extremely similar outputs. Tests for 40-99% were carried out and have sensibly similar images.
+Returns are sensibly diminishing past that, with 30% and 100% having extremely similar outputs. Tests for 40-99% were carried out and have remarkably similar images.
 
 These thresholds are not, however, perfectly consistent. Here is a comparator with the same settings, but with the following prompt: ```sidelocks, braided bangs, no bangs, braided bun, single hair bun, forehead, medium hair, platinum blonde hair, aqua eyes, laurel crown, laurels, leaf on head, aqua shawl, aqua choker, white dress, {{{sideless outfit}}}, cross-laced corset, golden bangle, gold ring, sandals, {{{{medium breasts}}}}, [[[[small breasts]]]], greek goddess``` UC: ```parted bangs, gold leaves```
 
@@ -89,3 +89,25 @@ In general, there are thresholds in the areas listed, but those shift about base
 * Composition
 * Details
 * Shading and Coloring
+
+## Reference Strength
+
+Reference Strength is the influence of the VT relative to your prompt. With a Strength of **1**, your prompt is effectively disregarded entirely. This is not the same as Image to Image with no Strength.
+
+Using the same settings and prompt as before, we'll now adjust Strength only, and leave IE at 100%.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2af6d4f1-c7f8-40b7-ba0b-ee042fe5ead4)
+
+The thresholds are somewhat comparable at first, but it is clear that the parameter scales higher than IE does.
+
+To compare, here are the same settings, but IE is set at 50% instead of 100%.
+
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8b86b1e8-a24a-4f9b-94f6-f1def5918b8d)
+
+As with all settings, remember to fine-tune based on your preference. Start small and do increments of ~5% at most until you find your happy medium.
+
+## Other Recommendations
+
+Not organized. Just things worth experimenting with
+
+@shambibble: Since VT image doesn't need to match the size of the generated image, you can collate images with elements you want together as one big image, and feed it into VT.
