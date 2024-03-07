@@ -53,8 +53,6 @@ Vibe Transfer is best used to affect your generations until you get something cl
 
 3. Use Image to Image **and** Vibe Transfer simultaneously if you have trouble "preserving" the content that VT provided you. The Image to Image generation will be affected by VT and hopefully preseve that information not normally present in the model.
 
-**VT is not used when inpainting.**
-
 In general, if the information you extracted out of VT was mostly **style**, you shouldn't need to keep it enabled for further processing, but if it was **content and complex details**, then keeping it on is probably a good idea.
 
 ## How Vibe Transfer?
