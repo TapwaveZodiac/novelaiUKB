@@ -38,7 +38,7 @@ There are two important things to consider about injected text:
 
 - **Style** determines how it influences the generation. Generally, you want to stay close to your Story's style, perhaps with minor concessions such as removing determiners, prepositions, etc.
 
-Square brackets are recommended mostly for **Author, Title, Tags, Genre** metadata in Memory. The brackets must be separated from their contents by a space, and everything should be lowercase outside of category titles and proper nouns.
+Square brackets are recommended mostly for **Author, Title, Tags, Genre** metadata in Memory (and Knowledge, Style tags for Clio and Kayra). The brackets must be separated from their contents by a space, and everything should be lowercase outside of category titles and proper nouns.
 
 `[ Author: George R.R. Martin; Title: A Song of Ice and Fire; Tags: dragons, politics, dynasty; Genre: fantasy ]`
 
