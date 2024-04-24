@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 24/04/2024 at 11:50">Last updated 24/04/2024 at 11:50</time></p>
+  <p class="date before-toc"><time datetime="Last updated 24/04/2024 at 12:37">Last updated 24/04/2024 at 12:37</time></p>
 </blockquote>
 </header>
 
@@ -1359,7 +1359,12 @@
     <li><a href="#combo-prompting">Combo Prompting</a></li>
     </ul></li>
     <li><a href="#vibe-transfer">Vibe Transfer</a></li>
-    <li><a href="#furry-model">Furry Model</a></li>
+    <li><a href="#furry-model">Furry Model</a>
+    <ul>
+    <li><a href="#tag-differences">Tag differences</a></li>
+    <li><a href="#furry-model-quality-tags-and-unwanted-content">Furry Model Quality Tags and Unwanted Content</a></li>
+    <li><a href="#artist-tags-for-the-furry-model">Artist Tags for the Furry Model</a></li>
+    </ul></li>
     <li><a href="#in-depth-ui-info">In-depth UI info</a>
     <ul>
     <li><a href="#anlas-cost-calculation">Anlas Cost Calculation</a></li>
@@ -1541,6 +1546,7 @@
 <p>Experiment and perhaps contribute your research efforts to this wiki!</p>
 <h1 id="furry-model">Furry Model</h1>
 <p>The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.</p>
+<h2 id="tag-differences">Tag differences</h2>
 <p>The Furry Model uses <a href="https://e621.net/wiki_pages/1671">E621 Tags</a> instead of Danbooru tags. This leads to several important differences:</p>
 <ul>
 <li>There is no <code>xGirl</code> or <code>xBoy</code> tags, instead, you specify <code>male, female, intersex</code>, etc, and then state the number with <code>solo, duo, group</code></li>
@@ -1548,6 +1554,7 @@
 <li>Gender tags are different. For instance, <code>intersex</code> is used rather than <code>futanari</code>, and <code>girly</code> instead of <code>otoko no ko</code></li>
 <li>Some expression and clothing tags are different.</li>
 </ul>
+<h2 id="furry-model-quality-tags-and-unwanted-content">Furry Model Quality Tags and Unwanted Content</h2>
 <p>The default quality tags are the same as for the Anime model, but strengthened. It is <code>{best quality, amazing quality}</code> added at the <strong>end</strong> of the prompt.</p>
 <p>The light UC is as follows: <code>nsfw, {worst quality}, guide lines, unfinished, bad, url, tall image, widescreen, compression artifacts, unknown text</code></p>
 <p>The Heavy UC is as follows: <code>nsfw, {{worst quality}}, [displeasing], {unusual pupils}, guide lines, {{unfinished}}, {bad}, url, artist name, {{tall image}}, mosaic, {sketch page}, comic panel, impact (font), [dated], {logo}, ych, {what}, {where is your god now}, {distorted text}, repeated text, {floating head}, {1994}, {widescreen}, absolutely everyone, sequence, {compression artifacts}, hard translated, {cropped}, {commissioner name}, unknown text, high contrast</code></p>
@@ -1562,6 +1569,8 @@
 <li><code>absolutely everyone</code>: Reduces the likelihood of images with a mess of blobs that are meant to be a huge crowd of characters.</li>
 <li><code>1994</code>: Unclear, but this year has a substantial amount of zoo content and pictures with extremely low, MS-paint like quality.</li>
 </ul>
+<h2 id="artist-tags-for-the-furry-model">Artist Tags for the Furry Model</h2>
+<p>The Furry model was not trained with artist tags like the Anime model was. As a result, prompting for <code>artist:artistname</code> will not result in that artist's style. <strong>However</strong>, any tag you construct this way <strong>will</strong> have consistent stylistic results. You just have to invent and artist's name, and document the results. Hopefully you will find an artist the model "hallucinates" in a pleasing way.</p>
 <h1 id="in-depth-ui-info">In-depth UI info</h1>
 <h2 id="anlas-cost-calculation">Anlas Cost Calculation</h2>
 <p>The calculation for Anlas cost uses the following algorithms:</p>
