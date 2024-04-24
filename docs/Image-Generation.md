@@ -413,11 +413,11 @@ Experiment and perhaps contribute your research efforts to this wiki!
 
 # Furry Model
 
-The Furry Model is based on a different dataset, and tagging practices.
+The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.
 
 The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Danbooru tags. This leads to several important differences:
 
-* There is no `xGirl` or `xBoy` tags that allow you to specify how many characters are in the scene.
+* There is no `xGirl` or `xBoy` tags, instead, you specify `male, female, intersex`, etc, and then state the number with `solo, duo, group`
 * You can specify colors for different body parts more precisely.
 * Gender tags are different. For instance, `intersex` is used rather than `futanari`, and `girly` instead of `otoko no ko`
 * Some expression and clothing tags are different.
