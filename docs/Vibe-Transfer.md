@@ -21,7 +21,7 @@ To make the explanation simpler, we can compare it to Image To Image and Inpaint
 
 **Inpainting**
 
-• Uses the surrounding area to the mask, but ignores everyting that is in the mask area.
+• Uses the surrounding area to the mask, but ignores everything that is in the mask area.
 
 • Interprets the surrounding elements to the mask and attempts to generate something that melds into it.
 
