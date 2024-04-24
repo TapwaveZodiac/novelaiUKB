@@ -422,6 +422,8 @@ The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Da
 * You can specify colors for different body parts more precisely.
 * Gender tags are different. For instance, `intersex` is used rather than `futanari`, and `girly` instead of `otoko no ko`
 * Some expression and clothing tags are different.
+  
+Tag for species by preceding them with `species:` For example: `species: domestic cat`.
 
 ## Furry Model Quality Tags and Unwanted Content
 The default quality tags are the same as for the Anime model, but strengthened. It is `{best quality, amazing quality}` added at the **end** of the prompt.
