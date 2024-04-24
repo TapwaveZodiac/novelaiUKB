@@ -415,6 +415,7 @@ Experiment and perhaps contribute your research efforts to this wiki!
 
 The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.
 
+## Tag differences
 The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Danbooru tags. This leads to several important differences:
 
 * There is no `xGirl` or `xBoy` tags, instead, you specify `male, female, intersex`, etc, and then state the number with `solo, duo, group`
@@ -422,6 +423,7 @@ The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Da
 * Gender tags are different. For instance, `intersex` is used rather than `futanari`, and `girly` instead of `otoko no ko`
 * Some expression and clothing tags are different.
 
+## Furry Model Quality Tags and Unwanted Content
 The default quality tags are the same as for the Anime model, but strengthened. It is `{best quality, amazing quality}` added at the **end** of the prompt.
 
 The light UC is as follows: `nsfw, {worst quality}, guide lines, unfinished, bad, url, tall image, widescreen, compression artifacts, unknown text`
@@ -438,6 +440,10 @@ While most of the tags used in the UC are chosen for similar reasons relative to
 * `what, where is your god now`: tags used for pictures with especially confusing, abstract, or disturbing/purposefully offensive subject matters.
 * `absolutely everyone`: Reduces the likelihood of images with a mess of blobs that are meant to be a huge crowd of characters.
 * `1994`: Unclear, but this year has a substantial amount of zoo content and pictures with extremely low, MS-paint like quality.
+
+## Artist Tags for the Furry Model
+
+The Furry model was not trained with artist tags like the Anime model was. As a result, prompting for `artist:artistname` will not result in that artist's style. **However**, any tag you construct this way **will** have consistent stylistic results. You just have to invent and artist's name, and document the results. Hopefully you will find an artist the model "hallucinates" in a pleasing way.
 
 # In-depth UI info
 
