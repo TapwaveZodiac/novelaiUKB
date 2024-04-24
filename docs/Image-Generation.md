@@ -443,7 +443,7 @@ While most of the tags used in the UC are chosen for similar reasons relative to
 
 ## Artist Tags for the Furry Model
 
-The Furry model was not trained with artist tags like the Anime model was. As a result, prompting for `artist:artistname` will not result in that artist's style. **However**, any tag you construct this way **will** have consistent stylistic results. You just have to invent and artist's name, and document the results. Hopefully you will find an artist the model "hallucinates" in a pleasing way.
+The Furry model was not trained with artist tags like the Anime model was. As a result, prompting for `artist:artistname` will not result in that artist's style. **However**, any tag you construct this way **will** have consistent stylistic results. You just have to invent an artist's name, and document the results. Hopefully you will find an artist the model "hallucinates" in a pleasing way.
 
 # In-depth UI info
 
