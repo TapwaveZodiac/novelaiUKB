@@ -411,6 +411,34 @@ Two settings are at play when using Vibe Transfer to prepare a generation: **Ref
 
 Experiment and perhaps contribute your research efforts to this wiki!
 
+# Furry Model
+
+The Furry Model is based on a different dataset, and tagging practices.
+
+The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Danbooru tags. This leads to several important differences:
+
+* There is no `xGirl` or `xBoy` tags that allow you to specify how many characters are in the scene.
+* You can specify colors for different body parts more precisely.
+* Gender tags are different. For instance, `intersex` is used rather than `futanari`, and `girly` instead of `otoko no ko`
+* Some expression and clothing tags are different.
+
+The default quality tags are the same as for the Anime model, but strengthened. It is `{best quality, amazing quality}` added at the **end** of the prompt.
+
+The light UC is as follows: `nsfw, {worst quality}, guide lines, unfinished, bad, url, tall image, widescreen, compression artifacts, unknown text`
+
+The Heavy UC is as follows: `nsfw, {{worst quality}}, [displeasing], {unusual pupils}, guide lines, {{unfinished}}, {bad}, url, artist name, {{tall image}}, mosaic, {sketch page}, comic panel, impact (font), [dated], {logo}, ych, {what}, {where is your god now}, {distorted text}, repeated text, {floating head}, {1994}, {widescreen}, absolutely everyone, sequence, {compression artifacts}, hard translated, {cropped}, {commissioner name}, unknown text, high contrast`
+
+While most of the tags used in the UC are chosen for similar reasons relative to the Anime UC, there are a few additions that are especially relevant for this model:
+
+* `{unusual pupils}`: Reduces eye artifacts. Pupil shape is highly variable between animals.
+* `floating head, guide lines, sketch page, ych, comissioner name,`: Reduces the occurence of unfinished sketch-like drawings often used as bases for Your Character Here art auctions.
+* `comic panel, sequence, impact (font),`: Reduces meme-format leaking.
+* `text`-related tags and `hard translated`: Text and dialogue is frequently present. This helps reduce text-like artifacts.
+* `high contrast`: Reduces the likelihood of eye-searing color palettes.
+* `what, where is your god now`: tags used for pictures with especially confusing, abstract, or disturbing/purposefully offensive subject matters.
+* `absolutely everyone`: Reduces the likelihood of images with a mess of blobs that are meant to be a huge crowd of characters.
+* `1994`: Unclear, but this year has a substantial amount of zoo content and pictures with extremely low, MS-paint like quality.
+
 # In-depth UI info
 
 ## Anlas Cost Calculation
