@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 15/04/2024 at 10:12">Last updated 15/04/2024 at 10:12</time></p>
+  <p class="date before-toc"><time datetime="Last updated 24/04/2024 at 11:44">Last updated 24/04/2024 at 11:44</time></p>
 </blockquote>
 </header>
 
@@ -1359,6 +1359,7 @@
     <li><a href="#combo-prompting">Combo Prompting</a></li>
     </ul></li>
     <li><a href="#vibe-transfer">Vibe Transfer</a></li>
+    <li><a href="#furry-model">Furry Model</a></li>
     <li><a href="#in-depth-ui-info">In-depth UI info</a>
     <ul>
     <li><a href="#anlas-cost-calculation">Anlas Cost Calculation</a></li>
@@ -1538,6 +1539,29 @@
 <p><strong>Reference Strength</strong> is the inverse of Image to Image Strength. The higher it is, the closer the generation will be to the VT Reference image. Since the image itself is not used as-is, it will not be replicated, but excessive strength will cause prompt vectors to be overpowered by the VT Reference's content, generating something very similar to it in terms of content, even if you did not prompt for it.</p>
 <p><strong>Information Extracted</strong> is best compared to using a Magic Wand selector in an image editing software. Instead of selecting pixels based on color, you select an increasing amount of "meaning" from the image. It is theorized that simpler elements are included sooner than more complex ones, but as this is nascent technology, it is unclear how this proceeds, or if it has any consistency.</p>
 <p>Experiment and perhaps contribute your research efforts to this wiki!</p>
+<h1 id="furry-model">Furry Model</h1>
+<p>The Furry Model is based on a different dataset, and tagging practices.</p>
+<p>The Furry Model uses <a href="https://e621.net/wiki_pages/1671">E621 Tags</a> instead of Danbooru tags. This leads to several important differences:</p>
+<ul>
+<li>There is no <code>xGirl</code> or <code>xBoy</code> tags that allow you to specify how many characters are in the scene.</li>
+<li>You can specify colors for different body parts more precisely.</li>
+<li>Gender tags are different. For instance, <code>intersex</code> is used rather than <code>futanari</code>, and <code>girly</code> instead of <code>otoko no ko</code></li>
+<li>Some expression and clothing tags are different.</li>
+</ul>
+<p>The default quality tags are the same as for the Anime model, but strengthened. It is <code>{best quality, amazing quality}</code> added at the <strong>end</strong> of the prompt.</p>
+<p>The light UC is as follows: <code>nsfw, {worst quality}, guide lines, unfinished, bad, url, tall image, widescreen, compression artifacts, unknown text</code></p>
+<p>The Heavy UC is as follows: <code>nsfw, {{worst quality}}, [displeasing], {unusual pupils}, guide lines, {{unfinished}}, {bad}, url, artist name, {{tall image}}, mosaic, {sketch page}, comic panel, impact (font), [dated], {logo}, ych, {what}, {where is your god now}, {distorted text}, repeated text, {floating head}, {1994}, {widescreen}, absolutely everyone, sequence, {compression artifacts}, hard translated, {cropped}, {commissioner name}, unknown text, high contrast</code></p>
+<p>While most of the tags used in the UC are chosen for similar reasons relative to the Anime UC, there are a few additions that are especially relevant for this model:</p>
+<ul>
+<li><code>{unusual pupils}</code>: Reduces eye artifacts. Pupil shape is highly variable between animals.</li>
+<li><code>floating head, guide lines, sketch page, ych, comissioner name,</code>: Reduces the occurence of unfinished sketch-like drawings often used as bases for Your Character Here art auctions.</li>
+<li><code>comic panel, sequence, impact (font),</code>: Reduces meme-format leaking.</li>
+<li><code>text</code>-related tags and <code>hard translated</code>: Text and dialogue is frequently present. This helps reduce text-like artifacts.</li>
+<li><code>high contrast</code>: Reduces the likelihood of eye-searing color palettes.</li>
+<li><code>what, where is your god now</code>: tags used for pictures with especially confusing, abstract, or disturbing/purposefully offensive subject matters.</li>
+<li><code>absolutely everyone</code>: Reduces the likelihood of images with a mess of blobs that are meant to be a huge crowd of characters.</li>
+<li><code>1994</code>: Unclear, but this year has a substantial amount of zoo content and pictures with extremely low, MS-paint like quality.</li>
+</ul>
 <h1 id="in-depth-ui-info">In-depth UI info</h1>
 <h2 id="anlas-cost-calculation">Anlas Cost Calculation</h2>
 <p>The calculation for Anlas cost uses the following algorithms:</p>
