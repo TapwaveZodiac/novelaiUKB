@@ -56,10 +56,10 @@ All of this goes into the **memory** field!
 ATTG stands for:
 * **Author** - The author you want to pull style from.
 * **Title** -  The work you want to pull style from.
-* **Tags** - Elements you want to see included.
-* **Genre** - The genre your story belongs to.
+* **Tags** - Elements you want to see included. You can write basically anything you want, but try to be effective in your wording.
+* **Genre** - The genre your story belongs to. You can mix multiple genres, but try to keep it around 4 at most, and avoid combining genres that don't mesh (like non-fiction and strong fiction genres)
 
-You don't need to use all of them. In fact, you can use only one or two of them! It's better to keep them in the same order. This is okay:
+You don't need to use all of them. In fact, you can use only one or two of them! Simply remove any field you are not using. It's better to keep them in the same order as default, however. This is okay:
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/67fd29db-9179-4e37-8519-628bc0d348ff)
 
