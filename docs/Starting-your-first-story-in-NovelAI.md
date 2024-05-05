@@ -49,7 +49,7 @@ Let's start with setting up your story's core components.
 
 ## Setup
 
-All of this goes into the **memory** field!
+All of this goes into the **memory** field! Make sure you conclude it with a **dinkus**, which is three asterisks in a row: `***`
 
 ### ATTG
 
@@ -61,7 +61,8 @@ ATTG stands for:
 
 You don't need to use all of them. In fact, you can use only one or two of them! Simply remove any field you are not using. It's better to keep them in the same order as default, however. This is okay:
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/67fd29db-9179-4e37-8519-628bc0d348ff)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a6e2fce6-9591-40f2-819e-80ff22de09fa)
+
 
 (Keep in mind that it's just text being line-wrapped, there is no need to press Enter.)
 
@@ -73,23 +74,19 @@ You can also tell the AI where the story is happening, when it's happening, who 
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/bc753333-b974-46eb-9f6b-91702dc44f30)
 
-Put this in your **Memory** field, after the ATTG block, **but**, if you need a situation to change **now**, put this in the **Author's Note** instead, then put it back in memory after a few paragraphs.
+Put this at the very bottom of your **Memory** field, after the ATTG block and after the **Dinkus**, **but**, if you need a situation to change **now**, put this in the **Author's Note** instead, then put it back in memory after a few paragraphs.
 
 ### Style directions
 
-Style directions allow you to tell the AI to write in a specific style. Just put this at the end of your **memory** field.
+Style directions allow you to tell the AI to write in a specific style. Just put this at the end of your **memory** field, after the stage directions.
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/644b02b3-dfa9-4a9e-b862-e05425712f24)
-
-Fill the blank with anything you want!
-
-Put this in your **Memory** field, at the end.
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a62fa27b-0233-4573-beb9-a91d927eadf8)
 
 #### Wait, is there a list of genres and styles?
 
 No! It doesn't matter! The AI has been trained with it, so it just "gets" it. Put in whatever you want, and if it doesn't work, use synonyms! You can use multiple terms at the same time too.
 
-### Dinkus
+### Why a Dinkus?
 
 A dinkus is this : ***
 
@@ -97,7 +94,7 @@ Put this at the end of **Memory** to signal the AI that you are done writing non
 
 Here's a fully filled **Memory** using all the stuff we've looked at so far:
 
-![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7494aa16-6a92-4024-9262-bee806202577)
+![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/051fe596-2cb1-494e-a141-d3f970c16810)
 
 Now just hit send and watch the Shadow Magic happen!
 
