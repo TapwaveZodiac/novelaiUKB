@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 05/05/2024 at 16:57">Last updated 05/05/2024 at 16:57</time></p>
+  <p class="date before-toc"><time datetime="Last updated 05/06/2024 at 17:08">Last updated 05/06/2024 at 17:08</time></p>
 </blockquote>
 </header>
 
@@ -1575,12 +1575,32 @@
 <h1 id="in-depth-ui-info">In-depth UI info</h1>
 <h2 id="anlas-cost-calculation">Anlas Cost Calculation</h2>
 <p>The calculation for Anlas cost uses the following algorithms:</p>
-<p>V3</p>
-<pre><code>r = w * h
-smea_factor = !smea (1.0) else if smea (1.2) else if smea_dyn (1.4)
-
-per_sample = math.ceil(2951823174884865e-21 * r + 5.753298233447344e-7 * r * steps) * smea_factor
-</code></pre>
+<ul>
+<li>V1 and V2 (under 1 megapixel for plms/ddim/k_euler/k_euler_ancestral/k_lms samplers)</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>r <span class="op">=</span> width <span class="op">*</span> height  <span class="co"># in pixels</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>size <span class="op">=</span> r <span class="op">/</span> <span class="dv">1024</span> <span class="op">/</span> <span class="dv">1024</span>  <span class="co"># in megapixels</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(<span class="fl">15.266497014243718</span> <span class="op">*</span> math.exp(size <span class="op">*</span> <span class="fl">0.6326248927474729</span>) <span class="op">-</span> <span class="fl">15.225164493059737</span>) <span class="op">*</span> steps <span class="op">/</span> <span class="dv">28</span>)</span></code></pre></div>
+<p>For V1 and V2 images over 1 megapixel or using other samplers, see the <a href="https://github.com/Aedial/novelai-api/blob/2174602d346152d38ce2b43fcec8c9666a72f89a/novelai_api/ImagePreset.py#L588">cost tables</a>.</p>
+<ul>
+<li>V3</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>r <span class="op">=</span> width <span class="op">*</span> height  <span class="co"># in pixels</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="cf">if</span> smea <span class="kw">and</span> smea_dyn:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    sma_factor <span class="op">=</span> <span class="fl">1.4</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="cf">elif</span> smea:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    smea_factor <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="cf">else</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>    smea_factor <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(<span class="fl">2951823174884865e-21</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">5.753298233447344e-7</span> <span class="op">*</span> r <span class="op">*</span> steps) <span class="op">*</span> smea_factor</span></code></pre></div>
+<p>Strength and uncond scale are then applied to the per_image cost.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(per_sample <span class="op">*</span> strength)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>per_image <span class="op">=</span> math.<span class="bu">max</span>(per_image, <span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(per_image <span class="op">*</span> uncond_scale)</span></code></pre></div>
+<p>If the parameters fall within the Opus free image limit, one image is removed from the cost calculation (only applies for Opus users).</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

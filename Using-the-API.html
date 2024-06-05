@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Using the API</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 05/05/2024 at 16:57">Last updated 05/05/2024 at 16:57</time></p>
+  <p class="date before-toc"><time datetime="Last updated 05/06/2024 at 17:08">Last updated 05/06/2024 at 17:08</time></p>
 </blockquote>
 </header>
 
@@ -1330,9 +1330,10 @@
     <li><a href="#211-access-key-and-access-token">2.1.1. Access key and Access token</a></li>
     <li><a href="#212-encryption-and-keystore">2.1.2. Encryption and Keystore</a></li>
     <li><a href="#213-compression">2.1.3. Compression</a></li>
-    <li><a href="#214-logprobs">2.1.4. Logprobs</a></li>
-    <li><a href="#215-infilling">2.1.5. Infilling</a></li>
-    <li><a href="#216-hypebot">2.1.6. Hypebot</a></li>
+    <li><a href="#214-compression-story-content">2.1.4. Compression (story content)</a></li>
+    <li><a href="#215-logprobs">2.1.5. Logprobs</a></li>
+    <li><a href="#216-infilling">2.1.6. Infilling</a></li>
+    <li><a href="#217-hypebot">2.1.7. Hypebot</a></li>
     </ul></li>
     <li><a href="#22-endpoints-starting-with-">2.2. Endpoints starting with /</a>
     <ul>
@@ -1429,13 +1430,16 @@
 <p>The encrypted keystore contains the <strong>encrypted data</strong> ("sdata") and the <strong>nonce</strong> ("nonce") to be used to decrypt it (it is also encrypted using Salsa20), the key is your Encryption key. Once you have decrypted your keystore, you will see a mapping of meta -&gt; key. Each encrypted object has a "meta" field, which is used to link them to their encryption key (more info <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/Keystore.py#L113">here</a> and <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L63">here</a>).</p>
 <p>Once you have the key of the object, you can decrypt it by removing the nonce that is stored in the 16 first bytes of the encrypted data, and decrypting the rest using this nonce and the key from the keystore (more info <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L188">here</a> and <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L63">here</a>).</p>
 <h3 id="213-compression">2.1.3. Compression</h3>
-<p>"shelf", "preset", and any decrypted object might be compressed using <a href="https://en.wikipedia.org/wiki/Deflate">DEFLATE</a>. It is easily recognizable as the data is prefixed with 0x00000000000000000000000000000001 (hex representation of byte data), which should be <strong>removed when decompressing</strong> and <strong>added back when compressing</strong> (note that the prefix is matched and removed <em>before decryption</em>, but the <em>decompression takes place after decryption</em> - see <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L72">here</a>). The compression library used by the NovelAI team is <a href="https://www.npmjs.com/package/fflate">fflate</a>, which might result in slightly different results, but should be fully compatible with the standard.</p>
-<h3 id="214-logprobs">2.1.4. Logprobs</h3>
+<p>"shelf", "preset", and any decrypted object might be compressed using <a href="https://en.wikipedia.org/wiki/Deflate">DEFLATE</a>. It is easily recognizable as the data is prefixed with 0x00000000000000000000000000000001 (hex representation of byte data), which should be <strong>removed when decompressing</strong> and <strong>added back when compressing</strong> (note that the prefix is matched and removed <em>before decryption</em>, but the <em>decompression takes place after decryption</em> - see <a href="https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L72">here</a>). The compression library used by the NAI is <a href="https://www.npmjs.com/package/fflate">fflate</a>, which might result in slightly different results, but should be fully compatible with the standard.</p>
+<h3 id="214-compression-story-content">2.1.4. Compression (story content)</h3>
+<p>Editor v2 uses compression for story content, which relies on a non-standard implementation of <a href="https://msgpack.org/">msgpack</a>, called <a href="https://github.com/kriszyp/msgpackr/">msgpackr</a>. The non-standard parts are records, bundled strings, and a few extensions. On top of that, custom extension 20, 30, 31, 40, 41, 42 are used to wrap the data in a class. As these are merely wrappers, they can be implemented as pass-throughs.</p>
+<p>For implementation details on msgpackr for other languages, look at <a href="https://github.com/Aedial/msgpackr-python">msgpackr-python</a>.</p>
+<h3 id="215-logprobs">2.1.5. Logprobs</h3>
 <p>Logprobs, or logarithm of probabilities, are useful information for knowing where the AI is going. They are returned by text models when the parameter is enabled, and show the probability of the top alternatives in descending order, for a specific token. The logprobs come in the "logprobs" field of the response, and will contain a "chosen" field for the tokens that were chosen, and a "before" field for the top alternatives of these tokens, with their probability before and after applying sampling.</p>
-<h3 id="215-infilling">2.1.5. Infilling</h3>
+<h3 id="216-infilling">2.1.6. Infilling</h3>
 <p>Infilling, or Bidirectional inline generation, is a specific feature and a totally different way of generating, which takes into account both the text before and after the targeted spot.</p>
 <p>The current model used for infilling is GPT-J-6B, but it is unsure whether it is a finetune or a module v2. It uses token 50261 as mask for the part to replace, token 50257 at the end of context sent to prompt it into infilling mode, and token 50258 for the end of generation (so put that as Stop sequence).</p>
-<h3 id="216-hypebot">2.1.6. Hypebot</h3>
+<h3 id="217-hypebot">2.1.7. Hypebot</h3>
 <p>Hypebot is a commenter bot, which sees the story and comments on it.</p>
 <p>The current model used for hypebot is GPT-J-6B, finetuned on ~300 samples with some augmentation. It uses token 49527 at the end of context sent to prompt it into hypebot mode, and token 48585 for the end of generation (so put that as Stop sequence).</p>
 <h2 id="22-endpoints-starting-with-">2.2. Endpoints starting with /</h2>
@@ -1507,7 +1511,7 @@
 <h3 id="254-aiannotate-image">2.5.4. /ai/annotate-image</h3>
 <p>Get the mask for ControlNet, from an image. The parameters should contain an "image" field with the base64-encoded PNG image to convert. For the model, Palette Swap is "hed", Form Lock is "midas", Scribbler is "fake_scribble", Building Control is "mlsd", and Landscaper is "uniformer".</p>
 <h3 id="255-aigenerate-image">2.5.5. /ai/generate-image</h3>
-<p>Generate an image using normal text to image, image to image, or inpainting.</p>
+<p>Generate an image using normal text to image, image to image, or inpainting. This endpoint is an image endpoint (<a href=".html">image.novelai.net</a>).</p>
 <ul>
 <li><p><strong>Parameters.width</strong>: Width of the image to generate.</p></li>
 <li><p><strong>Parameters.height</strong>: Height of the image to generate.</p></li>
@@ -1526,14 +1530,22 @@
 <li><p><strong>Parameters.dynamic_thresholding</strong>: Refer to <a href="https://docs.novelai.net/image/stepsguidance.html#decrisper">descrisper</a>. The technical details can be found on <a href="https://github.com/mcmonkeyprojects/sd-dynamic-thresholding">GitHub</a> and <a href="https://twitter.com/Birchlabs/status/1582165379832348672">Twitter</a>.</p></li>
 <li><p><strong>Parameters.add_original_image</strong>: Refer to <a href="https://docs.novelai.net/image/inpaint.html#overlay-original-image">Overlay Original Image</a>.</p></li>
 <li><p><strong>Parameters.mask</strong>: Base64-encoded black and white PNG image to use as a mask for inpainting. White is the area to inpaint and black is the rest.</p></li>
+<li><p><strong>Parameters.cfg_rescale</strong>: Refer to <a href="https://docs.novelai.net/image/stepsguidance.html#prompt-guidance-rescale">rescale</a>.</p></li>
+<li><p><strong>Parameters.noise_schedule</strong>: How much noise is added at each step. Can be "native", "karras", "exponential", or "polyexponential". Use native if you do not know what to use.</p></li>
+<li><p><strong>Parameters.reference_image</strong>: Base64-encoded PNG image used for Vibe Transfer</p></li>
+<li><p><strong>Parameters.reference_information_extracted</strong>: Refer to <a href="https://docs.novelai.net/image/vibetransfer.html#information-extracted">Vibe Transfer</a></p></li>
+<li><p><strong>Parameters.reference_strength</strong>: Refer to <a href="https://docs.novelai.net/image/vibetransfer.html#reference-strength">Vibe Transfer</a></p></li>
+<li><p><strong>Parameters.reference_image_multiple</strong>: list of reference_image for multi-vibe transfer</p></li>
+<li><p><strong>Parameters.reference_information_extracted_multiple</strong>: list of reference_information_extracted for multi-vibe transfer</p></li>
+<li><p><strong>Parameters.reference_strength_multiple</strong>: list of reference_strength for multi-vibe transfer</p></li>
 </ul>
-<p>More fields can be added in parameters, which will be present in the metadata of the image, like qualityToggle or ucPreset. These fields are mainly for the website to remember some key information when importing the image.</p>
+<p>More fields can be added in parameters, which will be present in the metadata of the image, like qualityToggle or ucPreset. These fields are mainly for the website to remember some state information when importing the image.</p>
 <h3 id="256-aiupscale">2.5.6. /ai/upscale</h3>
 <p>Upscale the provided PNG image.</p>
 <h3 id="257-aiclassify">2.5.7. /ai/classify</h3>
 <p>Unknown, unused yet.</p>
 <h3 id="258-aigenerate-imagesuggest-tags">2.5.8. /ai/generate-image/suggest-tags</h3>
-<p>Suggest tags with a certain confidence, considering how much the tag is used in the dataset. The confidence is between 0 and 1.</p>
+<p>Suggest tags with a certain confidence, considering how much the tag is used in the dataset. The confidence is between 0 and 1. This endpoint is an image endpoint (<a href=".html">image.novelai.net</a>).</p>
 <h3 id="259-aigenerate-voice">2.5.9. /ai/generate-voice</h3>
 <p>Generates an audio file reading the text sent. The endpoint accepts up to 1000 characters to read, any more being cut out.</p>
 <p>There are 2 versions, selected via the "version" parameter. This parameter should be set to "v1" for TTS v1, or "v2" for TTS v2.</p>
