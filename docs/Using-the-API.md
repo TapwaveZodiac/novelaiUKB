@@ -114,12 +114,24 @@ which should be **removed when decompressing** and **added back when
 compressing** (note that the prefix is matched and removed *before
 decryption*, but the *decompression takes place after decryption* - see
 [here](https://github.com/Aedial/novelai-api/blob/8120fcb5db67cf01d254a40e49063b4e71355d17/novelai_api/utils.py#L72)).
-The compression library used by the NovelAI team is
+The compression library used by the NAI is
 [fflate](https://www.npmjs.com/package/fflate), which might result in
 slightly different results, but should be fully compatible with the
 standard.
 
-### 2.1.4. Logprobs
+### 2.1.4. Compression (story content)
+Editor v2 uses compression for story content, which
+relies on a non-standard implementation of [msgpack](https://msgpack.org/),
+called [msgpackr](https://github.com/kriszyp/msgpackr/). The non-standard
+parts are records, bundled strings, and a few extensions. On top of that,
+custom extension 20, 30, 31, 40, 41, 42 are used to wrap the data in a
+class. As these are merely wrappers, they can be implemented
+as pass-throughs.
+
+For implementation details on msgpackr for other languages, look at
+[msgpackr-python](https://github.com/Aedial/msgpackr-python).
+
+### 2.1.5. Logprobs
 
 Logprobs, or logarithm of probabilities, are useful information for
 knowing where the AI is going. They are returned by text models when the
@@ -130,7 +142,7 @@ for the tokens that were chosen, and a "before" field for the top
 alternatives of these tokens, with their probability before and after
 applying sampling.
 
-### 2.1.5. Infilling
+### 2.1.6. Infilling
 
 Infilling, or Bidirectional inline generation, is a specific feature and
 a totally different way of generating, which takes into account both the
@@ -142,7 +154,7 @@ the part to replace, token 50257 at the end of context sent to prompt it
 into infilling mode, and token 50258 for the end of generation (so put
 that as Stop sequence).
 
-### 2.1.6. Hypebot
+### 2.1.7. Hypebot
 
 Hypebot is a commenter bot, which sees the story and comments on it.
 
@@ -331,7 +343,7 @@ Landscaper is "uniformer".
 ### 2.5.5. /ai/generate-image
 
 Generate an image using normal text to image, image to image, or
-inpainting.
+inpainting. This endpoint is an image endpoint ([image.novelai.net]()).
 
 -   **Parameters.width**: Width of the image to generate.
 
@@ -416,9 +428,35 @@ inpainting.
     as a mask for inpainting. White is the area to inpaint and black is
     the rest.
 
+
+-   **Parameters.cfg_rescale**: Refer to [rescale](https://docs.novelai.net/image/stepsguidance.html#prompt-guidance-rescale).
+
+
+-   **Parameters.noise_schedule**: How much noise is added at each step. Can be "native", "karras", "exponential", or "polyexponential".
+    Use native if you do not know what to use.
+
+
+-   **Parameters.reference_image**: Base64-encoded PNG image used for Vibe Transfer
+
+
+-   **Parameters.reference_information_extracted**: Refer to [Vibe Transfer](https://docs.novelai.net/image/vibetransfer.html#information-extracted)
+
+
+-   **Parameters.reference_strength**: Refer to [Vibe Transfer](https://docs.novelai.net/image/vibetransfer.html#reference-strength)
+
+
+-   **Parameters.reference_image_multiple**: list of reference_image for multi-vibe transfer
+
+
+-   **Parameters.reference_information_extracted_multiple**: list of reference_information_extracted for multi-vibe transfer
+
+
+-   **Parameters.reference_strength_multiple**: list of reference_strength for multi-vibe transfer
+
+
 More fields can be added in parameters, which will be present in the
 metadata of the image, like qualityToggle or ucPreset. These fields are
-mainly for the website to remember some key information when importing
+mainly for the website to remember some state information when importing
 the image.
 
 ### 2.5.6. /ai/upscale
@@ -432,6 +470,7 @@ Unknown, unused yet.
 ### 2.5.8. /ai/generate-image/suggest-tags
 Suggest tags with a certain confidence, considering how much the tag is
 used in the dataset. The confidence is between 0 and 1.
+This endpoint is an image endpoint ([image.novelai.net]()).
 
 ### 2.5.9. /ai/generate-voice
 

@@ -453,10 +453,34 @@ The Furry model was not trained with artist tags like the Anime model was. As a 
 
 The calculation for Anlas cost uses the following algorithms:
 
-V3
-```
-r = w * h
-smea_factor = !smea (1.0) else if smea (1.2) else if smea_dyn (1.4)
+- V1 and V2 (under 1 megapixel for plms/ddim/k_euler/k_euler_ancestral/k_lms samplers)
+```python
+r = width * height  # in pixels
+size = r / 1024 / 1024  # in megapixels
 
-per_sample = math.ceil(2951823174884865e-21 * r + 5.753298233447344e-7 * r * steps) * smea_factor
+per_image = math.ceil(15.266497014243718 * math.exp(size * 0.6326248927474729) - 15.225164493059737) * steps / 28)
 ```
+For V1 and V2 images over 1 megapixel or using other samplers, see the [cost tables](https://github.com/Aedial/novelai-api/blob/2174602d346152d38ce2b43fcec8c9666a72f89a/novelai_api/ImagePreset.py#L588).
+
+- V3
+```python
+r = width * height  # in pixels
+
+if smea and smea_dyn:
+    sma_factor = 1.4
+elif smea:
+    smea_factor = 1.2
+else:
+    smea_factor = 1.0
+
+per_image = math.ceil(2951823174884865e-21 * r + 5.753298233447344e-7 * r * steps) * smea_factor
+```
+
+Strength and uncond scale are then applied to the per_image cost.
+```python
+per_image = math.ceil(per_sample * strength)
+per_image = math.max(per_image, 2)
+per_image = math.ceil(per_image * uncond_scale)
+```
+
+If the parameters fall within the Opus free image limit, one image is removed from the cost calculation (only applies for Opus users).
