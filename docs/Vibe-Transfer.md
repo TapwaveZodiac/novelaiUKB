@@ -109,3 +109,5 @@ As with all settings, remember to fine-tune based on your preference. Start smal
 Not organized. Just things worth experimenting with
 
 @shambibble: Since VT image doesn't need to match the size of the generated image, you can collate images with elements you want together as one big image, and feed it into VT.
+
+@Jim Lahey: You can use an image of a surface type or texture as a vibe transfer to include its effect in the generation. For example, using voluminous fur as a vibe transfer can help creatures look soft and fuzzy, especially if you are going for a more 3D-like render style.
