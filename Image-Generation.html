@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 20/09/2024 at 16:59">Last updated 20/09/2024 at 16:59</time></p>
+  <p class="date before-toc"><time datetime="Last updated 20/09/2024 at 18:06">Last updated 20/09/2024 at 18:06</time></p>
 </blockquote>
 </header>
 
@@ -1328,6 +1328,8 @@
     <li><a href="#noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler: Steps, Scale/Guidance and Seed</a></li>
     <li><a href="#the-limits-of-guidance">The limits of Guidance</a></li>
     <li><a href="#smea">SMEA</a></li>
+    <li><a href="#decrisper">Decrisper</a></li>
+    <li><a href="#variety-booster">Variety Booster</a></li>
     </ul></li>
     <li><a href="#tag-based-prompting">Tag-based Prompting</a>
     <ul>
@@ -1355,8 +1357,8 @@
     <li><a href="#prompting">Prompting</a>
     <ul>
     <li><a href="#clip-interrogator">CLIP Interrogator</a></li>
-    </ul></li>
     <li><a href="#combo-prompting">Combo Prompting</a></li>
+    </ul></li>
     </ul></li>
     <li><a href="#vibe-transfer">Vibe Transfer</a></li>
     <li><a href="#furry-model">Furry Model</a>
@@ -1410,6 +1412,12 @@
 <p>SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at <strong>larger resolutions than the base resolutions</strong>.</p>
 <p>SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to <strong>increased Anlas costs</strong>. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you cannot try and find a good base cheaply, then regenerate it with SMEA.</p>
 <p>As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.</p>
+<h2 id="decrisper">Decrisper</h2>
+<p>When operating at high Scale settings, the aesthetics can get lost as contrast grows excessive, shapes break apart, and colors leak into the wrong areas. To correct this, Decrisper dynamically sets thresholds on the <a href="https://x.com/Birchlabs/status/1582165379832348672">image latents</a> for every diffusion step, in order to keep them in a more "expected" space. This helps keep things on track and avoid a breakdown of style during generation at higher scale.</p>
+<h2 id="variety-booster">Variety Booster</h2>
+<p>A side effect of high scale setting is that the increase in consistency results in a loss in variety. In order to circumvent that, you can let the model generate without guidance for a very small amount of steps, letting it start with a more audacious base, and <em>then</em> enable guidance and get the positive effects of a higher setting, without compromising the model's creative abilities.</p>
+<p>NovelAI detects when the general composition and body shape (if applicable) is present, and then enables Guidance for the remainder of the steps. Keep in mind that this requires your negative prompt to only kick in at the same time as guidance, so this can lead to it being less effective, and artifacts or unusual props appearing.</p>
+<hr />
 <h1 id="tag-based-prompting">Tag-based Prompting</h1>
 <p>To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use commas to separate tags. While tags on Boorus use underscores instead of spaces, the parser replaced all underscores 'with spaces' to make it easier to write prompts.</p>
 <p>Thus, write prompts with spaces in them if they use multiple words, and bound them with commas. Forgetting a comma might cause the prompt to be interpreted incorrectly.</p>
@@ -1534,7 +1542,7 @@
 <hr />
 <h3 id="clip-interrogator">CLIP Interrogator</h3>
 <p><a href="https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb#scrollTo=YQk0eemUrSC7">Clip Interrogator</a> can be used to read an image you like and extract tags and prose that will help you refine your prompt.</p>
-<h2 id="combo-prompting">Combo Prompting</h2>
+<h3 id="combo-prompting">Combo Prompting</h3>
 <p>If you are generating an image of a specific character that has a small amount of pictures, you can combine a prose prompt and tags appends in order to obtain something closer to the desired result.</p>
 <p><code>a picture of {ayanami} from azur lane, white hair, red eyes, ponytail,</code></p>
 <h1 id="vibe-transfer">Vibe Transfer</h1>
@@ -1544,6 +1552,7 @@
 <p><strong>Reference Strength</strong> is the inverse of Image to Image Strength. The higher it is, the closer the generation will be to the VT Reference image. Since the image itself is not used as-is, it will not be replicated, but excessive strength will cause prompt vectors to be overpowered by the VT Reference's content, generating something very similar to it in terms of content, even if you did not prompt for it.</p>
 <p><strong>Information Extracted</strong> is best compared to using a Magic Wand selector in an image editing software. Instead of selecting pixels based on color, you select an increasing amount of "meaning" from the image. It is theorized that simpler elements are included sooner than more complex ones, but as this is nascent technology, it is unclear how this proceeds, or if it has any consistency.</p>
 <p>Experiment and perhaps contribute your research efforts to this wiki!</p>
+<hr />
 <h1 id="furry-model">Furry Model</h1>
 <p>The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.</p>
 <h2 id="tag-differences">Tag differences</h2>
