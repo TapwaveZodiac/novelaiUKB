@@ -91,6 +91,18 @@ SMEA requires considerably more compute (and its Dynamic version even moreso), s
 
 As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.
 
+## Decrisper
+
+When operating at high Scale settings, the aesthetics can get lost as contrast grows excessive, shapes break apart, and colors leak into the wrong areas. To correct this, Decrisper dynamically sets thresholds on the [image latents](https://x.com/Birchlabs/status/1582165379832348672) for every diffusion step, in order to keep them in a more "expected" space. This helps keep things on track and avoid a breakdown of style during generation at higher scale.
+
+## Variety Booster
+
+A side effect of high scale setting is that the increase in consistency results in a loss in variety. In order to circumvent that, you can let the model generate without guidance for a very small amount of steps, letting it start with a more audacious base, and *then* enable guidance and get the positive effects of a higher setting, without compromising the model's creative abilities.
+
+NovelAI detects when the general composition and body shape (if applicable) is present, and then enables Guidance for the remainder of the steps. Keep in mind that this requires your negative prompt to only kick in at the same time as guidance, so this can lead to it being less effective, and artifacts or unusual props appearing.
+
+***
+
 # Tag-based Prompting
 
 To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use
@@ -389,7 +401,7 @@ You should avoid using any UC outside of default UC when inpainting as well, for
 can be used to read an image you like and extract tags and prose that
 will help you refine your prompt.
 
-## Combo Prompting
+### Combo Prompting
 
 If you are generating an image of a specific character that has a small
 amount of pictures, you can combine a prose prompt and tags appends in
@@ -410,6 +422,8 @@ Two settings are at play when using Vibe Transfer to prepare a generation: **Ref
 **Information Extracted** is best compared to using a Magic Wand selector in an image editing software. Instead of selecting pixels based on color, you select an increasing amount of "meaning" from the image. It is theorized that simpler elements are included sooner than more complex ones, but as this is nascent technology, it is unclear how this proceeds, or if it has any consistency.
 
 Experiment and perhaps contribute your research efforts to this wiki!
+
+***
 
 # Furry Model
 
