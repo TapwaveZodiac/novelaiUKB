@@ -85,6 +85,12 @@ Increasing A results in a stricter limit. Lowering A results in a looser limit.
 
 This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.
 
+### Min-P Sampling
+
+Comparable to Top-A, this also considers the **probability** of the **most likely token**. However, instead of setting an upper limit, it sets a *floor* value, under which it removes tokens. It does so by simply taking the probability, and multiplying it by the Min-P value.
+
+For example, if you set Top-P to 0.1, then any token that has a probability that is *less than 10% as likely as the top token* will be removed. 0.01 will check for tokens that are *1% as likely as the top token*, and so on.
+
 ### Top-G Sampling
 
 **This setting is deprecated since Kayra V1.1 and this entry is kept for historical purposes.**
@@ -101,7 +107,11 @@ Lowering the value makes the thresholds for cutting off tokens harsher. Increasi
 
 ### CFG Scale
 
+**This setting has been deprecated for Erato release. This section is kept for historical purposes.**
+
 **Classifier Free Guidance** is a type of [guidance](https://arxiv.org/abs/2306.17806) which relies on a "negative prompt". You may have noticed something similar in the image generation part of NovelAI with "Unwanted Content". The implementation is comparable but not identical, for text. Using CFG at all will double generation time. You do not need to provide a negative prompt, but if you do, write something that is completely in the wrong style and uses words you don't want to see. Effectively, your negative prompt should be the antithesis of your actual writing. The stronger the **Scale** parameter, the stronger the guidance.
+
+CFG requires for inference to be run twice, and thus makes generation take twice as long.
 
 ### Mirostat
 
@@ -112,6 +122,20 @@ Rather than simply limit the pool of tokens, Mirostat attempts to direct that po
 **Tau** represents that level. High Tau will aim for higher complexity, while low Tau will aim for simpler output. 
 
 **Learning Rate** is the influence of your context. The higher it is set, the more gradual the changes will be. 1 is instantaneous.
+
+### Unified Sampling
+
+Unified sampling is a set of parameters which are applied together to **bias the probabilities** of the token pool. Keep in mind that **Unified Sampling does not remove tokens from the pool.** You may want to do some trimming beforehand, or use it to refine trimming with **Tail-Free**, **Min-P** or something of the sort.
+
+Unified takes three settings simultaneously: **Linear**, **Quadratic** and **Confidence**. Out of those, **Linear** and **Confidence** are both able to be set to *negative values*.
+
+• **Linear** is comparable to **Temperature/Randomness**. At high values, Linear *reinforces* the probabilities. Strong becomes stronger, weak becomes weaker. Effectively, Linear is *Temperature/randomness in reverse*. At high values, the model is more confident in high-probability tokens. However, when set to *negative* values, Linear acts similar to high Temperature, where the pool is more normalized, and the probability is spread out across more tokens, increasing creativity at the cost of consistency.
+
+• **Quadratic** is comparable to **Tail-Free Sampling**, with the caveat that it does not trim. When increasing Quadratic, low-probability tokens will be made even weaker, which effectively extends, and flattens the Tail, so you can snip it out more consistently. Quadratic's effect is geometric: It affects the bottom end much more harshly than tokens that are simply weak.
+
+• **Confidence** serves to increase confidence by **increasing the value of Linear dynamically**. If the model is not confident, it makes strong tokens stronger at the expense of the others. If the model is already confident, it does not do much. The important part is that **Confidence is exponential in its strength!** Only make small adjustments to it, as the effect increases more quickly the higher it is. I.e a change from 0.1 to 0.2 is much weaker than 0.3 to 0.4. When set to negative values, *stronger tokens are made weaker and weak tokens are made stronger*, which averages probabilities across the pool, similarly to Negative Linear values.
+
+Unified should be used to either make your pool more biased towards confidence (and then snip weak tokens with another sampler), or towards creativity (but you probably need to trim the pool beforehand first, to avoid garbage tokens).
 
 ### Change Settings Order
 
