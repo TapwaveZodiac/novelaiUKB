@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Generation Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 09/06/2024 at 09:39">Last updated 09/06/2024 at 09:39</time></p>
+  <p class="date before-toc"><time datetime="Last updated 20/09/2024 at 16:59">Last updated 20/09/2024 at 16:59</time></p>
 </blockquote>
 </header>
 
@@ -1335,10 +1335,12 @@
     <li><a href="#nucleus-sampling">Nucleus Sampling</a></li>
     <li><a href="#tail-free-sampling">Tail-Free Sampling</a></li>
     <li><a href="#top-a-sampling">Top-A Sampling</a></li>
+    <li><a href="#min-p-sampling">Min-P Sampling</a></li>
     <li><a href="#top-g-sampling">Top-G Sampling</a></li>
     <li><a href="#typical-sampling">Typical Sampling</a></li>
     <li><a href="#cfg-scale">CFG Scale</a></li>
     <li><a href="#mirostat">Mirostat</a></li>
+    <li><a href="#unified-sampling">Unified Sampling</a></li>
     <li><a href="#change-settings-order">Change Settings Order</a></li>
     </ul></li>
     <li><a href="#repetition-penalty-1">Repetition Penalty</a>
@@ -1400,6 +1402,9 @@
 <p>The calculation is as follows: <code>limit = max(token_probs)^2 * A.</code></p>
 <p>Increasing A results in a stricter limit. Lowering A results in a looser limit.</p>
 <p>This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.</p>
+<h3 id="min-p-sampling">Min-P Sampling</h3>
+<p>Comparable to Top-A, this also considers the <strong>probability</strong> of the <strong>most likely token</strong>. However, instead of setting an upper limit, it sets a <em>floor</em> value, under which it removes tokens. It does so by simply taking the probability, and multiplying it by the Min-P value.</p>
+<p>For example, if you set Top-P to 0.1, then any token that has a probability that is <em>less than 10% as likely as the top token</em> will be removed. 0.01 will check for tokens that are <em>1% as likely as the top token</em>, and so on.</p>
 <h3 id="top-g-sampling">Top-G Sampling</h3>
 <p><strong>This setting is deprecated since Kayra V1.1 and this entry is kept for historical purposes.</strong></p>
 <p>This specifically applies to <strong>Kayra V1</strong>, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has <em>G</em> steps.</p>
@@ -1408,12 +1413,21 @@
 <p>Typical is atypical compared to other sampling methods, as it cuts <em>both likely and unlikely tokens</em>, based on their deviation from the expected base line of entropy. Extremes are considered by the math behind the sampling to be too "random" or "noisy", and thus carrying less "information".</p>
 <p>Lowering the value makes the thresholds for cutting off tokens harsher. Increasing it loosens the thresholds, allowing for more tokens.</p>
 <h3 id="cfg-scale">CFG Scale</h3>
+<p><strong>This setting has been deprecated for Erato release. This section is kept for historical purposes.</strong></p>
 <p><strong>Classifier Free Guidance</strong> is a type of <a href="https://arxiv.org/abs/2306.17806">guidance</a> which relies on a "negative prompt". You may have noticed something similar in the image generation part of NovelAI with "Unwanted Content". The implementation is comparable but not identical, for text. Using CFG at all will double generation time. You do not need to provide a negative prompt, but if you do, write something that is completely in the wrong style and uses words you don't want to see. Effectively, your negative prompt should be the antithesis of your actual writing. The stronger the <strong>Scale</strong> parameter, the stronger the guidance.</p>
+<p>CFG requires for inference to be run twice, and thus makes generation take twice as long.</p>
 <h3 id="mirostat">Mirostat</h3>
 <p>Mirostat is an advanced sampler which has a very strong effect on its own. It is strongly recommended you keep other samplers to a minimum to make its effect more appreciable.</p>
 <p>Rather than simply limit the pool of tokens, Mirostat attempts to direct that pool to be representative of the text's expected complexity.</p>
 <p><strong>Tau</strong> represents that level. High Tau will aim for higher complexity, while low Tau will aim for simpler output.</p>
 <p><strong>Learning Rate</strong> is the influence of your context. The higher it is set, the more gradual the changes will be. 1 is instantaneous.</p>
+<h3 id="unified-sampling">Unified Sampling</h3>
+<p>Unified sampling is a set of parameters which are applied together to <strong>bias the probabilities</strong> of the token pool. Keep in mind that <strong>Unified Sampling does not remove tokens from the pool.</strong> You may want to do some trimming beforehand, or use it to refine trimming with <strong>Tail-Free</strong>, <strong>Min-P</strong> or something of the sort.</p>
+<p>Unified takes three settings simultaneously: <strong>Linear</strong>, <strong>Quadratic</strong> and <strong>Confidence</strong>. Out of those, <strong>Linear</strong> and <strong>Confidence</strong> are both able to be set to <em>negative values</em>.</p>
+<p>• <strong>Linear</strong> is comparable to <strong>Temperature/Randomness</strong>. At high values, Linear <em>reinforces</em> the probabilities. Strong becomes stronger, weak becomes weaker. Effectively, Linear is <em>Temperature/randomness in reverse</em>. At high values, the model is more confident in high-probability tokens. However, when set to <em>negative</em> values, Linear acts similar to high Temperature, where the pool is more normalized, and the probability is spread out across more tokens, increasing creativity at the cost of consistency.</p>
+<p>• <strong>Quadratic</strong> is comparable to <strong>Tail-Free Sampling</strong>, with the caveat that it does not trim. When increasing Quadratic, low-probability tokens will be made even weaker, which effectively extends, and flattens the Tail, so you can snip it out more consistently. Quadratic's effect is geometric: It affects the bottom end much more harshly than tokens that are simply weak.</p>
+<p>• <strong>Confidence</strong> serves to increase confidence by <strong>increasing the value of Linear dynamically</strong>. If the model is not confident, it makes strong tokens stronger at the expense of the others. If the model is already confident, it does not do much. The important part is that <strong>Confidence is exponential in its strength!</strong> Only make small adjustments to it, as the effect increases more quickly the higher it is. I.e a change from 0.1 to 0.2 is much weaker than 0.3 to 0.4. When set to negative values, <em>stronger tokens are made weaker and weak tokens are made stronger</em>, which averages probabilities across the pool, similarly to Negative Linear values.</p>
+<p>Unified should be used to either make your pool more biased towards confidence (and then snip weak tokens with another sampler), or towards creativity (but you probably need to trim the pool beforehand first, to avoid garbage tokens).</p>
 <h3 id="change-settings-order">Change Settings Order</h3>
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8" alt="image" /></p>
 <p>Allows you to enable or disable sampling types, as well as select the order in which they are processed.</p>
