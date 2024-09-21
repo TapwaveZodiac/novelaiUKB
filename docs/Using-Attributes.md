@@ -26,7 +26,7 @@ Positioned at the **beginning** of the entry, immediately after the title, shoul
 
 • `Type:` which specifies what type of element it is. (e.g person, place, faction; just like in the Lore Generator's categories, but you can improvise.)
 
-• `Setting:` which specifies which setting the element is on, in case you are doing a crossover story, or want to specify the tone of the entry.
+• `Setting:` which specifies which setting the element is from, in case you are doing a crossover story, or want to specify the tone of the entry.
 
 Positioned at the **end** of the entry, before the closing separator, should be:
 
