@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Using Attributes</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 21/09/2024 at 15:10">Last updated 21/09/2024 at 15:10</time></p>
+  <p class="date before-toc"><time datetime="Last updated 21/09/2024 at 18:39">Last updated 21/09/2024 at 18:39</time></p>
 </blockquote>
 </header>
 
@@ -1331,19 +1331,27 @@
     <li><a href="#writing-attributes">Writing Attributes</a></li>
     </ul></li>
     </ul></li>
+    <li><a href="#attributes-entry-example">Attributes Entry Example</a>
+    <ul>
+    <li><a href="#level-i---basic-attributes">Level I - Basic Attributes</a></li>
+    <li><a href="#level-ii---personality">Level II - Personality</a></li>
+    <li><a href="#level-iii---reputation-and-factions">Level III - Reputation and Factions</a></li>
+    <li><a href="#level-iv---preferences-and-relations">Level IV - Preferences and Relations</a></li>
+    <li><a href="#level-v---full-fantasy-entry">Level V - Full Fantasy Entry</a></li>
+    </ul></li>
     </ul>
 </nav>
 
 <main>
 <h1 id="the-attributes-method">The Attributes Method</h1>
-<p>When trying your hand at constructing a Lorebook, you may have been directed towards the "Attributes Method". We have touched upon it lightly in the Starter guide. This page seeks to explain it in further detail, so that you can feel more confident creating your entries.</p>
+<p>When trying to create your Lorebook, someone may have suggested the "Attributes Method". We mentioned it in the Starter guide. This page will explain it in further detail, so that you can feel more confident creating your entries.</p>
 <h2 id="the-purpose-of-attributes">The purpose of Attributes</h2>
-<p>The idea behind the Attributes method is to simplify the organization of ideas used to describe elements of your story. While it was mostly designed with characters in mind, <strong>Attributes can be used for virtually anything.</strong> By using an Attributes framework, you can use the training of NovelAI's models to your advantage, as it is used in their finetune material.</p>
+<p>The idea behind the Attributes method is to simplify how you organize the description of important elements in your story. While Attributes were originally designed with characters in mind, <strong>Attributes can be used for anything.</strong> By using Attributes, you can use the training of NovelAI's models to your advantage, as it is used in their finetune material.</p>
 <h2 id="building-attribute-entries">Building Attribute entries</h2>
 <p>An Attributes entry is assembled from three elements:</p>
-<p>• <strong>Separators</strong>, usually four dashes (----), <strong>followed by a line break</strong>, are positioned at the beginning and end of the entry to signal that it contains "data" as opposed to story. The final entry generally does not need one, as you'll likely have a dinkus around there instead.</p>
-<p>• <strong>Title and short description</strong>, immediately after the starting separator. Start with the name of the character or element, and a very succint description. e.g <code>Shadowheart, follower of Shar</code></p>
-<p>• <strong>Attributes</strong>, which are a <em>header</em>, followed by a <em>colon</em> (:), and one or multiple sentences. A single attribute is a <strong>single paragraph</strong>, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with a contained adjective, e.g <code>Beliefs (hidden):</code>.</p>
+<p>• <strong>Separators</strong>, usually four dashes (----), <strong>followed by a line break</strong>, are positioned at the beginning and end of the entry to signal that it contains "data" as opposed to story. The final entry does not need one, as you'll likely have a dinkus around there instead.</p>
+<p>• <strong>Title and short description</strong>, immediately after the starting separator. Start with the name of the character or element, and a very simple description. e.g <code>Shadowheart, follower of Shar</code></p>
+<p>• <strong>Attributes</strong>, which are a <em>header</em>, followed by a <em>colon</em> (:), and one or multiple sentences. A single attribute is a <strong>single paragraph</strong>, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with an additional adjective, e.g <code>Beliefs (hidden):</code>.</p>
 <h3 id="ordering-attributes">Ordering Attributes</h3>
 <p>Attributes can be in any order, as long as you keep it consistent between entries of the same type. However, some entries are notable exceptions.</p>
 <p>Positioned at the <strong>beginning</strong> of the entry, immediately after the title, should be:</p>
@@ -1351,13 +1359,90 @@
 <p>• <code>Type:</code> which specifies what type of element it is. (e.g person, place, faction; just like in the Lore Generator's categories, but you can improvise.)</p>
 <p>• <code>Setting:</code> which specifies which setting the element is from, in case you are doing a crossover story, or want to specify the tone of the entry.</p>
 <p>Positioned at the <strong>end</strong> of the entry, before the closing separator, should be:</p>
-<p>• <code>Summary:</code> which provides a short synthetic blurb about the entry.</p>
+<p>• <code>Summary:</code> which provides a short blurb about the entry.</p>
 <p>• <code>Quote:</code> which gives example dialogue for elements that speak, multiple can be provided.</p>
 <p>• A prose block can be added at the very end of the entry as well, if you feel further detail is needed.</p>
 <h3 id="writing-attributes">Writing Attributes</h3>
 <p>Attributes can be written in any style you like, though it is important to focus on making your entries <strong>stylistically consistent</strong>, as well as <strong>containing clear, easily understood information</strong>. Its purpose is to influence generations, so make sure you convey your ideas in a way that the model can understand.</p>
 <p>As a default, write attributes as <strong>a list of individual words</strong> separated by <strong>commas</strong>, with the intent of conjuring the correct "vibe" for that attribute. More verbose entries can lead to more verbose prose in response, but this will impact your token budget.</p>
-<p>For convenience, you can set up a blank entry that has no keys and only contains the starting separator and headers you frequently use. <strong>It is not necessary to put in an ending separator</strong>, as it will incidentally be included when multiple entries are present back-to-back. Once done, you can duplicate and fill the entry as you create new elements.</p>
+<p>For convenience, you can set up a blank entry that has no keys and only contains the starting separator and headers you frequently use. <strong>It is not necessary to put in an ending separator</strong>, as it will automatically be included when multiple entries are present back-to-back. Once done, you can duplicate and fill the entry as you create new elements.</p>
+<h1 id="attributes-entry-example">Attributes Entry Example</h1>
+<h2 id="level-i---basic-attributes">Level I - Basic Attributes</h2>
+<p>Let us start with an entry that only has the bare minimum information needed. We will add to it gradually as we go through examples. For now, we will just have a generic protagonist.</p>
+<pre><code>----
+Parker, author avatar
+Gender: Male
+Age: Adult
+Appearance: brown hair, stubble, toned build
+</code></pre>
+<p>This should be enough to describe a character. Most background characters can make do with this much. If you need something more advanced...</p>
+<h2 id="level-ii---personality">Level II - Personality</h2>
+<p>Perhaps we want this character to act in a specific way. Let's do this through their personality. Why not give them a job, and a goal to strive for as well?</p>
+<pre><code>----
+Parker, author avatar
+Gender: Male
+Age: Adult
+Appearance: brown hair, stubble, toned build
+Personality: creative, sassy, audacious, hard-working
+Occupation: writer
+Goals: Write 10 best-sellers.
+</code></pre>
+<p>Of course we can always push this further if needed.</p>
+<h2 id="level-iii---reputation-and-factions">Level III - Reputation and Factions</h2>
+<p>Let's say our writer is a bit of a celebrity, and is a major figure for a group that also enjoys some positive reputation.</p>
+<pre><code>----
+Parker, author avatar
+Gender: Male
+Age: Adult
+Appearance: brown hair, stubble, toned build
+Personality: creative, sassy, audacious, hard-working
+Occupation: writer
+Group: Powerful Prose Creatives (a well-respected online publisher)
+Rank: Founder
+Reputation: known for his popular saucy novels, translated in 20 languages.
+Goals: Write 10 best-sellers.
+</code></pre>
+<p>Want to push this further? There is a lot more that can be said.</p>
+<h2 id="level-iv---preferences-and-relations">Level IV - Preferences and Relations</h2>
+<p>Let's give Parker a bit of depth by detailing the people around him, and what he enjoys (and dislikes) in life.</p>
+<pre><code>----
+Parker, author avatar
+Gender: Male
+Age: Adult
+Appearance: brown hair, stubble, toned build
+Personality: creative, sassy, audacious, hard-working
+Likes: his typewriter, challenging himself
+Dislikes: ink stains, boring prose
+Occupation: writer
+Group: Powerful Prose Creatives (a well-respected online publisher)
+Rank: Founder
+Reputation: known for his popular saucy novels, translated in 20 languages.
+Goals: Write 10 best-sellers.
+Friends: Nigel, Armand
+Family: a wife (Jennifer), two daughters (Clara, Diane)
+</code></pre>
+<p>At this point, you should be feeling pretty confident. Remember that <strong>basically any header works</strong>, as long as it makes sense and the description fits what you chose.</p>
+<h2 id="level-v---full-fantasy-entry">Level V - Full Fantasy Entry</h2>
+<p>Let's change gears and design a character for an existing Fantasy setting. Here, we will be using different headers to present someone that belongs to a role-playing game setting.</p>
+<pre><code>----
+Yanelie, elven adventuress
+AKA: Yana
+Type: Character
+Gender: Female
+Species: High Elf
+Setting: The Elder Scrolls 
+Age: Adult
+Appearance: long blonde hair, teal eyes, pale skin, slender build
+Personality: brave, perceptive, prudent
+Flaws: overzealous, introverted
+Class: Ranger
+Equipment: longbow, leather armor
+Abilities: low-level magic, speak with animals
+Skills: trapping, mapping, hunting
+Group: Adventurers&#39; Guild
+Rank: Journeyman
+</code></pre>
+<p>Note the addition of the new fields, such as <strong>setting</strong>, <strong>flaws</strong>, and the <strong>class, equipment, abilities and skills</strong>.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
