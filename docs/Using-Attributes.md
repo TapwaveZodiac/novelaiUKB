@@ -12,7 +12,7 @@ An Attributes entry is assembled from three elements:
 
 • **Separators**, usually four dashes (----), **followed by a line break**, are positioned at the beginning and end of the entry to signal that it contains "data" as opposed to story. The final entry generally does not need one, as you'll likely have a dinkus around there instead.
 
-• **Title and short description**, immediately after the starting separator. Start with the name of the character or element, and a very succint description. I.e `Shadowheart, follower of Shar`
+• **Title and short description**, immediately after the starting separator. Start with the name of the character or element, and a very succint description. e.g `Shadowheart, follower of Shar`
 
 • **Attributes**, which are a *header*, followed by a *colon* (:), and one or multiple sentences. A single attribute is a **single paragraph**, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with a contained adjective, i.e `Beliefs (hidden):`.
 
