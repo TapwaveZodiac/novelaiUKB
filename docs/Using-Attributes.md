@@ -14,7 +14,7 @@ An Attributes entry is assembled from three elements:
 
 • **Title and short description**, immediately after the starting separator. Start with the name of the character or element, and a very succint description. e.g `Shadowheart, follower of Shar`
 
-• **Attributes**, which are a *header*, followed by a *colon* (:), and one or multiple sentences. A single attribute is a **single paragraph**, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with a contained adjective, i.e `Beliefs (hidden):`.
+• **Attributes**, which are a *header*, followed by a *colon* (:), and one or multiple sentences. A single attribute is a **single paragraph**, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with a contained adjective, e.g `Beliefs (hidden):`.
 
 ### Ordering Attributes
 
@@ -38,7 +38,7 @@ Positioned at the **end** of the entry, before the closing separator, should be:
 
 ### Writing Attributes
 
-Attributes can be written in any style you like, though it is important to focus on making your entries **stylistically consistent**, as well as **contain clear, easily understood information**. Its purpose is to influence generations, so make sure you convey your ideas in a way that the model can understand.
+Attributes can be written in any style you like, though it is important to focus on making your entries **stylistically consistent**, as well as **containing clear, easily understood information**. Its purpose is to influence generations, so make sure you convey your ideas in a way that the model can understand.
 
 As a default, write attributes as **a list of individual words** separated by **commas**, with the intent of conjuring the correct "vibe" for that attribute. More verbose entries can lead to more verbose prose in response, but this will impact your token budget.
 
