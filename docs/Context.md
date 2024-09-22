@@ -1,13 +1,14 @@
-The Context is effectively the AI's memory. Understanding how it works will greatly help with leading to "good" generations.
-
 # Context Window
+
+The Context Window is effectively the AI's memory. As it can only read what is inside the window, understanding how it works will greatly help with leading to "good" generations.
 
 The context window is comprised:
 - On older models (Sigurd, Euterpe, Krake, Snek, Genji) of **2048** Tokens, or **1024** if you are subscribed under the Tablet tier.
 - On Clio, the context size is **8192** for all tiers.
 - On Kayra, of **3072** Tokens for Tablet, **6144** tokens for Scroll and **8192** for Opus.
+- On Erato, the window is **8192** tokens for Opus.
 
-*View Last Context* at the top of the **Advanced** tab of the settings panel opens a window which displays all the tokens sent to the AI for the previous generation. This helps you check if anything you feel is important was omitted. *View Current Context* does the same, but for the input you're about to send.
+*View Last Context* at the top of the **Advanced** tab of the settings panel opens a window which displays all the tokens sent to the AI for the previous generation. This helps you check if anything you feel is important was forgotten. *View Current Context* does the same, but for the text you're about to send.
 
 ***
 
@@ -34,11 +35,11 @@ The prompt is displayed in **cream** by default. It is the first piece of text f
 
 There are two important things to consider about injected text:
 
-- **Position** determines the strength of the injection's influence. Closer to the end = Stronger. Further at the top = weaker.
+- **Position** determines the strength of the injection's influence. Towards the bottom = Stronger. Further at the top = weaker.
 
-- **Style** determines how it influences the generation. Generally, you want to stay close to your Story's style, perhaps with minor concessions such as removing determiners, prepositions, etc.
+- **Style** determines how it influences the generation. Generally, you want to stay close to your Story's style, perhaps with minor concessions such as using the Attributes method for your entry, or writing "caveman style" for stage directions.
 
-Square brackets are recommended mostly for **Author, Title, Tags, Genre** metadata in Memory (and Knowledge, Style tags for Clio and Kayra). The brackets must be separated from their contents by a space, and everything should be lowercase outside of category titles and proper nouns.
+Square brackets are recommended mostly for **Author, Title, Tags, Genre** metadata in Memory, and Knowledge or Style tags, either in Memory or Author's note. The brackets must be separated from their contents by a space, and everything should be lowercase outside of category titles and proper nouns.
 
 `[ Author: George R.R. Martin; Title: A Song of Ice and Fire; Tags: dragons, politics, dynasty; Genre: fantasy ]`
 
@@ -46,7 +47,7 @@ Square brackets are recommended mostly for **Author, Title, Tags, Genre** metada
 
 ### Memory
 
-By default, the **Memory** is inserted at the **top** of the context, before anything else. Its position may be adjusted for a **stronger** (closer to the bottom) or a **weaker** (further to the top) effect.
+By default, the **Memory** is inserted at the **top** of the context. Its position may be adjusted for a **stronger** (closer to the bottom) or a **weaker** (further to the top) effect.
 
 Traditionally used it to make the AI remember broad context elements and the **Author, Title, Tags, Genre** metadata.
 
@@ -58,13 +59,13 @@ Traditionally used it to make the AI remember broad context elements and the **A
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e246544c-bb7b-4b1d-aa9e-30d6e7390ae9)
 
-The **Author's Note** or **A/N** is identical in format and use to Memory, but it is inserted **three newlines** by default before the last token in the input. It has a greater influence as a result. The A/N's position may be adjusted for a **stronger** (closer to the bottom) or a **weaker** (further to the top) effect. Traditionally, it is used to either **give immediate instructions**, and **immediately important information**, such as the name of the POV character, the date, etc.
+The **Author's Note** or **A/N** is identical in format and use to Memory, but it is inserted **three paragraphs** (newlines) by default before the last token in the input. It has a greater influence as a result. The A/N's position may be adjusted for a **stronger** (closer to the bottom) or a **weaker** (further to the top) effect. Traditionally, it is used to either **give immediate instructions**, and **immediately important information**, such as the name of the POV character, the date, etc.
 
-Keep in mind that Author's Note influence is **extremely strong**. It is **strongly recommended** to leave it empty unless you are using it for a specific purpose, after which it should be cleared. Leaving elements in the Author's Note can degrade generation quality.
+Keep in mind that Author's Note influence is **very intense**. It is **strongly recommended** to leave it empty unless you are using it for a specific purpose, after which it should be cleared. Leaving elements in the Author's Note can degrade text quality.
 
 ### Lorebook
 
-Further described in the dedicated [Lorebook](Lorebook) page.
+Further described in the dedicated [Lorebook](Lorebook) page. Lorebook entries are positioned at the top of context, **after** Memory.
 
 ***
 
@@ -86,11 +87,11 @@ It is also usable for:
 - The **name of the POV character** `[ Batman ]`
 - To contain text that has a tendency to leak into generations.
 
-Bracketed text is thus best described as being read by the AI as "Pertinent information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text.
+Bracketed text is thus best described as being read by the AI as "important information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text.
 
 Punctuation outside of colons is usually only as part of a chapter/work title.
 
-You can encase only descriptive passages in Injected Text entries if they differ from the usual style of your prose.
+You can encase descriptive passages in Injected Text entries if their style is different from the usual style of your prose.
 
 Brackets **do not notably affect the accuracy of the text** - this is [Generation Settings](Generation-Settings) at work.
 
@@ -137,7 +138,7 @@ Lists the reason for this element's inclusion or omission:
 
 - **Disabled**: This Lorebook entry was omitted because it was disabled.
 - **No key**: This Lorebook entry was ommitted because it could not find any of its keys in the text.
-- **No space**: This entry was ommitted because it could not be allocated enough tokens to fit.
+- **No space**: This entry was ommitted because it could not be given enough tokens to fit.
 - **No text**: This entry was deactivated because it contains no text.
 
 ### Key
@@ -150,15 +151,15 @@ Lists the amount of tokens reserved for this entry. This is usually lower than t
 
 ### Tokens
 
-Lists how many tokens are used by this entry **solely on its own**. Tokenization can cause a couple extra (or sometimes *less*) tokens to be used when this entry is placed in the text.
+Lists how many tokens are used by this entry **on its own, before it is inserted in the story**. Tokenization can cause a couple extra (or sometimes *less*) tokens to be used when this entry is placed in the text.
 
 ### Trim Type
 
 Lists how this entry was trimmed. There are four trim steps, which occur in this sequence:
 
 - Fit the entire entry without trimming. (**No Trim**) If it doesn't fit, go to the next step:
-- The entry was trimmed to a new line character inside its text. (**New Line**) If this results in the entry having less than 30% of its allocated token content inserted, go to the next step:
-- The entry was trimmed to a sentence delimited (period, ellipse, semicolon) (**Sentence**) If this causes the entry to have less than 30% of its allocated token content inserted, go to the next step:
+- The entry was trimmed to a new line character inside its text. (**New Line**) If this results in the entry having less than 30% of its allowed token content inserted, go to the next step:
+- The entry was trimmed to a sentence delimited (period, ellipse, semicolon) (**Sentence**) If this causes the entry to have less than 30% of its allowed token content inserted, go to the next step:
 - The entry is trimmed by the individual token, and then all the content that can fit in the space that remains is inserted. (**Token**) If this **STILL** fails, this is likely because the Prefix and Suffix can't fit in the context, so the entire entry is omitted.
 
 ### Advanced Context Settings
