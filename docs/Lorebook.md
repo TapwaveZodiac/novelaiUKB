@@ -67,15 +67,13 @@ This is useful if you want to lump a certain type of entries together, or use so
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/590c999c-2c04-4276-a5a2-abac1d10c16e)
 
-Accessed by clicking the **Placement** tab. If this tab is active, you can click **Dock Active Tab to the Side** to make it show up at all
-times. Click **Undock** to remove it.
+Accessed by clicking the **Placement** tab. If this tab is active, you can click **Dock Active Tab to the Side** to make it show up at all times. Click **Undock** to remove it.
 
 - **Search Range:** Determines how many characters of text will be read by the AI when it looks for lorebook keys.
 - **Force Activation:** If turned *ON*, the entry will ALWAYS be in the context (if it can fit in there).
 - **Key-Relative Insertion:** By default, Lorebook Entries are inserted relative to the top, or the bottom of the text, see **Insertion Position.** When this toggle is *ON*, entries are inserted relative to the **last occurrence of the Key found in the context.**
 - **Cascading Activation:** When *ON*, this entry will also look for its keys in **other Lorebook entries, the Memory, and the Author's note.** Search Range will be disregarded if this toggle is *ON*.
-- **Prefix & Suffix:** These two are intended to work in tandem to allow for lengthier entries without losing coherence when the entry is
-  trimmed. For example, you could add the **[prefix](https://en.wikipedia.org/wiki/Prefix)** `[` and the **[suffix](https://en.wikipedia.org/wiki/Suffix)** `]` to encapsulate the entirety of your entry despite trimming. If your entry read as  `Winston is a good soldier. Works well under pressure. Likes bunnies.`, and the *last* sentence was trimmed, it would still read as `[Winston is a good soldier. Works well under pressure.]` despite the end of the entry being trimmed - your **prefix** and **suffix** still remain.
+- **Prefix & Suffix:** These two are intended to work in tandem to allow for lengthier entries without losing coherence when the entry is trimmed. For example, you could add the **[prefix](https://en.wikipedia.org/wiki/Prefix)** `[` and the **[suffix](https://en.wikipedia.org/wiki/Suffix)** `]` to encapsulate the entirety of your entry despite trimming. If your entry read as  `Winston is a good soldier. Works well under pressure. Likes bunnies.`, and the *last* sentence was trimmed, it would still read as `[Winston is a good soldier. Works well under pressure.]` despite the end of the entry being trimmed - your **prefix** and **suffix** still remain.
 
 You may also use a `\n` (a **newline marker**), which helps isolate the entry further by separating it with a full newline.
 
