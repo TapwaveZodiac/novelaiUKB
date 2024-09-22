@@ -12,7 +12,7 @@ An Attributes entry is assembled from three elements:
 
 • **Separators**, usually four dashes (----), **followed by a line break**, are positioned at the beginning and end of the entry to signal that it contains "data" as opposed to story. The final entry does not need one, as you'll likely have a dinkus around there instead.
 
-• **Title and short description**, immediately after the starting separator. Start with the name of the character or element, and a very simple description. e.g `Shadowheart, follower of Shar`
+• **Title** and, optionally, **a short description**, immediately after the starting separator. All entries must start with the name of the element. Optionally, you can add a very simple description. e.g `Shadowheart, follower of Shar`
 
 • **Attributes**, which are a *header*, followed by a *colon* (:), and one or multiple sentences. A single attribute is a **single paragraph**, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with an additional adjective, e.g `Beliefs (hidden):`.
 
@@ -171,4 +171,43 @@ Background: Pretends to be a "grassroots" activist, in reality heir to a large f
 
 Note the addition of **Mind**, which can be used to signal traits that are not made apparent. We also have complex **Opinion and Beliefs** fields, as well as a **background** and **fears.**
 
+## Advanced - Nation-state
 
+Let's define something that is not a character: A full-on nation, with all of its specifics. For this, we will need very different tags, but it's fine!
+
+```
+----
+Nation of Freehold
+Type: Place
+Setting: Low Fantasy
+Leader: President Wilhelm Sterner
+Government: Constitutional Republic
+Religions: Agnostic (majority), Cleridan faith
+Capital: Liberty
+Population: Low Millions
+Geography: mountainous terrain, thick woods
+Climate: Windy, cool temperatures, humid
+Size: Moderate
+Borders: Antwell (North), Synescape (South), Auldwyld (West), Eridanic Ocean (East)
+Produces: ore and metals, honey, shipbuilding timber
+```
+
+There is a lot more you can specify. Fauna and Flora, commercial and diplomatic ties, and much more. Remember - only specify what is relevant to you, as these details could be brought up at any time.
+
+## Advanced - Legendary Artifact
+
+Let's conclude with a Magic Sword, of course. This way, we can also experiment with inanimate items.
+
+```
+----
+Laevateinn
+Type: Object (Sword)
+Appearance: rusted longsword, black hilt, on fire (permanent)
+Weight: light
+Magic: When swung, produces massive waves of fire. Cannot be extinguished.
+Curse: exhausts users and surrounding allies (when wielded), inescapable flames (on hit)
+Reputation: ancient legend, easily identified
+Backstory: sword wielded by ancient hero, thrown into a volcano
+```
+
+You can describe any type of item, not just magic weapons, of course. Fields such as **Function** or **Use** and many more can be creatively wielded to define all sorts of fun tools!
