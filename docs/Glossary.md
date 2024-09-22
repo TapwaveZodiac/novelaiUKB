@@ -353,6 +353,12 @@ Traditionally used to keep track of broad context elements and current
 events to help the AI stay on track. Works the same as Author\'s Note
 otherwise.
 
+## Min-P
+
+*Sampling*
+
+A sampling method which adjusts the number of selected tokens based on the top token\'s probability. Tokens whose probability are under a fraction of the top token's are removed.
+
 ## Model
 
 *AI*
@@ -836,3 +842,9 @@ generation at the latest sentence delimiter. Nowadays, this is
 Also known as a "Negative Prompt", very similar to negative Phrase
 Bias, but for image generation. It heavily weakens a tag, in order to
 make it less likely to appear.
+
+## Unified Sampling
+
+*Sampling*
+
+A sampling method which combines multiple operations to bias towards confidence or creativity, while also compressing the tail of weakest tokens.
