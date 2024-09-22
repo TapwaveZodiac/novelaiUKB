@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Glossary</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 22/09/2024 at 11:54">Last updated 22/09/2024 at 11:54</time></p>
+  <p class="date before-toc"><time datetime="Last updated 22/09/2024 at 11:59">Last updated 22/09/2024 at 11:59</time></p>
 </blockquote>
 </header>
 
@@ -1363,6 +1363,7 @@
     <li><a href="#loss-or-training-loss">Loss (or Training Loss)</a></li>
     <li><a href="#loss-graph">Loss Graph</a></li>
     <li><a href="#memory">Memory</a></li>
+    <li><a href="#min-p">Min-P</a></li>
     <li><a href="#model">Model</a></li>
     <li><a href="#module-or-ai-module">Module (or AI Module)</a></li>
     <li><a href="#module-training">Module Training</a></li>
@@ -1420,6 +1421,7 @@
     <li><a href="#train-a-model">Train (a Model)</a></li>
     <li><a href="#trim">Trim</a></li>
     <li><a href="#undesired-content">Undesired Content</a></li>
+    <li><a href="#unified-sampling">Unified Sampling</a></li>
     </ul>
 </nav>
 
@@ -1550,6 +1552,9 @@
 <h2 id="memory">Memory</h2>
 <p><em>Text Injection</em></p>
 <p>A piece of text that is inserted near the top of the story. Traditionally used to keep track of broad context elements and current events to help the AI stay on track. Works the same as Author's Note otherwise.</p>
+<h2 id="min-p">Min-P</h2>
+<p><em>Sampling</em></p>
+<p>A sampling method which adjusts the number of selected tokens based on the top token's probability. Tokens whose probability are under a fraction of the top token's are removed.</p>
 <h2 id="model">Model</h2>
 <p><em>AI</em></p>
 <p>A code base which constitutes the structure on which the neural network is built. GPT-NEO and GPT-J are both model codebases. GPT-J <strong>6B</strong>, however, is a <strong>weight</strong>, which is a pre-trained model that possesses 6 <strong>billion</strong> parameters. Parameters are the number of connections between existing tokens.</p>
@@ -1733,6 +1738,9 @@
 <h2 id="undesired-content">Undesired Content</h2>
 <p><em>Image Generation</em></p>
 <p>Also known as a "Negative Prompt", very similar to negative Phrase Bias, but for image generation. It heavily weakens a tag, in order to make it less likely to appear.</p>
+<h2 id="unified-sampling">Unified Sampling</h2>
+<p><em>Sampling</em></p>
+<p>A sampling method which combines multiple operations to bias towards confidence or creativity, while also compressing the tail of weakest tokens.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
