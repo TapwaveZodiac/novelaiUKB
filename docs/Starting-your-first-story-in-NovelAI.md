@@ -173,7 +173,9 @@ That's a lot of data to parse through! But you'll notice something: Attribute-ba
 
 Is there a list of Attribute types? Not really, use whatever you want! It's important to keep your descriptions clear, concise, and flowing in a simple way. As long as the content follows the header, you'll be fine.
 
-But wait, you must have noticed the four dashes at the end, this "----" part. This is a **separator** and we'll use this to make entries distinct from one another without using a **Dinkus** (but you can use one. That's cool too.)
+But wait, you must have noticed the four dashes at the end, this "----" part. This is a **separator** and we'll use this to make entries distinct from one another without using a **Dinkus** (but you can use one. Just use dashes for data as a priorty.)
+
+You'll find more information on that in the [Using Attributes](Using-Attributes) guide!
 
 ## Story
 
