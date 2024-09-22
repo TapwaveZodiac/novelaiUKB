@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">GPT</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 22/09/2024 at 11:19">Last updated 22/09/2024 at 11:19</time></p>
+  <p class="date before-toc"><time datetime="Last updated 22/09/2024 at 11:30">Last updated 22/09/2024 at 11:30</time></p>
 </blockquote>
 </header>
 
@@ -1333,7 +1333,7 @@
 </nav>
 
 <main>
-<p>Science fiction has us think of <a href="https://en.wikipedia.org/wiki/Artificial_intelligence"><strong>artificial intelligence</strong></a> as something for robots and alien spaceships, but the reality is very different. In this context, an artificial intelligence is quite unlike the <em>natural intelligence</em> exhibited by humans.</p>
+<p>Science fiction has us think of <a href="https://en.wikipedia.org/wiki/Artificial_intelligence"><strong>artificial intelligence</strong></a> as something for robots and alien spaceships, but the reality is very different. In this context, an artificial intelligence is very different from the <em>natural intelligence</em> exhibited by humans.</p>
 <p>The phrase that conjures thoughts of robotic assassins and intelligent holographic people is actually <a href="https://en.wikipedia.org/wiki/Artificial_general_intelligence"><strong>artificial general intelligence</strong></a>, or <strong>AGI</strong>.</p>
 <p>The eponymous AI that <em>NovelAI</em> uses is a a lot of different technical terms put together: An <strong>Autoregressive Language Model and Generative Pre-trained Transformer</strong>.</p>
 <h3 id="what-does-gpt-mean">What does GPT mean?</h3>
@@ -1347,15 +1347,16 @@
 <hr />
 <h3 id="what-does-this-imply">What does this imply?</h3>
 <p><strong>No, you are not talking to a machine with thoughts and feelings</strong>.</p>
-<p>While <em>NovelAI</em> is very advanced, it is purely designed as a literature generation service. At times, you may feel like the AI understands you, and it may even seem emotional. This is it performing a very convincing facsimile of human literature - exactly what it was designed to do.</p>
+<p>While <em>NovelAI</em> is very advanced, it is purely designed as a literature generation service. At times, you may feel like the AI understands you, and it may even seem emotional. This is it performing a very convincing impression of human literature - exactly what it was designed to do.</p>
 <p>The AI is only capable of producing text that looks convincingly human, without understanding language on its own.</p>
 <p>As such, <em>NovelAI</em> has no understanding of morality, or the fundamental rules of grammar, or even prejudices and biases carried by humankind as a whole. Please keep this in mind when experiencing the narratives presented in your Stories, and remember you can always ban certain tokens from appearing.</p>
 <h3 id="parameters">Parameters</h3>
 <p>Think of an AI like a human brain. Inside the brain, you find <em>neurons</em>, and those <em>neurons</em> are connected by <em>synapses</em>.</p>
 <p>The number of parameters is the number of <em>synapses</em>. It's a measure of the <strong>density</strong> of the neural network's connections. The denser it is, the richer the connections, and the broader the scope of the AI's creativity. (Theoretically. Recent developments have shown that this is a tendency but not a guarantee, hence Clio's potential in spite of its small size.)</p>
 <p>The model is, in reality, a <a href="https://en.wikipedia.org/wiki/Vector_space"><strong>vector space</strong></a> and each parameter is a set of <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic"><strong>floating point numbers</strong></a> that constitutes a vector. Each Vector is a connection between tokens, and that network of vectors is an attempt to represents human language mathematically.</p>
-<p>A model with more parameters takes <strong>considerably</strong> more Video Memory on the machine's hardware, but is capable of greater creativity and more 'natural' language.</p>
-<p>Why Video Memory? Simple: CPUs perform operations linearly, and vector math is costly. GPUs are made to calculate lighting quickly, among other things. As it turns out, calculating raytraces for lighting in a 3d environment gets pretty close to what you need to run an AI, and GPUs are also designed to run lots of tasks in parallel.</p>
+<p>These parameters are arranged in layers, known as <a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">matrices</a>. The model is first given completely empty matrices, and they gradually fill with vectors as training happens. Eventually, some layers end up serving specific purposes. It is difficult to tell which is which, as they are not naturally labelled. You can freeze layers and see what changes, helping you keep what is good, remove what is bad, and narrow down on specific layers that do specific things.</p>
+<p>A model with more parameters takes <strong>considerably</strong> more Video RAM on the machine's hardware, but is capable of greater creativity and more 'natural' language. The more context memory it has, the more memory it needs. When you combine those together, the cost is <em>multiplicative</em>, not linear. Twice the size and twice the memory is more than twice the cost.</p>
+<p>Why Video Memory? Simple: CPUs perform operations linearly, and vector math is costly. GPUs are made to calculate in parallel. As it turns out, calculating raytraces for lighting in a 3d environment gets pretty close to what you need to run an AI.</p>
 <hr />
 <h2 id="tokens">Tokens</h2>
 <p>The AI interprets text by converting it to <a href="https://en.wikipedia.org/wiki/Lexical_analysis#tokenization"><strong>tokens</strong></a>. <strong>Tokens</strong> are how the AI sees pieces of text. Much like <a href="https://en.wikipedia.org/wiki/Morpheme">morphemes</a>, tokens are combined to form words or sentences. Because the AI has no judgment of its own, it relies on evaluating the relationships between tokens based on its training data, then determining the most likely token to come next in the sequence.</p>
