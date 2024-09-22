@@ -1,4 +1,4 @@
-# The Attributes Method
+Whata# The Attributes Method
 
 When trying to create your Lorebook, someone may have suggested the "Attributes Method". We mentioned it in the Starter guide. This page will explain it in further detail, so that you can feel more confident creating your entries.
 
@@ -121,7 +121,7 @@ Family: a wife (Jennifer), two daughters (Clara, Diane)
 
 At this point, you should be feeling pretty confident. Remember that **basically any header works**, as long as it makes sense and the description fits what you chose.
 
-## Level V - Full Fantasy Entry
+## Advanced - Full Fantasy Character Entry
 
 Let's change gears and design a character for an existing Fantasy setting. Here, we will be using different headers to present someone that belongs to a role-playing game setting.
 
@@ -145,4 +145,30 @@ Group: Adventurers' Guild
 Rank: Journeyman
 ```
 
-Note the addition of the new fields, such as **setting**, **flaws**,  and the **class, equipment, abilities and skills**.
+Note the addition of the new fields, such as **setting**, **flaws**,  and the **class, equipment, abilities and skills**. Of course, you can use anything you feel is tonally appropriate.
+
+## Advanced - Space Politician
+
+For this one, we'll focus on advanced characterization.
+
+```
+----
+Senator Wyll'kll, representative at the cosmic congress
+AKA: Senator Will-Kill
+Type: Person
+Setting: science fiction
+Gender: Male
+Species: Pfhor
+Personality: Loud-spoken, sensationalist, impressionable
+Mind: anxious, success-obsessed, overcomitted
+Fears: losing their election
+Opinion on Gulbaks: strongly negative
+Opinion on Pfhor: strongly positive
+Opinion on his constituents: indifferent
+Political beliefs: immigration restriction, tax cuts
+Background: Pretends to be a "grassroots" activist, in reality heir to a large fortune
+```
+
+Note the addition of **Mind**, which can be used to signal traits that are not made apparent. We also have complex **Opinion and Beliefs** fields, as well as a **background** and **fears.**
+
+
