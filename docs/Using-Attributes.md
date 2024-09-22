@@ -1,10 +1,12 @@
-The Attributes Method
+# The Attributes Method
 
 When trying to create your Lorebook, someone may have suggested the "Attributes Method". We mentioned it in the Starter guide. This page will explain it in further detail, so that you can feel more confident creating your entries.
 
 ## The purpose of Attributes
 
 The idea behind the Attributes method is to simplify how you organize the description of important elements in your story. While Attributes were originally designed with characters in mind, **Attributes can be used for anything.** By using Attributes, you can use the training of NovelAI's models to your advantage, as it is used in their finetune material.
+
+***
 
 ## Building Attribute entries
 
@@ -120,6 +122,10 @@ Family: a wife (Jennifer), two daughters (Clara, Diane)
 ```
 
 At this point, you should be feeling pretty confident. Remember that **basically any header works**, as long as it makes sense and the description fits what you chose.
+
+***
+
+# Advanced Examples
 
 ## Advanced - Full Fantasy Character Entry
 
