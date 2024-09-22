@@ -1,4 +1,4 @@
-Whata# The Attributes Method
+The Attributes Method
 
 When trying to create your Lorebook, someone may have suggested the "Attributes Method". We mentioned it in the Starter guide. This page will explain it in further detail, so that you can feel more confident creating your entries.
 
