@@ -61,7 +61,7 @@ Features of the story library.
 How text is managed and read by NovelAI and its models.
 
 #### **📖 [Lorebook](Lorebook)**
-
+#### **📊 [Using Attributes](Using-Attributes)**
 Write entries for characters, places, and much more.
 
 ***
