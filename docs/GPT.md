@@ -1,4 +1,4 @@
-Science fiction has us think of [**artificial intelligence**](https://en.wikipedia.org/wiki/Artificial_intelligence) as something for robots and alien spaceships, but the reality is very different. In this context, an artificial intelligence is quite unlike the *natural intelligence* exhibited by humans.
+Science fiction has us think of [**artificial intelligence**](https://en.wikipedia.org/wiki/Artificial_intelligence) as something for robots and alien spaceships, but the reality is very different. In this context, an artificial intelligence is very different from the *natural intelligence* exhibited by humans.
 
 The phrase that conjures thoughts of robotic assassins and intelligent holographic people is actually [**artificial general intelligence**](https://en.wikipedia.org/wiki/Artificial_general_intelligence), or **AGI**.
 
@@ -11,8 +11,7 @@ Let us vulgarize this a little. This will be an oversimplification of sorts, if 
 - **Autoregressive** means what the AI gives you is based on what information you fed into it, *and* a random element.
 - **Language Models** are AIs designed to replicate human language for various use cases, such as autocorrection, text prediction, composing letters, writing advertisement, etc.
 - **Generative Pre-trained** (yes, both at once) mean that the AI is first trained by making it read a lot of text. Then, a sample of the text is shown to the AI, and it is asked what is supposed to appear after it. Its performance is measured on how well it managed to "guess" the follow-up text, although some randomness or "loss" is useful as it gives it creativity.
-- [**Transformer**](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) means that the AI processes the entire input text at once, and lends different weight to different content, instead of reading things one word at a time. This allows for faster and more efficient training for
-language models.
+- [**Transformer**](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) means that the AI processes the entire input text at once, and lends different weight to different content, instead of reading things one word at a time. This allows for faster and more efficient training for language models.
 
 ***
 
@@ -20,7 +19,7 @@ language models.
 
 **No, you are not talking to a machine with thoughts and feelings**.
 
-While *NovelAI* is very advanced, it is purely designed as a literature generation service. At times, you may feel like the AI understands you, and it may even seem emotional. This is it performing a very convincing facsimile of human literature - exactly what it was designed to do.
+While *NovelAI* is very advanced, it is purely designed as a literature generation service. At times, you may feel like the AI understands you, and it may even seem emotional. This is it performing a very convincing impression of human literature - exactly what it was designed to do.
 
 The AI is only capable of producing text that looks convincingly human, without understanding language on its own.
 
@@ -34,9 +33,11 @@ The number of parameters is the number of *synapses*. It's a measure of the **de
 
 The model is, in reality, a [**vector space**](https://en.wikipedia.org/wiki/Vector_space) and each parameter is a set of [**floating point numbers**](https://en.wikipedia.org/wiki/Floating-point_arithmetic) that constitutes a vector. Each Vector is a connection between tokens, and that network of vectors is an attempt to represents human language mathematically.
 
-A model with more parameters takes **considerably** more Video Memory on the machine's hardware, but is capable of greater creativity and more 'natural' language.
+These parameters are arranged in layers, known as [matrices](https://en.wikipedia.org/wiki/Matrix_(mathematics)). The model is first given completely empty matrices, and they gradually fill with vectors as training happens. Eventually, some layers end up serving specific purposes. It is difficult to tell which is which, as they are not naturally labelled. You can freeze layers and see what changes, helping you keep what is good, remove what is bad, and narrow down on specific layers that do specific things.
 
-Why Video Memory? Simple: CPUs perform operations linearly, and vector math is costly. GPUs are made to calculate lighting quickly, among other things. As it turns out, calculating raytraces for lighting in a 3d environment gets pretty close to what you need to run an AI, and GPUs are also designed to run lots of tasks in parallel.
+A model with more parameters takes **considerably** more Video RAM on the machine's hardware, but is capable of greater creativity and more 'natural' language. The more context memory it has, the more memory it needs. When you combine those together, the cost is *multiplicative*, not linear. Twice the size and twice the memory is more than twice the cost.
+
+Why Video Memory? Simple: CPUs perform operations linearly, and vector math is costly. GPUs are made to calculate in parallel. As it turns out, calculating raytraces for lighting in a 3d environment gets pretty close to what you need to run an AI.
 
 ***
 
