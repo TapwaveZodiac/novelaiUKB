@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Using Attributes</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 22/09/2024 at 08:15">Last updated 22/09/2024 at 08:15</time></p>
+  <p class="date before-toc"><time datetime="Last updated 22/09/2024 at 08:50">Last updated 22/09/2024 at 08:50</time></p>
 </blockquote>
 </header>
 
@@ -1336,6 +1336,8 @@
     <li><a href="#level-iv---preferences-and-relations">Level IV - Preferences and Relations</a></li>
     <li><a href="#advanced---full-fantasy-character-entry">Advanced - Full Fantasy Character Entry</a></li>
     <li><a href="#advanced---space-politician">Advanced - Space Politician</a></li>
+    <li><a href="#advanced---nation-state">Advanced - Nation-state</a></li>
+    <li><a href="#advanced---legendary-artifact">Advanced - Legendary Artifact</a></li>
     </ul></li>
     </ul>
 </nav>
@@ -1348,7 +1350,7 @@
 <h2 id="building-attribute-entries">Building Attribute entries</h2>
 <p>An Attributes entry is assembled from three elements:</p>
 <p>• <strong>Separators</strong>, usually four dashes (----), <strong>followed by a line break</strong>, are positioned at the beginning and end of the entry to signal that it contains "data" as opposed to story. The final entry does not need one, as you'll likely have a dinkus around there instead.</p>
-<p>• <strong>Title and short description</strong>, immediately after the starting separator. Start with the name of the character or element, and a very simple description. e.g <code>Shadowheart, follower of Shar</code></p>
+<p>• <strong>Title</strong> and, optionally, <strong>a short description</strong>, immediately after the starting separator. All entries must start with the name of the element. Optionally, you can add a very simple description. e.g <code>Shadowheart, follower of Shar</code></p>
 <p>• <strong>Attributes</strong>, which are a <em>header</em>, followed by a <em>colon</em> (:), and one or multiple sentences. A single attribute is a <strong>single paragraph</strong>, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with an additional adjective, e.g <code>Beliefs (hidden):</code>.</p>
 <h3 id="ordering-attributes">Ordering Attributes</h3>
 <p>Attributes can be in any order, as long as you keep it consistent between entries of the same type. However, some entries are notable exceptions.</p>
@@ -1460,6 +1462,37 @@ Political beliefs: immigration restriction, tax cuts
 Background: Pretends to be a &quot;grassroots&quot; activist, in reality heir to a large fortune
 </code></pre>
 <p>Note the addition of <strong>Mind</strong>, which can be used to signal traits that are not made apparent. We also have complex <strong>Opinion and Beliefs</strong> fields, as well as a <strong>background</strong> and <strong>fears.</strong></p>
+<h2 id="advanced---nation-state">Advanced - Nation-state</h2>
+<p>Let's define something that is not a character: A full-on nation, with all of its specifics. For this, we will need very different tags, but it's fine!</p>
+<pre><code>----
+Nation of Freehold
+Type: Place
+Setting: Low Fantasy
+Leader: President Wilhelm Sterner
+Government: Constitutional Republic
+Religions: Agnostic (majority), Cleridan faith
+Capital: Liberty
+Population: Low Millions
+Geography: mountainous terrain, thick woods
+Climate: Windy, cool temperatures, humid
+Size: Moderate
+Borders: Antwell (North), Synescape (South), Auldwyld (West), Eridanic Ocean (East)
+Produces: ore and metals, honey, shipbuilding timber
+</code></pre>
+<p>There is a lot more you can specify. Fauna and Flora, commercial and diplomatic ties, and much more. Remember - only specify what is relevant to you, as these details could be brought up at any time.</p>
+<h2 id="advanced---legendary-artifact">Advanced - Legendary Artifact</h2>
+<p>Let's conclude with a Magic Sword, of course. This way, we can also experiment with inanimate items.</p>
+<pre><code>----
+Laevateinn
+Type: Object (Sword)
+Appearance: rusted longsword, black hilt, on fire (permanent)
+Weight: light
+Magic: When swung, produces massive waves of fire. Cannot be extinguished.
+Curse: exhausts users and surrounding allies (when wielded), inescapable flames (on hit)
+Reputation: ancient legend, easily identified
+Backstory: sword wielded by ancient hero, thrown into a volcano
+</code></pre>
+<p>You can describe any type of item, not just magic weapons, of course. Fields such as <strong>Function</strong> or <strong>Use</strong> and many more can be creatively wielded to define all sorts of fun tools!</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
