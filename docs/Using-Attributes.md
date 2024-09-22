@@ -14,7 +14,7 @@ An Attributes entry is assembled from three elements:
 
 • **Title** and, optionally, **a short description**, immediately after the starting separator. All entries must start with the name of the element. Optionally, you can add a very simple description. e.g `Shadowheart, follower of Shar`
 
-• **Attributes**, which are a *header*, followed by a *colon* (:), and one or multiple sentences. A single attribute is a **single paragraph**, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with an additional adjective, e.g `Beliefs (hidden):`.
+• **Attributes**, which are a *header*, followed by a *colon* (:), and one or multiple sentences. A single attribute is a **single paragraph**, with each attribute starting on a new line. Attribute titles can be one word, multiple words, or words with an additional adjective, e.g `Beliefs (hidden):`,; `Skills (mastered):`, `Spells (ready):`.
 
 ### Ordering Attributes
 
