@@ -32,7 +32,7 @@ Most of them deal with the **Pool of possible tokens.** To understand what this 
 
 Imagine the next token for a generation comes out of a bag. You shake the bag and pick one. Generally, it's easier to pick out bigger things from the bag, right? If you increase the randomness, then the tokens's probabilities become more and more averaged out, think of it as all the pieces growing or shrinking to be closer to the same size, making it more random.
 
-True to its name, the Randomness setting (or "Temperature") increases the **likelihood of less-expected tokens during text generation**. This works by dividing [**logits**](https://en.wikipedia.org/wiki/Logit) by the Temperature before sampling. In plain English, this means the next part of the sentence will be more unexpected, as elements that have less of a chance of appearing are granted a greater likelihood of being used.
+True to its name, increasing the Randomness setting (or "Temperature") increases the **probability of less-expected tokens during text generation**. This works by dividing [**logits**](https://en.wikipedia.org/wiki/Logit) by the Temperature before sampling. In plain English, this means the next part of the sentence will be more unexpected, as elements that have less of a chance of appearing are granted a greater chance of being used.
 
 ### Output Length
 
@@ -46,7 +46,7 @@ Going back to the bag metaphor, Repetition Penalty checks for tokens that appear
 
 Because text generation is based on patterns, repetition is a constant concern. The Repetition Penalty introduces an artificial dampener to the probability of a token depending on the frequency of its appearance in the current context.
 
-As such, increasing this value makes a word **less likely to appear for each time it shows up in the text**. Do take note that this can get really awkward with words that are recurrent in the current context, such as names, or objects being discussed. With high Repetition Penalty, the AI may find itself unable to use a word repeatedly, and will need to substitute it with another which may be inappropriate.*
+As such, increasing this value makes a word **less likely to appear for each time it shows up in the text**. Do take note that this can get really awkward with words that are recurrent in the current context, such as names, or objects being discussed. With high Repetition Penalty, the AI may find itself unable to use a word repeatedly, and will need to substitute it with another which may be inappropriate.
 ***
 
 ## Sampling
@@ -69,7 +69,7 @@ As an example, if the most likely token has 30% chance, the second 25, the third
 
 ### Tail-Free Sampling
 
-A [**tail**](https://en.wikipedia.org/wiki/Probability_distribution) in this context is the least-likely subset of Tokens to be chosen in a Generation. This alternative sampling method works by trimming **the least-likely tokens by searching for the estimated tail's probability**, removing that tail to the best of its ability, then re-[**normalizing**](https://en.wikipedia.org/wiki/Normalization_(statistics)) the remaining sample.
+A [**tail**](https://en.wikipedia.org/wiki/Probability_distribution) in this context is the least-likely subset of Tokens to be chosen in a Generation. This alternative sampling method works by trimming **the least-likely tokens by searching for the estimated tail's highest probability**, removing that tail to the best of its ability, then re-[**normalizing**](https://en.wikipedia.org/wiki/Normalization_(statistics)) the remaining sample.
 
 This method may have a smaller impact on creativity while maintaining consistency. However, take note that it tends to behave strangely if your context does not contain a lot of data.
 
@@ -95,7 +95,7 @@ For example, if you set Top-P to 0.1, then any token that has a probability that
 
 **This setting is deprecated since Kayra V1.1 and this entry is kept for historical purposes.**
 
-This specifically applies to **Kayra V1**, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly like. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has *G* steps.
+This specifically applies to **Kayra V1**, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has *G* steps.
 
 ### Typical Sampling
 
@@ -141,7 +141,6 @@ Unified should be used to either make your pool more biased towards confidence (
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8)
 
-
 Allows you to enable or disable sampling types, as well as select the order in which they are processed.
 
 ***
@@ -160,8 +159,7 @@ The list may change in the future.
 
 ### Repetition Penalty Range
 
-Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more
-tokens are checked.
+Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more tokens are checked.
 
 #### Dynamic Penalty Range
 
@@ -181,7 +179,7 @@ Phrase Repetition Penalty, or **PRP** is a system similar to Repetition Penalty,
 
 ## Alternative Repetition Penalty
 
-*Note: ARP has an extremely strong effect and can make your output strange if not set to relatively low values.*
+*Note: ARP has an extremely strong effect and can make your output strange if not set to low values.*
 
 Alternate Repetition Penalty uses two parameters: *Presence* and *Frequency*. 
 
