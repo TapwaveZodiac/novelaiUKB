@@ -1,6 +1,12 @@
 This page aims to define terms that are often used by the community and
 may not be immediately accessible to newcomers.
 
+## Anlas
+
+*Feature*
+
+NovelAI's "currency", used to generate images or train modules.
+
 ## Asterism (⁂)
 
 *Typography*
@@ -15,18 +21,16 @@ separator. Similar, but not identical to a Dinkus, which is weaker.
 
 ATTG stands for the `[ Author: …; Title: …; Tags: …; Genre: … ]`
 metadata, which is present in the dataset. This row can be inserted at
-the top of the Context to heavily influence the AI output. The first two
-categories are usually omitted as they\'re less useful than Tags and
-Genre.
+the top of the Context to heavily influence the AI output. Some categories can be omitted as the author sees fit.
 
 ## Attributes
 
 *Technique*
 
-Attributes is a technique where various data --- such as characters or
-locations --- is formatted similarly to database entries or wiki-style
-data blocks. Due to these being common in both the Base and the Dataset,
-the Attributes can be as efficient as prose --- and often easier to
+Attributes is a technique where various elements, such as characters or
+locations, are formatted similarly to database entries with simple
+blocks of information. Due to these being common in both the Base and the Dataset,
+the Attributes can be as efficient as prose, and often easier to
 write.
 
 ## Author's Notes (A/N)
@@ -53,8 +57,8 @@ next most likely token.
 
 Shorthand for *Square Brackets*, which are these symbols: \[ \]. They
 are part of the finetune data, and used to contain metadata about the
-text files. They are traditionally used in [Injected
-Text](Context) to separate it from story text.
+text files. They were traditionally used in [Injected
+Text](Context) to separate it from story text. Nowadays this is less important, and separators play a bigger role.
 
 ## Branch
 
@@ -95,14 +99,14 @@ words that carry semantic meaning. As an example,
 become `john wear bright blue coat, john like coat`. It is used for
 lorebook entries to reinforce connections between subjects and objects
 and reduce token use at the expense of writing quality. Caveman is
-mostly obsolete in advanced models.
+mostly obsolete in advanced models, and was used when token budgets were far more limited.
 
 ## Clio (Model)
 
 *AI*
 
-A in-house model trained by NovelAI. It boasts a much larger context and
-higher performance than Krake with only 3 Billion parameters.
+A in-house model trained by NovelAI, based on "NAILM 3B". It boasts a much larger context and
+higher performance than Krake with only 3 Billion parameters. Succeeded by Kayra.
 
 ## Context
 
@@ -110,18 +114,14 @@ higher performance than Krake with only 3 Billion parameters.
 
 All the text that the AI has in its memory before it attempts to
 generate more text. This is all the activated injected text, plus all
-the story text that can fit inside the context window.
+the story text that can fit inside the context window, and the number of tokens reserved for the generated text's length.
 
 ## Context Window
 
 *AI, Limit*
 
-GPT-J and GPT-NEO both share a limit of 2048 tokens, or ~9000 Latin
-Alphabet characters used as a person would need to communicate in a
-natural manner. This is the maximum memory that the AI can use. On
-Tablet tier, the window is 1024 Tokens.
-
-For Clio, this limit is 8192 Context for Opus, which is around 35000 characters.
+Older models based on GPT-J and GPT-NEO had a limit of 2048 tokens, or ~9000 Latin
+Alphabet characters. For more modern models, such as Clio onwards, this limit is 8192 Context for Opus, which is around 35000 characters. Advances in tokenizing has made this more efficient, leading to more text in less tokens.
 
 ## Context Viewer
 
@@ -135,8 +135,8 @@ text injection settings.
 
 *AI*
 
-A batch of text files, used for fine tuning or module training. It must
-be presented in a specific format for best results.
+A batch of text files, used for fine-tuning or module training. It must
+be presented in a specific format for best results, as its quality is the ceiling of the AI's abilities.
 
 ## Dinkus (\*\*\*)
 
@@ -152,8 +152,8 @@ prose. For separating data, see `Separator (----)`.
 
 *AI, Generation*
 
-A marker used to tell the AI to stop generating. Generally, it is an
-uncommon symbol that would not appear unless the user \'trains\' the AI
+A marker used to tell the AI to stop generating. It should be an
+uncommon symbol that normally does not appear unless the user \'trains\' the AI
 to use it regularly. Useful for generating text similar to chat logs and
 other unorthodox forms, or simply to stop on sentence ending markers.
 
@@ -173,21 +173,26 @@ An entry for an element of your story, as part of its lorebook. It has
 text data, insertion settings, and keys that will activate it if
 present.
 
+## Erato (Model)
+
+*AI, Model*
+
+NovelAI's first second-generation model, trained on their second supercluster. A deeply finetuned LLaMA V3 70B model with a 8K context window, which relies on various technical and technological advancements for its training techniques and supporting features to extract the most performance as possible.
+
 ## Ephemeral Context
 
 *Text Injection, Feature*
 
 A form of Text Injection that is only active for a number of actions,
-after which it disappears. Has a very specific syntax that no other
-feature uses.
+after which it disappears. Has a complex syntax to describe when, and for how long it should be active.
 
 ## Euterpe (Model)
 
 *AI*
 
 A finetune of the Fairseq GPT-13B model. It is superior in creative
-performance to Sigurd, but more expensive to train and run. It is used
-by NovelAI during the Beta stage.
+performance to Sigurd, but more expensive to train and run. It was released
+by NovelAI in 2023, shortly before Krake.
 
 ## Finetune
 
@@ -195,8 +200,7 @@ by NovelAI during the Beta stage.
 
 If you consider the AI as a bunch of knobs and sliders, this is the act
 of adjusting them in order to make the AI\'s output more \"fitting\" for
-your purposes. This is done on expensive, powerful machines or servers
-and not really something you do yourself.
+your purposes. This is done on expensive, powerful machines or servers due to its extensive costs, as massive amounts of data are fed into the AI over long periods of time.
 
 ## Flatten
 
@@ -211,7 +215,7 @@ the entire story as one solid block of text.
 
 A way to present the information to the AI. It can range from writing
 things as you would in a normal essay, to using formats similar to code,
-to many other different types.
+to many other different types. Attributes, for example, is a type of format that was codified for NovelAI's models.
 
 ## Generation (or AI Generation)
 
@@ -241,6 +245,8 @@ Units, especially units equipped with Tensor Cores, which are ideal for
 vector space math (like raytracing!) These GPUs are expensive and use a
 lot of power, which also makes *running* a GPT model expensive.
 
+Explained in further detail on the [GPT](GPT) page.
+
 ## Guidance
 
 *Image Generation*
@@ -252,8 +258,8 @@ See [Scale](Glossary#scale).
 *Image Generation*
 
 The total surface of your image, defined by its Width, multiplied by its
-Height. NovelAI can generate images up to ~3 Megapixels in resolution
-(1024x1024).
+Height. NovelAI can generate images up to ~3.13 Megapixels in resolution
+(1960*1600).
 
 ## Image To Image (Img2Img)
 
@@ -270,21 +276,21 @@ picture.
 An action performed by pressing Ctrl + Shift + Enter or ⌘ + Shift +
 Enter, with the text cursor located in the main text box. This will
 generate a response where the text cursor is, rather than at the end.
-Content after the text cursor is ignored by the AI.
+Content after the text cursor is ignored by the AI. This uses a different model, so the quality can be different.
 
 ## Instruct
 
 *Generation*
 
-A moduel which lets the AI read instructions between {curly braces} and try to answer the request as best as possible, allowing you to directly tell the AI what to do.
+A LoRA that is applied on top of the model, which lets the AI read instructions between {curly braces} and try to answer the request as best as possible, allowing you to directly tell the AI what to do.
 
 ## Inpainting
 
 *Image Generation*
 
-Selecting an area of an image and prompting the Image Generation AI to
+Selecting an area of an image and prompting the a specialized Image Generation AI to
 redraw only this area, alternatively, providing an image with a missing
-chunk on its inside, and telling the Image Generation AI to complete the
+chunk on its inside, and telling this specialized AI to complete the
 missing chunk.
 
 ## Lore Generator
@@ -299,7 +305,7 @@ for concepts, objects, people, factions, and much more.
 
 *AI*
 
-A in-house model trained by NovelAI. A further development of the proof of concept established by Clio. It has 13B parameters and the same large context size, boasting superior knowledge and creative ability.
+A in-house model trained by NovelAI. A further development of the proof of concept established by Clio. Based on a model known as "NAILM 13B". It has 13B parameters and the same large context size, boasting superior knowledge and creative ability.
 
 ## Krake (Model)
 
@@ -307,7 +313,7 @@ A in-house model trained by NovelAI. A further development of the proof of conce
 
 A finetune of EleutherAI's 20B GPT-NeoX model. It offers similar
 geenral metrics to Euterpe but has a different set of strengths, namely
-in terms of real world knowledge, and style-matching abilities.
+in terms of real world knowledge, and style-matching abilities. Due to its higher cost of operation, it was only offered to Opus users.
 
 ## Lorebook
 
@@ -323,7 +329,7 @@ fine control over where it ends up.
 *Text Injection*
 
 A text "trigger" which activates a Lorebook entry if found in the
-text. Can be anything, from a name, to a symbol.
+text. Can be any string of text, and can use Regular Expressions for finer control.
 
 ## Loss (or Training Loss)
 
@@ -331,9 +337,7 @@ text. Can be anything, from a name, to a symbol.
 
 Loss is a term used in Machine Learning to determine if the AI\'s output
 is close to what was expected. When training Modules, lower loss means
-that it deviates less from the dataset, whereas high loss usually mean
-that the data was improperly cleaned, or it could just mean that the
-data is different from what the AI has learned before.
+that it deviates less from the dataset, whereas high loss means that the AI is deviating from its training material. For a creative Text AI, a moderate amount of loss is preferred.
 
 ## Loss Graph
 
@@ -341,8 +345,7 @@ data is different from what the AI has learned before.
 
 A graphical representation of the module's loss after every step of the
 AI's reading and training. A good 'level' for loss is very
-subjective, generally, you want to avoid the curve following a path that
-goes too low or too high, as both have their own issues.
+subjective. A common AI dev pastime is to admire its progress and decry that it is "so over" or that "we are so back" depending on whether or not it is moving towards the expected levels.
 
 ## Memory
 
@@ -383,21 +386,21 @@ completely. It takes the same amount of space in the context window as
 based on a specific group of texts that does not require re-training the
 AI as a whole, but still changes what the AI will produce.
 
+Modules were deprecated in the favor of better training, and the selective use of [LoRA](https://arxiv.org/abs/2106.09685)s.
+
 ## Module Training
 
 *AI*
 
 Sending text files to NovelAI's model training program in order to
 produce a module trained on their content. Works similarly to
-fine-tuning a model, but on a smaller scale.
+fine-tuning a model, but on a much smaller scale. Only used for older models.
 
 ## NAI Diffusion Anime Curated
 *Image Generation, Model*
 
 A finetune of Stable Diffusion, trained on Danbooru images, all of which
-are tagged as Safe, ensuing no NSFW output. Generally outputs more
-consistent images and is better at pre-existing characters, to some
-degree.
+are tagged as Safe, ensuing no NSFW output. Originally, the image generation model was split between Curated and Full, but they have been unified from V3 onwards.
 
 ## NAI Diffusion Anime Full
 
@@ -405,7 +408,7 @@ degree.
 
 A finetune of Stable Diffusion, trained on Danbooru images, which is
 capable of NSFW output, as it uses all types of images. Outputs greater
-variety for characters.
+variety for characters. Since V3 onwards, there is no distinction between a "safe" and "full" model.
 
 ## NAI Diffusion Furry
 
@@ -416,19 +419,27 @@ on anthropomorphic characters, but the model has a broad coverage.
 
 ## Noise
 
-*Image Generation* Noise is the base for all Stable Diffusion images
-(hence the name of diffusion). The noise pattern is refined into an
+*Image Generation*
+
+Noise is the base for all Stable Diffusion images
+(hence the "diffusion" part). The noise pattern is refined into an
 image after every step.
 
 As a parameter, Noise *adds* noise to the existing image in order to
 allow for greater deviation from the base.
 
+## Noise Schedule
+
+*Image Generation*
+
+The algorithm that generates the base noise used by a generation. Different schedules lead to different image "textures", with some being smoother and others more "gritty" or rough.
+
+
 ## Nucleus Sampling (Top-P)
 
 *AI, Sampling*
 
-Sampling which selects a set of tokens, based on the percentile chance
-of them appearing. Starting from the most likely, it adds up
+Sampling which selects a set of tokens, based on thir probability percentage. Starting from the most likely, it adds up
 probabilities until it hits its setting. Sampling then ends.
 
 ## Order of Insertion
@@ -520,8 +531,8 @@ both can be mixed.)
 
 Tags that were applied to images used for the training of NovelAI
 Diffusion's models. They are based on a percentile score, with the top
-scoring images being ranked as "masterpiece", all the way through
-"best quality", "high quality", "normal quality", "low quality"
+scoring images being originally ranked as "masterpiece", later all the way from
+"best quality", to "high quality", "normal quality", "low quality"
 and "worst quality". This is used to discern "good" elements from
 "bad" ones.
 
@@ -570,8 +581,8 @@ probabilities. This helps focus the AI and make Randomness more useful
 by spreading it over less possible tokens.
 
 *Image Generation* The sampler is an "interpreter" of sorts, which
-handles how the prompt is processed. The default, k_euler_ancestral,
-offers greater quality at lower steps, and more per-step variability,
+handles how the prompt is processed. Ancestral samplers, as well as DPM 2++ SDE,
+seek to offer greater quality and variety at lower steps,
 ensuing a lot of potential without using a lot of steps per image.
 
 ## Scale
@@ -591,7 +602,7 @@ decimal places.
 
 A story that was exported for sharing. It can have placeholders:
 elements that must be filled in when imported by the user, such as names
-and so on. This allows for easier personalization than a normal prompt.
+and so on. This allows for easier customization than a normal prompt.
 It can also contain a lorebook and generation settings.
 
 ## Search Range
@@ -628,6 +639,12 @@ similar uses.
 A finetuned version of the GPT-J 6B model. It is superior in creative
 performance to Calliope, but more expensive to train and run. It is used
 by NovelAI during the Beta stage.
+
+## SMEA
+
+*Image Generation*
+
+A setting which applies Euler Ancestral Sampling *per step* rather than once, refining the generation of an image. More useful for large canvases than it is for smaller ones.
 
 ## Stable Diffusion
 
@@ -696,7 +713,7 @@ Identical to *Prefix*, but it is added to the end of the entry.
 
 *Image Generation*
 
-Refers to Danbooru tags (Curated, Full), or E621 (furry), which are used
+Refers to Danbooru tags (Anime and previously Curated, Full), or E621 (furry), which are used
 for training the AI and make generating specific elements easier.
 
 ## Tail-Free Sampling (TFS)
@@ -721,7 +738,7 @@ and outputs are clearly delineated.
 
 *Feature*
 
-A JSON file with some CSS thrown in it, which tells NovelAI's page how
+A JSON file with some CSS included, which tells NovelAI's page how
 to look like. Allows for considerable customization of text colors,
 backgrounds, and many other things.
 
@@ -756,7 +773,7 @@ the rest.
 
 Remember how every token is a vector? Every vector has a number which
 serves as its identifying number. For example, [198] is the "new
-lin\" character, so banning it prevents the AI from creating any new
+line" character for the GPT-2 Tokenizer, so banning it prevents the AI from creating any new
 lines of its own.
 
 ## Tokenization
@@ -772,7 +789,7 @@ and must turn it into tokens first.
 
 A technique to present information to the AI, a "format". It formats
 lorebook entries by using headers followed by singular adjectives or
-nominal groups separated by slashes.
+nominal groups separated by slashes. Evolved into the Attributes method.
 
 ## Top-A 
 
@@ -835,7 +852,7 @@ can cause strange generations since most tokens aren't able to appear.
 generation at the latest sentence delimiter. Nowadays, this is
 "Continue Response to End of Sentence" in the Account Settings.
 
-## Undesired Content
+## Undesired Content (UC)
 
 *Image Generation*
 
@@ -848,3 +865,9 @@ make it less likely to appear.
 *Sampling*
 
 A sampling method which combines multiple operations to bias towards confidence or creativity, while also compressing the tail of weakest tokens.
+
+## Vibe Transfer
+
+*Image Generation*
+
+A sub-model that extracts semantic (i.e elements of "meaning") in an image, and attempts to apply it to a new generation. This takes no token and can be used to emulate styles and generate specific designs.
