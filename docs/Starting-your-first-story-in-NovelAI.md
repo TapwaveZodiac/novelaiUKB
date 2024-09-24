@@ -68,6 +68,12 @@ You don't need to use all of them. In fact, you can use only one or two of them!
 
 Put this in your **Memory** field.
 
+### Star Rating
+
+Since Erato came out, you can add a Star rating to your story, to try and emulate a certain "popularity" level. Star ratings are put **after** the Dinkus at he bottom of the Memory field, that means after ATTG as well. The same goes for all directions below.
+
+Star ratings go from `[ S: 1 ]` so `[ S: 5 ]`. There are no half-stars.
+
 ### Stage directions
 
 You can also tell the AI where the story is happening, when it's happening, who is the protagonist, and so on. Just do something like this.
