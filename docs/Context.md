@@ -86,6 +86,7 @@ It is also usable for:
 - **Dates and locations**: `[ 1889 , London ]`
 - The **name of the POV character** `[ Batman ]`
 - To contain text that has a tendency to leak into generations.
+- The "Star Rating" of the text, from `[ S: 1 ]` to `[ S: 5 ]`. There are no half-stars.
 
 Bracketed text is thus best described as being read by the AI as "important information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text.
 
