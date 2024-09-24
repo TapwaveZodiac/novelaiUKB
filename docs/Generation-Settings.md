@@ -1,3 +1,7 @@
+# Generation Settings & Presets
+
+To edit a preset, click "Edit Preset" in the **Story** menu.
+
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1f5e8530-bd28-4144-9de9-d3b883800660)
 
