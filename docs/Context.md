@@ -81,14 +81,15 @@ As you can see, you can use empty categories, or even omit them outright. Note t
 
 Each category is separated by a **semicolon** (;) and elements in a category are separated by a **comma** (,).
 
+You can also add the "Star Rating" of the text, from `[ S: 1 ]` to `[ S: 5 ]`. There are no half-stars.
+
 It is also usable for:
 
 - **Dates and locations**: `[ 1889 , London ]`
 - The **name of the POV character** `[ Batman ]`
 - To contain text that has a tendency to leak into generations.
-- The "Star Rating" of the text, from `[ S: 1 ]` to `[ S: 5 ]`. There are no half-stars.
 
-Bracketed text is thus best described as being read by the AI as "important information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text.
+Bracketed text is thus best described as being read by the AI as "important information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text. Note that while ATTG and star rating appears in Memory before the Dinkus you should put at the end of it, all stage directions and context information in brackets should be after the dinkus.
 
 Punctuation outside of colons is usually only as part of a chapter/work title.
 
