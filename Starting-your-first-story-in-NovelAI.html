@@ -1315,7 +1315,7 @@
 <header>
 <h1 class="title">Starting your first story in NovelAI</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 25/09/2024 at 12:28">Last updated 25/09/2024 at 12:28</time></p>
+  <p class="date before-toc"><time datetime="Last updated 25/09/2024 at 12:31">Last updated 25/09/2024 at 12:31</time></p>
 </blockquote>
 </header>
 
@@ -1337,6 +1337,8 @@
     <ul>
     <li><a href="#attg">ATTG</a></li>
     <li><a href="#star-rating">Star Rating</a></li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#dinkus-goes-here"><em><strong>Dinkus goes here!</strong></em></a></li>
     <li><a href="#stage-directions">Stage directions</a></li>
     <li><a href="#style-directions">Style directions</a></li>
     <li><a href="#why-a-dinkus">Why a Dinkus?</a></li>
@@ -1388,8 +1390,9 @@
 <p>And it'll be just fine! All ways work. There are some ways people feel work better, but mostly, there are <strong>baked-in tools</strong> you can use to direct your generations with more ease.</p>
 <p>Let's start with setting up your story's core components.</p>
 <h2 id="setup">Setup</h2>
-<p>All of this goes into the <strong>memory</strong> field! Make sure you conclude it with a <strong>dinkus</strong>, which is three asterisks in a row: <code>***</code></p>
+<p>All of this goes into the <strong>memory</strong> field! Make sure you first put in a <strong>dinkus</strong>, which is three asterisks in a row: <code>***</code></p>
 <h3 id="attg">ATTG</h3>
+<p>This goes <strong>before</strong> the dinkus.</p>
 <p>ATTG stands for:</p>
 <ul>
 <li><strong>Author</strong> - The author you want to pull style from.</li>
@@ -1402,9 +1405,14 @@
 <p>(Keep in mind that it's just text being line-wrapped, there is no need to press Enter.)</p>
 <p>Put this in your <strong>Memory</strong> field.</p>
 <h3 id="star-rating">Star Rating</h3>
-<p>Since Erato came out, you can add a Star rating to your story, to try and emulate a certain "popularity" level. Star ratings are put <strong>after</strong> the Dinkus at he bottom of the Memory field, that means after ATTG as well. The same goes for all directions below.</p>
+<p>Star ratings are put <strong>before</strong> the Dinkus after ATTG.</p>
+<p>Since Erato came out, you can add a Star rating to your story, to try and emulate a certain "popularity" level.</p>
 <p>Star ratings go from <code>[ S: 1 ]</code> so <code>[ S: 5 ]</code>. There are no half-stars.</p>
+<h3 id="summary">Summary</h3>
+<p>A summary is a short description of what is about to happen. Simply do <code>Summary: (your summary here)</code>. Put this <strong>after</strong> the star rating, <strong>before</strong> the dinkus.</p>
+<h3 id="dinkus-goes-here"><em><strong>Dinkus goes here!</strong></em></h3>
 <h3 id="stage-directions">Stage directions</h3>
+<p>This is positioned <em>after</em> the Dinkus in memory.</p>
 <p>You can also tell the AI where the story is happening, when it's happening, who is the protagonist, and so on. Just do something like this.</p>
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/bc753333-b974-46eb-9f6b-91702dc44f30" alt="image" /></p>
 <p>Put this at the very bottom of your <strong>Memory</strong> field, after the ATTG block and after the <strong>Dinkus</strong>, <strong>but</strong>, if you need a situation to change <strong>now</strong>, put this in the <strong>Author's Note</strong> instead, then put it back in memory after a few paragraphs.</p>
