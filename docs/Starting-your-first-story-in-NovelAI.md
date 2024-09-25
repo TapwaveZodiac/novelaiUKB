@@ -49,9 +49,11 @@ Let's start with setting up your story's core components.
 
 ## Setup
 
-All of this goes into the **memory** field! Make sure you conclude it with a **dinkus**, which is three asterisks in a row: `***`
+All of this goes into the **memory** field! Make sure you first put in a **dinkus**, which is three asterisks in a row: `***`
 
 ### ATTG
+
+This goes **before** the dinkus.
 
 ATTG stands for:
 * **Author** - The author you want to pull style from.
@@ -70,11 +72,22 @@ Put this in your **Memory** field.
 
 ### Star Rating
 
-Since Erato came out, you can add a Star rating to your story, to try and emulate a certain "popularity" level. Star ratings are put **after** the Dinkus at he bottom of the Memory field, that means after ATTG as well. The same goes for all directions below.
+Star ratings are put **before** the Dinkus after ATTG.
+
+Since Erato came out, you can add a Star rating to your story, to try and emulate a certain "popularity" level.
 
 Star ratings go from `[ S: 1 ]` so `[ S: 5 ]`. There are no half-stars.
 
+### Summary
+
+A summary is a short description of what is about to happen. Simply do `Summary: (your summary here)`. Put this **after** the star rating, **before** the dinkus.
+
+
+### ***Dinkus goes here!***
+
 ### Stage directions
+
+This is positioned *after* the Dinkus in memory.
 
 You can also tell the AI where the story is happening, when it's happening, who is the protagonist, and so on. Just do something like this.
 
