@@ -66,6 +66,8 @@ You don't need to use all of them. In fact, you can use only one or two of them!
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a6e2fce6-9591-40f2-819e-80ff22de09fa)
 
 
+Like on the image, ATTG is surrounded by square brackets. A space should follow the opening bracket and be before the closing bracket. 
+
 (Keep in mind that it's just text being line-wrapped, there is no need to press Enter.)
 
 Put this in your **Memory** field.
@@ -74,9 +76,15 @@ Put this in your **Memory** field.
 
 Star ratings are put **before** the Dinkus after ATTG.
 
-Since Erato came out, you can add a Star rating to your story, to try and emulate a certain "popularity" level.
+If you're using Erato as your AI model, you can add a Star rating to your story, to try and emulate a certain "popularity" level.
 
 Star ratings go from `[ S: 1 ]` so `[ S: 5 ]`. There are no half-stars.
+
+A full ATTG with an accompanying star rating might look like this:
+
+`[ Author: NovelAI Fan; Title: The First Story; Tags: artificial intelligence, futuristic; Genre: science fiction ][ S: 4 ]`
+
+Of course, the AI won't recognize the author "NovelAI Fan", nor the title "The First Story", but it will likely affect the writing nonetheless!
 
 ### Summary
 
