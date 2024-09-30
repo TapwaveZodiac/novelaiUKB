@@ -6,6 +6,7 @@ We have ported our operations here from Miraheze due to their shutdown in August
 To consult the UKB, open the [Github Pages](https://tapwavezodiac.github.io/novelaiUKB/) for this repository.
 
 # Building
+First, make sure you have both `make` and `pandoc` installed.
 To build the docs, run `make`. The docs will then be rendered in the [build/](build/) directory. :warning: The result might look different between local and GitHub Pages, try to see the result on GitHub Pages if the local version seems satifying.
 
 To edit a page and see changes rendered as you write, a Markdown viewer is recommended.

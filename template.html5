@@ -33,6 +33,7 @@ $for(include-before)$
 $endfor$
 
 <header>
+<a href="." forTitle="$title$">Return to Index</a>
 <h1 class="title">$title$</h1>
 <blockquote class="metadata">
 $if(subtitle)$
@@ -59,6 +60,7 @@ $if(toc)$
     <h2 id="$idprefix$toc-title">$toc-title$</h2>
   $endif$
   $table-of-contents$
+  <a href="." forTitle="$title$">Return to Index</a>
 </nav>
 $endif$
 

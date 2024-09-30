@@ -1,0 +1,15 @@
+/*
+To be used for Custom CSS, kept separate to distinguish it from Stylses sourced elsewhere
+*/
+
+img {
+    max-width: 100%;
+}
+
+a[forTitle="index"] {
+    display: none;
+}
+
+nav li>a:not(:only-child)::before {
+    font-size: 1.25em;
+}
