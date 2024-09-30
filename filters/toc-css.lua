@@ -209,7 +209,7 @@ script = [[
   n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
                                      <br/> \
                                      <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
-                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     <p>Press <kbd>Esc</kbd> to go back to normal width.</p> \
                                      </span>");
 
   // hide full nav when clicked outside

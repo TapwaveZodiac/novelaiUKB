@@ -5,22 +5,25 @@ Welcome to the **Unofficial *NovelAI* Knowledge Base**.
 While some content is reviewed by developers, this is NOT an official resource.
 *NovelAI* is not accountable for any content on this site.
 
-# **💡 [Quickstart](Quickstart)**
+# 🏃‍♀️ Getting Started
+
+## **💡 [Quickstart](Quickstart)**
 
 This guide offers a comprehensive beginner\'s overlook on using NovelAI.
 
-#  **🔰 [Starting your First Story in NovelAI](Starting-your-first-story-in-NovelAI)**
+##  **🔰 [Starting your First Story in NovelAI](Starting-your-first-story-in-NovelAI)**
 
 A quick crash course on all the general use techniques you may have heard of.
 
 ## **🔠 [Glossary](Glossary)**
 
-
+You can find short descriptions for various terms and concepts here. Get up to speed on what everyone else is talking about!
 
 ## 🔗 Useful Links & Resources
 
--   🌎[Official Website](https://novelai.net/)
+**Official Links**
 
+-   🌎 [Official Website](https://novelai.net/)
 -   🎮 [Official Discord](https://discord.gg/novelai)
 -   🐦 [Official Twitter](https://twitter.com/novelaiofficial)
 -   👽 [Official Reddit](https://www.reddit.com/r/NovelAi/)
@@ -29,74 +32,64 @@ A quick crash course on all the general use techniques you may have heard of.
 -   📰 [Official Medium Blog](https://novelai.medium.com/)
 -   💲 [Official Patreon](https://patreon.com/novelai)
 
+**Other Links**
+
 -   **📱 [Installing NovelAI on Mobile](Installing-NovelAI-on-Mobile)**
 -   **👩🏿‍🔬 [TravellingRobot\'s Research Wiki](https://github.com/TravellingRobot/NAI_Community_Research/wiki)**
 
-***
-
 # ❓ Detailed Help
+
+Once you're used to the basics you can use the following pages to expand your skillset and background knowledge.
+
+## **⚙️ NovelAI Features**
+
+Expand your knowledge of AI concepts and elements of NovelAI.
 
 ### **⌨️ [Shortcuts and Hotkeys](Shortcuts-and-Hotkeys)**
 
 Interact with NovelAI more effectively.
 
-***
-
-### **⚙️ NovelAI Features**
-
-Expand your knowledge of AI concepts and elements of NovelAI.
-
 #### **🧠 [GPT](GPT)**
 
 Primer on what a GPT model is.
 
-#### **📚 [Stories](Stories)**
+### **📚 [Stories](Stories)**
 
 Features of the story library.
 
-***
-
-#### **📃 [Context](Context)**
+### **📃 [Context](Context)**
 
 How text is managed and read by NovelAI and its models.
 
-#### **📖 [Lorebook](Lorebook)**
-#### **📊 [Using Attributes](Using-Attributes)**
+### **📖 [Lorebook](Lorebook)**
+Learn about this advanced tool aimed toward context curation.
+
+### **📊 [Using Attributes](Using-Attributes)**
 Write entries for characters, places, and much more.
 
-***
-
-#### **🪶 [Story Settings](Story-Settings)**
+### **🪶 [Story Settings](Story-Settings)**
 
 Choose models, modules, write injections, and more.
 
-#### **🔬 [Advanced Settings](Advanced-Settings)**
+### **🔬 [Advanced Settings](Advanced-Settings)**
 
 Phrase biasing, stop sequences, token bans, and more.
 
-#### **🎚️ [Generation Settings](Generation-Settings)**
+### **🎚️ [Generation Settings](Generation-Settings)**
 
 Temperature, Sampling and penalties.
 
-***
-
-#### **🤝 [Scenarios](Scenarios)**
+### **🤝 [Scenarios](Scenarios)**
 
 Share scenarios to let your users customize their experience.
 
-***
-
-#### **🧰 [User Settings](User-Settings)**
+### **🧰 [User Settings](User-Settings)**
 
 All the settings that can be accessed from the Account Settings menu.
 
-***
-
-#### **🔧 [Tools](Tools)**
+### **🔧 [Tools](Tools)**
 
 Advanced tools to expand your NovelAI experience: Module Trainer, Tokenizer, Probability viewer.
-
-***
 
 ## **✒️ [Writing Help](Writing-Help)**
 
@@ -110,23 +103,17 @@ Refine your basic English skills and learn ways to "talk" to the AI more effecti
 
 Information about the processes employed by NovelAI to protect your data.
 
-***
-
 ## **🎨 [Theming](Theming)**
 
 Customize NovelAI's appearance.
 
-***
-
 # 👩‍💻 Expert Guides
 
-Those guides are written by users in order to assist with specific
+These guides are written by users in order to assist with specific
 tasks.
 
 **It is assumed you know about the basic function of all features of
 NovelAI before reading them.**
-
-***
 
 ## AI Writing
 
