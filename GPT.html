@@ -6,6 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>GPT</title>
   <style>
+  /*
+  To be used for Custom CSS, kept separate to distinguish it from Stylses sourced elsewhere
+  */
+
+  img {
+      max-width: 100%;
+  }
+
+  a[forTitle="index"] {
+      display: none;
+  }
+
+  nav li>a:not(:only-child)::before {
+      font-size: 1.25em;
+  }
+  </style>
+  <style>
   :root {
     --solarized-base03:  #002b36;
     --solarized-base02:  #073642;
@@ -1313,9 +1330,10 @@
 <body>
 
 <header>
+<a href="." forTitle="GPT">Return to Index</a>
 <h1 class="title">GPT</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 25/09/2024 at 12:31">Last updated 25/09/2024 at 12:31</time></p>
+  <p class="date before-toc"><time datetime="Last updated 30/09/2024 at 16:40">Last updated 30/09/2024 at 16:40</time></p>
 </blockquote>
 </header>
 
@@ -1330,6 +1348,7 @@
     <li><a href="#tokenizer-tool">Tokenizer Tool</a></li>
     </ul></li>
     </ul>
+  <a href="." forTitle="GPT">Return to Index</a>
 </nav>
 
 <main>
@@ -1452,7 +1471,7 @@
   n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
                                      <br/> \
                                      <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
-                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     <p>Press <kbd>Esc</kbd> to go back to normal width.</p> \
                                      </span>");
 
   // hide full nav when clicked outside

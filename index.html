@@ -6,6 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>index</title>
   <style>
+  /*
+  To be used for Custom CSS, kept separate to distinguish it from Stylses sourced elsewhere
+  */
+
+  img {
+      max-width: 100%;
+  }
+
+  a[forTitle="index"] {
+      display: none;
+  }
+
+  nav li>a:not(:only-child)::before {
+      font-size: 1.25em;
+  }
+  </style>
+  <style>
   :root {
     --solarized-base03:  #002b36;
     --solarized-base02:  #073642;
@@ -1313,25 +1330,39 @@
 <body>
 
 <header>
+<a href="." forTitle="index">Return to Index</a>
 <h1 class="title">index</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 25/09/2024 at 12:31">Last updated 25/09/2024 at 12:31</time></p>
+  <p class="date before-toc"><time datetime="Last updated 30/09/2024 at 16:40">Last updated 30/09/2024 at 16:40</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#-quickstart"><strong>💡 <span>Quickstart</span></strong></a></li>
-    <li><a href="#-starting-your-first-story-in-novelai"><strong>🔰 <span>Starting your First Story in NovelAI</span></strong></a>
+    <li><a href="#️-getting-started">🏃‍♀️ Getting Started</a>
     <ul>
+    <li><a href="#-quickstart"><strong>💡 <span>Quickstart</span></strong></a></li>
+    <li><a href="#-starting-your-first-story-in-novelai"><strong>🔰 <span>Starting your First Story in NovelAI</span></strong></a></li>
     <li><a href="#-glossary"><strong>🔠 <span>Glossary</span></strong></a></li>
     <li><a href="#-useful-links--resources">🔗 Useful Links &amp; Resources</a></li>
     </ul></li>
     <li><a href="#-detailed-help">❓ Detailed Help</a>
     <ul>
+    <li><a href="#️-novelai-features"><strong>⚙️ NovelAI Features</strong></a>
+    <ul>
     <li><a href="#️-shortcuts-and-hotkeys"><strong>⌨️ <span>Shortcuts and Hotkeys</span></strong></a></li>
-    <li><a href="#️-novelai-features"><strong>⚙️ NovelAI Features</strong></a></li>
+    <li><a href="#-stories"><strong>📚 <span>Stories</span></strong></a></li>
+    <li><a href="#-context"><strong>📃 <span>Context</span></strong></a></li>
+    <li><a href="#-lorebook"><strong>📖 <span>Lorebook</span></strong></a></li>
+    <li><a href="#-using-attributes"><strong>📊 <span>Using Attributes</span></strong></a></li>
+    <li><a href="#-story-settings"><strong>🪶 <span>Story Settings</span></strong></a></li>
+    <li><a href="#-advanced-settings"><strong>🔬 <span>Advanced Settings</span></strong></a></li>
+    <li><a href="#️-generation-settings"><strong>🎚️ <span>Generation Settings</span></strong></a></li>
+    <li><a href="#-scenarios"><strong>🤝 <span>Scenarios</span></strong></a></li>
+    <li><a href="#-user-settings"><strong>🧰 <span>User Settings</span></strong></a></li>
+    <li><a href="#-tools"><strong>🔧 <span>Tools</span></strong></a></li>
+    </ul></li>
     <li><a href="#️-writing-help"><strong>✒️ <span>Writing Help</span></strong></a></li>
     <li><a href="#️️-privacy-and-security"><strong>🕵️‍♂️ <span>Privacy and Security</span></strong></a></li>
     <li><a href="#-theming"><strong>🎨 <span>Theming</span></strong></a></li>
@@ -1367,63 +1398,64 @@
     </ul></li>
     </ul></li>
     </ul>
+  <a href="." forTitle="index">Return to Index</a>
 </nav>
 
 <main>
 <p>Welcome to the <strong>Unofficial <em>NovelAI</em> Knowledge Base</strong>.</p>
 <p><strong><em>NovelAI</em> is a living project. Information may become out of date, or inaccurate.</strong> While some content is reviewed by developers, this is NOT an official resource. <em>NovelAI</em> is not accountable for any content on this site.</p>
-<h1 id="-quickstart"><strong>💡 <a href="Quickstart.html">Quickstart</a></strong></h1>
+<h1 id="️-getting-started">🏃‍♀️ Getting Started</h1>
+<h2 id="-quickstart"><strong>💡 <a href="Quickstart.html">Quickstart</a></strong></h2>
 <p>This guide offers a comprehensive beginner's overlook on using NovelAI.</p>
-<h1 id="-starting-your-first-story-in-novelai"><strong>🔰 <a href="Starting-your-first-story-in-NovelAI.html">Starting your First Story in NovelAI</a></strong></h1>
+<h2 id="-starting-your-first-story-in-novelai"><strong>🔰 <a href="Starting-your-first-story-in-NovelAI.html">Starting your First Story in NovelAI</a></strong></h2>
 <p>A quick crash course on all the general use techniques you may have heard of.</p>
 <h2 id="-glossary"><strong>🔠 <a href="Glossary.html">Glossary</a></strong></h2>
+<p>You can find short descriptions for various terms and concepts here. Get up to speed on what everyone else is talking about!</p>
 <h2 id="-useful-links--resources">🔗 Useful Links &amp; Resources</h2>
+<p><strong>Official Links</strong></p>
 <ul>
-<li><p>🌎<a href="https://novelai.net/">Official Website</a></p></li>
-<li><p>🎮 <a href="https://discord.gg/novelai">Official Discord</a></p></li>
-<li><p>🐦 <a href="https://twitter.com/novelaiofficial">Official Twitter</a></p></li>
-<li><p>👽 <a href="https://www.reddit.com/r/NovelAi/">Official Reddit</a></p></li>
-<li><p>🎥 <a href="https://www.twitch.tv/novelai">Official Twitch Channel</a></p></li>
-<li><p>▶️ <a href="https://www.youtube.com/channel/UCTK_ytXlba9AmtWTTLuTlxw">Official YouTube Channel</a></p></li>
-<li><p>📰 <a href="https://novelai.medium.com/">Official Medium Blog</a></p></li>
-<li><p>💲 <a href="https://patreon.com/novelai">Official Patreon</a></p></li>
-<li><p><strong>📱 <a href="Installing-NovelAI-on-Mobile.html">Installing NovelAI on Mobile</a></strong></p></li>
-<li><p><strong>👩🏿‍🔬 <a href="https://github.com/TravellingRobot/NAI_Community_Research/wiki">TravellingRobot's Research Wiki</a></strong></p></li>
+<li>🌎 <a href="https://novelai.net/">Official Website</a></li>
+<li>🎮 <a href="https://discord.gg/novelai">Official Discord</a></li>
+<li>🐦 <a href="https://twitter.com/novelaiofficial">Official Twitter</a></li>
+<li>👽 <a href="https://www.reddit.com/r/NovelAi/">Official Reddit</a></li>
+<li>🎥 <a href="https://www.twitch.tv/novelai">Official Twitch Channel</a></li>
+<li>▶️ <a href="https://www.youtube.com/channel/UCTK_ytXlba9AmtWTTLuTlxw">Official YouTube Channel</a></li>
+<li>📰 <a href="https://novelai.medium.com/">Official Medium Blog</a></li>
+<li>💲 <a href="https://patreon.com/novelai">Official Patreon</a></li>
 </ul>
-<hr />
+<p><strong>Other Links</strong></p>
+<ul>
+<li><strong>📱 <a href="Installing-NovelAI-on-Mobile.html">Installing NovelAI on Mobile</a></strong></li>
+<li><strong>👩🏿‍🔬 <a href="https://github.com/TravellingRobot/NAI_Community_Research/wiki">TravellingRobot's Research Wiki</a></strong></li>
+</ul>
 <h1 id="-detailed-help">❓ Detailed Help</h1>
+<p>Once you're used to the basics you can use the following pages to expand your skillset and background knowledge.</p>
+<h2 id="️-novelai-features"><strong>⚙️ NovelAI Features</strong></h2>
+<p>Expand your knowledge of AI concepts and elements of NovelAI.</p>
 <h3 id="️-shortcuts-and-hotkeys"><strong>⌨️ <a href="Shortcuts-and-Hotkeys.html">Shortcuts and Hotkeys</a></strong></h3>
 <p>Interact with NovelAI more effectively.</p>
-<hr />
-<h3 id="️-novelai-features"><strong>⚙️ NovelAI Features</strong></h3>
-<p>Expand your knowledge of AI concepts and elements of NovelAI.</p>
 <h4 id="-gpt"><strong>🧠 <a href="GPT.html">GPT</a></strong></h4>
 <p>Primer on what a GPT model is.</p>
-<h4 id="-stories"><strong>📚 <a href="Stories.html">Stories</a></strong></h4>
+<h3 id="-stories"><strong>📚 <a href="Stories.html">Stories</a></strong></h3>
 <p>Features of the story library.</p>
-<hr />
-<h4 id="-context"><strong>📃 <a href="Context.html">Context</a></strong></h4>
+<h3 id="-context"><strong>📃 <a href="Context.html">Context</a></strong></h3>
 <p>How text is managed and read by NovelAI and its models.</p>
-<h4 id="-lorebook"><strong>📖 <a href="Lorebook.html">Lorebook</a></strong></h4>
-<h4 id="-using-attributes"><strong>📊 <a href="Using-Attributes.html">Using Attributes</a></strong></h4>
+<h3 id="-lorebook"><strong>📖 <a href="Lorebook.html">Lorebook</a></strong></h3>
+<p>Learn about this advanced tool aimed toward context curation.</p>
+<h3 id="-using-attributes"><strong>📊 <a href="Using-Attributes.html">Using Attributes</a></strong></h3>
 <p>Write entries for characters, places, and much more.</p>
-<hr />
-<h4 id="-story-settings"><strong>🪶 <a href="Story-Settings.html">Story Settings</a></strong></h4>
+<h3 id="-story-settings"><strong>🪶 <a href="Story-Settings.html">Story Settings</a></strong></h3>
 <p>Choose models, modules, write injections, and more.</p>
-<h4 id="-advanced-settings"><strong>🔬 <a href="Advanced-Settings.html">Advanced Settings</a></strong></h4>
+<h3 id="-advanced-settings"><strong>🔬 <a href="Advanced-Settings.html">Advanced Settings</a></strong></h3>
 <p>Phrase biasing, stop sequences, token bans, and more.</p>
-<h4 id="️-generation-settings"><strong>🎚️ <a href="Generation-Settings.html">Generation Settings</a></strong></h4>
+<h3 id="️-generation-settings"><strong>🎚️ <a href="Generation-Settings.html">Generation Settings</a></strong></h3>
 <p>Temperature, Sampling and penalties.</p>
-<hr />
-<h4 id="-scenarios"><strong>🤝 <a href="Scenarios.html">Scenarios</a></strong></h4>
+<h3 id="-scenarios"><strong>🤝 <a href="Scenarios.html">Scenarios</a></strong></h3>
 <p>Share scenarios to let your users customize their experience.</p>
-<hr />
-<h4 id="-user-settings"><strong>🧰 <a href="User-Settings.html">User Settings</a></strong></h4>
+<h3 id="-user-settings"><strong>🧰 <a href="User-Settings.html">User Settings</a></strong></h3>
 <p>All the settings that can be accessed from the Account Settings menu.</p>
-<hr />
-<h4 id="-tools"><strong>🔧 <a href="Tools.html">Tools</a></strong></h4>
+<h3 id="-tools"><strong>🔧 <a href="Tools.html">Tools</a></strong></h3>
 <p>Advanced tools to expand your NovelAI experience: Module Trainer, Tokenizer, Probability viewer.</p>
-<hr />
 <h2 id="️-writing-help"><strong>✒️ <a href="Writing-Help.html">Writing Help</a></strong></h2>
 <p>Refine your basic English skills and learn ways to "talk" to the AI more effectively.</p>
 <ul>
@@ -1433,14 +1465,11 @@
 </ul>
 <h2 id="️️-privacy-and-security"><strong>🕵️‍♂️ <a href="Privacy-and-Security.html">Privacy and Security</a></strong></h2>
 <p>Information about the processes employed by NovelAI to protect your data.</p>
-<hr />
 <h2 id="-theming"><strong>🎨 <a href="Theming.html">Theming</a></strong></h2>
 <p>Customize NovelAI's appearance.</p>
-<hr />
 <h1 id="-expert-guides">👩‍💻 Expert Guides</h1>
-<p>Those guides are written by users in order to assist with specific tasks.</p>
+<p>These guides are written by users in order to assist with specific tasks.</p>
 <p><strong>It is assumed you know about the basic function of all features of NovelAI before reading them.</strong></p>
-<hr />
 <h2 id="ai-writing">AI Writing</h2>
 <h3 id="-end-of-input-tips"><strong>👨‍🏫 <a href="End-of-Input-Tips.html">End of Input Tips</a></strong></h3>
 <h3 id="-the-rabbit-hole"><strong>🐇 <a href="The-Rabbit-Hole.html">The Rabbit Hole</a></strong></h3>
@@ -1547,7 +1576,7 @@
   n.insertAdjacentHTML("beforeend", "<span class='toc-invisible'> \
                                      <br/> \
                                      <p>Press <kbd>Tab</kbd> to show extended width TOC.</p> \
-                                     <p>Presss <kbd>Esc</kbd> to go back to normal width.</p> \
+                                     <p>Press <kbd>Esc</kbd> to go back to normal width.</p> \
                                      </span>");
 
   // hide full nav when clicked outside
