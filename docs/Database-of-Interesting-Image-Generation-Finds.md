@@ -47,7 +47,7 @@ V2: Affects the general texturing, and has a stronger effect on outfits than ski
 
 ## Magic UCs
 
-> petite, loli
+> petite, loli, toddler
 
 Severely reduced youthfulness for all. Should always be used when generating anyone adult-looking.
 
@@ -55,6 +55,7 @@ Severely reduced youthfulness for all. Should always be used when generating any
 
 Infantilization in Japanese. Adds maturity to the subject.
 V2: less effective.
+V3: No effect.
 
 > claw
 
@@ -80,7 +81,7 @@ V2: `Eyeliner` and `Eyeshadow` tend to create red outlines around the eyes of ch
 
 > chromatic aberration
 
-Improves outline clarity and reduces color artifacting around them.
+Improves outline clarity and reduces color artifacting around them.  Already in the default UC in Heavy and Human Focus (V3 only) presets.
 
 > genshin impact
 

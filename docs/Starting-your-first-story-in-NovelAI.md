@@ -86,6 +86,10 @@ A full ATTG with an accompanying star rating might look like this:
 
 Of course, the AI won't recognize the author "NovelAI Fan", nor the title "The First Story", but it will likely affect the writing nonetheless!
 
+### Rating
+
+Adding `[ Rating: Everyone ]` will help steer the AI away from explicit content.
+
 ### Summary
 
 A summary is a short description of what is about to happen. Simply do `Summary: (your summary here)`. Put this **after** the star rating, **before** the dinkus.
