@@ -88,7 +88,7 @@ Of course, the AI won't recognize the author "NovelAI Fan", nor the title "The F
 
 ### Rating
 
-Adding `[ Rating: Everyone ]` will help the AI's output stay clean. (Clio, Kayra, and Erato only)
+Adding `[ Rating: Everyone ]` will help steer the AI away from explicit content.
 
 ### Summary
 
