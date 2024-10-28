@@ -119,21 +119,15 @@ NovelAI before reading them.**
 
 ### **👨‍🏫 [End of Input Tips](End-of-Input-Tips)**
 
-### **🐇 [The Rabbit Hole](The-Rabbit-Hole)**
+### **🐇 [The Rabbit Hole](The-Rabbit-Hole)** (Advanced Techniques & More indepth explanations of NAI-specific elements)
 
-### **✒️ [Narrative Example Tutorial](Narrative-Example-Tutorial)** (Outdated)
-
-### **🖊️ [Directing the Narrative](Directing-the-Narrative)**
+### **💪 [Erato System Prompting](Erato-System-Prompt)**
 
 ### **💻 [Lorebook Generation Tutorial](Lorebook-Generation-Tutorial)**
 
 ### **📏 [Phrase Bias Tutorial](Phrase-Bias-Tutorial)**
 
 ### **🤖 [Using Regex](Using-Regex)**
-
-### **😺 [Pume\'s Memory Guide](https://rentry.org/memory-guide) and [Lorebook Guide](https://rentry.org/lorebook-guide)**
-
-### **👩‍✈️ [Directing AI Generation](Directing-AI-Generation)** (Outdated)
 
 ***
 
@@ -159,4 +153,14 @@ NovelAI before reading them.**
 
 ### **🧑‍💻 [Using the API](Using-the-API)**
 
+***
 
+## Historical
+
+### **✒️ [Narrative Example Tutorial](Narrative-Example-Tutorial)** (Outdated)
+
+### **🖊️ [Directing the Narrative](Directing-the-Narrative)** (Outdated)
+
+### **👩‍✈️ [Directing AI Generation](Directing-AI-Generation)** (Outdated)
+
+### **😺 [Pume\'s Memory Guide](https://rentry.org/memory-guide) and [Lorebook Guide](https://rentry.org/lorebook-guide)** (Outdated)
