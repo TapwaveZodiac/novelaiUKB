@@ -6,7 +6,7 @@ System prompt: System prompts are a set of instructions, guidelines, and context
 
 Erato is an Anlatan finetune of the Meta Llama 3.0 70B model using the llama3-tokenizer. It uses the base open weights of Llama 3. Anlatan used traditional completion-style training for Erato and therefore the model should not be mistaken for what are colloquially called **Instruct-models**. The concept of system prompts however can be applied to any kind of text transformer.
 
-It is likely that the base Llama 3 used some form of system prompting in base training, and it is known that Google's Gemini 1.0 and Gemmam models do something like it without a distinct system role.
+It is likely that the base Llama 3 used some form of system prompting in base training, and it is known that Google's Gemini 1.0 and Gemma models do something like it without a distinct system role.
 
 NovelAI uses a form of system prompting. This is known as the [ATTG](https://docs.novelai.net/text/specialsymbols.html#-spaced-bracketing-) (Author, Title, Tags, Genre). Ever since at least Clio and Kayra, effort has been put in to make sure in training ATTG is trained first before the text that follows it. For Erato this is ATTG plus the newly added **S** value. All of this should be a lorebook entry, placed at the very beginning of context. An example Erato system prompt (ATTG) would look something like `[ Author: Jacqueline Carey; Title: Amazing Story; Tags: adventure, modern day; Genre: contemporary fiction, prose ][ S: 4 ]`
 
