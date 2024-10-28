@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc-markdown-css-theme" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Context</title>
+  <title>Erato System Prompt</title>
   <style>
   /*
   To be used for Custom CSS, kept separate to distinguish it from Stylses sourced elsewhere
@@ -1330,8 +1330,8 @@
 <body>
 
 <header>
-<a href="." forTitle="Context">Return to Index</a>
-<h1 class="title">Context</h1>
+<a href="." forTitle="Erato System Prompt">Return to Index</a>
+<h1 class="title">Erato System Prompt</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 28/10/2024 at 15:58">Last updated 28/10/2024 at 15:58</time></p>
 </blockquote>
@@ -1340,177 +1340,40 @@
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#context-window">Context Window</a></li>
-    <li><a href="#elements-of-context">Elements of Context</a>
-    <ul>
-    <li><a href="#prompt">Prompt</a></li>
-    <li><a href="#injected-text">Injected Text</a>
-    <ul>
-    <li><a href="#memory">Memory</a></li>
-    <li><a href="#authors-note">Author's Note</a></li>
-    <li><a href="#lorebook">Lorebook</a></li>
-    </ul></li>
-    <li><a href="#why-use-brackets">Why use Brackets?</a></li>
-    <li><a href="#context-viewer">Context Viewer</a>
-    <ul>
-    <li><a href="#identifiers">Identifiers</a></li>
-    <li><a href="#inclusion">Inclusion</a></li>
-    <li><a href="#reason">Reason</a></li>
-    <li><a href="#key">Key</a></li>
-    <li><a href="#reserved">Reserved</a></li>
-    <li><a href="#tokens">Tokens</a></li>
-    <li><a href="#trim-type">Trim Type</a></li>
-    <li><a href="#advanced-context-settings">Advanced Context Settings</a></li>
-    </ul></li>
-    <li><a href="#ephemeral-context">Ephemeral Context</a></li>
-    </ul></li>
+    <li><a href="#definition">Definition</a></li>
+    <li><a href="#extended-erato-system-prompt">Extended Erato System Prompt</a></li>
     </ul>
-  <a href="." forTitle="Context">Return to Index</a>
+  <a href="." forTitle="Erato System Prompt">Return to Index</a>
 </nav>
 
 <main>
-<h1 id="context-window">Context Window</h1>
-<p>The Context Window is effectively the AI's memory. As it can only read what is inside the window, understanding how it works will greatly help with leading to "good" generations.</p>
-<p>The context window is comprised:</p>
-<ul>
-<li>On older models (Sigurd, Euterpe, Krake, Snek, Genji) of <strong>2048</strong> Tokens, or <strong>1024</strong> if you are subscribed under the Tablet tier.</li>
-<li>On Clio, the context size is <strong>8192</strong> for all tiers.</li>
-<li>On Kayra, of <strong>3072</strong> Tokens for Tablet, <strong>6144</strong> tokens for Scroll and <strong>8192</strong> for Opus.</li>
-<li>On Erato, the window is <strong>8192</strong> tokens for Opus.</li>
-</ul>
-<p><em>View Last Context</em> at the top of the <strong>Advanced</strong> tab of the settings panel opens a window which displays all the tokens sent to the AI for the previous generation. This helps you check if anything you feel is important was forgotten. <em>View Current Context</em> does the same, but for the text you're about to send.</p>
-<hr />
-<h1 id="elements-of-context">Elements of Context</h1>
-<h2 id="prompt">Prompt</h2>
-<p>The prompt is displayed in <strong>cream</strong> by default. It is the first piece of text fed into the AI. If you have put anything into the <strong>Memory</strong> or <strong>Author's note</strong>, they will be inserted before it in the context before being sent to the AI.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/25a1815f-4053-457c-b6a4-961958f5df19" alt="image" /></p>
-<h2 id="injected-text">Injected Text</h2>
-<p><strong>Injected Text</strong> is any text that is not part of the story, but part of the context. All of these elements are injected text:</p>
-<ul>
-<li><p>The <strong>Memory.</strong></p></li>
-<li><p>The <strong>Author's Note</strong>, or <strong>A/N</strong> colloquially.</p></li>
-<li><p><strong>Lorebook</strong> entries.</p></li>
-<li><p><strong>Ephemeral Context</strong> entries.</p></li>
-</ul>
-<p>There are two important things to consider about injected text:</p>
-<ul>
-<li><p><strong>Position</strong> determines the strength of the injection's influence. Towards the bottom = Stronger. Further at the top = weaker.</p></li>
-<li><p><strong>Style</strong> determines how it influences the generation. Generally, you want to stay close to your Story's style, perhaps with minor concessions such as using the Attributes method for your entry, or writing "caveman style" for stage directions.</p></li>
-</ul>
-<p>Square brackets are recommended mostly for <strong>Author, Title, Tags, Genre</strong> metadata in Memory, and Knowledge or Style tags, either in Memory or Author's note. The brackets must be separated from their contents by a space, and everything should be lowercase outside of category titles and proper nouns.</p>
-<p><code>[ Author: George R.R. Martin; Title: A Song of Ice and Fire; Tags: dragons, politics, dynasty; Genre: fantasy ]</code></p>
-<hr />
-<h3 id="memory">Memory</h3>
-<p>By default, the <strong>Memory</strong> is inserted at the <strong>top</strong> of the context. Its position may be adjusted for a <strong>stronger</strong> (closer to the bottom) or a <strong>weaker</strong> (further to the top) effect.</p>
-<p>Traditionally used it to make the AI remember broad context elements and the <strong>Author, Title, Tags, Genre</strong> metadata.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1a65becd-7605-4a6e-abe8-8b1c05e15fb1" alt="image" /></p>
-<hr />
-<h3 id="authors-note">Author's Note</h3>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e246544c-bb7b-4b1d-aa9e-30d6e7390ae9" alt="image" /></p>
-<p>The <strong>Author's Note</strong> or <strong>A/N</strong> is identical in format and use to Memory, but it is inserted <strong>three paragraphs</strong> (newlines) by default before the last token in the input. It has a greater influence as a result. The A/N's position may be adjusted for a <strong>stronger</strong> (closer to the bottom) or a <strong>weaker</strong> (further to the top) effect. Traditionally, it is used to either <strong>give immediate instructions</strong>, and <strong>immediately important information</strong>, such as the name of the POV character, the date, etc.</p>
-<p>Keep in mind that Author's Note influence is <strong>very intense</strong>. It is <strong>strongly recommended</strong> to leave it empty unless you are using it for a specific purpose, after which it should be cleared. Leaving elements in the Author's Note can degrade text quality.</p>
-<h3 id="lorebook">Lorebook</h3>
-<p>Further described in the dedicated <a href="Lorebook.html">Lorebook</a> page. Lorebook entries are positioned at the top of context, <strong>after</strong> Memory.</p>
-<hr />
-<h2 id="why-use-brackets">Why use Brackets?</h2>
-<p>Bracketed text is used specifically in the fine-tuning material for <strong>metadata</strong>, which includes <strong>Author, Title, Tags and Genre</strong>.</p>
-<p>Brackets used for metadata, look like this:</p>
-<p><code>[ Author: Neil Gaiman; Title: Sandman; Tags: ; Genre: Modern Fantasy; ]</code></p>
-<p>As you can see, you can use empty categories, or even omit them outright. Note the spaces next to the brackets! For optimal effect on your story, it is recommended to include the metadata headers in their original order, even if they are empty. You can omit the first ones if they are empty, but it is better if you keep Genre: at the very least.</p>
-<p>Each category is separated by a <strong>semicolon</strong> (;) and elements in a category are separated by a <strong>comma</strong> (,).</p>
-<p>You can also add the "Star Rating" of the text, from <code>[ S: 1 ]</code> to <code>[ S: 5 ]</code>. There are no half-stars.</p>
-<p>It is also usable for:</p>
-<ul>
-<li><strong>Dates and locations</strong>: <code>[ 1889 , London ]</code></li>
-<li>The <strong>name of the POV character</strong> <code>[ Batman ]</code></li>
-<li>To contain text that has a tendency to leak into generations.</li>
-</ul>
-<p>Bracketed text is thus best described as being read by the AI as "important information but not part of the text." This helps it keep things into memory without trying to continue from them as if they were sentences in the text. Note that while ATTG and star rating appears in Memory before the Dinkus you should put at the end of it, all stage directions and context information in brackets should be after the dinkus.</p>
-<p>Punctuation outside of colons is usually only as part of a chapter/work title.</p>
-<p>You can encase descriptive passages in Injected Text entries if their style is different from the usual style of your prose.</p>
-<p>Brackets <strong>do not notably affect the accuracy of the text</strong> - this is <a href="Generation-Settings.html">Generation Settings</a> at work.</p>
-<p>It is generally not recommended to use brackets in Euterpe or Krake for anything outside of the aforementioned purposes.</p>
-<p>As a note, if you are using Krake, enable the <strong>Preamble</strong> in your AI settings to reinforce the Metadata's effect.</p>
-<hr />
-<h2 id="context-viewer">Context Viewer</h2>
-<p>The Context Viewer is a powerful tool to identify what elements were used by the AI in the last generation. This helps you diagnose Memory, Author's Note and Lorebook usage. Check for bloat, trimmed entries, or ones that take too much space using this tool.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/6facab34-249d-4e37-9dcb-46a00d14741c" alt="image" /></p>
-<h3 id="identifiers">Identifiers</h3>
-<p>Lists the <strong>Identifier</strong> of each element of the context that describes it's origin from one of the following:</p>
-<ul>
-<li><strong>Story</strong>: From the main text.</li>
-<li><strong>Memory</strong>: From the Memory block.</li>
-<li><strong>Author's Note</strong>: From the Author's Note block.</li>
-<li><strong>Display Name of a Lorebook Entry</strong>: The name that you gave that entry in the Lorebook, not its keys.</li>
-</ul>
-<h3 id="inclusion">Inclusion</h3>
-<p>Lists if this element is included in the context:</p>
-<ul>
-<li><strong>Included</strong>: Successfully inserted in the context.</li>
-<li><strong>Partially Included</strong>: Inserted in the context but some trimming was performed.</li>
-<li><strong>Not Included</strong>: Insertion in the context failed or was not attempted.</li>
-</ul>
-<h3 id="reason">Reason</h3>
-<p>Lists the reason for this element's inclusion or omission:</p>
-<p><em><strong>Included</strong></em></p>
-<ul>
-<li><strong>Default</strong>: Reserved to Story, Memory and Author's Note. Included by default.</li>
-<li><strong>Key Activated</strong>: This Lorebook entry was triggered by one of its keys.</li>
-<li><strong>Forced</strong>: This Lorebook entry was activated because it was set to Forced.</li>
-</ul>
-<p><em><strong>Omitted</strong></em></p>
-<ul>
-<li><strong>Disabled</strong>: This Lorebook entry was omitted because it was disabled.</li>
-<li><strong>No key</strong>: This Lorebook entry was ommitted because it could not find any of its keys in the text.</li>
-<li><strong>No space</strong>: This entry was ommitted because it could not be given enough tokens to fit.</li>
-<li><strong>No text</strong>: This entry was deactivated because it contains no text.</li>
-</ul>
-<h3 id="key">Key</h3>
-<p>Lists the key that triggered this Lorebook entry.</p>
-<h3 id="reserved">Reserved</h3>
-<p>Lists the amount of tokens reserved for this entry. This is usually lower than the <strong>Reserved Tokens</strong> setting of that entry, as that setting is the upper limit.</p>
-<h3 id="tokens">Tokens</h3>
-<p>Lists how many tokens are used by this entry <strong>on its own, before it is inserted in the story</strong>. Tokenization can cause a couple extra (or sometimes <em>less</em>) tokens to be used when this entry is placed in the text.</p>
-<h3 id="trim-type">Trim Type</h3>
-<p>Lists how this entry was trimmed. There are four trim steps, which occur in this sequence:</p>
-<ul>
-<li>Fit the entire entry without trimming. (<strong>No Trim</strong>) If it doesn't fit, go to the next step:</li>
-<li>The entry was trimmed to a new line character inside its text. (<strong>New Line</strong>) If this results in the entry having less than 30% of its allowed token content inserted, go to the next step:</li>
-<li>The entry was trimmed to a sentence delimited (period, ellipse, semicolon) (<strong>Sentence</strong>) If this causes the entry to have less than 30% of its allowed token content inserted, go to the next step:</li>
-<li>The entry is trimmed by the individual token, and then all the content that can fit in the space that remains is inserted. (<strong>Token</strong>) If this <strong>STILL</strong> fails, this is likely because the Prefix and Suffix can't fit in the context, so the entire entry is omitted.</li>
-</ul>
-<h3 id="advanced-context-settings">Advanced Context Settings</h3>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/bb95d656-5b18-4294-8ae6-a893d0860b19" alt="image" /></p>
-<p>Remember all the advanced settings of the <a href="Lorebook.html">Lorebook</a>? Those are used here, but for the <strong>Story</strong>, <strong>Memory</strong> and <strong>Author's Note</strong>.</p>
-<p>These can be accessed in the <strong>Advanced Options</strong> collapse in the <strong>Options</strong> tab on the right.</p>
-<p>This allows you to:</p>
-<ul>
-<li>Fine-tune the maximum size of these blocks.</li>
-<li>Make Memory or the Author's Note get trimmed before the Story by setting them to a lower priority.</li>
-<li>Change the way these three blocks are trimmed.</li>
-<li>Force suffixes and prefixes that you won't need to write in the blocks directly.</li>
-</ul>
-<hr />
-<h2 id="ephemeral-context">Ephemeral Context</h2>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/fc05235e-dec1-4436-92c1-8ff8f0a12f59" alt="image" /></p>
-<p><strong>Ephemeral Context</strong> entries are effectively <em>time-sensitive Text injections.</em> Think Mission Impossible:</p>
-<p><code>This message will self-destruct in 30 seconds...</code></p>
-<p>Every time you <strong>generate text</strong>, you perform a <em>step</em>. Ephemeral Context entries wait a certain number of steps, appear, remain for a certain number of steps, and disappear.</p>
-<p>The syntax example is as follows: <code>{0+30r~15,+5:[Angela's amnesia temporarily dissipates.]}</code></p>
-<p>Several symbols are used to define the type of information specified:</p>
-<ul>
-<li>{} Contains the block.</li>
-<li>The first number specifies the exact starting step, if necessary. You can also specify negative steps using <strong>-</strong></li>
-<li><strong>+</strong> specifies the delay in <strong>steps</strong> before activation. +0 will trigger immediately. Adding <strong>r</strong> to it will make it repeat after the number of steps set passes, <strong>even if the entry is still active</strong>. As a result, make sure the delay is longer than the duration if you don't want the entry to be always on, if it repeats.</li>
-<li><strong>~</strong> specifies the <strong>duration</strong> of the entry, in <strong>steps</strong>, before it disables.</li>
-<li><strong>,</strong> followed by <strong>+</strong> or <strong>-</strong> specifies the <strong>insertion position</strong> of the entry, <strong>in new lines</strong>. + starts from the top the context, - starts from the bottom of the context.</li>
-<li><strong>:</strong> specifies the beginning of the text content of the entry.</li>
-</ul>
-<p>Thus: <code>{0+30r~15,+5:[Angela's amnesia temporarily dissipates.]}</code> will add <code>"\[Angela's amnesia temporarily dissipates.\]"</code> to the context, five new lines from the top of the context, for fifteen steps, starting thirty steps after you set up this entry. Effectively, it'll be on half the time.</p>
-<p>You may also add a <strong>!</strong> after the first curly brace to be able to specify <strong>a temporarily inactive entry</strong>. This makes it <em>always</em> present <strong>except during the Ephemeral Context's entry duration.</strong></p>
-<p><code>{!0+30r~15,+5:[Angela's amnesia makes her forget why she is here and what she is doing..]}</code></p>
-<p>This one will be <em>off</em> half the time, when the other entry is active.</p>
-<p>You can also type out Ephemeral Context entries directly in the Input box.</p>
+<p><em>Guide written by Belverk also known as Valahraban</em></p>
+<h2 id="definition">Definition</h2>
+<p>System prompt: System prompts are a set of instructions, guidelines, and contextual information provided to AI models before they engage with user queries.</p>
+<p>Erato is an Anlatan finetune of the Meta Llama 3.0 70B model using the llama3-tokenizer. It uses the base open weights of Llama 3. Anlatan used traditional completion-style training for Erato and therefore the model should not be mistaken for what are colloquially called <strong>Instruct-models</strong>. The concept of system prompts however can be applied to any kind of text transformer.</p>
+<p>It is likely that the base Llama 3 used some form of system prompting in base training, and it is known that Google's Gemini 1.0 and Gemmam models do something like it without a distinct system role.</p>
+<p>NovelAI uses a form of system prompting. This is known as the <a href="https://docs.novelai.net/text/specialsymbols.html#-spaced-bracketing-">ATTG</a> (Author, Title, Tags, Genre). Ever since at least Clio and Kayra, effort has been put in to make sure in training ATTG is trained first before the text that follows it. For Erato this is ATTG plus the newly added <strong>S</strong> value. All of this should be a lorebook entry, placed at the very beginning of context. An example Erato system prompt (ATTG) would look something like <code>[ Author: Jacqueline Carey; Title: Amazing Story; Tags: adventure, modern day; Genre: contemporary fiction, prose ][ S: 4 ]</code></p>
+<p>Illustrated with pictures inside NAI UI: [ref12]</p>
+<p>By making guesses about how base L3 interacts with Anlatan's training and experimenting, we can build an even more powerful system prompting system. This is what this guide is about. Results may vary, readers will have to take Belverk's and his few testers word for it resulting in "great tier output, where the narrator closely follows rules provided by the writer". The goal is setting up a system that uses few tokens, while giving the user an easy way to come up with rules that direct the "narrator" of the outputted content, the narrator here being synonymous with the model.</p>
+<h2 id="extended-erato-system-prompt">Extended Erato System Prompt</h2>
+<p>It is recommended that everything explained here is set up inside lorebooks and categories. For users who already have their own lorebooks or category system, these are easy to add without getting in the way. Correct insertion order is the one important thing for what we are trying to achieve. We want the ATTG lorebook to be the first thing the model ever sees, immediately followed by the Lore of Lorebooks, then Rules (optional) and finally the rest of your LBs. ATTG does not use a prefix. LoL, the Rules and most other LBs will use <code>----\n</code> as the prefix.</p>
+<p>I recommend to set up ATTG at Insertion Order 1 and Insertion Position 0 (shown in previous pictures). The example provided in this article could be used as the entry. Recommended values for S range from 2-4 as per datasetter Zaltys' recommendation, due to how much data Erato was trained on.</p>
+<p>Set up a category called something like <code>INSTRUCTIONS</code>, ordering your categories however you prefer. Turn on default entry settings. Only add <code>----\n</code> to prefix, increase reserved tokens to 1000, insertion order 2, insertion position 0. Now you can add lorebooks inside this category and they will have the correct settings.</p>
+<p>Here I provide what I call the <code>Lore of Lorebooks</code> or <code>LoL</code> for short. You can name the entry whatever you want. I gave it this name, because inside it we define <em>what a Lore is</em>. Under this system, every LB you provide is Lore, while the story text is called <code>the narrative</code> and whoever is writing is called <code>the narrator</code>. MAKE SURE THAT THE ATTG AND THIS LB IS ALWAYS ON.</p>
+<pre><code>Lore
+Type: information, knowledge, instructions
+Description: Lore is any information pertinent to the story. Lore entries are separated by ---- . Any noteworthy or relevant concept can be detailed with Lore, including character sheets or instructions for the narrator. Lore can be a list of attributes, or a paragraph. It is important to respect and accurately portray any details included in Lore, and use the knowledge within to enrich the story and the interaction between characters. This entry is an example of a Lore entry in the pedia style.
+</code></pre>
+<p>[ref3]</p>
+<p>Using the <a href="https://tapwavezodiac.github.io/novelaiUKB/Using-Attributes.html">Attributes</a> format present in Anlatan's dataset, we define what Lore is, what Lore contains and what the ideal separator is. We do not need to define dinkus, the model already understands these and other concepts. We make a reference to the pedia style, because inside dataset Tags, some data that is written similar to this is referred to as pedia. Belverk can confirm this because he used to contribute pedia-style data. Attributes and pedia can be treated synonymously for our purposes.</p>
+<p>The above lorebook is not very useful on its own. But it becomes very powerful if we give the narrator rules to follow and use one or more world building related LBs. Inside the category we set up previously, let's add another LB. We can call it <code>Rules</code>. In order to ensure that Rules goes immediately below <code>Lore</code>, we have to manually increment Insertion Order to 3. The Rules can be anything we want. Personally, I use it to enforce the person and the tense the story is written in. It could also be used to enforce text adventure. With this system, we could write all our other LBs in present tense Attributes and/or prose without ever confusing Erato. I haven't gotten a single tense error in multiple 200,000 character stories with this setup.</p>
+<pre><code>Narrative rules
+Type: narrative, rules, instructions
+This Lore describes rules that the narrative storytelling will abide by. Regardless of how Lore is structured, the story is written in third person, past tense.
+1. The story takes place in mythical times. Electricity is unheard of and does not feature in the narrative.
+</code></pre>
+<p>[ref4]</p>
+<p>Numbered list works best in my experience, you could also do a bullet list with <code>- </code>. The structure is a combination of markdown and finetuned elements, both of which Erato is great at. I only included one common rule, because users have to set their own rules depending on what they want out of each story. From my experiments, I know that using rules you can completely ban dating, turn a main character completely mute, re-create text adventure in storyteller mode, set any level of desired technology, as well as stop the narrator from mentioning LB knowledge directly. It is powerful with diverse uses. This is why I call this structure the Erato System Prompt. You can set up however many Rule LBs you want, even with keys to turn them on or off. In regular use, I only have an ATTG + Score + LoL + Rules, always turned on. Note that the extended system prompt replaces the short summary/synopsis of the story.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
