@@ -1333,7 +1333,7 @@
 <a href="." forTitle="Erato System Prompt">Return to Index</a>
 <h1 class="title">Erato System Prompt</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 28/10/2024 at 16:03">Last updated 28/10/2024 at 16:03</time></p>
+  <p class="date before-toc"><time datetime="Last updated 28/10/2024 at 16:33">Last updated 28/10/2024 at 16:33</time></p>
 </blockquote>
 </header>
 
@@ -1351,7 +1351,7 @@
 <h2 id="definition">Definition</h2>
 <p>System prompt: System prompts are a set of instructions, guidelines, and contextual information provided to AI models before they engage with user queries.</p>
 <p>Erato is an Anlatan finetune of the Meta Llama 3.0 70B model using the llama3-tokenizer. It uses the base open weights of Llama 3. Anlatan used traditional completion-style training for Erato and therefore the model should not be mistaken for what are colloquially called <strong>Instruct-models</strong>. The concept of system prompts however can be applied to any kind of text transformer.</p>
-<p>It is likely that the base Llama 3 used some form of system prompting in base training, and it is known that Google's Gemini 1.0 and Gemmam models do something like it without a distinct system role.</p>
+<p>It is likely that the base Llama 3 used some form of system prompting in base training, and it is known that Google's Gemini 1.0 and Gemma models do something like it without a distinct system role.</p>
 <p>NovelAI uses a form of system prompting. This is known as the <a href="https://docs.novelai.net/text/specialsymbols.html#-spaced-bracketing-">ATTG</a> (Author, Title, Tags, Genre). Ever since at least Clio and Kayra, effort has been put in to make sure in training ATTG is trained first before the text that follows it. For Erato this is ATTG plus the newly added <strong>S</strong> value. All of this should be a lorebook entry, placed at the very beginning of context. An example Erato system prompt (ATTG) would look something like <code>[ Author: Jacqueline Carey; Title: Amazing Story; Tags: adventure, modern day; Genre: contemporary fiction, prose ][ S: 4 ]</code></p>
 <p>Illustrated with pictures inside NAI UI: <img src="https://github.com/user-attachments/assets/fefca8c1-559f-4912-a2db-d661ec632ba2" alt="image" /> <img src="https://github.com/user-attachments/assets/2e24b12e-57dc-436c-800f-e6b618191eee" alt="image" /></p>
 <p>By making guesses about how base L3 interacts with Anlatan's training and experimenting, we can build an even more powerful system prompting system. This is what this guide is about. Results may vary, readers will have to take Belverk's and his few testers word for it resulting in "great tier output, where the narrator closely follows rules provided by the writer". The goal is setting up a system that uses few tokens, while giving the user an easy way to come up with rules that direct the "narrator" of the outputted content, the narrator here being synonymous with the model.</p>
