@@ -121,6 +121,8 @@ NovelAI before reading them.**
 
 ### **🐇 [The Rabbit Hole](The-Rabbit-Hole)**
 
+### **💪 [Erato System Prompting](Erato-System-Prompt)**
+
 ### **✒️ [Narrative Example Tutorial](Narrative-Example-Tutorial)** (Outdated)
 
 ### **🖊️ [Directing the Narrative](Directing-the-Narrative)**
