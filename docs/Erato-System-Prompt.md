@@ -10,7 +10,8 @@ It is likely that the base Llama 3 used some form of system prompting in base tr
 
 NovelAI uses a form of system prompting. This is known as the [ATTG](https://docs.novelai.net/text/specialsymbols.html#-spaced-bracketing-) (Author, Title, Tags, Genre). Ever since at least Clio and Kayra, effort has been put in to make sure in training ATTG is trained first before the text that follows it. For Erato this is ATTG plus the newly added **S** value. All of this should be a lorebook entry, placed at the very beginning of context. An example Erato system prompt (ATTG) would look something like `[ Author: Jacqueline Carey; Title: Amazing Story; Tags: adventure, modern day; Genre: contemporary fiction, prose ][ S: 4 ]`
 
-Illustrated with pictures inside NAI UI: [ref12]
+Illustrated with pictures inside NAI UI:
+![image](https://github.com/user-attachments/assets/fefca8c1-559f-4912-a2db-d661ec632ba2) ![image](https://github.com/user-attachments/assets/2e24b12e-57dc-436c-800f-e6b618191eee)
 
 By making guesses about how base L3 interacts with Anlatan's training and experimenting, we can build an even more powerful system prompting system. This is what this guide is about. Results may vary, readers will have to take Belverk's and his few testers word for it resulting in "great tier output, where the narrator closely follows rules provided by the writer". The goal is setting up a system that uses few tokens, while giving the user an easy way to come up with rules that direct the "narrator" of the outputted content, the narrator here being synonymous with the model.
 
@@ -28,9 +29,9 @@ Lore
 Type: information, knowledge, instructions
 Description: Lore is any information pertinent to the story. Lore entries are separated by ---- . Any noteworthy or relevant concept can be detailed with Lore, including character sheets or instructions for the narrator. Lore can be a list of attributes, or a paragraph. It is important to respect and accurately portray any details included in Lore, and use the knowledge within to enrich the story and the interaction between characters. This entry is an example of a Lore entry in the pedia style.
 ```
-[ref3]
+![image](https://github.com/user-attachments/assets/b1ffd6e7-b536-4e7a-9443-e92dc4627f36) ![image](https://github.com/user-attachments/assets/1a08947f-303c-4d84-be44-c70fd04fc9e0)
 
-Using the [Attributes](https://tapwavezodiac.github.io/novelaiUKB/Using-Attributes.html) format present in Anlatan's dataset, we define what Lore is, what Lore contains and what the ideal separator is. We do not need to define dinkus, the model already understands these and other concepts. We make a reference to the pedia style, because inside dataset Tags, some data that is written similar to this is referred to as pedia. Belverk can confirm this because he used to contribute pedia-style data. Attributes and pedia can be treated synonymously for our purposes.
+Using the [Attributes](Using-Attributes) format present in Anlatan's dataset, we define what Lore is, what Lore contains and what the ideal separator is. We do not need to define dinkus, the model already understands these and other concepts. We make a reference to the pedia style, because inside dataset Tags, some data that is written similar to this is referred to as pedia. Belverk can confirm this because he used to contribute pedia-style data. Attributes and pedia can be treated synonymously for our purposes.
 
 The above lorebook is not very useful on its own. But it becomes very powerful if we give the narrator rules to follow and use one or more world building related LBs. Inside the category we set up previously, let's add another LB. We can call it `Rules`. In order to ensure that Rules goes immediately below `Lore`, we have to manually increment Insertion Order to 3. The Rules can be anything we want. Personally, I use it to enforce the person and the tense the story is written in. It could also be used to enforce text adventure. With this system, we could write all our other LBs in present tense Attributes and/or prose without ever confusing Erato. I haven't gotten a single tense error in multiple 200,000 character stories with this setup.
 ```
@@ -39,6 +40,6 @@ Type: narrative, rules, instructions
 This Lore describes rules that the narrative storytelling will abide by. Regardless of how Lore is structured, the story is written in third person, past tense.
 1. The story takes place in mythical times. Electricity is unheard of and does not feature in the narrative.
 ```
-[ref4]
+![image](https://github.com/user-attachments/assets/6a3a144e-6722-46c7-9c04-79f3ec749b17) ![image](https://github.com/user-attachments/assets/12495422-b1fa-4a63-b83b-2ac616223466)
 
 Numbered list works best in my experience, you could also do a bullet list with `- `. The structure is a combination of markdown and finetuned elements, both of which Erato is great at. I only included one common rule, because users have to set their own rules depending on what they want out of each story. From my experiments, I know that using rules you can completely ban dating, turn a main character completely mute, re-create text adventure in storyteller mode, set any level of desired technology, as well as stop the narrator from mentioning LB knowledge directly. It is powerful with diverse uses. This is why I call this structure the Erato System Prompt. You can set up however many Rule LBs you want, even with keys to turn them on or off. In regular use, I only have an ATTG + Score + LoL + Rules, always turned on. Note that the extended system prompt replaces the short summary/synopsis of the story.
