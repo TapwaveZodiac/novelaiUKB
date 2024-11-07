@@ -1333,7 +1333,7 @@
 <a href="." forTitle="Lorebook">Return to Index</a>
 <h1 class="title">Lorebook</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:21">Last updated 07/11/2024 at 19:21</time></p>
+  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
 </blockquote>
 </header>
 
@@ -1371,8 +1371,8 @@
 <h3 id="keys">Keys</h3>
 <p><strong>Enabled</strong> determines if the entry will be inserted in the context if detected. If it is disabled, it won't trigger regardless of keys. This is useful to reduce context cluttering if you don't need details about specific things.</p>
 <p><strong>Keys</strong> are all the <strong>words that the AI will associate with this entry.</strong> If the AI reads this word, then the connected entry will be inserted in the context. Keys are <em>case insensitive.</em></p>
-<p>Type the key and press <strong>Enter</strong> to register it. Keys are <strong>case insensitive by default.</strong></p>
-<p>To make a Key case-sensitive, preface it with <code>/</code> and close it by <code>/</code>: <code>/Entry/</code>.</p>
+<p>Type the key and press <strong>Enter</strong> to register it. Keys are <strong>case insensitive by default.</strong> To make a Key case-sensitive, preface it with <code>/</code> and close it by <code>/</code>: <code>/Entry/</code>.</p>
+<p>Keys are automatically bounded (i.e they stop checking after what you have written. So if you write "Ai", it checks for "Ai" and then stops. "Aiming" wouldn't work, thus.), unless they start or end with a non-letter character.</p>
 <p>If it is part of a placeholder, add a <strong>$</strong> at the very beginning before the first dash.</p>
 <p>If you require more complex Key matching, make sure to check the <a href="Using-Regex.html">Using Regex</a> guide.</p>
 <h3 id="lore-generation">Lore Generation</h3>
