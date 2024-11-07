@@ -28,7 +28,7 @@ over how their lore entries are inserted into the context.
 
 Seeing regex for the first time can be daunting. Many are first exposed
 to the syntax and scared off by seeing an expression like
-`/$${[^}]*}$$/` which looks like gibberish to most people.
+`/\[\{[^}]*\}\]/` which looks like gibberish to most people.
 
 However by reading the standard we can decipher this example and see how
 easy, logical and powerful the matching can be:
@@ -36,14 +36,12 @@ easy, logical and powerful the matching can be:
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/ff188113-c38b-4a8a-b06a-ba4eef6c262f)
 
 
--   The set of / to / limit the expression in this case.
--    is used to escape certain symbols (the square brackets and curly
-    braces in this example).
--   [ ] Is a block that contains a condition.
--   ^ is the NOT operator.
--   ^} thus means "NOT closing curly brace"
--   * means match everything until the next character, which is a
-    closing curly brace.
+-   The set of `/` to `/` delinate the start and end of the expression.
+-   `\` is used to escape certain symbols (the square brackets and curly braces in this example).
+-   `[ ]` Is a block that contains a condition.
+-   `^` is the NOT operator.
+-   `^}` thus means "NOT closing curly brace"
+-   `*` means "match everything until the next character", which is a closing curly brace in this example.
 
 Piecing all this information together, we figure out this expression
 will match any word inside **[{}]** brackets.
