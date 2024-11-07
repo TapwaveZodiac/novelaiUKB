@@ -41,7 +41,9 @@ Type the key and press **Enter** to register it. Keys are **case insensitive by 
 
 To make a Key case-sensitive, preface it with `/` and close it by `/`: `/Entry/`.
 
-If it is part of a placeholder, add a **\$** at the very beginning before the first dash.
+If it is part of a placeholder, add a **$** at the very beginning before the first dash.
+
+If you require more complex Key matching, make sure to check the [Using Regex](Using-Regex) guide.
 
 ### Lore Generation
 
