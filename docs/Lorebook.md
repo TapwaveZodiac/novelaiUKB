@@ -37,9 +37,9 @@ You can mass-select entries with the checkbox ☑️ to **delete** 🗑️, **ex
 
 **Keys** are all the **words that the AI will associate with this entry.** If the AI reads this word, then the connected entry will be inserted in the context. Keys are *case insensitive.*
 
-Type the key and press **Enter** to register it. Keys are **case insensitive by default.**
+Type the key and press **Enter** to register it. Keys are **case insensitive by default.**  To make a Key case-sensitive, preface it with `/` and close it by `/`: `/Entry/`.
 
-To make a Key case-sensitive, preface it with `/` and close it by `/`: `/Entry/`.
+Keys are automatically bounded (i.e they stop checking after what you have written. So if you write "Ai", it checks for "Ai" and then stops. "Aiming" wouldn't work, thus.), unless they start or end with a non-letter character.
 
 If it is part of a placeholder, add a **$** at the very beginning before the first dash.
 
