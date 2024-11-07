@@ -1333,7 +1333,7 @@
 <a href="." forTitle="Using Regex">Return to Index</a>
 <h1 class="title">Using Regex</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 28/10/2024 at 16:33">Last updated 28/10/2024 at 16:33</time></p>
+  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 17:57">Last updated 07/11/2024 at 17:57</time></p>
 </blockquote>
 </header>
 
@@ -1365,19 +1365,16 @@
 <p>A powerful regex syntax has been a feature of JavaScript since ECMAScript6 and is implemented in NovelAI for use inside lorebook keys.</p>
 <p>Search patterns can be used to create <strong>a myriad of condition types</strong> for checking when a <em>key</em> is <em>matched</em>, allowing the user finer control over how their lore entries are inserted into the context.</p>
 <h2 id="a-quick-start">A Quick Start</h2>
-<p>Seeing regex for the first time can be daunting. Many are first exposed to the syntax and scared off by seeing an expression like <code>/$${[^}]*}$$/</code> which looks like gibberish to most people.</p>
+<p>Seeing regex for the first time can be daunting. Many are first exposed to the syntax and scared off by seeing an expression like <code>/\[\{[^}]*\}\]/</code> which looks like gibberish to most people.</p>
 <p>However by reading the standard we can decipher this example and see how easy, logical and powerful the matching can be:</p>
 <p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/ff188113-c38b-4a8a-b06a-ba4eef6c262f" alt="image" /></p>
 <ul>
-<li>The set of / to / limit the expression in this case.</li>
-<li>is used to escape certain symbols (the square brackets and curly braces in this example).</li>
-<li><input type="checkbox" disabled="" />
-Is a block that contains a condition.</li>
-<li>^ is the NOT operator.</li>
-<li>^} thus means "NOT closing curly brace"</li>
-<li><ul>
-<li>means match everything until the next character, which is a closing curly brace.</li>
-</ul></li>
+<li>The set of <code>/</code> to <code>/</code> delinate the start and end of the expression.</li>
+<li><code>\</code> is used to escape certain symbols (the square brackets and curly braces in this example).</li>
+<li><code>[ ]</code> Is a block that contains a condition.</li>
+<li><code>^</code> is the NOT operator.</li>
+<li><code>^}</code> thus means "NOT closing curly brace"</li>
+<li><code>*</code> means "match everything until the next character", which is a closing curly brace in this example.</li>
 </ul>
 <p>Piecing all this information together, we figure out this expression will match any word inside <strong>[{}]</strong> brackets.</p>
 <p>It isn't recommended to start learning the syntax alone as many powerful sources and tools exist to help the journey.</p>
