@@ -79,8 +79,8 @@ Accessed by clicking the **Placement** tab. If this tab is active, you can click
 
 You may also use a `\n` (a **newline marker**), which helps isolate the entry further by separating it with a full newline.
 
-- **Token Budget:** Keeps this number of tokens in the context window for this entry. *This will overwrite other content if necessary!* It's recommended to set it a litter lower than the entry's full size.
-- **Reserved Tokens:** Preserves this many tokens for this entry. This does not need to be equal to the size of the entry itself, you can set this limit to specifically cover a part of it. If this value is **between 0 and 1 inclusive** (i.e 0.2, 0.5...) then this will be interpreted as a **percentage of the total context size**.
+- **Token Budget:** How many tokens the entry is allowed to use, if there isn't enough space to fit everything. If there is space, the entry will add itself in its entirety. It's recommended to set it a bit lower than the entry's full size. If this value is **between 0 and 1 inclusive** (i.e 0.2, 0.5...) then this will be interpreted as a **percentage of the total context size**.
+- **Reserved Tokens:** Preserves this many tokens for this entry. This does not need to be equal to the size of the entry itself, you can set this limit to specifically cover a part of it. *This will overwrite other content if necessary!* If this value is **between 0 and 1 inclusive** (i.e 0.2, 0.5...) then this will be interpreted as a **percentage of the total context size**.
 - **Insertion Order:** The higher this number, the earlier the entry is processed. Entries with a low value may be dropped to save space for those with a higher value. If you have three entries, with order *500,0 and -500*, they will be processed from highest (500) to lowest (-500).
 - **Insertion Position:** How far *from the top* (if positive) or *the bottom* (if negative) will the entry be inserted in the window. The unit is defined in **Insertion Type**. It can be a number of **tokens**, **sentences**, and **newlines**.
 
