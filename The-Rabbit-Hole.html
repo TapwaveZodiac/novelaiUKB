@@ -1333,89 +1333,153 @@
 <a href="." forTitle="The Rabbit Hole">Return to Index</a>
 <h1 class="title">The Rabbit Hole</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#setting-up-a-story">Setting Up a Story</a>
+    <li><a href="#setting-up-a-story"
+    id="toc-setting-up-a-story">Setting Up a Story</a>
     <ul>
-    <li><a href="#separating-data-and-story">Separating Data and Story</a></li>
-    <li><a href="#setting-up-biases">Setting up Biases</a></li>
+    <li><a href="#separating-data-and-story"
+    id="toc-separating-data-and-story">Separating Data and
+    Story</a></li>
+    <li><a href="#setting-up-biases" id="toc-setting-up-biases">Setting
+    up Biases</a></li>
     </ul></li>
-    <li><a href="#stage-directions">Stage Directions</a>
+    <li><a href="#stage-directions" id="toc-stage-directions">Stage
+    Directions</a>
     <ul>
-    <li><a href="#style-and-writing-type-directions">Style and Writing Type Directions</a></li>
-    <li><a href="#knowledge-domains">Knowledge Domains</a></li>
-    <li><a href="#setting-directions">Setting Directions</a></li>
-    <li><a href="#chapter-headings">Chapter Headings</a></li>
+    <li><a href="#style-and-writing-type-directions"
+    id="toc-style-and-writing-type-directions">Style and Writing Type
+    Directions</a></li>
+    <li><a href="#knowledge-domains"
+    id="toc-knowledge-domains">Knowledge Domains</a></li>
+    <li><a href="#setting-directions"
+    id="toc-setting-directions">Setting Directions</a></li>
+    <li><a href="#chapter-headings" id="toc-chapter-headings">Chapter
+    Headings</a></li>
     </ul></li>
-    <li><a href="#getting-feedback-from-the-model">Getting Feedback from the Model</a></li>
-    <li><a href="#creating-presets">Creating Presets</a>
+    <li><a href="#getting-feedback-from-the-model"
+    id="toc-getting-feedback-from-the-model">Getting Feedback from the
+    Model</a></li>
+    <li><a href="#creating-presets" id="toc-creating-presets">Creating
+    Presets</a>
     <ul>
-    <li><a href="#the-pillars-of-preset-design">The pillars of Preset Design</a></li>
+    <li><a href="#the-pillars-of-preset-design"
+    id="toc-the-pillars-of-preset-design">The pillars of Preset
+    Design</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="The Rabbit Hole">Return to Index</a>
 </nav>
 
 <main>
-<p>This page contains <strong>community-researched</strong> content and aims to provide in-depth tips to improve your experience with the AI.</p>
-<p>This is an amalgamation of general use tips for the Clio model, which should be applicable to Kayra in many cases. Consider this a vulgarization of advanced theorycrafting and less a "best practice" guide.</p>
-<p>There are no best practices than the ones you are comfortable with.</p>
+<p>This page contains <strong>community-researched</strong> content and
+aims to provide in-depth tips to improve your experience with the
+AI.</p>
+<p>This is an amalgamation of general use tips for the Clio model, which
+should be applicable to Kayra in many cases. Consider this a
+vulgarization of advanced theorycrafting and less a "best practice"
+guide.</p>
+<p>There are no best practices than the ones you are comfortable
+with.</p>
 <h2 id="setting-up-a-story">Setting Up a Story</h2>
-<p>Many people tend to remark that a model "doesn't generate like they want to" and then present a very short prompt, or a lack of biases, or a lack of proper codification of the style they desire.</p>
-<p>Before you start writing, ask yourself the following: <strong>Do I only want story text, or do I want to use additional "data" elements to support generation?</strong></p>
+<p>Many people tend to remark that a model "doesn't generate like they
+want to" and then present a very short prompt, or a lack of biases, or a
+lack of proper codification of the style they desire.</p>
+<p>Before you start writing, ask yourself the following: <strong>Do I
+only want story text, or do I want to use additional "data" elements to
+support generation?</strong></p>
 <h3 id="separating-data-and-story">Separating Data and Story</h3>
-<p>As a rule of thumb, Data (i.e Text Injections such as the <em>Lorebook, Memory and Author's Note</em>) should mix with your story text as little as possible. Interference between "Data" text and "Story" text will lead to degraded story output.</p>
-<p>The first element to consider is if you are using the <strong>Lorebook</strong> or not. This will decide how your <strong>Memory</strong> will look like.</p>
-<p>If you <em>are</em> using lorebook entries, then the <strong>default insertion settings</strong> will put <strong>Memory</strong> <em>above</em> all <strong>Lorebook</strong> entries. In that case, your <strong>Memory</strong> should look like this:</p>
+<p>As a rule of thumb, Data (i.e Text Injections such as the
+<em>Lorebook, Memory and Author's Note</em>) should mix with your story
+text as little as possible. Interference between "Data" text and "Story"
+text will lead to degraded story output.</p>
+<p>The first element to consider is if you are using the
+<strong>Lorebook</strong> or not. This will decide how your
+<strong>Memory</strong> will look like.</p>
+<p>If you <em>are</em> using lorebook entries, then the <strong>default
+insertion settings</strong> will put <strong>Memory</strong>
+<em>above</em> all <strong>Lorebook</strong> entries. In that case, your
+<strong>Memory</strong> should look like this:</p>
 <hr />
 <pre><code>[ Author: Blah mc Blashson; Title: Heckin&#39; Creativity; Tags: sicknasty tutti-frutti prose; Genre: Epic ]
- ***
-</code></pre>
+ ***</code></pre>
 <hr />
-<p>If you are writing something that isn't prose, (such as a poem, or a stat block, etc), you can substitute the <strong>Dinkus (<code>***</code>)</strong> with a <strong>Separator (----)</strong>.</p>
-<p>If you aren't using the lorebook, you can simply put the ATTG block in memory <em>without a dinkus</em>.</p>
-<p>Alternatively, by setting all your lorebook entries' insertion position to 0, and order under 400, you'll make them appear before Memory, allowing you to use Memory as the "footer" of the Data block. This is a practice I recommend but not one that is necessary per se.</p>
+<p>If you are writing something that isn't prose, (such as a poem, or a
+stat block, etc), you can substitute the <strong>Dinkus
+(<code>***</code>)</strong> with a <strong>Separator
+(----)</strong>.</p>
+<p>If you aren't using the lorebook, you can simply put the ATTG block
+in memory <em>without a dinkus</em>.</p>
+<p>Alternatively, by setting all your lorebook entries' insertion
+position to 0, and order under 400, you'll make them appear before
+Memory, allowing you to use Memory as the "footer" of the Data block.
+This is a practice I recommend but not one that is necessary per se.</p>
 <h3 id="setting-up-biases">Setting up Biases</h3>
-<p>Generally, you want to keep your biases minimal, and use them for very precise changes to things that you cannot control easily. <strong>It is always better to lead the AI by example in order to preserve its creativity</strong>. However, biases can be useful for prompting the AI until it "gets" the style you desire.</p>
-<p>It's easy to overdo biases and damage the model's creativity. What you should focus on are mostly punctuation symbols.</p>
+<p>Generally, you want to keep your biases minimal, and use them for
+very precise changes to things that you cannot control easily.
+<strong>It is always better to lead the AI by example in order to
+preserve its creativity</strong>. However, biases can be useful for
+prompting the AI until it "gets" the style you desire.</p>
+<p>It's easy to overdo biases and damage the model's creativity. What
+you should focus on are mostly punctuation symbols.</p>
 <h4 id="n">\n</h4>
-<p>Backdash-n is the "newline" token. Lightly downbiasing it is usually the best way of forcing the model to output longer paragraphs early on. Afterwards, you can turn it off.</p>
-<h4 id="-------endoftext">***, ----, ⁂, <code>&lt;endoftext&gt;</code></h4>
-<p>Downbiasing those is generally not needed. If those show up regularly, there is a problem with your preset, or your prompt is too short.</p>
+<p>Backdash-n is the "newline" token. Lightly downbiasing it is usually
+the best way of forcing the model to output longer paragraphs early on.
+Afterwards, you can turn it off.</p>
+<h4 id="-------endoftext">***, ----, ⁂,
+<code>&lt;endoftext&gt;</code></h4>
+<p>Downbiasing those is generally not needed. If those show up
+regularly, there is a problem with your preset, or your prompt is too
+short.</p>
 <h4 id="space">(space)"</h4>
-<p>Most dialogue begins with a space-quote token. Downbiasing it decreases the likelihood of dialogue appearing. Upbiasing it will lead to more rapidfire dialogue.</p>
+<p>Most dialogue begins with a space-quote token. Downbiasing it
+decreases the likelihood of dialogue appearing. Upbiasing it will lead
+to more rapidfire dialogue.</p>
 <h2 id="stage-directions">Stage Directions</h2>
-<p>Clio and Kayra are smart enough to recognize punctual <strong>"Stage Directions"</strong> much more than Sigurd, Euterpe and Krake could in the past. Nonetheless, those should have a fixed position in the text, and it's better you do not use the Author's Note for them.</p>
-<p>You can put those in your memory when starting as well. Keep in mind that if the Direction in your <strong>Memory</strong> and one in your <strong>Story Text</strong> are conflicting, this can cause issues. Make sure you remove Directions that are not relevant anymore.</p>
-<h3 id="style-and-writing-type-directions">Style and Writing Type Directions</h3>
-<p>Shifting the style or type of document that will be generated can be achieved using the following:</p>
+<p>Clio and Kayra are smart enough to recognize punctual <strong>"Stage
+Directions"</strong> much more than Sigurd, Euterpe and Krake could in
+the past. Nonetheless, those should have a fixed position in the text,
+and it's better you do not use the Author's Note for them.</p>
+<p>You can put those in your memory when starting as well. Keep in mind
+that if the Direction in your <strong>Memory</strong> and one in your
+<strong>Story Text</strong> are conflicting, this can cause issues. Make
+sure you remove Directions that are not relevant anymore.</p>
+<h3 id="style-and-writing-type-directions">Style and Writing Type
+Directions</h3>
+<p>Shifting the style or type of document that will be generated can be
+achieved using the following:</p>
 <hr />
 <p><code>[ style: poem ]</code></p>
 <hr />
-<p>Add a linebreak afterwards, and the writing should shift to the one specified. Keep in mind that this is an <em>emergent feature</em>: Not all styles might work, and some that were not trained for can work for some reason. Here are some that were suggested:</p>
+<p>Add a linebreak afterwards, and the writing should shift to the one
+specified. Keep in mind that this is an <em>emergent feature</em>: Not
+all styles might work, and some that were not trained for can work for
+some reason. Here are some that were suggested:</p>
 <hr />
-<pre><code>text adventure, chat, lyrics, prose, blog post, actual play, review, email, creepypasta
-</code></pre>
-<pre><code>first person, second person, third person
-</code></pre>
-<pre><code>simple, archaic, SFW
-</code></pre>
-<p>It is suggested to put Style direction in the <strong>Author's note.</strong></p>
+<pre><code>text adventure, chat, lyrics, prose, blog post, actual play, review, email, creepypasta</code></pre>
+<pre><code>first person, second person, third person</code></pre>
+<pre><code>simple, archaic, SFW</code></pre>
+<p>It is suggested to put Style direction in the <strong>Author's
+note.</strong></p>
 <hr />
 <h3 id="knowledge-domains">Knowledge Domains</h3>
-<p>You can tell the model to focus on specific subjects by using the Knowledge element:</p>
+<p>You can tell the model to focus on specific subjects by using the
+Knowledge element:</p>
 <hr />
 <p><code>[ knowledge: 90s Computer RPGs ]</code></p>
 <hr />
-<p>It is suggested to put Knowledge elements in the <strong>Memory</strong>.</p>
+<p>It is suggested to put Knowledge elements in the
+<strong>Memory</strong>.</p>
 <hr />
 <h3 id="setting-directions">Setting Directions</h3>
-<p>Changing the current location, time, or POV can be done using a stage direction. Here are some examples:</p>
+<p>Changing the current location, time, or POV can be done using a stage
+direction. Here are some examples:</p>
 <p><strong>Time</strong></p>
 <hr />
 <p><code>[ 1990 ], [ 7am ], [ 3 hours later ]</code></p>
@@ -1429,61 +1493,112 @@
 <p><code>[ Tom ], [ Jack's POV ], [ Jenny's Thoughts ]</code></p>
 <hr />
 <h3 id="chapter-headings">Chapter Headings</h3>
-<p>Chapter headings can be used as stage instructions to steer generation according to the underlying concepts of the title.</p>
+<p>Chapter headings can be used as stage instructions to steer
+generation according to the underlying concepts of the title.</p>
 <hr />
 <p><code>[ The Ambush ]</code></p>
 <hr />
-<h2 id="getting-feedback-from-the-model">Getting Feedback from the Model</h2>
-<p>You can request different manners of feedback from the AI by inputting a <strong>Dinkus</strong> and specific headers.</p>
-<p>For example, you can request a digest of what happened by doing the following:</p>
+<h2 id="getting-feedback-from-the-model">Getting Feedback from the
+Model</h2>
+<p>You can request different manners of feedback from the AI by
+inputting a <strong>Dinkus</strong> and specific headers.</p>
+<p>For example, you can request a digest of what happened by doing the
+following:</p>
 <hr />
 <pre><code>***
-The story so far:
-</code></pre>
+The story so far:</code></pre>
 <hr />
-<p>You can also do the reverse, anticipating future events this with:</p>
+<p>You can also do the reverse, anticipating future events this
+with:</p>
 <pre><code>***
-Summary: (Summary without linebreaks)
-</code></pre>
-<p>You can also request musings from the model about what the text is about, or even para-textual notes, by inputting the following at the end of your story text:</p>
+Summary: (Summary without linebreaks)</code></pre>
+<p>You can also request musings from the model about what the text is
+about, or even para-textual notes, by inputting the following at the end
+of your story text:</p>
 <pre><code>Notes:
--
-</code></pre>
+-</code></pre>
 <h1 id="creating-presets">Creating Presets</h1>
-<p>Creating a preset requires use of the Token Probability viewer (the 🧠 button), as this will let you see the effects of your settings).</p>
+<p>Creating a preset requires use of the Token Probability viewer (the
+🧠 button), as this will let you see the effects of your settings).</p>
 <h2 id="the-pillars-of-preset-design">The pillars of Preset Design</h2>
 <p>Presets are founded on three core principles:</p>
 <ul>
-<li><strong>Openness</strong>, or "how many tokens are considered at a time",</li>
-<li><strong>Confidence</strong>, or "how top-heavy or normalized the probabilities are",</li>
-<li><strong>Constriction</strong>, or "how much you negatively influence probabilities through penalties and such".</li>
+<li><strong>Openness</strong>, or "how many tokens are considered at a
+time",</li>
+<li><strong>Confidence</strong>, or "how top-heavy or normalized the
+probabilities are",</li>
+<li><strong>Constriction</strong>, or "how much you negatively influence
+probabilities through penalties and such".</li>
 </ul>
-<p>After that, you have four <strong>qualities</strong> that you seek to achieve through this preset:</p>
+<p>After that, you have four <strong>qualities</strong> that you seek to
+achieve through this preset:</p>
 <ul>
-<li><strong>Complexity / Color</strong>, or "how varied and interesting the vocabulary and grammatical structures used are",</li>
-<li><strong>Consistency</strong>, or "does it actually respect what you write, how well, and is it written in a way that makes any sense",</li>
-<li><strong>Creativity</strong>, or "does it write anything original and pleasant to read".</li>
+<li><strong>Complexity / Color</strong>, or "how varied and interesting
+the vocabulary and grammatical structures used are",</li>
+<li><strong>Consistency</strong>, or "does it actually respect what you
+write, how well, and is it written in a way that makes any sense",</li>
+<li><strong>Creativity</strong>, or "does it write anything original and
+pleasant to read".</li>
 </ul>
-<p>You <em>absolutely cannot have all at once</em>. Your preset will seek to achieve a balance of those qualities in a way that is pleasing to you and the preset's users, but you will have to focus on something and make compromises.</p>
-<p>Fundamentally, all principles are contradictory to at least one quality. It's up to you to figure out how to arrange them in a way that leads to a good result.</p>
+<p>You <em>absolutely cannot have all at once</em>. Your preset will
+seek to achieve a balance of those qualities in a way that is pleasing
+to you and the preset's users, but you will have to focus on something
+and make compromises.</p>
+<p>Fundamentally, all principles are contradictory to at least one
+quality. It's up to you to figure out how to arrange them in a way that
+leads to a good result.</p>
 <ul>
-<li><p><strong>Openness</strong> leads to <strong>Complexity and Creativity</strong> but takes away from <strong>Consistency</strong>.</p></li>
-<li><p><strong>Confidence</strong> leads to <strong>Consistency</strong>, but takes away from <strong>Creativity</strong> (and sometimes <strong>Complexity</strong> as well.)</p></li>
-<li><p><strong>Constriction</strong> can take OR add to <em>any</em> of the qualities depending on how strong it is.</p></li>
-<li><p><strong>Mirostat</strong> and <strong>CFG</strong> have an extremely strong and distinctive effect. It is recommended to experiment with other sampling types first before using them. If you wish to use either, make sure that any other sampling is minimal (TFS and Typical is recommended).</p></li>
+<li><p><strong>Openness</strong> leads to <strong>Complexity and
+Creativity</strong> but takes away from
+<strong>Consistency</strong>.</p></li>
+<li><p><strong>Confidence</strong> leads to
+<strong>Consistency</strong>, but takes away from
+<strong>Creativity</strong> (and sometimes <strong>Complexity</strong>
+as well.)</p></li>
+<li><p><strong>Constriction</strong> can take OR add to <em>any</em> of
+the qualities depending on how strong it is.</p></li>
+<li><p><strong>Mirostat</strong> and <strong>CFG</strong> have an
+extremely strong and distinctive effect. It is recommended to experiment
+with other sampling types first before using them. If you wish to use
+either, make sure that any other sampling is minimal (TFS and Typical is
+recommended).</p></li>
 </ul>
-<p>To arrange a preset, there are three phases. <strong>Sampling</strong>, <strong>Temperature</strong> and <strong>Penalties</strong>. CFG is not considered because CFG is overly powerful and kind of does its own job so strongly that it heavily reduces what a preset does, but the philosophy is the same.</p>
-<p><strong>Samplers</strong> can be easily understood as the following:</p>
+<p>To arrange a preset, there are three phases.
+<strong>Sampling</strong>, <strong>Temperature</strong> and
+<strong>Penalties</strong>. CFG is not considered because CFG is overly
+powerful and kind of does its own job so strongly that it heavily
+reduces what a preset does, but the philosophy is the same.</p>
+<p><strong>Samplers</strong> can be easily understood as the
+following:</p>
 <ul>
-<li>TOPK: Checks every token in order of probability. Once Token N°TOPK is reached, everything after is removed. Probabilities are then recaculated to 100% across the new, smaller pool.</li>
-<li>NUCL: Same as TOPK but it only checks for probabilities. Starts at the most likely, then adds ups probabilities until NUCL% is reached. Probabilities are then recaculated to 100% across the new, smaller pool.</li>
-<li>TOPA: Like TOPK but it is more flexible. If The Top token is less confident, then the pool is bigger. If it is very confident, then the pool is smaller. Basically, TOPA reinforces confidence if it already exists.</li>
-<li>TFS: Cuts off the weakest tokens. The higher it is set to, the less it cuts off.</li>
-<li>TYP: Reduces overconfidence. Checks for deviation from the norm and increases unlikely tokens. The higher it is set to, the wider the pool will be.</li>
+<li>TOPK: Checks every token in order of probability. Once Token N°TOPK
+is reached, everything after is removed. Probabilities are then
+recaculated to 100% across the new, smaller pool.</li>
+<li>NUCL: Same as TOPK but it only checks for probabilities. Starts at
+the most likely, then adds ups probabilities until NUCL% is reached.
+Probabilities are then recaculated to 100% across the new, smaller
+pool.</li>
+<li>TOPA: Like TOPK but it is more flexible. If The Top token is less
+confident, then the pool is bigger. If it is very confident, then the
+pool is smaller. Basically, TOPA reinforces confidence if it already
+exists.</li>
+<li>TFS: Cuts off the weakest tokens. The higher it is set to, the less
+it cuts off.</li>
+<li>TYP: Reduces overconfidence. Checks for deviation from the norm and
+increases unlikely tokens. The higher it is set to, the wider the pool
+will be.</li>
 </ul>
 <p>The more samplers you stack, the less tokens you'll have.</p>
-<p><strong>Randomness</strong> takes the pool and then <strong>decreases confidence</strong> if high, and <strong>increases confidence</strong> if low. You can use this to select a small pool but make it less confident, and thus "feel" more colorful by putting randomness AFTER sampling.</p>
-<p><strong>Penalties</strong> are what the Repetition Penalties do. Strong penalties actually <strong>force</strong> creativity but it creates inconsistency in structure, style, and content. Weak penalties can cause the writing to be samey because repetition reinforces repetition.</p>
+<p><strong>Randomness</strong> takes the pool and then <strong>decreases
+confidence</strong> if high, and <strong>increases confidence</strong>
+if low. You can use this to select a small pool but make it less
+confident, and thus "feel" more colorful by putting randomness AFTER
+sampling.</p>
+<p><strong>Penalties</strong> are what the Repetition Penalties do.
+Strong penalties actually <strong>force</strong> creativity but it
+creates inconsistency in structure, style, and content. Weak penalties
+can cause the writing to be samey because repetition reinforces
+repetition.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

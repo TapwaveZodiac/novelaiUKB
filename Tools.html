@@ -1333,17 +1333,20 @@
 <a href="." forTitle="Tools">Return to Index</a>
 <h1 class="title">Tools</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#anlas">Anlas</a></li>
-    <li><a href="#module-training">Module Training</a></li>
-    <li><a href="#tokenizer">Tokenizer</a></li>
-    <li><a href="#token-probability-viewer">Token Probability Viewer</a></li>
+    <li><a href="#anlas" id="toc-anlas">Anlas</a></li>
+    <li><a href="#module-training" id="toc-module-training">Module
+    Training</a></li>
+    <li><a href="#tokenizer" id="toc-tokenizer">Tokenizer</a></li>
+    <li><a href="#token-probability-viewer"
+    id="toc-token-probability-viewer">Token Probability Viewer</a></li>
     </ul>
   <a href="." forTitle="Tools">Return to Index</a>
 </nav>
@@ -1351,33 +1354,83 @@
 <main>
 <p>This page lists specific tools provided by NovelAI.</p>
 <h1 id="anlas">Anlas</h1>
-<p>All tools that create content, such as images, or modules, require <strong>Anlas</strong>, NovelAI's generative currency. The term comes from the Turkish word for "Understanding".</p>
-<p>You get a <strong>renewable stipend</strong> of Anlas per subscription period. This is <strong>not</strong> a fixed amount per month, instead, your amount of "<strong>Free Anlas</strong>" is refilled to 1.000(Tablet, Scroll) or 10.000(Opus) every month. Any <strong>Anlas</strong> not spent is lost, so make sure you use them every month.</p>
-<p><strong>Anlas</strong> that are specifically bought directly never expire and remain forever until used.</p>
+<p>All tools that create content, such as images, or modules, require
+<strong>Anlas</strong>, NovelAI's generative currency. The term comes
+from the Turkish word for "Understanding".</p>
+<p>You get a <strong>renewable stipend</strong> of Anlas per
+subscription period. This is <strong>not</strong> a fixed amount per
+month, instead, your amount of "<strong>Free Anlas</strong>" is refilled
+to 1.000(Tablet, Scroll) or 10.000(Opus) every month. Any
+<strong>Anlas</strong> not spent is lost, so make sure you use them
+every month.</p>
+<p><strong>Anlas</strong> that are specifically bought directly never
+expire and remain forever until used.</p>
 <h1 id="module-training">Module Training</h1>
-<p><strong>Consult <a href="Datasetting-for-AI-Modules.html">Datasetting for AI Modules</a> for more information on how to prepare files for Module training.</strong></p>
-<p><strong>AI Module training</strong> can be accessed from the <em>Story Library</em>, then clicking on the Goose button (<strong>🦆</strong>), then <strong>Module Training</strong>.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/62e5e81f-7189-45dd-bd59-cef3671cb107" alt="image" /></p>
-<p>The left part of the interface contains the <strong>dataset</strong>. Files supported are <em>raw text <strong>only</strong>, encoded in <strong>UTF-8</strong>.</em></p>
-<p>Upload all the files necessary for your module with the <strong>Select File</strong> button. Give your module a <strong>Name and Description</strong> on the right-hand side.</p>
-<p>Choose the model that your module is for. <strong>Modules for Sigurd are not compatible with Euterpe!</strong></p>
-<p>The <strong>Total # of steps needed to train:</strong> field will display the estimate number of steps for <em>100% coverage of all text files.</em> It is not necessary to set the number of training steps to that number. A good soft limit is <strong>~3000 steps.</strong> You may also overfit your module by using more than the estimate.</p>
-<p>This can have problematic or useful effects depending on what you seek to achieve.</p>
-<p>Select the number of steps using the slider, then click <strong>Train!</strong> to start the training. It will take several minutes before the module is produced. Once done, you can save it and import it like any other story, scenario or generation set.</p>
+<p><strong>Consult <a href="Datasetting-for-AI-Modules.html">Datasetting
+for AI Modules</a> for more information on how to prepare files for
+Module training.</strong></p>
+<p><strong>AI Module training</strong> can be accessed from the
+<em>Story Library</em>, then clicking on the Goose button
+(<strong>🦆</strong>), then <strong>Module Training</strong>.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/62e5e81f-7189-45dd-bd59-cef3671cb107"
+alt="image" /></p>
+<p>The left part of the interface contains the <strong>dataset</strong>.
+Files supported are <em>raw text <strong>only</strong>, encoded in
+<strong>UTF-8</strong>.</em></p>
+<p>Upload all the files necessary for your module with the
+<strong>Select File</strong> button. Give your module a <strong>Name and
+Description</strong> on the right-hand side.</p>
+<p>Choose the model that your module is for. <strong>Modules for Sigurd
+are not compatible with Euterpe!</strong></p>
+<p>The <strong>Total # of steps needed to train:</strong> field will
+display the estimate number of steps for <em>100% coverage of all text
+files.</em> It is not necessary to set the number of training steps to
+that number. A good soft limit is <strong>~3000 steps.</strong> You may
+also overfit your module by using more than the estimate.</p>
+<p>This can have problematic or useful effects depending on what you
+seek to achieve.</p>
+<p>Select the number of steps using the slider, then click
+<strong>Train!</strong> to start the training. It will take several
+minutes before the module is produced. Once done, you can save it and
+import it like any other story, scenario or generation set.</p>
 <hr />
 <h1 id="tokenizer">Tokenizer</h1>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e9fab4cc-4a9c-4c51-ad3f-d1de1d4ee9c9" alt="image" /></p>
-<p>The <em>Tokenizer</em> is a feature that allows you to check how your text is split into tokens before being sent to the AI. It can be accessed by pressing ALT+T or clicking on the Goose button (<strong>🦆</strong>), then then "Tokenizer".</p>
-<p>The <strong>Text</strong> tab will highlight each token in sequence, using a different color to make it more visible.</p>
-<p><strong>Token IDs</strong> will display the Token Identification Code that the AI uses. This is very useful for banning specific tokens (without any space addition and case insensitivity) using <strong>Ban Token ID</strong>.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e9fab4cc-4a9c-4c51-ad3f-d1de1d4ee9c9"
+alt="image" /></p>
+<p>The <em>Tokenizer</em> is a feature that allows you to check how your
+text is split into tokens before being sent to the AI. It can be
+accessed by pressing ALT+T or clicking on the Goose button
+(<strong>🦆</strong>), then then "Tokenizer".</p>
+<p>The <strong>Text</strong> tab will highlight each token in sequence,
+using a different color to make it more visible.</p>
+<p><strong>Token IDs</strong> will display the Token Identification Code
+that the AI uses. This is very useful for banning specific tokens
+(without any space addition and case insensitivity) using <strong>Ban
+Token ID</strong>.</p>
 <hr />
 <h1 id="token-probability-viewer">Token Probability Viewer</h1>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/3ed3c18a-65e4-49c0-bd33-e54963f8763f" alt="image" /></p>
-<p><strong>To enable this feature, you must enable it in the AI Settings panel of the Account Settings window. This will create a 🧠 button, which lets you access the Probability Viewer.</strong></p>
-<p>The <strong>Token Probability Viewer</strong> is a powerful diagnosis tool that ,allows you to see what choices the AI considers before committing to a generation. This is hugely useful for fine-tuning generation settings, and checking why the AI keeps outputting the same response.</p>
-<p>The left side of the interface displays the response text. You can ,switch between displaying the text proper, or the Token IDs. Cooler ,colors represent tokens with a low likelihood to appear, while hotter ,colors represent tokens highly likely to appear.</p>
-<p>If you click a token, the right panel will update to show you tokens that were considered by the AI, before the generation settings, biases, ,bans and modules and after them.</p>
-<p>Only the 10 most likely tokens are shown. The remainder is grouped up as a whole entity to save on processing time.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/3ed3c18a-65e4-49c0-bd33-e54963f8763f"
+alt="image" /></p>
+<p><strong>To enable this feature, you must enable it in the AI Settings
+panel of the Account Settings window. This will create a 🧠 button,
+which lets you access the Probability Viewer.</strong></p>
+<p>The <strong>Token Probability Viewer</strong> is a powerful diagnosis
+tool that ,allows you to see what choices the AI considers before
+committing to a generation. This is hugely useful for fine-tuning
+generation settings, and checking why the AI keeps outputting the same
+response.</p>
+<p>The left side of the interface displays the response text. You can
+,switch between displaying the text proper, or the Token IDs. Cooler
+,colors represent tokens with a low likelihood to appear, while hotter
+,colors represent tokens highly likely to appear.</p>
+<p>If you click a token, the right panel will update to show you tokens
+that were considered by the AI, before the generation settings, biases,
+,bans and modules and after them.</p>
+<p>Only the 10 most likely tokens are shown. The remainder is grouped up
+as a whole entity to save on processing time.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

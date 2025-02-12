@@ -1333,150 +1333,378 @@
 <a href="." forTitle="Generation Settings">Return to Index</a>
 <h1 class="title">Generation Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#generation-settings--presets">Generation Settings &amp; Presets</a>
+    <li><a href="#generation-settings--presets"
+    id="toc-generation-settings--presets">Generation Settings &amp;
+    Presets</a>
     <ul>
-    <li><a href="#generation-presets">Generation Presets</a></li>
-    <li><a href="#generation-options">Generation Options</a>
+    <li><a href="#generation-presets"
+    id="toc-generation-presets">Generation Presets</a></li>
+    <li><a href="#generation-options"
+    id="toc-generation-options">Generation Options</a>
     <ul>
-    <li><a href="#randomness-temperature">Randomness (Temperature)</a></li>
-    <li><a href="#output-length">Output Length</a></li>
-    <li><a href="#repetition-penalty">Repetition Penalty</a></li>
+    <li><a href="#randomness-temperature"
+    id="toc-randomness-temperature">Randomness (Temperature)</a></li>
+    <li><a href="#output-length" id="toc-output-length">Output
+    Length</a></li>
+    <li><a href="#repetition-penalty"
+    id="toc-repetition-penalty">Repetition Penalty</a></li>
     </ul></li>
-    <li><a href="#sampling">Sampling</a>
+    <li><a href="#sampling" id="toc-sampling">Sampling</a>
     <ul>
-    <li><a href="#top-k-sampling">Top-K Sampling</a></li>
-    <li><a href="#nucleus-sampling">Nucleus Sampling</a></li>
-    <li><a href="#tail-free-sampling">Tail-Free Sampling</a></li>
-    <li><a href="#top-a-sampling">Top-A Sampling</a></li>
-    <li><a href="#min-p-sampling">Min-P Sampling</a></li>
-    <li><a href="#top-g-sampling">Top-G Sampling</a></li>
-    <li><a href="#typical-sampling">Typical Sampling</a></li>
-    <li><a href="#cfg-scale">CFG Scale</a></li>
-    <li><a href="#mirostat">Mirostat</a></li>
-    <li><a href="#unified-sampling">Unified Sampling</a></li>
-    <li><a href="#change-settings-order">Change Settings Order</a></li>
+    <li><a href="#top-k-sampling" id="toc-top-k-sampling">Top-K
+    Sampling</a></li>
+    <li><a href="#nucleus-sampling" id="toc-nucleus-sampling">Nucleus
+    Sampling</a></li>
+    <li><a href="#tail-free-sampling"
+    id="toc-tail-free-sampling">Tail-Free Sampling</a></li>
+    <li><a href="#top-a-sampling" id="toc-top-a-sampling">Top-A
+    Sampling</a></li>
+    <li><a href="#min-p-sampling" id="toc-min-p-sampling">Min-P
+    Sampling</a></li>
+    <li><a href="#top-g-sampling" id="toc-top-g-sampling">Top-G
+    Sampling</a></li>
+    <li><a href="#typical-sampling" id="toc-typical-sampling">Typical
+    Sampling</a></li>
+    <li><a href="#cfg-scale" id="toc-cfg-scale">CFG Scale</a></li>
+    <li><a href="#mirostat" id="toc-mirostat">Mirostat</a></li>
+    <li><a href="#unified-sampling" id="toc-unified-sampling">Unified
+    Sampling</a></li>
+    <li><a href="#change-settings-order"
+    id="toc-change-settings-order">Change Settings Order</a></li>
     </ul></li>
-    <li><a href="#repetition-penalty-1">Repetition Penalty</a>
+    <li><a href="#repetition-penalty-1"
+    id="toc-repetition-penalty-1">Repetition Penalty</a>
     <ul>
-    <li><a href="#repetition-whitelist">Repetition Whitelist</a></li>
-    <li><a href="#repetition-penalty-range">Repetition Penalty Range</a></li>
-    <li><a href="#repetition-penalty-slope">Repetition Penalty Slope</a></li>
+    <li><a href="#repetition-whitelist"
+    id="toc-repetition-whitelist">Repetition Whitelist</a></li>
+    <li><a href="#repetition-penalty-range"
+    id="toc-repetition-penalty-range">Repetition Penalty Range</a></li>
+    <li><a href="#repetition-penalty-slope"
+    id="toc-repetition-penalty-slope">Repetition Penalty Slope</a></li>
     </ul></li>
-    <li><a href="#phrase-repetition-penalty">Phrase Repetition Penalty</a></li>
-    <li><a href="#alternative-repetition-penalty">Alternative Repetition Penalty</a></li>
+    <li><a href="#phrase-repetition-penalty"
+    id="toc-phrase-repetition-penalty">Phrase Repetition
+    Penalty</a></li>
+    <li><a href="#alternative-repetition-penalty"
+    id="toc-alternative-repetition-penalty">Alternative Repetition
+    Penalty</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Generation Settings">Return to Index</a>
 </nav>
 
 <main>
-<h1 id="generation-settings--presets">Generation Settings &amp; Presets</h1>
-<p>To edit a preset, click "Edit Preset" in the <strong>Story</strong> menu.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1f5e8530-bd28-4144-9de9-d3b883800660" alt="image" /></p>
+<h1 id="generation-settings--presets">Generation Settings &amp;
+Presets</h1>
+<p>To edit a preset, click "Edit Preset" in the <strong>Story</strong>
+menu.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/1f5e8530-bd28-4144-9de9-d3b883800660"
+alt="image" /></p>
 <h2 id="generation-presets">Generation Presets</h2>
-<p>In order to make selecting the AI's various generation settings easier, NovelAI offers several generation presets.</p>
+<p>In order to make selecting the AI's various generation settings
+easier, NovelAI offers several generation presets.</p>
 <p>Settings are divided into three categories:</p>
 <ul>
-<li><strong>User</strong>: Settings you have defined and saved, or imported.</li>
-<li><strong>Scenario</strong>: Settings that came included in the scenario you imported.</li>
+<li><strong>User</strong>: Settings you have defined and saved, or
+imported.</li>
+<li><strong>Scenario</strong>: Settings that came included in the
+scenario you imported.</li>
 <li><strong>Defaults</strong>: Settings designed by NAI testers.</li>
 </ul>
-<p>You can <strong>Import</strong> a .preset file, or export the currently selected custom preset in the same format.</p>
-<p>Use the ➕ button to create a new preset based on the current generation settings.</p>
+<p>You can <strong>Import</strong> a .preset file, or export the
+currently selected custom preset in the same format.</p>
+<p>Use the ➕ button to create a new preset based on the current
+generation settings.</p>
 <p>Use the ✍ button to edit the preset's name.</p>
 <hr />
 <h2 id="generation-options">Generation Options</h2>
-<p>These settings allow you to adjust the generation settings to your liking. These get <strong>really technical</strong> so only explore them if you like messing with the finer things. Otherwise, leave them to their defaults; they're usually good as is.</p>
-<p>Most of them deal with the <strong>Pool of possible tokens.</strong> To understand what this means, look at these examples:</p>
-<p><code>Stepping outside, I looked</code> could result in <code>up, down, left, right, across, around, fancy</code> and so on.</p>
-<p><code>Stepping outside, I looked up at the sun, which was burning</code> would result in fewer potential matches, such as <code>hot, bright, with</code>.</p>
+<p>These settings allow you to adjust the generation settings to your
+liking. These get <strong>really technical</strong> so only explore them
+if you like messing with the finer things. Otherwise, leave them to
+their defaults; they're usually good as is.</p>
+<p>Most of them deal with the <strong>Pool of possible tokens.</strong>
+To understand what this means, look at these examples:</p>
+<p><code>Stepping outside, I looked</code> could result in
+<code>up, down, left, right, across, around, fancy</code> and so on.</p>
+<p><code>Stepping outside, I looked up at the sun, which was burning</code>
+would result in fewer potential matches, such as
+<code>hot, bright, with</code>.</p>
 <h3 id="randomness-temperature">Randomness (Temperature)</h3>
-<p>Imagine the next token for a generation comes out of a bag. You shake the bag and pick one. Generally, it's easier to pick out bigger things from the bag, right? If you increase the randomness, then the tokens's probabilities become more and more averaged out, think of it as all the pieces growing or shrinking to be closer to the same size, making it more random.</p>
-<p>True to its name, increasing the Randomness setting (or "Temperature") increases the <strong>probability of less-expected tokens during text generation</strong>. This works by dividing <a href="https://en.wikipedia.org/wiki/Logit"><strong>logits</strong></a> by the Temperature before sampling. In plain English, this means the next part of the sentence will be more unexpected, as elements that have less of a chance of appearing are granted a greater chance of being used.</p>
+<p>Imagine the next token for a generation comes out of a bag. You shake
+the bag and pick one. Generally, it's easier to pick out bigger things
+from the bag, right? If you increase the randomness, then the tokens's
+probabilities become more and more averaged out, think of it as all the
+pieces growing or shrinking to be closer to the same size, making it
+more random.</p>
+<p>True to its name, increasing the Randomness setting (or
+"Temperature") increases the <strong>probability of less-expected tokens
+during text generation</strong>. This works by dividing <a
+href="https://en.wikipedia.org/wiki/Logit"><strong>logits</strong></a>
+by the Temperature before sampling. In plain English, this means the
+next part of the sentence will be more unexpected, as elements that have
+less of a chance of appearing are granted a greater chance of being
+used.</p>
 <h3 id="output-length">Output Length</h3>
-<p>This setting will adjust the <strong>approximate number of characters returned at once by the AI</strong> in each Generation. It shows the amount of tokens that will be returned multiplied by four to show the average amount of characters. The amount of tokens will not always be exact, but will never fall under this number. Up to 20 additional tokens will be generated to attempt to reach the end of a sentence before the generation ends.</p>
-<p>As a note, Output length is part of the Context memory. The longer your output length, the less memory you have.</p>
+<p>This setting will adjust the <strong>approximate number of characters
+returned at once by the AI</strong> in each Generation. It shows the
+amount of tokens that will be returned multiplied by four to show the
+average amount of characters. The amount of tokens will not always be
+exact, but will never fall under this number. Up to 20 additional tokens
+will be generated to attempt to reach the end of a sentence before the
+generation ends.</p>
+<p>As a note, Output length is part of the Context memory. The longer
+your output length, the less memory you have.</p>
 <h3 id="repetition-penalty">Repetition Penalty</h3>
-<p>Going back to the bag metaphor, Repetition Penalty checks for tokens that appear too often and makes them less likely.</p>
-<p>Because text generation is based on patterns, repetition is a constant concern. The Repetition Penalty introduces an artificial dampener to the probability of a token depending on the frequency of its appearance in the current context.</p>
-<p>As such, increasing this value makes a word <strong>less likely to appear for each time it shows up in the text</strong>. Do take note that this can get really awkward with words that are recurrent in the current context, such as names, or objects being discussed. With high Repetition Penalty, the AI may find itself unable to use a word repeatedly, and will need to substitute it with another which may be inappropriate.</p>
+<p>Going back to the bag metaphor, Repetition Penalty checks for tokens
+that appear too often and makes them less likely.</p>
+<p>Because text generation is based on patterns, repetition is a
+constant concern. The Repetition Penalty introduces an artificial
+dampener to the probability of a token depending on the frequency of its
+appearance in the current context.</p>
+<p>As such, increasing this value makes a word <strong>less likely to
+appear for each time it shows up in the text</strong>. Do take note that
+this can get really awkward with words that are recurrent in the current
+context, such as names, or objects being discussed. With high Repetition
+Penalty, the AI may find itself unable to use a word repeatedly, and
+will need to substitute it with another which may be inappropriate.</p>
 <hr />
 <h2 id="sampling">Sampling</h2>
-<p>Again with the bag metaphor, Sampling decides what tokens are in the bag to begin with.</p>
+<p>Again with the bag metaphor, Sampling decides what tokens are in the
+bag to begin with.</p>
 <h3 id="top-k-sampling">Top-K Sampling</h3>
-<p>This setting affects the <strong>pool of tokens the AI will pick from</strong> by only selecting the <strong>most likely tokens</strong>, then redistributing the [<strong>probability</strong>] (<a href="https://en.wikipedia.org/wiki/Probability">https://en.wikipedia.org/wiki/Probability</a>) for those that remain. The pool will only contain the <em>K</em> most likely tokens. If the setting is set to 10, then your pool will contain the 10 most likely tokens. (Top-10 Sampling), then redistribute 100% of probability across those tokens, based on their relative probabilities.</p>
-<p>In plain English, lowering this setting causes more consistent generations at the cost of creativity, by giving the AI less things to pick from.</p>
+<p>This setting affects the <strong>pool of tokens the AI will pick
+from</strong> by only selecting the <strong>most likely tokens</strong>,
+then redistributing the [<strong>probability</strong>] (<a
+href="https://en.wikipedia.org/wiki/Probability">https://en.wikipedia.org/wiki/Probability</a>)
+for those that remain. The pool will only contain the <em>K</em> most
+likely tokens. If the setting is set to 10, then your pool will contain
+the 10 most likely tokens. (Top-10 Sampling), then redistribute 100% of
+probability across those tokens, based on their relative
+probabilities.</p>
+<p>In plain English, lowering this setting causes more consistent
+generations at the cost of creativity, by giving the AI less things to
+pick from.</p>
 <h3 id="nucleus-sampling">Nucleus Sampling</h3>
-<p>Relating to the previous setting, this adds up the probability of each potential Token, from most likely to least likely until it reaches the value specified. Lowering this value creates a smaller subset of probable Tokens, because the maximum sum will be smaller, so you can add less tokens to the pool before it's full.</p>
-<p>In plain English, lowering this setting causes more consistent generations at the cost of creativity.</p>
-<p>As an example, if the most likely token has 30% chance, the second 25, the third 20, the fourth 10, the fifth 5, and the sixth 3, and your setting is at 0.9 (90%), then you would do: 30+25+20+10+5 = 90. The sixth most likely token and onwards will be removed from the pool.</p>
+<p>Relating to the previous setting, this adds up the probability of
+each potential Token, from most likely to least likely until it reaches
+the value specified. Lowering this value creates a smaller subset of
+probable Tokens, because the maximum sum will be smaller, so you can add
+less tokens to the pool before it's full.</p>
+<p>In plain English, lowering this setting causes more consistent
+generations at the cost of creativity.</p>
+<p>As an example, if the most likely token has 30% chance, the second
+25, the third 20, the fourth 10, the fifth 5, and the sixth 3, and your
+setting is at 0.9 (90%), then you would do: 30+25+20+10+5 = 90. The
+sixth most likely token and onwards will be removed from the pool.</p>
 <h3 id="tail-free-sampling">Tail-Free Sampling</h3>
-<p>A <a href="https://en.wikipedia.org/wiki/Probability_distribution"><strong>tail</strong></a> in this context is the least-likely subset of Tokens to be chosen in a Generation. This alternative sampling method works by trimming <strong>the least-likely tokens by searching for the estimated tail's highest probability</strong>, removing that tail to the best of its ability, then re-<a href="https://en.wikipedia.org/wiki/Normalization_(statistics)"><strong>normalizing</strong></a> the remaining sample.</p>
-<p>This method may have a smaller impact on creativity while maintaining consistency. However, take note that it tends to behave strangely if your context does not contain a lot of data.</p>
-<p>Consider the setting as "how much you want to keep". High settings lead to larger token pools.</p>
+<p>A <a
+href="https://en.wikipedia.org/wiki/Probability_distribution"><strong>tail</strong></a>
+in this context is the least-likely subset of Tokens to be chosen in a
+Generation. This alternative sampling method works by trimming
+<strong>the least-likely tokens by searching for the estimated tail's
+highest probability</strong>, removing that tail to the best of its
+ability, then re-<a
+href="https://en.wikipedia.org/wiki/Normalization_(statistics)"><strong>normalizing</strong></a>
+the remaining sample.</p>
+<p>This method may have a smaller impact on creativity while maintaining
+consistency. However, take note that it tends to behave strangely if
+your context does not contain a lot of data.</p>
+<p>Consider the setting as "how much you want to keep". High settings
+lead to larger token pools.</p>
 <h3 id="top-a-sampling">Top-A Sampling</h3>
-<p>Top-A considers the <strong>probability</strong> of <strong>the most likely Token</strong>, and sets a <em>limit</em> based on its percentage. After this, remaining tokens are compared to this limit. If their probability is too low, they are removed from the pool.</p>
-<p>The calculation is as follows: <code>limit = max(token_probs)^2 * A.</code></p>
-<p>Increasing A results in a stricter limit. Lowering A results in a looser limit.</p>
-<p>This means that if the top token has a moderate likelihood of appearing, the pool of possibilities will be large. On the other hand, if the top token has a very high likelihood of appearing, then the pool will be 1-3 tokens at most. This ensures that structure remains solid, and focuses creative output in areas where it is actually wanted.</p>
+<p>Top-A considers the <strong>probability</strong> of <strong>the most
+likely Token</strong>, and sets a <em>limit</em> based on its
+percentage. After this, remaining tokens are compared to this limit. If
+their probability is too low, they are removed from the pool.</p>
+<p>The calculation is as follows:
+<code>limit = max(token_probs)^2 * A.</code></p>
+<p>Increasing A results in a stricter limit. Lowering A results in a
+looser limit.</p>
+<p>This means that if the top token has a moderate likelihood of
+appearing, the pool of possibilities will be large. On the other hand,
+if the top token has a very high likelihood of appearing, then the pool
+will be 1-3 tokens at most. This ensures that structure remains solid,
+and focuses creative output in areas where it is actually wanted.</p>
 <h3 id="min-p-sampling">Min-P Sampling</h3>
-<p>Comparable to Top-A, this also considers the <strong>probability</strong> of the <strong>most likely token</strong>. However, instead of setting an upper limit, it sets a <em>floor</em> value, under which it removes tokens. It does so by simply taking the probability, and multiplying it by the Min-P value.</p>
-<p>For example, if you set Top-P to 0.1, then any token that has a probability that is <em>less than 10% as likely as the top token</em> will be removed. 0.01 will check for tokens that are <em>1% as likely as the top token</em>, and so on.</p>
+<p>Comparable to Top-A, this also considers the
+<strong>probability</strong> of the <strong>most likely token</strong>.
+However, instead of setting an upper limit, it sets a <em>floor</em>
+value, under which it removes tokens. It does so by simply taking the
+probability, and multiplying it by the Min-P value.</p>
+<p>For example, if you set Top-P to 0.1, then any token that has a
+probability that is <em>less than 10% as likely as the top token</em>
+will be removed. 0.01 will check for tokens that are <em>1% as likely as
+the top token</em>, and so on.</p>
 <h3 id="top-g-sampling">Top-G Sampling</h3>
-<p><strong>This setting is deprecated since Kayra V1.1 and this entry is kept for historical purposes.</strong></p>
-<p>This specifically applies to <strong>Kayra V1</strong>, as this model "groups" tokens in tiers of probabilities, rather than spreading them smoothly. Top-G is similar to Top-K, but instead of limiting the pool to K tokens, it limits the pool to G groups of tokens. Effectively it's telling the model that your staircase has <em>G</em> steps.</p>
+<p><strong>This setting is deprecated since Kayra V1.1 and this entry is
+kept for historical purposes.</strong></p>
+<p>This specifically applies to <strong>Kayra V1</strong>, as this model
+"groups" tokens in tiers of probabilities, rather than spreading them
+smoothly. Top-G is similar to Top-K, but instead of limiting the pool to
+K tokens, it limits the pool to G groups of tokens. Effectively it's
+telling the model that your staircase has <em>G</em> steps.</p>
 <h3 id="typical-sampling">Typical Sampling</h3>
-<p>Typical Sampling is complicated to explain, as it uses an advanced concept known as <a href="https://en.wikipedia.org/wiki/Conditional_entropy">conditional entropy</a>. It calculates an entropy average, shifts the probabilities of tokens, and then checks which values shifted the most. Those are removed from the pool.</p>
-<p>Typical is atypical compared to other sampling methods, as it cuts <em>both likely and unlikely tokens</em>, based on their deviation from the expected base line of entropy. Extremes are considered by the math behind the sampling to be too "random" or "noisy", and thus carrying less "information".</p>
-<p>Lowering the value makes the thresholds for cutting off tokens harsher. Increasing it loosens the thresholds, allowing for more tokens.</p>
+<p>Typical Sampling is complicated to explain, as it uses an advanced
+concept known as <a
+href="https://en.wikipedia.org/wiki/Conditional_entropy">conditional
+entropy</a>. It calculates an entropy average, shifts the probabilities
+of tokens, and then checks which values shifted the most. Those are
+removed from the pool.</p>
+<p>Typical is atypical compared to other sampling methods, as it cuts
+<em>both likely and unlikely tokens</em>, based on their deviation from
+the expected base line of entropy. Extremes are considered by the math
+behind the sampling to be too "random" or "noisy", and thus carrying
+less "information".</p>
+<p>Lowering the value makes the thresholds for cutting off tokens
+harsher. Increasing it loosens the thresholds, allowing for more
+tokens.</p>
 <h3 id="cfg-scale">CFG Scale</h3>
-<p><strong>This setting has been deprecated for Erato release. This section is kept for historical purposes.</strong></p>
-<p><strong>Classifier Free Guidance</strong> is a type of <a href="https://arxiv.org/abs/2306.17806">guidance</a> which relies on a "negative prompt". You may have noticed something similar in the image generation part of NovelAI with "Unwanted Content". The implementation is comparable but not identical, for text. Using CFG at all will double generation time. You do not need to provide a negative prompt, but if you do, write something that is completely in the wrong style and uses words you don't want to see. Effectively, your negative prompt should be the antithesis of your actual writing. The stronger the <strong>Scale</strong> parameter, the stronger the guidance.</p>
-<p>CFG requires for inference to be run twice, and thus makes generation take twice as long.</p>
+<p><strong>This setting has been deprecated for Erato release. This
+section is kept for historical purposes.</strong></p>
+<p><strong>Classifier Free Guidance</strong> is a type of <a
+href="https://arxiv.org/abs/2306.17806">guidance</a> which relies on a
+"negative prompt". You may have noticed something similar in the image
+generation part of NovelAI with "Unwanted Content". The implementation
+is comparable but not identical, for text. Using CFG at all will double
+generation time. You do not need to provide a negative prompt, but if
+you do, write something that is completely in the wrong style and uses
+words you don't want to see. Effectively, your negative prompt should be
+the antithesis of your actual writing. The stronger the
+<strong>Scale</strong> parameter, the stronger the guidance.</p>
+<p>CFG requires for inference to be run twice, and thus makes generation
+take twice as long.</p>
 <h3 id="mirostat">Mirostat</h3>
-<p>Mirostat is an advanced sampler which has a very strong effect on its own. It is strongly recommended you keep other samplers to a minimum to make its effect more appreciable.</p>
-<p>Rather than simply limit the pool of tokens, Mirostat attempts to direct that pool to be representative of the text's expected complexity.</p>
-<p><strong>Tau</strong> represents that level. High Tau will aim for higher complexity, while low Tau will aim for simpler output.</p>
-<p><strong>Learning Rate</strong> is the influence of your context. The higher it is set, the more gradual the changes will be. 1 is instantaneous.</p>
+<p>Mirostat is an advanced sampler which has a very strong effect on its
+own. It is strongly recommended you keep other samplers to a minimum to
+make its effect more appreciable.</p>
+<p>Rather than simply limit the pool of tokens, Mirostat attempts to
+direct that pool to be representative of the text's expected
+complexity.</p>
+<p><strong>Tau</strong> represents that level. High Tau will aim for
+higher complexity, while low Tau will aim for simpler output.</p>
+<p><strong>Learning Rate</strong> is the influence of your context. The
+higher it is set, the more gradual the changes will be. 1 is
+instantaneous.</p>
 <h3 id="unified-sampling">Unified Sampling</h3>
-<p>Unified sampling is a set of parameters which are applied together to <strong>bias the probabilities</strong> of the token pool. Keep in mind that <strong>Unified Sampling does not remove tokens from the pool.</strong> You may want to do some trimming beforehand, or use it to refine trimming with <strong>Tail-Free</strong>, <strong>Min-P</strong> or something of the sort.</p>
-<p>Unified takes three settings simultaneously: <strong>Linear</strong>, <strong>Quadratic</strong> and <strong>Confidence</strong>. Out of those, <strong>Linear</strong> and <strong>Confidence</strong> are both able to be set to <em>negative values</em>.</p>
-<p>• <strong>Linear</strong> is comparable to <strong>Temperature/Randomness</strong>. At high values, Linear <em>reinforces</em> the probabilities. Strong becomes stronger, weak becomes weaker. Effectively, Linear is <em>Temperature/randomness in reverse</em>. At high values, the model is more confident in high-probability tokens. However, when set to <em>negative</em> values, Linear acts similar to high Temperature, where the pool is more normalized, and the probability is spread out across more tokens, increasing creativity at the cost of consistency.</p>
-<p>• <strong>Quadratic</strong> is comparable to <strong>Tail-Free Sampling</strong>, with the caveat that it does not trim. When increasing Quadratic, low-probability tokens will be made even weaker, which effectively extends, and flattens the Tail, so you can snip it out more consistently. Quadratic's effect is geometric: It affects the bottom end much more harshly than tokens that are simply weak.</p>
-<p>• <strong>Confidence</strong> serves to increase confidence by <strong>increasing the value of Linear dynamically</strong>. If the model is not confident, it makes strong tokens stronger at the expense of the others. If the model is already confident, it does not do much. The important part is that <strong>Confidence is exponential in its strength!</strong> Only make small adjustments to it, as the effect increases more quickly the higher it is. I.e a change from 0.1 to 0.2 is much weaker than 0.3 to 0.4. When set to negative values, <em>stronger tokens are made weaker and weak tokens are made stronger</em>, which averages probabilities across the pool, similarly to Negative Linear values.</p>
-<p>Unified should be used to either make your pool more biased towards confidence (and then snip weak tokens with another sampler), or towards creativity (but you probably need to trim the pool beforehand first, to avoid garbage tokens).</p>
+<p>Unified sampling is a set of parameters which are applied together to
+<strong>bias the probabilities</strong> of the token pool. Keep in mind
+that <strong>Unified Sampling does not remove tokens from the
+pool.</strong> You may want to do some trimming beforehand, or use it to
+refine trimming with <strong>Tail-Free</strong>, <strong>Min-P</strong>
+or something of the sort.</p>
+<p>Unified takes three settings simultaneously: <strong>Linear</strong>,
+<strong>Quadratic</strong> and <strong>Confidence</strong>. Out of
+those, <strong>Linear</strong> and <strong>Confidence</strong> are both
+able to be set to <em>negative values</em>.</p>
+<p>• <strong>Linear</strong> is comparable to
+<strong>Temperature/Randomness</strong>. At high values, Linear
+<em>reinforces</em> the probabilities. Strong becomes stronger, weak
+becomes weaker. Effectively, Linear is <em>Temperature/randomness in
+reverse</em>. At high values, the model is more confident in
+high-probability tokens. However, when set to <em>negative</em> values,
+Linear acts similar to high Temperature, where the pool is more
+normalized, and the probability is spread out across more tokens,
+increasing creativity at the cost of consistency.</p>
+<p>• <strong>Quadratic</strong> is comparable to <strong>Tail-Free
+Sampling</strong>, with the caveat that it does not trim. When
+increasing Quadratic, low-probability tokens will be made even weaker,
+which effectively extends, and flattens the Tail, so you can snip it out
+more consistently. Quadratic's effect is geometric: It affects the
+bottom end much more harshly than tokens that are simply weak.</p>
+<p>• <strong>Confidence</strong> serves to increase confidence by
+<strong>increasing the value of Linear dynamically</strong>. If the
+model is not confident, it makes strong tokens stronger at the expense
+of the others. If the model is already confident, it does not do much.
+The important part is that <strong>Confidence is exponential in its
+strength!</strong> Only make small adjustments to it, as the effect
+increases more quickly the higher it is. I.e a change from 0.1 to 0.2 is
+much weaker than 0.3 to 0.4. When set to negative values, <em>stronger
+tokens are made weaker and weak tokens are made stronger</em>, which
+averages probabilities across the pool, similarly to Negative Linear
+values.</p>
+<p>Unified should be used to either make your pool more biased towards
+confidence (and then snip weak tokens with another sampler), or towards
+creativity (but you probably need to trim the pool beforehand first, to
+avoid garbage tokens).</p>
 <h3 id="change-settings-order">Change Settings Order</h3>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8" alt="image" /></p>
-<p>Allows you to enable or disable sampling types, as well as select the order in which they are processed.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/9f968541-c864-4266-9e63-7737f7e94ba8"
+alt="image" /></p>
+<p>Allows you to enable or disable sampling types, as well as select the
+order in which they are processed.</p>
 <hr />
 <h2 id="repetition-penalty-1">Repetition Penalty</h2>
-<p>Repetition Penalty is applied to the probability of tokens when they appear in context. This is to avoid generation loops, or overuse of single terms. On the flipside, penalizing important words too heavily when they are important and expected to show up regularly can have odd side effects.</p>
+<p>Repetition Penalty is applied to the probability of tokens when they
+appear in context. This is to avoid generation loops, or overuse of
+single terms. On the flipside, penalizing important words too heavily
+when they are important and expected to show up regularly can have odd
+side effects.</p>
 <h3 id="repetition-whitelist">Repetition Whitelist</h3>
-<p>A default whitelist is offered, which ignores most grammatical terms, modal verbs, possessive contractions, etc. This can help prevent grammatical collapse if repetition penalty is strong.</p>
-<p>As of 2023/07/10, the tokens in the whitelist are: "'", '"', ',', ':', '\n', 've', 's', 't', 'n', 'd', 'll', 're', 'm', '-', '*', ')', ' the', ' a', ' an', ' and', ' or', ' not', ' no', ' is', ' was', ' were', ' did', ' does', ' isn', ' wasn', ' weren', ' didn', ' doesn', ' him', ' her', ' his', ' hers', ' their', ' its', ' could', ' couldn', ' should', ' shouldn', ' would', ' wouldn', ' have', ' haven', ' had', ' hadn', ' has', ' hasn', ' can', ' cannot', ' are', ' aren', ' will', ' won', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '."', ',"', '====', and ' '. The list may change in the future.</p>
+<p>A default whitelist is offered, which ignores most grammatical terms,
+modal verbs, possessive contractions, etc. This can help prevent
+grammatical collapse if repetition penalty is strong.</p>
+<p>As of 2023/07/10, the tokens in the whitelist are: "'", '"', ',',
+':', '\n', 've', 's', 't', 'n', 'd', 'll', 're', 'm', '-', '*', ')', '
+the', ' a', ' an', ' and', ' or', ' not', ' no', ' is', ' was', ' were',
+' did', ' does', ' isn', ' wasn', ' weren', ' didn', ' doesn', ' him', '
+her', ' his', ' hers', ' their', ' its', ' could', ' couldn', ' should',
+' shouldn', ' would', ' wouldn', ' have', ' haven', ' had', ' hadn', '
+has', ' hasn', ' can', ' cannot', ' are', ' aren', ' will', ' won', '0',
+'1', '2', '3', '4', '5', '6', '7', '8', '9', '."', ',"', '====', and '
+'. The list may change in the future.</p>
 <h3 id="repetition-penalty-range">Repetition Penalty Range</h3>
-<p>Defines the number of tokens that will be checked for repetitions, starting from the last token generated. The larger the range, the more tokens are checked.</p>
+<p>Defines the number of tokens that will be checked for repetitions,
+starting from the last token generated. The larger the range, the more
+tokens are checked.</p>
 <h4 id="dynamic-penalty-range">Dynamic Penalty Range</h4>
-<p>When <strong>Enabled</strong>, the Repetition Penalty is <strong>only applied to the story.</strong> All text injections (Lorebook, Author's Note, Memory, Ephemeral Context) will be <em>ignored</em> for the purposes of repetition penalty.</p>
+<p>When <strong>Enabled</strong>, the Repetition Penalty is <strong>only
+applied to the story.</strong> All text injections (Lorebook, Author's
+Note, Memory, Ephemeral Context) will be <em>ignored</em> for the
+purposes of repetition penalty.</p>
 <h3 id="repetition-penalty-slope">Repetition Penalty Slope</h3>
-<p>The penalty to repeated tokens is applied differently based on distance from the final token. The distribution of that penalty follows a S-shaped curve. If the sloping is set to 0, that curve will be completely flat. All tokens will be penalized equally. If it is set to a very high value, it'll act more like two steps: Early tokens will receive little to no penalty, but later ones will be considerably penalized.</p>
+<p>The penalty to repeated tokens is applied differently based on
+distance from the final token. The distribution of that penalty follows
+a S-shaped curve. If the sloping is set to 0, that curve will be
+completely flat. All tokens will be penalized equally. If it is set to a
+very high value, it'll act more like two steps: Early tokens will
+receive little to no penalty, but later ones will be considerably
+penalized.</p>
 <h2 id="phrase-repetition-penalty">Phrase Repetition Penalty</h2>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b8a714b9-21fb-4317-997b-e93033aba0de" alt="image" /></p>
-<p>Phrase Repetition Penalty, or <strong>PRP</strong> is a system similar to Repetition Penalty, but it penalizes <strong>sequences of tokens</strong> as opposed to single tokens. This helps prevent repetition at the scale of the clause or sentence, or even paragraph, preventing large-scale loops from happening without causing unwanted divergence at the smaller scale. By default, this is set to Very Light, but if your preset has <strong>no</strong> Repetition Penalty, you should set this to a high value, as it is fairly weak on its own.</p>
-<p><strong>You can combine both Phrase and normal Repetition Penalty.</strong></p>
-<h2 id="alternative-repetition-penalty">Alternative Repetition Penalty</h2>
-<p><em>Note: ARP has an extremely strong effect and can make your output strange if not set to low values.</em></p>
-<p>Alternate Repetition Penalty uses two parameters: <em>Presence</em> and <em>Frequency</em>.</p>
-<p>The math is as follows: <code>(Number of times the token appears in the range * Frequency) + Presence = Penalty Intensity</code></p>
-<p><em>Frequency</em> penalizes recurring tokens with an increasing intensity for each occurence. <em>Presence</em> penalizes all tokens that are present even once with the same intensity.</p>
-<p>You can mix this with PRP and normal repetition penalty, but this is not recommended, as ARP is very strong on its own.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b8a714b9-21fb-4317-997b-e93033aba0de"
+alt="image" /></p>
+<p>Phrase Repetition Penalty, or <strong>PRP</strong> is a system
+similar to Repetition Penalty, but it penalizes <strong>sequences of
+tokens</strong> as opposed to single tokens. This helps prevent
+repetition at the scale of the clause or sentence, or even paragraph,
+preventing large-scale loops from happening without causing unwanted
+divergence at the smaller scale. By default, this is set to Very Light,
+but if your preset has <strong>no</strong> Repetition Penalty, you
+should set this to a high value, as it is fairly weak on its own.</p>
+<p><strong>You can combine both Phrase and normal Repetition
+Penalty.</strong></p>
+<h2 id="alternative-repetition-penalty">Alternative Repetition
+Penalty</h2>
+<p><em>Note: ARP has an extremely strong effect and can make your output
+strange if not set to low values.</em></p>
+<p>Alternate Repetition Penalty uses two parameters: <em>Presence</em>
+and <em>Frequency</em>.</p>
+<p>The math is as follows:
+<code>(Number of times the token appears in the range * Frequency) + Presence = Penalty Intensity</code></p>
+<p><em>Frequency</em> penalizes recurring tokens with an increasing
+intensity for each occurence. <em>Presence</em> penalizes all tokens
+that are present even once with the same intensity.</p>
+<p>You can mix this with PRP and normal repetition penalty, but this is
+not recommended, as ARP is very strong on its own.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

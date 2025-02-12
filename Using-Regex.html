@@ -1333,22 +1333,31 @@
 <a href="." forTitle="Using Regex">Return to Index</a>
 <h1 class="title">Using Regex</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#regular-expressions">Regular Expressions</a>
+    <li><a href="#regular-expressions"
+    id="toc-regular-expressions">Regular Expressions</a>
     <ul>
-    <li><a href="#what-is-a-regular-expression-or-regex">What is a regular expression or regex?</a></li>
-    <li><a href="#a-quick-start">A Quick Start</a></li>
-    <li><a href="#regex-flags">Regex Flags</a></li>
-    <li><a href="#useful-key-conditions">Useful Key Conditions</a>
+    <li><a href="#what-is-a-regular-expression-or-regex"
+    id="toc-what-is-a-regular-expression-or-regex">What is a regular
+    expression or regex?</a></li>
+    <li><a href="#a-quick-start" id="toc-a-quick-start">A Quick
+    Start</a></li>
+    <li><a href="#regex-flags" id="toc-regex-flags">Regex Flags</a></li>
+    <li><a href="#useful-key-conditions"
+    id="toc-useful-key-conditions">Useful Key Conditions</a>
     <ul>
-    <li><a href="#positive-and-negative-lookahead">Positive and Negative Lookahead</a></li>
-    <li><a href="#capture-groups">Capture Groups</a></li>
+    <li><a href="#positive-and-negative-lookahead"
+    id="toc-positive-and-negative-lookahead">Positive and Negative
+    Lookahead</a></li>
+    <li><a href="#capture-groups" id="toc-capture-groups">Capture
+    Groups</a></li>
     </ul></li>
     </ul></li>
     </ul>
@@ -1357,34 +1366,71 @@
 
 <main>
 <h1 id="regular-expressions">Regular Expressions</h1>
-<p>This guide explains what a regular expression is and how they can be utilized inside <em>NovelAI</em> to create powerful conditionals for your lore or even outside of NovelAI for editing your stories or documents, datasetting, and other beneficial ends.</p>
-<p><em><strong>For specialists: NovelAI uses the ECMAScript format of Regular Expressions, but only I, M, U and S are considered valid flags, and Lookbehinds are not supported.</strong></em></p>
+<p>This guide explains what a regular expression is and how they can be
+utilized inside <em>NovelAI</em> to create powerful conditionals for
+your lore or even outside of NovelAI for editing your stories or
+documents, datasetting, and other beneficial ends.</p>
+<p><em><strong>For specialists: NovelAI uses the ECMAScript format of
+Regular Expressions, but only I, M, U and S are considered valid flags,
+and Lookbehinds are not supported.</strong></em></p>
 <hr />
-<h2 id="what-is-a-regular-expression-or-regex">What is a regular expression or regex?</h2>
-<p>A regular expression (often shortened as regex or regexp) is simply a sequence of characters that specifies a <em>search pattern</em>. This concept is often used in computer science or information processing.</p>
-<p>A powerful regex syntax has been a feature of JavaScript since ECMAScript6 and is implemented in NovelAI for use inside lorebook keys.</p>
-<p>Search patterns can be used to create <strong>a myriad of condition types</strong> for checking when a <em>key</em> is <em>matched</em>, allowing the user finer control over how their lore entries are inserted into the context.</p>
+<h2 id="what-is-a-regular-expression-or-regex">What is a regular
+expression or regex?</h2>
+<p>A regular expression (often shortened as regex or regexp) is simply a
+sequence of characters that specifies a <em>search pattern</em>. This
+concept is often used in computer science or information processing.</p>
+<p>A powerful regex syntax has been a feature of JavaScript since
+ECMAScript6 and is implemented in NovelAI for use inside lorebook
+keys.</p>
+<p>Search patterns can be used to create <strong>a myriad of condition
+types</strong> for checking when a <em>key</em> is <em>matched</em>,
+allowing the user finer control over how their lore entries are inserted
+into the context.</p>
 <h2 id="a-quick-start">A Quick Start</h2>
-<p>Seeing regex for the first time can be daunting. Many are first exposed to the syntax and scared off by seeing an expression like <code>/\[\{[^}]*\}\]/</code> which looks like gibberish to most people.</p>
-<p>However by reading the standard we can decipher this example and see how easy, logical and powerful the matching can be:</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/ff188113-c38b-4a8a-b06a-ba4eef6c262f" alt="image" /></p>
+<p>Seeing regex for the first time can be daunting. Many are first
+exposed to the syntax and scared off by seeing an expression like
+<code>/\[\{[^}]*\}\]/</code> which looks like gibberish to most
+people.</p>
+<p>However by reading the standard we can decipher this example and see
+how easy, logical and powerful the matching can be:</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/ff188113-c38b-4a8a-b06a-ba4eef6c262f"
+alt="image" /></p>
 <ul>
-<li>The set of <code>/</code> to <code>/</code> delinate the start and end of the expression.</li>
-<li><code>\</code> is used to escape certain symbols (the square brackets and curly braces in this example).</li>
+<li>The set of <code>/</code> to <code>/</code> delinate the start and
+end of the expression.</li>
+<li><code>\</code> is used to escape certain symbols (the square
+brackets and curly braces in this example).</li>
 <li><code>[ ]</code> Is a block that contains a condition.</li>
 <li><code>^</code> is the NOT operator.</li>
 <li><code>^}</code> thus means "NOT closing curly brace"</li>
-<li><code>*</code> means "match everything until the next character", which is a closing curly brace in this example.</li>
+<li><code>*</code> means "match everything until the next character",
+which is a closing curly brace in this example.</li>
 </ul>
-<p>Piecing all this information together, we figure out this expression will match any word inside <strong>[{}]</strong> brackets.</p>
-<p>It isn't recommended to start learning the syntax alone as many powerful sources and tools exist to help the journey.</p>
-<p>Among the most popular is <strong><a href="https://regex101.com">regex101</a></strong>, a website that offers a search menu with examples for many simple and popular expressions, alongside an interpreter to test your expressions in multiple regex implementations.</p>
-<p>Another useful website for dipping your feet in deeper is <strong><a href="https://www.regular-expressions.info/tools.html">regular-expressions.info</a></strong>. It teaches you everything you need and then some.</p>
-<p>Your learning journey can also be gamified with interactive lessons like <strong><a href="https://regexone.com">regexone</a></strong> or games like <strong><a href="https://regexcrossword.com">regexcrossword</a></strong>.</p>
+<p>Piecing all this information together, we figure out this expression
+will match any word inside <strong>[{}]</strong> brackets.</p>
+<p>It isn't recommended to start learning the syntax alone as many
+powerful sources and tools exist to help the journey.</p>
+<p>Among the most popular is <strong><a
+href="https://regex101.com">regex101</a></strong>, a website that offers
+a search menu with examples for many simple and popular expressions,
+alongside an interpreter to test your expressions in multiple regex
+implementations.</p>
+<p>Another useful website for dipping your feet in deeper is <strong><a
+href="https://www.regular-expressions.info/tools.html">regular-expressions.info</a></strong>.
+It teaches you everything you need and then some.</p>
+<p>Your learning journey can also be gamified with interactive lessons
+like <strong><a href="https://regexone.com">regexone</a></strong> or
+games like <strong><a
+href="https://regexcrossword.com">regexcrossword</a></strong>.</p>
 <hr />
 <h2 id="regex-flags">Regex Flags</h2>
-<p>A <strong>Flag</strong> is a letter 'appended to the end' of your regular expression. It helps the parser understand how far it should check for things. Flags apply to the entire expression. You can stack any combination of flags at the end of your expression.</p>
-<p><strong>All flags can be disabled by appending a minus before the letter.</strong></p>
+<p>A <strong>Flag</strong> is a letter 'appended to the end' of your
+regular expression. It helps the parser understand how far it should
+check for things. Flags apply to the entire expression. You can stack
+any combination of flags at the end of your expression.</p>
+<p><strong>All flags can be disabled by appending a minus before the
+letter.</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -1397,57 +1443,95 @@
 <tr class="odd">
 <td>m</td>
 <td><strong>M</strong>ulti-line</td>
-<td><strong>Enabled by default.</strong> Checks past the first newline, to the end of text.</td>
+<td><strong>Enabled by default.</strong> Checks past the first newline,
+to the end of text.</td>
 </tr>
 <tr class="even">
 <td>i</td>
 <td>Case <strong>I</strong>nsensitive</td>
-<td>Ignores case, matches even if capital letters are not exactly matched.</td>
+<td>Ignores case, matches even if capital letters are not exactly
+matched.</td>
 </tr>
 <tr class="odd">
 <td>u</td>
 <td><strong>U</strong>nicode</td>
-<td>Checks for exact unicode characters. Generally not useful unless you're doing black magic.</td>
+<td>Checks for exact unicode characters. Generally not useful unless
+you're doing black magic.</td>
 </tr>
 <tr class="even">
 <td>s</td>
 <td><strong>S</strong>ingle line</td>
-<td>If a period is found ( <strong>.</strong> ) then it is considered to be the same as a newline character ( n )</td>
+<td>If a period is found ( <strong>.</strong> ) then it is considered to
+be the same as a newline character ( n )</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="useful-key-conditions">Useful Key Conditions</h2>
-<p>In this segment we share and explain many expressions that are useful in lorebook keys. Remember to think of regex as <strong>conditions</strong> for the text you want to be associated to your lorebook keys! Most of these are easy to copy into your lorebook with little editing.</p>
-<h3 id="positive-and-negative-lookahead">Positive and Negative Lookahead</h3>
-<p>First we will introduce two useful conditions that may look strange initially. Positive lookahead is used to <em>limit</em> matches only to terms which contain specific proceeding keywords.</p>
-<p><strong>?</strong> is the <em>look ahead</em> symbol in this case, the other two are similar to those in mathematics: <em>=</em> is equal to, and <em>!</em> is different from.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/061dfe72-4e6c-4c57-994d-92356b9a96f1" alt="image" /></p>
-<p>Negative lookahead is used to <em>deny</em> any matches containing those keywords.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/aa0b5a3f-cc86-430a-99c3-0291177bc94f" alt="image" /></p>
-<p>In our examples using regex101, a positive match is highlighted blue and the right sidebar gives you detailed information on the expression. Handy!</p>
-<p>NOTE: <em>Lookbehind</em> conditions <strong>are not supported by NovelAI due to a limitation present in most browsers. As a result, do not use them.</strong></p>
+<p>In this segment we share and explain many expressions that are useful
+in lorebook keys. Remember to think of regex as
+<strong>conditions</strong> for the text you want to be associated to
+your lorebook keys! Most of these are easy to copy into your lorebook
+with little editing.</p>
+<h3 id="positive-and-negative-lookahead">Positive and Negative
+Lookahead</h3>
+<p>First we will introduce two useful conditions that may look strange
+initially. Positive lookahead is used to <em>limit</em> matches only to
+terms which contain specific proceeding keywords.</p>
+<p><strong>?</strong> is the <em>look ahead</em> symbol in this case,
+the other two are similar to those in mathematics: <em>=</em> is equal
+to, and <em>!</em> is different from.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/061dfe72-4e6c-4c57-994d-92356b9a96f1"
+alt="image" /></p>
+<p>Negative lookahead is used to <em>deny</em> any matches containing
+those keywords.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/aa0b5a3f-cc86-430a-99c3-0291177bc94f"
+alt="image" /></p>
+<p>In our examples using regex101, a positive match is highlighted blue
+and the right sidebar gives you detailed information on the expression.
+Handy!</p>
+<p>NOTE: <em>Lookbehind</em> conditions <strong>are not supported by
+NovelAI due to a limitation present in most browsers. As a result, do
+not use them.</strong></p>
 <h3 id="capture-groups">Capture Groups</h3>
-<p>A capture group allows you to put apply a specific condition, but only to this group. Creating this one is simple, just encapsulate it between parentheses (like this).</p>
+<p>A capture group allows you to put apply a specific condition, but
+only to this group. Creating this one is simple, just encapsulate it
+between parentheses (like this).</p>
 <p>This in turn leads us to:</p>
 <h4 id="zero-or-one-group">Zero Or One Group</h4>
-<p>You define a ZOO by putting a ? after the character or capture group. When you define a ZOO, it becomes an <strong>optional match</strong>. This is useful for nicknames or titles that you often shorten down. Here is an example: <img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/5630fd84-2c21-44ff-8c42-b44deb3f6d63" alt="image" /></p>
-<p>However, if you use a ZOO at the end, say, your character is named Elissa, but you want characters to be able to call her Eli, you can use this as a Lorebook key:</p>
+<p>You define a ZOO by putting a ? after the character or capture group.
+When you define a ZOO, it becomes an <strong>optional match</strong>.
+This is useful for nicknames or titles that you often shorten down. Here
+is an example: <img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/5630fd84-2c21-44ff-8c42-b44deb3f6d63"
+alt="image" /></p>
+<p>However, if you use a ZOO at the end, say, your character is named
+Elissa, but you want characters to be able to call her Eli, you can use
+this as a Lorebook key:</p>
 <p><code>/Eli(ssa)?/</code></p>
-<p>But the issue will be that "Eli" will match, but so will "Elisandra".</p>
+<p>But the issue will be that "Eli" will match, but so will
+"Elisandra".</p>
 <p>How to fix this? Simple, just append <code>b</code>:</p>
 <p><code>/Eli(ssa)?b/</code></p>
 <h4 id="a-or-b-or-c-a_or_b_or_c">A or B or C {#a_or_b_or_c}</h4>
-<p>... or D, etc etc, as far as you'd like. The OR operand in Regex is a Pipe: <strong>|</strong></p>
-<p>Here is a statement where "Test " can be followed by any of three options, some of which include spaces.</p>
+<p>... or D, etc etc, as far as you'd like. The OR operand in Regex is a
+Pipe: <strong>|</strong></p>
+<p>Here is a statement where "Test " can be followed by any of three
+options, some of which include spaces.</p>
 <p><code>/Test (a banana|bear|cadmi um)/</code></p>
 <p><strong>A</strong>=<code>a banana</code></p>
 <p><strong>B</strong>=<code>bear</code></p>
 <p><strong>C</strong>=<code>cadmi um</code></p>
 <p>The group helps you cleanly delineate the options.</p>
-<p><code>Test a banana</code> would be A if we did not have a capture group.</p>
-<p>Here is a practical example for a character that has multiple nicknames with the same starting letters.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f374e4dd-c212-4f79-bb63-4a83fab1f3f3" alt="image" /></p>
+<p><code>Test a banana</code> would be A if we did not have a capture
+group.</p>
+<p>Here is a practical example for a character that has multiple
+nicknames with the same starting letters.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f374e4dd-c212-4f79-bb63-4a83fab1f3f3"
+alt="image" /></p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

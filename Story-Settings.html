@@ -1333,64 +1333,106 @@
 <a href="." forTitle="Story Settings">Return to Index</a>
 <h1 class="title">Story Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#ai-model">AI Model</a>
+    <li><a href="#ai-model" id="toc-ai-model">AI Model</a>
     <ul>
-    <li><a href="#ai-module">AI Module</a></li>
-    <li><a href="#storys-memory">Story's Memory</a></li>
-    <li><a href="#storys-authors-note">Story's Author's Note</a></li>
-    <li><a href="#lorebook-quick-access">Lorebook Quick Access</a></li>
-    <li><a href="#story-stats">Story Stats</a></li>
-    <li><a href="#exporting-the-story">Exporting the Story</a></li>
-    <li><a href="#screenshot-designer">Screenshot Designer</a></li>
+    <li><a href="#ai-module" id="toc-ai-module">AI Module</a></li>
+    <li><a href="#storys-memory" id="toc-storys-memory">Story's
+    Memory</a></li>
+    <li><a href="#storys-authors-note"
+    id="toc-storys-authors-note">Story's Author's Note</a></li>
+    <li><a href="#lorebook-quick-access"
+    id="toc-lorebook-quick-access">Lorebook Quick Access</a></li>
+    <li><a href="#story-stats" id="toc-story-stats">Story Stats</a></li>
+    <li><a href="#exporting-the-story"
+    id="toc-exporting-the-story">Exporting the Story</a></li>
+    <li><a href="#screenshot-designer"
+    id="toc-screenshot-designer">Screenshot Designer</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Story Settings">Return to Index</a>
 </nav>
 
 <main>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f87c7c56-2b1e-423e-879e-ca9e272d996b" alt="image" /></p>
-<p>This section of the interface controls settings <strong>specific to your currently active Story</strong>. There are three tabs here - <strong>Story</strong> and <strong>Advanced</strong> and <strong>Generation Settings</strong>. This page focuses on the first.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/f87c7c56-2b1e-423e-879e-ca9e272d996b"
+alt="image" /></p>
+<p>This section of the interface controls settings <strong>specific to
+your currently active Story</strong>. There are three tabs here -
+<strong>Story</strong> and <strong>Advanced</strong> and
+<strong>Generation Settings</strong>. This page focuses on the
+first.</p>
 <h2 id="ai-model">AI Model</h2>
 <p>Allows you to choose between the following models:</p>
 <ul>
 <li><strong>Kayra</strong>, a fine-tuned NAI-LM 13B model.</li>
 <li><strong>Clio</strong>, a fine-tuned NAI-LM 3B model.</li>
-<li><strong>Krake</strong>, a fine-tuned GPT-NeoX 20B model. (Only available on Opus.)</li>
+<li><strong>Krake</strong>, a fine-tuned GPT-NeoX 20B model. (Only
+available on Opus.)</li>
 <li><strong>Euterpe</strong>, a fine-tuned Fairseq GPT-13B model.</li>
 <li><strong>Sigurd</strong>, a fine-tuned GPT-J 6B model.</li>
-<li><strong>Calliope</strong>, the original fine-tuned 2.7B GPT-NEO model used in the Alpha.</li>
-<li><strong>Snek</strong>, a fine-tuned GPT-J 6B model trained specifically for Python output.</li>
-<li><strong>Genji</strong>, a fine-tuned GPT-J 6B model trained for Japanese output based on Japanese Light Novels.</li>
+<li><strong>Calliope</strong>, the original fine-tuned 2.7B GPT-NEO
+model used in the Alpha.</li>
+<li><strong>Snek</strong>, a fine-tuned GPT-J 6B model trained
+specifically for Python output.</li>
+<li><strong>Genji</strong>, a fine-tuned GPT-J 6B model trained for
+Japanese output based on Japanese Light Novels.</li>
 </ul>
-<p>As a reminder, parameter count is <strong>not representative of quality</strong> - Clio has superior performance in spite of its lower parameter count.</p>
+<p>As a reminder, parameter count is <strong>not representative of
+quality</strong> - Clio has superior performance in spite of its lower
+parameter count.</p>
 <h3 id="ai-module">AI Module</h3>
-<p><strong>AI Modules</strong> are data modules that are inserted into the AI's memory in order to influence the text it will generate. These modules <strong>reduce the total context space by twenty tokens when in use</strong>, but are not tokens in themselves.</p>
-<p>Each module is similar to a "mini-fine-tune", a corpus of text that was used to adjust the AI based on how it is written. Different modules have different effects, which depend on your own writing and the ideas, characters and scenarios you write about.</p>
+<p><strong>AI Modules</strong> are data modules that are inserted into
+the AI's memory in order to influence the text it will generate. These
+modules <strong>reduce the total context space by twenty tokens when in
+use</strong>, but are not tokens in themselves.</p>
+<p>Each module is similar to a "mini-fine-tune", a corpus of text that
+was used to adjust the AI based on how it is written. Different modules
+have different effects, which depend on your own writing and the ideas,
+characters and scenarios you write about.</p>
 <h4 id="older-models">Older Models</h4>
-<p>For <strong>Krake, Euterpe and Sigurd</strong>, There are three types of modules: <strong>Style</strong>, <strong>Theme</strong> and <strong>Inspiration</strong>.</p>
+<p>For <strong>Krake, Euterpe and Sigurd</strong>, There are three types
+of modules: <strong>Style</strong>, <strong>Theme</strong> and
+<strong>Inspiration</strong>.</p>
 <ul>
 <li>Styles are based on multiple works from the same author.</li>
-<li>Themes are based on multiple works, from multiple authors, but from the same genre.</li>
-<li>Inspirations are based on a singular, specific work, from a single author.</li>
-<li>Special are for specific occasions or have different purposes in mind than normal storywriting.</li>
+<li>Themes are based on multiple works, from multiple authors, but from
+the same genre.</li>
+<li>Inspirations are based on a singular, specific work, from a single
+author.</li>
+<li>Special are for specific occasions or have different purposes in
+mind than normal storywriting.</li>
 </ul>
-<p>Experiment to find what works best with what you enjoy and want to write about!</p>
-<p>Further information on cleaning and preparing a dataset for use in training AI Modules can be found at the <a href="Datasetting-for-AI-Modules.html">Datasetting for AI Modules</a> section.</p>
+<p>Experiment to find what works best with what you enjoy and want to
+write about!</p>
+<p>Further information on cleaning and preparing a dataset for use in
+training AI Modules can be found at the <a
+href="Datasetting-for-AI-Modules.html">Datasetting for AI Modules</a>
+section.</p>
 <h4 id="newer-models">Newer Models</h4>
-<p>For <strong>Clio and Kayra</strong>, there are only <em>two</em> modules you can specifically set, outside of Text Adventure mode:</p>
+<p>For <strong>Clio and Kayra</strong>, there are only <em>two</em>
+modules you can specifically set, outside of Text Adventure mode:</p>
 <ul>
-<li><strong>Instruct</strong> lets you give instructions to the AI directly by encasing your request paragraph between {curly braces}. The AI will signal the end of its performance with <strong>{{}}</strong>.</li>
-<li><strong>Prose Enhancer</strong> helps increase the complexity of the AI's output and requires no special priming.</li>
+<li><strong>Instruct</strong> lets you give instructions to the AI
+directly by encasing your request paragraph between {curly braces}. The
+AI will signal the end of its performance with
+<strong>{{}}</strong>.</li>
+<li><strong>Prose Enhancer</strong> helps increase the complexity of the
+AI's output and requires no special priming.</li>
 </ul>
-<p>There are two modules that cannot be selected, <strong>Openings</strong>, which replaces the old Preamble and helps start stories, and <strong>Pedia</strong>, which is used for Attributes-like entry generation.</p>
-<p>These modules are automatically loaded if the following conditions are present:</p>
+<p>There are two modules that cannot be selected,
+<strong>Openings</strong>, which replaces the old Preamble and helps
+start stories, and <strong>Pedia</strong>, which is used for
+Attributes-like entry generation.</p>
+<p>These modules are automatically loaded if the following conditions
+are present:</p>
 <pre><code>Priority: instruct&gt;pedia&gt;openings
 
 Instruct Module
@@ -1408,47 +1450,82 @@ AND IF context is less than 200 tokens
 UNLESS ( the first line of context is &quot;======&quot;
 OR any line of the context contains &quot;Style:&quot; or &quot;Knowledge:&quot;
 OR any line of the context contains &quot;Tags:&quot; and &quot;pedia&quot;
-OR the first line starts with [ but is not followed by &quot; Author:&quot;, &quot; Title:&quot;, &quot; Tags:&quot;, or &quot; Genre:&quot; )
-</code></pre>
+OR the first line starts with [ but is not followed by &quot; Author:&quot;, &quot; Title:&quot;, &quot; Tags:&quot;, or &quot; Genre:&quot; )</code></pre>
 <hr />
 <h3 id="storys-memory">Story's Memory</h3>
-<p>Injects this text at the top of the context. Helpful to keep the AI on track with important information to keep in mind, as well as the <strong>Author, Title, Tags, Genre</strong> setup. More information on how to use this can be found in the <a href="Context.html#injected-Text">Injected Text</a> section.</p>
+<p>Injects this text at the top of the context. Helpful to keep the AI
+on track with important information to keep in mind, as well as the
+<strong>Author, Title, Tags, Genre</strong> setup. More information on
+how to use this can be found in the <a
+href="Context.html#injected-Text">Injected Text</a> section.</p>
 <h3 id="storys-authors-note">Story's Author's Note</h3>
-<p>Injects this text three newlines from the bottom of the context. Helpful for immediate instructions for the AI, which gives direction to the AI's generations. More information on how to use this can be found in the <a href="Context.html#injected-text">Injected Text</a> section.</p>
+<p>Injects this text three newlines from the bottom of the context.
+Helpful for immediate instructions for the AI, which gives direction to
+the AI's generations. More information on how to use this can be found
+in the <a href="Context.html#injected-text">Injected Text</a>
+section.</p>
 <h3 id="lorebook-quick-access">Lorebook Quick Access</h3>
-<p>Enter an entry's name to find it quickly, or click the 📗 icon to open the Lorebook window.</p>
+<p>Enter an entry's name to find it quickly, or click the 📗 icon to
+open the Lorebook window.</p>
 <h3 id="story-stats">Story Stats</h3>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/6bdc6e93-1298-4dff-bb1c-dd38bc440f15" alt="image" /></p>
-<p>The <em>Story Stats</em> menu allows you to consult several metrics such as the number of text characters, your use of retries, the size of your retry branches, etc. You may also prune your story in several ways in order to decrease its filesize.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/6bdc6e93-1298-4dff-bb1c-dd38bc440f15"
+alt="image" /></p>
+<p>The <em>Story Stats</em> menu allows you to consult several metrics
+such as the number of text characters, your use of retries, the size of
+your retry branches, etc. You may also prune your story in several ways
+in order to decrease its filesize.</p>
 <ul>
-<li><strong>Trim Story</strong>: Deletes all <em>redo steps</em>, leaving only the current path. You will not able to navigate the <em>Redo Tree</em> anymore, but the filesize of your story will be reduced.</li>
-<li><strong>Flatten Story</strong>: More aggressive version of <em>Trimming.</em> Deletes all <strong>Undo</strong> steps and branches, leaving you with a single block of text.</li>
-<li><strong>Reset to Prompt</strong>: Reverts your story back to the initial prompt it was started with, deleting everything else.</li>
+<li><strong>Trim Story</strong>: Deletes all <em>redo steps</em>,
+leaving only the current path. You will not able to navigate the
+<em>Redo Tree</em> anymore, but the filesize of your story will be
+reduced.</li>
+<li><strong>Flatten Story</strong>: More aggressive version of
+<em>Trimming.</em> Deletes all <strong>Undo</strong> steps and branches,
+leaving you with a single block of text.</li>
+<li><strong>Reset to Prompt</strong>: Reverts your story back to the
+initial prompt it was started with, deleting everything else.</li>
 </ul>
 <h3 id="exporting-the-story">Exporting the Story</h3>
 <p>You may export the story as:</p>
 <ul>
-<li><p>A <strong>Story file</strong>, which includes all branches and retries, and can be large if you haven't trimmed it first!</p></li>
-<li><p>A <strong>Scenario file</strong>, which is flattened and ready to be imported with placeholders, if applicable.</p></li>
-<li><p>A <strong>Plaintext file</strong> so it can simply be read on most devices.</p></li>
-<li><p><strong>Copy the entire .story file to the clipboard</strong>, which can cause lag, this is a lot of data!</p></li>
-<li><p>A <strong>Screenshot</strong> which can be customized to provide a showcase of NovelAI's abilities.</p></li>
+<li><p>A <strong>Story file</strong>, which includes all branches and
+retries, and can be large if you haven't trimmed it first!</p></li>
+<li><p>A <strong>Scenario file</strong>, which is flattened and ready to
+be imported with placeholders, if applicable.</p></li>
+<li><p>A <strong>Plaintext file</strong> so it can simply be read on
+most devices.</p></li>
+<li><p><strong>Copy the entire .story file to the clipboard</strong>,
+which can cause lag, this is a lot of data!</p></li>
+<li><p>A <strong>Screenshot</strong> which can be customized to provide
+a showcase of NovelAI's abilities.</p></li>
 </ul>
 <h3 id="screenshot-designer">Screenshot Designer</h3>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a8b9b93a-d9db-4902-859e-07e0cd4ab790" alt="image" /></p>
-<p>The Screenshot Designer allows you to take a screenshot of the <strong>entire selected story text</strong>, and format it into a neat image that you can share freely.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/a8b9b93a-d9db-4902-859e-07e0cd4ab790"
+alt="image" /></p>
+<p>The Screenshot Designer allows you to take a screenshot of the
+<strong>entire selected story text</strong>, and format it into a neat
+image that you can share freely.</p>
 <p>The toggles do the following:</p>
 <ul>
-<li>Show Title: Shows the title of the story, along with "AN EXCERPT FROM"</li>
+<li>Show Title: Shows the title of the story, along with "AN EXCERPT
+FROM"</li>
 <li>Show Date: Show the date of the screenshot's creation.</li>
-<li>Show Pen Name: Shows "by" followed by the pen name you have chosen in your settings.</li>
-<li>Show NAI Logo: Shows the NovelAI logo and the site URL at the bottom.</li>
-<li>Show Show Color Highlighting: Indicates the source of all tokens in the image according to your theme colors.</li>
-<li>Show AI Model: Shows "Written Alongside" with the name and portrait of the selected model.</li>
+<li>Show Pen Name: Shows "by" followed by the pen name you have chosen
+in your settings.</li>
+<li>Show NAI Logo: Shows the NovelAI logo and the site URL at the
+bottom.</li>
+<li>Show Show Color Highlighting: Indicates the source of all tokens in
+the image according to your theme colors.</li>
+<li>Show AI Model: Shows "Written Alongside" with the name and portrait
+of the selected model.</li>
 <li>Show Background: Shows some background vector art.</li>
 <li>Show Comment: If comments are present, they are displayed.</li>
 </ul>
-<p>You can select the font size, the width of the picture in pixels, as well as if you'd like to use NovelAI's default dark or light theme, or the one currently in use.</p>
+<p>You can select the font size, the width of the picture in pixels, as
+well as if you'd like to use NovelAI's default dark or light theme, or
+the one currently in use.</p>
 <hr />
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->

@@ -1333,15 +1333,18 @@
 <a href="." forTitle="Erato System Prompt">Return to Index</a>
 <h1 class="title">Erato System Prompt</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#definition">Definition</a></li>
-    <li><a href="#extended-erato-system-prompt">Extended Erato System Prompt</a></li>
+    <li><a href="#definition" id="toc-definition">Definition</a></li>
+    <li><a href="#extended-erato-system-prompt"
+    id="toc-extended-erato-system-prompt">Extended Erato System
+    Prompt</a></li>
     </ul>
   <a href="." forTitle="Erato System Prompt">Return to Index</a>
 </nav>
@@ -1349,31 +1352,120 @@
 <main>
 <p><em>Guide written by Belverk also known as Valahraban</em></p>
 <h2 id="definition">Definition</h2>
-<p>System prompt: System prompts are a set of instructions, guidelines, and contextual information provided to AI models before they engage with user queries.</p>
-<p>Erato is an Anlatan finetune of the Meta Llama 3.0 70B model using the llama3-tokenizer. It uses the base open weights of Llama 3. Anlatan used traditional completion-style training for Erato and therefore the model should not be mistaken for what are colloquially called <strong>Instruct-models</strong>. The concept of system prompts however can be applied to any kind of text transformer.</p>
-<p>It is likely that the base Llama 3 used some form of system prompting in base training, and it is known that Google's Gemini 1.0 and Gemma models do something like it without a distinct system role.</p>
-<p>NovelAI uses a form of system prompting. This is known as the <a href="https://docs.novelai.net/text/specialsymbols.html#-spaced-bracketing-">ATTG</a> (Author, Title, Tags, Genre). Ever since at least Clio and Kayra, effort has been put in to make sure in training ATTG is trained first before the text that follows it. For Erato this is ATTG plus the newly added <strong>S</strong> value. All of this should be a lorebook entry, placed at the very beginning of context. An example Erato system prompt (ATTG) would look something like <code>[ Author: Jacqueline Carey; Title: Amazing Story; Tags: adventure, modern day; Genre: contemporary fiction, prose ][ S: 4 ]</code></p>
-<p>Illustrated with pictures inside NAI UI: <img src="https://github.com/user-attachments/assets/fefca8c1-559f-4912-a2db-d661ec632ba2" alt="image" /> <img src="https://github.com/user-attachments/assets/2e24b12e-57dc-436c-800f-e6b618191eee" alt="image" /></p>
-<p>By making guesses about how base L3 interacts with Anlatan's training and experimenting, we can build an even more powerful system prompting system. This is what this guide is about. Results may vary, readers will have to take Belverk's and his few testers word for it resulting in "great tier output, where the narrator closely follows rules provided by the writer". The goal is setting up a system that uses few tokens, while giving the user an easy way to come up with rules that direct the "narrator" of the outputted content, the narrator here being synonymous with the model.</p>
+<p>System prompt: System prompts are a set of instructions, guidelines,
+and contextual information provided to AI models before they engage with
+user queries.</p>
+<p>Erato is an Anlatan finetune of the Meta Llama 3.0 70B model using
+the llama3-tokenizer. It uses the base open weights of Llama 3. Anlatan
+used traditional completion-style training for Erato and therefore the
+model should not be mistaken for what are colloquially called
+<strong>Instruct-models</strong>. The concept of system prompts however
+can be applied to any kind of text transformer.</p>
+<p>It is likely that the base Llama 3 used some form of system prompting
+in base training, and it is known that Google's Gemini 1.0 and Gemma
+models do something like it without a distinct system role.</p>
+<p>NovelAI uses a form of system prompting. This is known as the <a
+href="https://docs.novelai.net/text/specialsymbols.html#-spaced-bracketing-">ATTG</a>
+(Author, Title, Tags, Genre). Ever since at least Clio and Kayra, effort
+has been put in to make sure in training ATTG is trained first before
+the text that follows it. For Erato this is ATTG plus the newly added
+<strong>S</strong> value. All of this should be a lorebook entry, placed
+at the very beginning of context. An example Erato system prompt (ATTG)
+would look something like
+<code>[ Author: Jacqueline Carey; Title: Amazing Story; Tags: adventure, modern day; Genre: contemporary fiction, prose ][ S: 4 ]</code></p>
+<p>Illustrated with pictures inside NAI UI: <img
+src="https://github.com/user-attachments/assets/fefca8c1-559f-4912-a2db-d661ec632ba2"
+alt="image" /> <img
+src="https://github.com/user-attachments/assets/2e24b12e-57dc-436c-800f-e6b618191eee"
+alt="image" /></p>
+<p>By making guesses about how base L3 interacts with Anlatan's training
+and experimenting, we can build an even more powerful system prompting
+system. This is what this guide is about. Results may vary, readers will
+have to take Belverk's and his few testers word for it resulting in
+"great tier output, where the narrator closely follows rules provided by
+the writer". The goal is setting up a system that uses few tokens, while
+giving the user an easy way to come up with rules that direct the
+"narrator" of the outputted content, the narrator here being synonymous
+with the model.</p>
 <h2 id="extended-erato-system-prompt">Extended Erato System Prompt</h2>
-<p>It is recommended that everything explained here is set up inside lorebooks and categories. For users who already have their own lorebooks or category system, these are easy to add without getting in the way. Correct insertion order is the one important thing for what we are trying to achieve. We want the ATTG lorebook to be the first thing the model ever sees, immediately followed by the Lore of Lorebooks, then Rules (optional) and finally the rest of your LBs. ATTG does not use a prefix. LoL, the Rules and most other LBs will use <code>----\n</code> as the prefix.</p>
-<p>I recommend to set up ATTG at Insertion Order 1 and Insertion Position 0 (shown in previous pictures). The example provided in this article could be used as the entry. Recommended values for S range from 2-4 as per datasetter Zaltys' recommendation, due to how much data Erato was trained on.</p>
-<p>Set up a category called something like <code>INSTRUCTIONS</code>, ordering your categories however you prefer. Turn on default entry settings. Only add <code>----\n</code> to prefix, increase reserved tokens to 1000, insertion order 2, insertion position 0. Now you can add lorebooks inside this category and they will have the correct settings.</p>
-<p>Here I provide what I call the <code>Lore of Lorebooks</code> or <code>LoL</code> for short. You can name the entry whatever you want. I gave it this name, because inside it we define <em>what a Lore is</em>. Under this system, every LB you provide is Lore, while the story text is called <code>the narrative</code> and whoever is writing is called <code>the narrator</code>. MAKE SURE THAT THE ATTG AND THIS LB IS ALWAYS ON.</p>
+<p>It is recommended that everything explained here is set up inside
+lorebooks and categories. For users who already have their own lorebooks
+or category system, these are easy to add without getting in the way.
+Correct insertion order is the one important thing for what we are
+trying to achieve. We want the ATTG lorebook to be the first thing the
+model ever sees, immediately followed by the Lore of Lorebooks, then
+Rules (optional) and finally the rest of your LBs. ATTG does not use a
+prefix. LoL, the Rules and most other LBs will use <code>----\n</code>
+as the prefix.</p>
+<p>I recommend to set up ATTG at Insertion Order 1 and Insertion
+Position 0 (shown in previous pictures). The example provided in this
+article could be used as the entry. Recommended values for S range from
+2-4 as per datasetter Zaltys' recommendation, due to how much data Erato
+was trained on.</p>
+<p>Set up a category called something like <code>INSTRUCTIONS</code>,
+ordering your categories however you prefer. Turn on default entry
+settings. Only add <code>----\n</code> to prefix, increase reserved
+tokens to 1000, insertion order 2, insertion position 0. Now you can add
+lorebooks inside this category and they will have the correct
+settings.</p>
+<p>Here I provide what I call the <code>Lore of Lorebooks</code> or
+<code>LoL</code> for short. You can name the entry whatever you want. I
+gave it this name, because inside it we define <em>what a Lore is</em>.
+Under this system, every LB you provide is Lore, while the story text is
+called <code>the narrative</code> and whoever is writing is called
+<code>the narrator</code>. MAKE SURE THAT THE ATTG AND THIS LB IS ALWAYS
+ON.</p>
 <pre><code>Lore
 Type: information, knowledge, instructions
-Description: Lore is any information pertinent to the story. Lore entries are separated by ---- . Any noteworthy or relevant concept can be detailed with Lore, including character sheets or instructions for the narrator. Lore can be a list of attributes, or a paragraph. It is important to respect and accurately portray any details included in Lore, and use the knowledge within to enrich the story and the interaction between characters. This entry is an example of a Lore entry in the pedia style.
-</code></pre>
-<p><img src="https://github.com/user-attachments/assets/b1ffd6e7-b536-4e7a-9443-e92dc4627f36" alt="image" /> <img src="https://github.com/user-attachments/assets/1a08947f-303c-4d84-be44-c70fd04fc9e0" alt="image" /></p>
-<p>Using the <a href="Using-Attributes.html">Attributes</a> format present in Anlatan's dataset, we define what Lore is, what Lore contains and what the ideal separator is. We do not need to define dinkus, the model already understands these and other concepts. We make a reference to the pedia style, because inside dataset Tags, some data that is written similar to this is referred to as pedia. Belverk can confirm this because he used to contribute pedia-style data. Attributes and pedia can be treated synonymously for our purposes.</p>
-<p>The above lorebook is not very useful on its own. But it becomes very powerful if we give the narrator rules to follow and use one or more world building related LBs. Inside the category we set up previously, let's add another LB. We can call it <code>Rules</code>. In order to ensure that Rules goes immediately below <code>Lore</code>, we have to manually increment Insertion Order to 3. The Rules can be anything we want. Personally, I use it to enforce the person and the tense the story is written in. It could also be used to enforce text adventure. With this system, we could write all our other LBs in present tense Attributes and/or prose without ever confusing Erato. I haven't gotten a single tense error in multiple 200,000 character stories with this setup.</p>
+Description: Lore is any information pertinent to the story. Lore entries are separated by ---- . Any noteworthy or relevant concept can be detailed with Lore, including character sheets or instructions for the narrator. Lore can be a list of attributes, or a paragraph. It is important to respect and accurately portray any details included in Lore, and use the knowledge within to enrich the story and the interaction between characters. This entry is an example of a Lore entry in the pedia style.</code></pre>
+<p><img
+src="https://github.com/user-attachments/assets/b1ffd6e7-b536-4e7a-9443-e92dc4627f36"
+alt="image" /> <img
+src="https://github.com/user-attachments/assets/1a08947f-303c-4d84-be44-c70fd04fc9e0"
+alt="image" /></p>
+<p>Using the <a href="Using-Attributes.html">Attributes</a> format
+present in Anlatan's dataset, we define what Lore is, what Lore contains
+and what the ideal separator is. We do not need to define dinkus, the
+model already understands these and other concepts. We make a reference
+to the pedia style, because inside dataset Tags, some data that is
+written similar to this is referred to as pedia. Belverk can confirm
+this because he used to contribute pedia-style data. Attributes and
+pedia can be treated synonymously for our purposes.</p>
+<p>The above lorebook is not very useful on its own. But it becomes very
+powerful if we give the narrator rules to follow and use one or more
+world building related LBs. Inside the category we set up previously,
+let's add another LB. We can call it <code>Rules</code>. In order to
+ensure that Rules goes immediately below <code>Lore</code>, we have to
+manually increment Insertion Order to 3. The Rules can be anything we
+want. Personally, I use it to enforce the person and the tense the story
+is written in. It could also be used to enforce text adventure. With
+this system, we could write all our other LBs in present tense
+Attributes and/or prose without ever confusing Erato. I haven't gotten a
+single tense error in multiple 200,000 character stories with this
+setup.</p>
 <pre><code>Narrative rules
 Type: narrative, rules, instructions
 This Lore describes rules that the narrative storytelling will abide by. Regardless of how Lore is structured, the story is written in third person, past tense.
-1. The story takes place in mythical times. Electricity is unheard of and does not feature in the narrative.
-</code></pre>
-<p><img src="https://github.com/user-attachments/assets/6a3a144e-6722-46c7-9c04-79f3ec749b17" alt="image" /> <img src="https://github.com/user-attachments/assets/12495422-b1fa-4a63-b83b-2ac616223466" alt="image" /></p>
-<p>Numbered list works best in my experience, you could also do a bullet list with <code>- </code>. The structure is a combination of markdown and finetuned elements, both of which Erato is great at. I only included one common rule, because users have to set their own rules depending on what they want out of each story. From my experiments, I know that using rules you can completely ban dating, turn a main character completely mute, re-create text adventure in storyteller mode, set any level of desired technology, as well as stop the narrator from mentioning LB knowledge directly. It is powerful with diverse uses. This is why I call this structure the Erato System Prompt. You can set up however many Rule LBs you want, even with keys to turn them on or off. In regular use, I only have an ATTG + Score + LoL + Rules, always turned on. Note that the extended system prompt replaces the short summary/synopsis of the story.</p>
+1. The story takes place in mythical times. Electricity is unheard of and does not feature in the narrative.</code></pre>
+<p><img
+src="https://github.com/user-attachments/assets/6a3a144e-6722-46c7-9c04-79f3ec749b17"
+alt="image" /> <img
+src="https://github.com/user-attachments/assets/12495422-b1fa-4a63-b83b-2ac616223466"
+alt="image" /></p>
+<p>Numbered list works best in my experience, you could also do a bullet
+list with <code>- </code>. The structure is a combination of markdown
+and finetuned elements, both of which Erato is great at. I only included
+one common rule, because users have to set their own rules depending on
+what they want out of each story. From my experiments, I know that using
+rules you can completely ban dating, turn a main character completely
+mute, re-create text adventure in storyteller mode, set any level of
+desired technology, as well as stop the narrator from mentioning LB
+knowledge directly. It is powerful with diverse uses. This is why I call
+this structure the Erato System Prompt. You can set up however many Rule
+LBs you want, even with keys to turn them on or off. In regular use, I
+only have an ATTG + Score + LoL + Rules, always turned on. Note that the
+extended system prompt replaces the short summary/synopsis of the
+story.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

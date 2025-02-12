@@ -1333,302 +1333,668 @@
 <a href="." forTitle="Image Generation">Return to Index</a>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#how-is-the-ai-trained">How is the AI trained?</a></li>
-    <li><a href="#diffusion-models">Diffusion Models</a>
+    <li><a href="#how-is-the-ai-trained"
+    id="toc-how-is-the-ai-trained">How is the AI trained?</a></li>
+    <li><a href="#diffusion-models" id="toc-diffusion-models">Diffusion
+    Models</a>
     <ul>
-    <li><a href="#noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler: Steps, Scale/Guidance and Seed</a></li>
-    <li><a href="#the-limits-of-guidance">The limits of Guidance</a></li>
-    <li><a href="#smea">SMEA</a></li>
-    <li><a href="#decrisper">Decrisper</a></li>
-    <li><a href="#variety-booster">Variety Booster</a></li>
+    <li><a href="#noise-v-sampler-steps-scaleguidance-and-seed"
+    id="toc-noise-v-sampler-steps-scaleguidance-and-seed">Noise V.
+    Sampler: Steps, Scale/Guidance and Seed</a></li>
+    <li><a href="#the-limits-of-guidance"
+    id="toc-the-limits-of-guidance">The limits of Guidance</a></li>
+    <li><a href="#smea" id="toc-smea">SMEA</a></li>
+    <li><a href="#decrisper" id="toc-decrisper">Decrisper</a></li>
+    <li><a href="#variety-booster" id="toc-variety-booster">Variety
+    Booster</a></li>
     </ul></li>
-    <li><a href="#tag-based-prompting">Tag-based Prompting</a>
+    <li><a href="#tag-based-prompting"
+    id="toc-tag-based-prompting">Tag-based Prompting</a>
     <ul>
-    <li><a href="#quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</a></li>
-    <li><a href="#counting-characters-and-gender">Counting Characters and Gender</a></li>
-    <li><a href="#character-reference-and-artist-reference">Character Reference and Artist Reference</a></li>
-    <li><a href="#tag-interaction">Tag Interaction</a>
+    <li><a href="#quality-tags-and-aesthetic-tags"
+    id="toc-quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic
+    Tags</a></li>
+    <li><a href="#counting-characters-and-gender"
+    id="toc-counting-characters-and-gender">Counting Characters and
+    Gender</a></li>
+    <li><a href="#character-reference-and-artist-reference"
+    id="toc-character-reference-and-artist-reference">Character
+    Reference and Artist Reference</a></li>
+    <li><a href="#tag-interaction" id="toc-tag-interaction">Tag
+    Interaction</a>
     <ul>
-    <li><a href="#incomplete-interactions">Incomplete Interactions</a></li>
-    <li><a href="#priority-interference">Priority Interference</a></li>
-    <li><a href="#mutual-dependencies">Mutual Dependencies</a></li>
-    <li><a href="#facial-expressions">Facial Expressions</a></li>
+    <li><a href="#incomplete-interactions"
+    id="toc-incomplete-interactions">Incomplete Interactions</a></li>
+    <li><a href="#priority-interference"
+    id="toc-priority-interference">Priority Interference</a></li>
+    <li><a href="#mutual-dependencies"
+    id="toc-mutual-dependencies">Mutual Dependencies</a></li>
+    <li><a href="#facial-expressions" id="toc-facial-expressions">Facial
+    Expressions</a></li>
     </ul></li>
-    <li><a href="#strenghtening-and-weakning-math">Strenghtening and Weakning Math</a></li>
-    <li><a href="#unwanted-content-or-negative-prompting">Unwanted Content, or "Negative Prompting"</a></li>
+    <li><a href="#strenghtening-and-weakning-math"
+    id="toc-strenghtening-and-weakning-math">Strenghtening and Weakning
+    Math</a></li>
+    <li><a href="#unwanted-content-or-negative-prompting"
+    id="toc-unwanted-content-or-negative-prompting">Unwanted Content, or
+    "Negative Prompting"</a></li>
     </ul></li>
-    <li><a href="#prose-prompting">Prose Prompting</a>
+    <li><a href="#prose-prompting" id="toc-prose-prompting">Prose
+    Prompting</a>
     <ul>
-    <li><a href="#story-conversion">Story Conversion</a></li>
+    <li><a href="#story-conversion" id="toc-story-conversion">Story
+    Conversion</a></li>
     </ul></li>
-    <li><a href="#image-to-image-practices">Image to Image Practices</a></li>
-    <li><a href="#bounding--prompting-for-inpainting">Bounding &amp; Prompting for Inpainting</a>
+    <li><a href="#image-to-image-practices"
+    id="toc-image-to-image-practices">Image to Image Practices</a></li>
+    <li><a href="#bounding--prompting-for-inpainting"
+    id="toc-bounding--prompting-for-inpainting">Bounding &amp; Prompting
+    for Inpainting</a>
     <ul>
-    <li><a href="#bounding">Bounding</a></li>
-    <li><a href="#prompting">Prompting</a>
+    <li><a href="#bounding" id="toc-bounding">Bounding</a></li>
+    <li><a href="#prompting" id="toc-prompting">Prompting</a>
     <ul>
-    <li><a href="#clip-interrogator">CLIP Interrogator</a></li>
-    <li><a href="#combo-prompting">Combo Prompting</a></li>
+    <li><a href="#clip-interrogator" id="toc-clip-interrogator">CLIP
+    Interrogator</a></li>
+    <li><a href="#combo-prompting" id="toc-combo-prompting">Combo
+    Prompting</a></li>
     </ul></li>
     </ul></li>
-    <li><a href="#vibe-transfer">Vibe Transfer</a></li>
-    <li><a href="#furry-model">Furry Model</a>
+    <li><a href="#vibe-transfer" id="toc-vibe-transfer">Vibe
+    Transfer</a></li>
+    <li><a href="#furry-model" id="toc-furry-model">Furry Model</a>
     <ul>
-    <li><a href="#tag-differences">Tag differences</a></li>
-    <li><a href="#furry-model-quality-tags-and-unwanted-content">Furry Model Quality Tags and Unwanted Content</a></li>
-    <li><a href="#artist-tags-for-the-furry-model">Artist Tags for the Furry Model</a></li>
+    <li><a href="#tag-differences" id="toc-tag-differences">Tag
+    differences</a></li>
+    <li><a href="#furry-model-quality-tags-and-unwanted-content"
+    id="toc-furry-model-quality-tags-and-unwanted-content">Furry Model
+    Quality Tags and Unwanted Content</a></li>
+    <li><a href="#artist-tags-for-the-furry-model"
+    id="toc-artist-tags-for-the-furry-model">Artist Tags for the Furry
+    Model</a></li>
     </ul></li>
-    <li><a href="#in-depth-ui-info">In-depth UI info</a>
+    <li><a href="#in-depth-ui-info" id="toc-in-depth-ui-info">In-depth
+    UI info</a>
     <ul>
-    <li><a href="#anlas-cost-calculation">Anlas Cost Calculation</a></li>
+    <li><a href="#anlas-cost-calculation"
+    id="toc-anlas-cost-calculation">Anlas Cost Calculation</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Image Generation">Return to Index</a>
 </nav>
 
 <main>
-<p><strong>This guide is focused on nascent technology. As a result, contents might be highly volatile.</strong></p>
-<p>Anlatan already provides an in-depth guide to using their Image Generation service <a href="https://docs.novelai.net/">here</a>. It is highly recommended you read it thoroughly because it explains every functionality and all pieces of the UI in great detail.</p>
-<p>You should also read <a href="https://github.com/TravelingRobot/NAI_Community_Research/wiki/NAI-Diffusion:-Various-Tips-&amp;-Tricks">Traveling Robot's research notes</a> as well. This guide expounds on some of them.</p>
-<p>This guide aims to provide with more in depth information for power users.</p>
-<p><strong>For people looking for the magic voodoo to create NSFW artwork: Add NSFW to the prompt. Anywhere.</strong></p>
+<p><strong>This guide is focused on nascent technology. As a result,
+contents might be highly volatile.</strong></p>
+<p>Anlatan already provides an in-depth guide to using their Image
+Generation service <a href="https://docs.novelai.net/">here</a>. It is
+highly recommended you read it thoroughly because it explains every
+functionality and all pieces of the UI in great detail.</p>
+<p>You should also read <a
+href="https://github.com/TravelingRobot/NAI_Community_Research/wiki/NAI-Diffusion:-Various-Tips-&amp;-Tricks">Traveling
+Robot's research notes</a> as well. This guide expounds on some of
+them.</p>
+<p>This guide aims to provide with more in depth information for power
+users.</p>
+<p><strong>For people looking for the magic voodoo to create NSFW
+artwork: Add NSFW to the prompt. Anywhere.</strong></p>
 <h1 id="how-is-the-ai-trained">How is the AI trained?</h1>
-<p>The AI was trained on tagged images, based on the Danbooru standard. Boorus are "imageboards", sites where large amounts of images are saved in order to catalogue the body of work of artists. This stemmed from a difficulty to find and archive art reliably, as Japanese artists have a very different relationship with their works than Western cultures do.</p>
-<p>As a result, these sites were created to host as many images as possible, and make them easy to find by applying tags. These tags describe elements of the image, such as character design elements (hair, eyes, etc), poses, objects, and much more.</p>
-<p>There are two parts to training: Quality training, and Aesthetic training. This will be explained in the next section.</p>
-<p>If you are going to go and trawl Danbooru's tag database, keep in mind that the site is <strong>extremely unsafe for work!</strong></p>
-<p>If you are using the Furry model, <strong>you'll need to use E621's tags.</strong> This means all the following information will not work for this specific model. E621 is just as extremely unsafe for work.</p>
+<p>The AI was trained on tagged images, based on the Danbooru standard.
+Boorus are "imageboards", sites where large amounts of images are saved
+in order to catalogue the body of work of artists. This stemmed from a
+difficulty to find and archive art reliably, as Japanese artists have a
+very different relationship with their works than Western cultures
+do.</p>
+<p>As a result, these sites were created to host as many images as
+possible, and make them easy to find by applying tags. These tags
+describe elements of the image, such as character design elements (hair,
+eyes, etc), poses, objects, and much more.</p>
+<p>There are two parts to training: Quality training, and Aesthetic
+training. This will be explained in the next section.</p>
+<p>If you are going to go and trawl Danbooru's tag database, keep in
+mind that the site is <strong>extremely unsafe for work!</strong></p>
+<p>If you are using the Furry model, <strong>you'll need to use E621's
+tags.</strong> This means all the following information will not work
+for this specific model. E621 is just as extremely unsafe for work.</p>
 <hr />
 <h1 id="diffusion-models">Diffusion Models</h1>
-<p>A diffusion model works by resolving noise into an image. If you ever used a photo editing tool to remove noise from an image, the idea is the same, except pushed to its logical extreme. You are giving the AI nothing <em>but</em> noise, and ask it to denoise it into a full image.</p>
+<p>A diffusion model works by resolving noise into an image. If you ever
+used a photo editing tool to remove noise from an image, the idea is the
+same, except pushed to its logical extreme. You are giving the AI
+nothing <em>but</em> noise, and ask it to denoise it into a full
+image.</p>
 <p>This has several implications:</p>
-<p>• The AI has <strong>no grasp</strong> of the position and boundaries of image elements. It knows what it's trying to make, but it does not know where things start and end <em>exactly</em>.</p>
-<p>• The AI does not have pure semantic understanding of tags. It just knows that this tag tends to lead to those shapes and those colors. It does not understand what hair <em>is</em>, but just how it <em>looks</em> and how it is usually drawn.</p>
-<p>• The AI does not know what applies to what in the image, this means you can't tell it "I want this, but ONLY for this character". This is why it can struggle with multiple characters in long prompts.</p>
-<h2 id="noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler: Steps, Scale/Guidance and Seed</h2>
-<p>Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps).</p>
-<p>Steps are carried out by a <strong>Sampler</strong>, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are <em>Ancestral</em>, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers.</p>
-<p>(That does not mean they perform better <strong>in general</strong>, just that it costs less to get them to look decent.)</p>
-<p>Scale/Guidance affects <em>how much</em> the prompt affects the Sample steps, but not their "intensity" or their "length". <strong>All steps are equal in terms of compute</strong>. Guidance thus does <em>not</em> affect cost.</p>
-<p>However, <strong>Negative Guidance Scale</strong> <em>does</em>, because it uses additional processing power to run <strong>CFG</strong> or <strong>Classifier-Free Guidance</strong>. If the Negative Guidance is equal to Positive Guidance, then there is no need for extra compute, and the cost is the same.</p>
-<p><strong>Noise</strong> is the primordial soup from which the AI will unravel an image. <strong>Seed</strong> is what decides the base noise pattern, however, <strong>Noise Schedule</strong> in Advanced Settings changes how that noise is generated and interpreted by the sampler, resulting in different outputs with the same seed.</p>
-<p>Effectively, Noise Schedules are variations of the same Sampler's algorithm.</p>
-<p><code>native</code>, <code>exponential</code> and <code>polyexponential</code> are <em>mostly</em> the same, with Polyexponential being the most similar to <code>native</code> in its output. <code>karras</code> leads to very different generations on the same seed.</p>
+<p>• The AI has <strong>no grasp</strong> of the position and boundaries
+of image elements. It knows what it's trying to make, but it does not
+know where things start and end <em>exactly</em>.</p>
+<p>• The AI does not have pure semantic understanding of tags. It just
+knows that this tag tends to lead to those shapes and those colors. It
+does not understand what hair <em>is</em>, but just how it
+<em>looks</em> and how it is usually drawn.</p>
+<p>• The AI does not know what applies to what in the image, this means
+you can't tell it "I want this, but ONLY for this character". This is
+why it can struggle with multiple characters in long prompts.</p>
+<h2 id="noise-v-sampler-steps-scaleguidance-and-seed">Noise V. Sampler:
+Steps, Scale/Guidance and Seed</h2>
+<p>Diffusion models work by using Steps to resolve noise. The more
+steps, the more compute is used, (which is why the Anlas cost goes up
+with steps).</p>
+<p>Steps are carried out by a <strong>Sampler</strong>, which attempts
+to resolve the noise based on an algorithm. Each Sampler uses a
+different algorithm, and has different results. Some Sampler are
+<em>Ancestral</em>, meaning they iterate in a way that performs well at
+lower steps more quickly than non-Ancestral samplers.</p>
+<p>(That does not mean they perform better <strong>in general</strong>,
+just that it costs less to get them to look decent.)</p>
+<p>Scale/Guidance affects <em>how much</em> the prompt affects the
+Sample steps, but not their "intensity" or their "length". <strong>All
+steps are equal in terms of compute</strong>. Guidance thus does
+<em>not</em> affect cost.</p>
+<p>However, <strong>Negative Guidance Scale</strong> <em>does</em>,
+because it uses additional processing power to run <strong>CFG</strong>
+or <strong>Classifier-Free Guidance</strong>. If the Negative Guidance
+is equal to Positive Guidance, then there is no need for extra compute,
+and the cost is the same.</p>
+<p><strong>Noise</strong> is the primordial soup from which the AI will
+unravel an image. <strong>Seed</strong> is what decides the base noise
+pattern, however, <strong>Noise Schedule</strong> in Advanced Settings
+changes how that noise is generated and interpreted by the sampler,
+resulting in different outputs with the same seed.</p>
+<p>Effectively, Noise Schedules are variations of the same Sampler's
+algorithm.</p>
+<p><code>native</code>, <code>exponential</code> and
+<code>polyexponential</code> are <em>mostly</em> the same, with
+Polyexponential being the most similar to <code>native</code> in its
+output. <code>karras</code> leads to very different generations on the
+same seed.</p>
 <h2 id="the-limits-of-guidance">The limits of Guidance</h2>
-<p>Guidance is nice and all, but V2 and <strong>especially V3</strong> work best at a narrow band of scale. V2 works well from 3 to 11, while V3 works best at 2-6.</p>
-<p>Guidance is much stronger on V3 because it uses a different base model, which is more reactive than V2.</p>
-<p>Higher scale leads to stronger contrast, stronger outlines, and all around stronger "bounding" of elements. This can also cause some elements to overpower others more readily. This is why low scale is considered more "painterly", because noise is resolved more loosely, which leads to the aesthetic "blurriness" of mediums like watercolor, oil paint, etc.</p>
-<p>To allow for a stronger Prompt Guidance without having those issues, the advanced setting <strong>Prompt Guidance Rescale</strong> attempts to compensate for them, but this will result in a blurrier output. You can always use image 2 image to refine the picture once you feel the base is good enough.</p>
-<p>Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1.</p>
+<p>Guidance is nice and all, but V2 and <strong>especially V3</strong>
+work best at a narrow band of scale. V2 works well from 3 to 11, while
+V3 works best at 2-6.</p>
+<p>Guidance is much stronger on V3 because it uses a different base
+model, which is more reactive than V2.</p>
+<p>Higher scale leads to stronger contrast, stronger outlines, and all
+around stronger "bounding" of elements. This can also cause some
+elements to overpower others more readily. This is why low scale is
+considered more "painterly", because noise is resolved more loosely,
+which leads to the aesthetic "blurriness" of mediums like watercolor,
+oil paint, etc.</p>
+<p>To allow for a stronger Prompt Guidance without having those issues,
+the advanced setting <strong>Prompt Guidance Rescale</strong> attempts
+to compensate for them, but this will result in a blurrier output. You
+can always use image 2 image to refine the picture once you feel the
+base is good enough.</p>
+<p>Much like Negative Prompt Guidance, you should adjust Rescale in very
+small increments starting from 1.</p>
 <h2 id="smea">SMEA</h2>
-<p>SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at <strong>larger resolutions than the base resolutions</strong>.</p>
-<p>SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to <strong>increased Anlas costs</strong>. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you cannot try and find a good base cheaply, then regenerate it with SMEA.</p>
-<p>As a consequence of how it functions, SMEA reduces the influence of Guidance. Thus, when turning it on, you should also increase Guidance slightly to compensate.</p>
+<p>SMEA is an application of Euler Ancestral sampling, but instead of
+being applied once per generation, it is applied iteratively, per step.
+This can result in increased image quality, and is especially useful at
+<strong>larger resolutions than the base resolutions</strong>.</p>
+<p>SMEA requires considerably more compute (and its Dynamic version even
+moreso), so it will lead to <strong>increased Anlas costs</strong>. The
+other issue is that generating with SMEA with the same seed will lead to
+very different results than without, so you cannot try and find a good
+base cheaply, then regenerate it with SMEA.</p>
+<p>As a consequence of how it functions, SMEA reduces the influence of
+Guidance. Thus, when turning it on, you should also increase Guidance
+slightly to compensate.</p>
 <h2 id="decrisper">Decrisper</h2>
-<p>When operating at high Scale settings, the aesthetics can get lost as contrast grows excessive, shapes break apart, and colors leak into the wrong areas. To correct this, Decrisper dynamically sets thresholds on the <a href="https://x.com/Birchlabs/status/1582165379832348672">image latents</a> for every diffusion step, in order to keep them in a more "expected" space. This helps keep things on track and avoid a breakdown of style during generation at higher scale.</p>
+<p>When operating at high Scale settings, the aesthetics can get lost as
+contrast grows excessive, shapes break apart, and colors leak into the
+wrong areas. To correct this, Decrisper dynamically sets thresholds on
+the <a href="https://x.com/Birchlabs/status/1582165379832348672">image
+latents</a> for every diffusion step, in order to keep them in a more
+"expected" space. This helps keep things on track and avoid a breakdown
+of style during generation at higher scale.</p>
 <h2 id="variety-booster">Variety Booster</h2>
-<p>A side effect of high scale setting is that the increase in consistency results in a loss in variety. In order to circumvent that, you can let the model generate without guidance for a very small amount of steps, letting it start with a more audacious base, and <em>then</em> enable guidance and get the positive effects of a higher setting, without compromising the model's creative abilities.</p>
-<p>NovelAI detects when the general composition and body shape (if applicable) is present, and then enables Guidance for the remainder of the steps. Keep in mind that this requires your negative prompt to only kick in at the same time as guidance, so this can lead to it being less effective, and artifacts or unusual props appearing.</p>
+<p>A side effect of high scale setting is that the increase in
+consistency results in a loss in variety. In order to circumvent that,
+you can let the model generate without guidance for a very small amount
+of steps, letting it start with a more audacious base, and <em>then</em>
+enable guidance and get the positive effects of a higher setting,
+without compromising the model's creative abilities.</p>
+<p>NovelAI detects when the general composition and body shape (if
+applicable) is present, and then enables Guidance for the remainder of
+the steps. Keep in mind that this requires your negative prompt to only
+kick in at the same time as guidance, so this can lead to it being less
+effective, and artifacts or unusual props appearing.</p>
 <hr />
 <h1 id="tag-based-prompting">Tag-based Prompting</h1>
-<p>To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use commas to separate tags. While tags on Boorus use underscores instead of spaces, the parser replaced all underscores 'with spaces' to make it easier to write prompts.</p>
-<p>Thus, write prompts with spaces in them if they use multiple words, and bound them with commas. Forgetting a comma might cause the prompt to be interpreted incorrectly.</p>
-<p>Something that is important to note is that prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, but the rest is more or less normalized in strength.</p>
-<p><strong>When weighing tags with curly braces or square brackets, stacking them has a multiplicative effect, rather than additive. The multiplier is 1.05 per pair of brackets</strong>.</p>
-<p>Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts.</p>
-<p>There are several tag categories that are important to know, due to how extensively they were used in tagging.</p>
-<h2 id="quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic Tags</h2>
-<p>You may have heard of the <code>masterpiece</code> tag being used to "improve generation quality". This goes a little bit more in depth.</p>
-<p>Images were classified according to a percentile "quality score". Different tags were then applied to training images based on that score.</p>
-<p><strong>For V1</strong>, from highest percentiles to lowest percentiles:</p>
+<p>To use Tags in NAIDiffusion, simply assemble a list of tags freely.
+Use commas to separate tags. While tags on Boorus use underscores
+instead of spaces, the parser replaced all underscores 'with spaces' to
+make it easier to write prompts.</p>
+<p>Thus, write prompts with spaces in them if they use multiple words,
+and bound them with commas. Forgetting a comma might cause the prompt to
+be interpreted incorrectly.</p>
+<p>Something that is important to note is that prompts are interpreted
+with linear priority, which is the reverse of text generation. What
+comes first has more weight, but the rest is more or less normalized in
+strength.</p>
+<p><strong>When weighing tags with curly braces or square brackets,
+stacking them has a multiplicative effect, rather than additive. The
+multiplier is 1.05 per pair of brackets</strong>.</p>
+<p>Tag-based prompts tends to lead to consistent designs. However, they
+come out stylistically different and less diverse than Prose-based
+prompts.</p>
+<p>There are several tag categories that are important to know, due to
+how extensively they were used in tagging.</p>
+<h2 id="quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic
+Tags</h2>
+<p>You may have heard of the <code>masterpiece</code> tag being used to
+"improve generation quality". This goes a little bit more in depth.</p>
+<p>Images were classified according to a percentile "quality score".
+Different tags were then applied to training images based on that
+score.</p>
+<p><strong>For V1</strong>, from highest percentiles to lowest
+percentiles:</p>
 <p><code>masterpiece, best quality, high quality, normal quality, low quality, worst quality</code></p>
-<p><strong>For V2</strong>, from highest percentiles to lowest percentiles:</p>
+<p><strong>For V2</strong>, from highest percentiles to lowest
+percentiles:</p>
 <p><code>best quality, amazing quality, great quality, normal quality, bad quality, worst quality</code></p>
-<p>Keep in mind that "amazing quality" incidentally has more NSFW content, so it may be more appropriate to use for NSFW images, as opposed to "best quality". (This also explains why it tends to generate beaches and people in swimsuits.)</p>
-<p>If you use any of the Unwanted Content default filters, <code>worst quality, bad quality,</code> are <strong>automatically inserted in Unwanted Content</strong>. You can disable the filter or write them in your prompt to activate them anyway.</p>
-<p><strong>Aesthetic tags</strong> are used exclusively in V2 and V3 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are: <code>very aesthetic, aesthetic, displeasing, very displeasing</code> Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.</p>
-<p>You only need one tag for quality and one for aesthtics, though generally you won't need one. It is better to downbias bad things than overly bias "good" things, as this may damage creativity. Generally just using the default Unwanted Content filters will be fine.</p>
-<h2 id="counting-characters-and-gender">Counting Characters and Gender</h2>
-<p>One of the ubiquitous booru tags is the gender count tag. Whenever there is a number of characters in frame, then they are counted by gender.</p>
-<p>The tag format is always the same. A number from one to 6 (with a plus if more than 6), followed immediately by the gender. <code>1boy, 2girls</code></p>
-<p>You can also use <code>other</code> as a gender for androgynous or transgender characters. Generally, they will look rather feminine nonetheless.</p>
-<p>This tag is almost universally put in first position because it starts with a number rather than a letter, but you can put it anywhere. Those tags are <strong>very</strong> powerful, so you might not even need to use them, if you simply describe a character. It is mostly to make sure you have that number of characters in frame, or reinforce gender expectations.</p>
-<p>If you are looking to generate gender noncomforming characters, here are a few tags.</p>
-<p><code>twink, otoko no ko,</code> or <code>1girl, flat chest</code> can help generate soft boys.</p>
-<p><code>toned female, tomboy, tough</code> can help generate butch girls.</p>
-<h2 id="character-reference-and-artist-reference">Character Reference and Artist Reference</h2>
-<p>After you specified quality and character number/gender, you'll want to specify, if applicable, the <strong>Reference Character</strong>, followed by its <strong>source franchise</strong>. Keep in mind that Boorus use Japanese name order, meaning that family name comes first for Japanese characters.</p>
+<p>Keep in mind that "amazing quality" incidentally has more NSFW
+content, so it may be more appropriate to use for NSFW images, as
+opposed to "best quality". (This also explains why it tends to generate
+beaches and people in swimsuits.)</p>
+<p>If you use any of the Unwanted Content default filters,
+<code>worst quality, bad quality,</code> are <strong>automatically
+inserted in Unwanted Content</strong>. You can disable the filter or
+write them in your prompt to activate them anyway.</p>
+<p><strong>Aesthetic tags</strong> are used exclusively in V2 and V3 and
+onwards to designate pictures which match the intended "feel" of the
+model, as opposed to images that diverge too greatly from the aesthetic
+that NovelAI sought. The tags for Aesthetics are:
+<code>very aesthetic, aesthetic, displeasing, very displeasing</code>
+Effectively, displeasing images stray too far from the intended "look"
+of NAI Diffusion, or have aesthetics considered "poor" so that the model
+knows to avoid them.</p>
+<p>You only need one tag for quality and one for aesthtics, though
+generally you won't need one. It is better to downbias bad things than
+overly bias "good" things, as this may damage creativity. Generally just
+using the default Unwanted Content filters will be fine.</p>
+<h2 id="counting-characters-and-gender">Counting Characters and
+Gender</h2>
+<p>One of the ubiquitous booru tags is the gender count tag. Whenever
+there is a number of characters in frame, then they are counted by
+gender.</p>
+<p>The tag format is always the same. A number from one to 6 (with a
+plus if more than 6), followed immediately by the gender.
+<code>1boy, 2girls</code></p>
+<p>You can also use <code>other</code> as a gender for androgynous or
+transgender characters. Generally, they will look rather feminine
+nonetheless.</p>
+<p>This tag is almost universally put in first position because it
+starts with a number rather than a letter, but you can put it anywhere.
+Those tags are <strong>very</strong> powerful, so you might not even
+need to use them, if you simply describe a character. It is mostly to
+make sure you have that number of characters in frame, or reinforce
+gender expectations.</p>
+<p>If you are looking to generate gender noncomforming characters, here
+are a few tags.</p>
+<p><code>twink, otoko no ko,</code> or <code>1girl, flat chest</code>
+can help generate soft boys.</p>
+<p><code>toned female, tomboy, tough</code> can help generate butch
+girls.</p>
+<h2 id="character-reference-and-artist-reference">Character Reference
+and Artist Reference</h2>
+<p>After you specified quality and character number/gender, you'll want
+to specify, if applicable, the <strong>Reference Character</strong>,
+followed by its <strong>source franchise</strong>. Keep in mind that
+Boorus use Japanese name order, meaning that family name comes first for
+Japanese characters.</p>
 <p><code>yor briar, spy x family</code></p>
 <p><code>yamamura sadako, the ring</code></p>
-<p>If you wish to use an artist's style, use <code>artist:(artistname)</code>.</p>
-<p>For example, if you want to generate Makoto Kusanagi in the style of the latest Ghost in the Shell production, you would use:</p>
+<p>If you wish to use an artist's style, use
+<code>artist:(artistname)</code>.</p>
+<p>For example, if you want to generate Makoto Kusanagi in the style of
+the latest Ghost in the Shell production, you would use:</p>
 <p><code>Kusanagi Makoto, ghost in the shell, Artist:Ilya Kuvshinov,</code></p>
-<p>You can, of course, put this information anywhere else, this is simply how file names are generally arranged.</p>
+<p>You can, of course, put this information anywhere else, this is
+simply how file names are generally arranged.</p>
 <h2 id="tag-interaction">Tag Interaction</h2>
-<p>An easy way to mess up your generations (or improve them!) is to have tags that interact. One common example of tags overwriting each other is as follows:</p>
+<p>An easy way to mess up your generations (or improve them!) is to have
+tags that interact. One common example of tags overwriting each other is
+as follows:</p>
 <p><code>1girl, brown hair, blue eyes, sleeping, eyes closed, laying down</code></p>
-<p>While the problem is not immediately apparent, specifying an eye colour <em>and</em> them being closed means that one will be ignored in favour of the other. <strong>Make sure you don't specify information about things that are not in frame.</strong> Images on Danbooru follow the <strong>"tag what you <em>see</em>"</strong> guideline.</p>
+<p>While the problem is not immediately apparent, specifying an eye
+colour <em>and</em> them being closed means that one will be ignored in
+favour of the other. <strong>Make sure you don't specify information
+about things that are not in frame.</strong> Images on Danbooru follow
+the <strong>"tag what you <em>see</em>"</strong> guideline.</p>
 <p>A more positive example is:</p>
 <p><code>1girl, black hair, blue highlights, blue eyes,</code></p>
-<p>Putting a color highlight next to the hair color will give you colored strands and bangs. Adjust the wording until you get the specifics you like!</p>
+<p>Putting a color highlight next to the hair color will give you
+colored strands and bangs. Adjust the wording until you get the
+specifics you like!</p>
 <h3 id="incomplete-interactions">Incomplete Interactions</h3>
-<p>Breaking up interactions that occur naturally can result in artifacts or odd elements. It is easy to achieve if you strengthen a specific part of a tag rather than the whole tag.</p>
+<p>Breaking up interactions that occur naturally can result in artifacts
+or odd elements. It is easy to achieve if you strengthen a specific part
+of a tag rather than the whole tag.</p>
 <p><code>1girl, black hair, {{{orange}}} eyes</code></p>
-<p>This can lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame. Whether or not this is a bad thing is up to you.</p>
+<p>This can lead to the spontaneous appearance of tasty, tasty oranges
+everywhere in frame. Whether or not this is a bad thing is up to
+you.</p>
 <h3 id="priority-interference">Priority Interference</h3>
-<p>As tags placed earlier in the prompt have more strength, colors and other elements tend to leak.</p>
+<p>As tags placed earlier in the prompt have more strength, colors and
+other elements tend to leak.</p>
 <p><code>blue eyes, black hair</code></p>
-<p>Can lead to the hair being tinted blue, or being blue outright. Eyes tend to have powerful color influence on other elements, as most character designers tend to match palette to the eyes. Thus, it may be better to write the hair tags first to avoid that.</p>
+<p>Can lead to the hair being tinted blue, or being blue outright. Eyes
+tend to have powerful color influence on other elements, as most
+character designers tend to match palette to the eyes. Thus, it may be
+better to write the hair tags first to avoid that.</p>
 <h3 id="mutual-dependencies">Mutual Dependencies</h3>
-<p>Some tags implicitly require each other and can lead to artifacts or tags being ignored if one of them is banned through Undesired Content. For example, requesting <code>gloves</code> but having <code>hands</code> in Undesired Content can lead to weird generations. Make sure you account for these dependencies to avoid this!</p>
+<p>Some tags implicitly require each other and can lead to artifacts or
+tags being ignored if one of them is banned through Undesired Content.
+For example, requesting <code>gloves</code> but having
+<code>hands</code> in Undesired Content can lead to weird generations.
+Make sure you account for these dependencies to avoid this!</p>
 <h3 id="facial-expressions">Facial Expressions</h3>
-<p>You'll quickly realize that facial expression tags are non-intuitive and lead to odd faces. This is because emotions aren't often tagged, and their vectors are surprisingly strong. Try putting <code>shy</code> in UC and you'll see what this leads to. Some like <code>pensive</code> work fine as is.</p>
-<p>There are various emotes that can be used as facial expressions, with fairly strong vectors: <code>:), :(, :3</code> and so on.</p>
-<p>Be aware that some, like :|, can break the prompt. Try using an emoji instead: 😐, or look up the tag database. (For instance, this would be <code>expressionless</code>)</p>
-<p>Having characters look in certain directions also tends to force certain poses. <code>looking back</code> has a strong tendency to partially obscure the face with the shoulder, and make the character bend over.</p>
-<h2 id="strenghtening-and-weakning-math">Strenghtening and Weakning Math</h2>
-<p>You may have seen curly braces and square brackets be used to make a tag stronger or weaker. Here is a more direct explanation.</p>
+<p>You'll quickly realize that facial expression tags are non-intuitive
+and lead to odd faces. This is because emotions aren't often tagged, and
+their vectors are surprisingly strong. Try putting <code>shy</code> in
+UC and you'll see what this leads to. Some like <code>pensive</code>
+work fine as is.</p>
+<p>There are various emotes that can be used as facial expressions, with
+fairly strong vectors: <code>:), :(, :3</code> and so on.</p>
+<p>Be aware that some, like :|, can break the prompt. Try using an emoji
+instead: 😐, or look up the tag database. (For instance, this would be
+<code>expressionless</code>)</p>
+<p>Having characters look in certain directions also tends to force
+certain poses. <code>looking back</code> has a strong tendency to
+partially obscure the face with the shoulder, and make the character
+bend over.</p>
+<h2 id="strenghtening-and-weakning-math">Strenghtening and Weakning
+Math</h2>
+<p>You may have seen curly braces and square brackets be used to make a
+tag stronger or weaker. Here is a more direct explanation.</p>
 <p>Each tag has a base value of 1.</p>
-<p>If <code>]</code> or <code>{</code> is present, multiply the value of all tags following it by 1.05 (a 5% increase). If <code>}</code> or <code>[</code> is present, divide the value of all tags following it by 1.05 (a 5% decrease).</p>
-<p>This operation is <strong>multiplicative</strong>, and <strong>make generations partially non-deterministic.</strong> In the following examples:</p>
+<p>If <code>]</code> or <code>{</code> is present, multiply the value of
+all tags following it by 1.05 (a 5% increase). If <code>}</code> or
+<code>[</code> is present, divide the value of all tags following it by
+1.05 (a 5% decrease).</p>
+<p>This operation is <strong>multiplicative</strong>, and <strong>make
+generations partially non-deterministic.</strong> In the following
+examples:</p>
 <p><code>blue eyes, black hair</code></p>
-<p><code>{[{[blue eyes, black hair]}]}</code> Will lead to different results on the same seed and settings.</p>
-<p>You do not need to close bracket pairs. Hell, you don't even need to open them!</p>
+<p><code>{[{[blue eyes, black hair]}]}</code> Will lead to different
+results on the same seed and settings.</p>
+<p>You do not need to close bracket pairs. Hell, you don't even need to
+open them!</p>
 <p><code>{blue eyes, black hair</code></p>
 <p>and</p>
 <p><code>]blue eyes, black hair</code></p>
 <p>Are fundamentally the same.</p>
-<h2 id="unwanted-content-or-negative-prompting">Unwanted Content, or "Negative Prompting"</h2>
-<p>Unwanted Content is a way to direct the generation away from things you'd like to avoid. By virtue of how it works, UC is rather "destructive", so you should keep it as short and focused as possible. Generate with a short UC, then narrow it down based on what you need per image.</p>
-<p>There are multiple default UC presets, we will focus on V3's specifically to explain what each element does.</p>
-<p>Light: <code>nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
-<p>Heavy: <code>nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]</code></p>
-<p>Human Focus: <code>lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code></p>
+<h2 id="unwanted-content-or-negative-prompting">Unwanted Content, or
+"Negative Prompting"</h2>
+<p>Unwanted Content is a way to direct the generation away from things
+you'd like to avoid. By virtue of how it works, UC is rather
+"destructive", so you should keep it as short and focused as possible.
+Generate with a short UC, then narrow it down based on what you need per
+image.</p>
+<p>There are multiple default UC presets, we will focus on V3's
+specifically to explain what each element does.</p>
+<p>Light:
+<code>nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
+<p>Heavy:
+<code>nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]</code></p>
+<p>Human Focus:
+<code>lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code></p>
 <ul>
-<li>nsfw: Prevents generating explicit pictures without explicit request from the user.</li>
-<li>lowres: Reduces artifacts caused by upscaling low-res images to larger canvas sizes.</li>
-<li>{bad}: Part of several tags such as <code>bad anatomy</code>, used on its own to avoid using multiple tags starting with "bad", and including things like <code>bad hands</code> which can result in hands not being drawn at all.</li>
+<li>nsfw: Prevents generating explicit pictures without explicit request
+from the user.</li>
+<li>lowres: Reduces artifacts caused by upscaling low-res images to
+larger canvas sizes.</li>
+<li>{bad}: Part of several tags such as <code>bad anatomy</code>, used
+on its own to avoid using multiple tags starting with "bad", and
+including things like <code>bad hands</code> which can result in hands
+not being drawn at all.</li>
 <li>error, artistic error: Reduces potential artistic mistakes.</li>
-<li>fewer, extra and missing: Similar to bad, used to reduce the occurence of missing digits and limbs, or extraneous anatomy. <code>extra digits</code> reinforces <code>extra</code> specifically for hands in order to avoid hands with 6+ fingers.</li>
-<li>worst quality and bad quality: Used to tell the model not to generate images in a similar style to training material with low score.</li>
-<li>jpeg artifacts: Reduces pixelation, palletization and dithering artifacts caused by heavy JPEG compression.</li>
-<li>watermark, signature, username: Reduces text and logo artifacts that the model cannot generate cleanly.</li>
-<li>unfinished: Reduces the frequency of broken, irregular, and missing outlines. Also tends to reduce the frequency of digits being sketched but left unfinished.</li>
-<li>(very) displeasing: Like <code>worst quality, bad quality</code> but for Aesthetic tuning.</li>
-<li>chromatic aberration: Reduces color artifacting that can occur in blue, red, and mixed hues thereof. Especially happens on outlines. (This is an effect similar to Bicolor 3D stereoscopy.)</li>
-<li>scan: Reduces scan-induced artifacts such as odd banded lighting and messy outlines.</li>
-<li><code>[abstract]</code>: Reduces overly geometric and amorphous shaping of objects and people.</li>
-<li><code> @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code>: Several eye-related tags that may incidentally leak into a generation. Reducing their influence means that eyes should generate "cleaner" most of the time.</li>
+<li>fewer, extra and missing: Similar to bad, used to reduce the
+occurence of missing digits and limbs, or extraneous anatomy.
+<code>extra digits</code> reinforces <code>extra</code> specifically for
+hands in order to avoid hands with 6+ fingers.</li>
+<li>worst quality and bad quality: Used to tell the model not to
+generate images in a similar style to training material with low
+score.</li>
+<li>jpeg artifacts: Reduces pixelation, palletization and dithering
+artifacts caused by heavy JPEG compression.</li>
+<li>watermark, signature, username: Reduces text and logo artifacts that
+the model cannot generate cleanly.</li>
+<li>unfinished: Reduces the frequency of broken, irregular, and missing
+outlines. Also tends to reduce the frequency of digits being sketched
+but left unfinished.</li>
+<li>(very) displeasing: Like <code>worst quality, bad quality</code> but
+for Aesthetic tuning.</li>
+<li>chromatic aberration: Reduces color artifacting that can occur in
+blue, red, and mixed hues thereof. Especially happens on outlines. (This
+is an effect similar to Bicolor 3D stereoscopy.)</li>
+<li>scan: Reduces scan-induced artifacts such as odd banded lighting and
+messy outlines.</li>
+<li><code>[abstract]</code>: Reduces overly geometric and amorphous
+shaping of objects and people.</li>
+<li><code> @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code>:
+Several eye-related tags that may incidentally leak into a generation.
+Reducing their influence means that eyes should generate "cleaner" most
+of the time.</li>
 </ul>
 <hr />
 <h1 id="prose-prompting">Prose Prompting</h1>
-<p>To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to keep clauses short and using as little grammatical words as possible. Try to phrase your sentences so that you use vocabulary close to Booru tags.</p>
-<p>Again, prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, so keep the core content at the beginning of the sentence.</p>
-<p>Prose-based prompts tends to lead to more varied output. They are stylistically different and more diverse than Tag-based prompts, and are best suited for situations or scenes which are very dynamic and which do not require consistent character portrayal.</p>
+<p>To prose-prompt in NAIDiffusion, simply write a sentence describing
+the image. Use commas to separate clauses. Try to keep clauses short and
+using as little grammatical words as possible. Try to phrase your
+sentences so that you use vocabulary close to Booru tags.</p>
+<p>Again, prompts are interpreted with linear priority, which is the
+reverse of text generation. What comes first has more weight, so keep
+the core content at the beginning of the sentence.</p>
+<p>Prose-based prompts tends to lead to more varied output. They are
+stylistically different and more diverse than Tag-based prompts, and are
+best suited for situations or scenes which are very dynamic and which do
+not require consistent character portrayal.</p>
 <h3 id="story-conversion">Story Conversion</h3>
-<p>You can, with some slight adjustments, copy paste excerpts from your story and use them as prompts. There might be some fine tuning needed, but you should get something similar to what was described.</p>
+<p>You can, with some slight adjustments, copy paste excerpts from your
+story and use them as prompts. There might be some fine tuning needed,
+but you should get something similar to what was described.</p>
 <hr />
 <h1 id="image-to-image-practices">Image to Image Practices</h1>
-<p>Variations are just Image to Image queued multiple times for the same image.</p>
-<p>Image to Image uses a base image as opposed to Noise. This helps keeps elements you like in a picture that is good, but not good <em>enough</em>. Noise adds more noise to the base image, causing it to change more substantially as you add noise.</p>
-<p>Strength is actually, for once, the intensity of the steps. Strong steps will take more compute (and thus more Anlas).</p>
-<p>If your steps and Strength are too low compared to your Noise, your image will stay noisy, because the noise was not sufficiently resolved! Make sure you keep the Noise/Processing ratio to a minimum.</p>
+<p>Variations are just Image to Image queued multiple times for the same
+image.</p>
+<p>Image to Image uses a base image as opposed to Noise. This helps
+keeps elements you like in a picture that is good, but not good
+<em>enough</em>. Noise adds more noise to the base image, causing it to
+change more substantially as you add noise.</p>
+<p>Strength is actually, for once, the intensity of the steps. Strong
+steps will take more compute (and thus more Anlas).</p>
+<p>If your steps and Strength are too low compared to your Noise, your
+image will stay noisy, because the noise was not sufficiently resolved!
+Make sure you keep the Noise/Processing ratio to a minimum.</p>
 <p>Image to Image is best used for the following purposes:</p>
-<p>• Fixing a detail that was badly rendered, like an extra finger or a messed up frill.</p>
-<p>○ <em>Recommended edit: Obscure or paint over with surrounding color palette. 0 noise, 0.2-0.35 strength. (Lower if you trust your detail-fixing skills better.)</em></p>
-<p>• Keeping the same pose but changing lots of misshapen or artifacted elements.</p>
-<p>○ <em>Recommended edit: None. 0-0.1 noise, 0.7-0.85 strength.</em></p>
+<p>• Fixing a detail that was badly rendered, like an extra finger or a
+messed up frill.</p>
+<p>○ <em>Recommended edit: Obscure or paint over with surrounding color
+palette. 0 noise, 0.2-0.35 strength. (Lower if you trust your
+detail-fixing skills better.)</em></p>
+<p>• Keeping the same pose but changing lots of misshapen or artifacted
+elements.</p>
+<p>○ <em>Recommended edit: None. 0-0.1 noise, 0.7-0.85
+strength.</em></p>
 <p>• Adding a new element to a "good enough" base image.</p>
-<p>○ <em>Recommended edit: Draw shape of object using colors similar to surrounding palette. 0 noise, 0.4-0.6 strength. Keep in mind your image will look substantially different.</em></p>
+<p>○ <em>Recommended edit: Draw shape of object using colors similar to
+surrounding palette. 0 noise, 0.4-0.6 strength. Keep in mind your image
+will look substantially different.</em></p>
 <p>• Drawing a foundation for inpainting.</p>
-<p>○ <em>Recommended edit: Draw the general shape/background of what you want. Do not generate a new image. Instead, click "Inpaint image" on the <strong>left</strong>, and select the area you drew on.</em></p>
+<p>○ <em>Recommended edit: Draw the general shape/background of what you
+want. Do not generate a new image. Instead, click "Inpaint image" on the
+<strong>left</strong>, and select the area you drew on.</em></p>
 <hr />
-<h1 id="bounding--prompting-for-inpainting">Bounding &amp; Prompting for Inpainting</h1>
+<h1 id="bounding--prompting-for-inpainting">Bounding &amp; Prompting for
+Inpainting</h1>
 <h2 id="bounding">Bounding</h2>
-<p>Make sure you select areas carefully and include some of the "edges" of what you're filling in. This will help the generated content "fit in" better and reduce artifacting. Do not try to select very precisely, instead, go for clean polygonal shapes.</p>
-<p>It is better to inpaint large areas as opposed to small ones, details are best handled by Image to Image. Very small Inpaint canvases are very difficult for the AI to handle.</p>
+<p>Make sure you select areas carefully and include some of the "edges"
+of what you're filling in. This will help the generated content "fit in"
+better and reduce artifacting. Do not try to select very precisely,
+instead, go for clean polygonal shapes.</p>
+<p>It is better to inpaint large areas as opposed to small ones, details
+are best handled by Image to Image. Very small Inpaint canvases are very
+difficult for the AI to handle.</p>
 <h2 id="prompting">Prompting</h2>
-<p>A common issue that people encounter when inpainting is confusion as to what you should prompt for.</p>
-<p>When inpainting, <strong>only</strong> prompt for what must appear in the inpainted area. Do not use your full prompt! This may cause the model to try and cram all these things into the inpainting area, which will look messy and wrong.</p>
-<p>You should avoid using any UC outside of default UC when inpainting as well, for the same reason.</p>
+<p>A common issue that people encounter when inpainting is confusion as
+to what you should prompt for.</p>
+<p>When inpainting, <strong>only</strong> prompt for what must appear in
+the inpainted area. Do not use your full prompt! This may cause the
+model to try and cram all these things into the inpainting area, which
+will look messy and wrong.</p>
+<p>You should avoid using any UC outside of default UC when inpainting
+as well, for the same reason.</p>
 <hr />
 <h3 id="clip-interrogator">CLIP Interrogator</h3>
-<p><a href="https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb#scrollTo=YQk0eemUrSC7">Clip Interrogator</a> can be used to read an image you like and extract tags and prose that will help you refine your prompt.</p>
+<p><a
+href="https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb#scrollTo=YQk0eemUrSC7">Clip
+Interrogator</a> can be used to read an image you like and extract tags
+and prose that will help you refine your prompt.</p>
 <h3 id="combo-prompting">Combo Prompting</h3>
-<p>If you are generating an image of a specific character that has a small amount of pictures, you can combine a prose prompt and tags appends in order to obtain something closer to the desired result.</p>
+<p>If you are generating an image of a specific character that has a
+small amount of pictures, you can combine a prose prompt and tags
+appends in order to obtain something closer to the desired result.</p>
 <p><code>a picture of {ayanami} from azur lane, white hair, red eyes, ponytail,</code></p>
 <h1 id="vibe-transfer">Vibe Transfer</h1>
-<p>Vibe Transfer is a feature that reads an existing image and attempts to apply existing elements from it onto a new generation. This is not <strong>quite</strong> Image to Image, as it lets you generate new content, rather than mapping off of the existing image.</p>
-<p>While this can be compared to <a href="https://huggingface.co/h94/IP-Adapter">Image Prompt Adapter</a>, or <a href="https://ieeexplore.ieee.org/document/10377571">Textual Embedding</a>, Vibe Transfer is its own technology and uses a trained model. The details are as of yet kept confidential.</p>
-<p>Two settings are at play when using Vibe Transfer to prepare a generation: <strong>Reference Strength</strong> and the <strong>Information Extracted</strong> Factor.</p>
-<p><strong>Reference Strength</strong> is the inverse of Image to Image Strength. The higher it is, the closer the generation will be to the VT Reference image. Since the image itself is not used as-is, it will not be replicated, but excessive strength will cause prompt vectors to be overpowered by the VT Reference's content, generating something very similar to it in terms of content, even if you did not prompt for it.</p>
-<p><strong>Information Extracted</strong> is best compared to using a Magic Wand selector in an image editing software. Instead of selecting pixels based on color, you select an increasing amount of "meaning" from the image. It is theorized that simpler elements are included sooner than more complex ones, but as this is nascent technology, it is unclear how this proceeds, or if it has any consistency.</p>
-<p>Experiment and perhaps contribute your research efforts to this wiki!</p>
+<p>Vibe Transfer is a feature that reads an existing image and attempts
+to apply existing elements from it onto a new generation. This is not
+<strong>quite</strong> Image to Image, as it lets you generate new
+content, rather than mapping off of the existing image.</p>
+<p>While this can be compared to <a
+href="https://huggingface.co/h94/IP-Adapter">Image Prompt Adapter</a>,
+or <a href="https://ieeexplore.ieee.org/document/10377571">Textual
+Embedding</a>, Vibe Transfer is its own technology and uses a trained
+model. The details are as of yet kept confidential.</p>
+<p>Two settings are at play when using Vibe Transfer to prepare a
+generation: <strong>Reference Strength</strong> and the
+<strong>Information Extracted</strong> Factor.</p>
+<p><strong>Reference Strength</strong> is the inverse of Image to Image
+Strength. The higher it is, the closer the generation will be to the VT
+Reference image. Since the image itself is not used as-is, it will not
+be replicated, but excessive strength will cause prompt vectors to be
+overpowered by the VT Reference's content, generating something very
+similar to it in terms of content, even if you did not prompt for
+it.</p>
+<p><strong>Information Extracted</strong> is best compared to using a
+Magic Wand selector in an image editing software. Instead of selecting
+pixels based on color, you select an increasing amount of "meaning" from
+the image. It is theorized that simpler elements are included sooner
+than more complex ones, but as this is nascent technology, it is unclear
+how this proceeds, or if it has any consistency.</p>
+<p>Experiment and perhaps contribute your research efforts to this
+wiki!</p>
 <hr />
 <h1 id="furry-model">Furry Model</h1>
-<p>The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.</p>
+<p>The Furry Model is based on a different dataset, and tagging
+practices. By default, it is set to a higher Scale setting (6.2) and may
+benefit from running at slightly higher Scale than Anime does.</p>
 <h2 id="tag-differences">Tag differences</h2>
-<p>The Furry Model uses <a href="https://e621.net/wiki_pages/1671">E621 Tags</a> instead of Danbooru tags. This leads to several important differences:</p>
+<p>The Furry Model uses <a href="https://e621.net/wiki_pages/1671">E621
+Tags</a> instead of Danbooru tags. This leads to several important
+differences:</p>
 <ul>
-<li>There is no <code>xGirl</code> or <code>xBoy</code> tags, instead, you specify <code>male, female, intersex</code>, etc, and then state the number with <code>solo, duo, group</code></li>
+<li>There is no <code>xGirl</code> or <code>xBoy</code> tags, instead,
+you specify <code>male, female, intersex</code>, etc, and then state the
+number with <code>solo, duo, group</code></li>
 <li>You can specify colors for different body parts more precisely.</li>
-<li>Gender tags are different. For instance, <code>intersex</code> is used rather than <code>futanari</code>, and <code>girly</code> instead of <code>otoko no ko</code></li>
+<li>Gender tags are different. For instance, <code>intersex</code> is
+used rather than <code>futanari</code>, and <code>girly</code> instead
+of <code>otoko no ko</code></li>
 <li>Some expression and clothing tags are different.</li>
 </ul>
-<p>Tag for species by preceding them with <code>species:</code> For example: <code>species: domestic cat</code>.</p>
-<h2 id="furry-model-quality-tags-and-unwanted-content">Furry Model Quality Tags and Unwanted Content</h2>
-<p>The default quality tags are the same as for the Anime model, but strengthened. It is <code>{best quality, amazing quality}</code> added at the <strong>end</strong> of the prompt.</p>
-<p>The light UC is as follows: <code>nsfw, {worst quality}, guide lines, unfinished, bad, url, tall image, widescreen, compression artifacts, unknown text</code></p>
-<p>The Heavy UC is as follows: <code>nsfw, {{worst quality}}, [displeasing], {unusual pupils}, guide lines, {{unfinished}}, {bad}, url, artist name, {{tall image}}, mosaic, {sketch page}, comic panel, impact (font), [dated], {logo}, ych, {what}, {where is your god now}, {distorted text}, repeated text, {floating head}, {1994}, {widescreen}, absolutely everyone, sequence, {compression artifacts}, hard translated, {cropped}, {commissioner name}, unknown text, high contrast</code></p>
-<p>While most of the tags used in the UC are chosen for similar reasons relative to the Anime UC, there are a few additions that are especially relevant for this model:</p>
+<p>Tag for species by preceding them with <code>species:</code> For
+example: <code>species: domestic cat</code>.</p>
+<h2 id="furry-model-quality-tags-and-unwanted-content">Furry Model
+Quality Tags and Unwanted Content</h2>
+<p>The default quality tags are the same as for the Anime model, but
+strengthened. It is <code>{best quality, amazing quality}</code> added
+at the <strong>end</strong> of the prompt.</p>
+<p>The light UC is as follows:
+<code>nsfw, {worst quality}, guide lines, unfinished, bad, url, tall image, widescreen, compression artifacts, unknown text</code></p>
+<p>The Heavy UC is as follows:
+<code>nsfw, {{worst quality}}, [displeasing], {unusual pupils}, guide lines, {{unfinished}}, {bad}, url, artist name, {{tall image}}, mosaic, {sketch page}, comic panel, impact (font), [dated], {logo}, ych, {what}, {where is your god now}, {distorted text}, repeated text, {floating head}, {1994}, {widescreen}, absolutely everyone, sequence, {compression artifacts}, hard translated, {cropped}, {commissioner name}, unknown text, high contrast</code></p>
+<p>While most of the tags used in the UC are chosen for similar reasons
+relative to the Anime UC, there are a few additions that are especially
+relevant for this model:</p>
 <ul>
-<li><code>{unusual pupils}</code>: Reduces eye artifacts. Pupil shape is highly variable between animals.</li>
-<li><code>floating head, guide lines, sketch page, ych, comissioner name,</code>: Reduces the occurence of unfinished sketch-like drawings often used as bases for Your Character Here art auctions.</li>
-<li><code>comic panel, sequence, impact (font),</code>: Reduces meme-format leaking.</li>
-<li><code>text</code>-related tags and <code>hard translated</code>: Text and dialogue is frequently present. This helps reduce text-like artifacts.</li>
-<li><code>high contrast</code>: Reduces the likelihood of eye-searing color palettes.</li>
-<li><code>what, where is your god now</code>: tags used for pictures with especially confusing, abstract, or disturbing/purposefully offensive subject matters.</li>
-<li><code>absolutely everyone</code>: Reduces the likelihood of images with a mess of blobs that are meant to be a huge crowd of characters.</li>
-<li><code>1994</code>: Unclear, but this year has a substantial amount of zoo content and pictures with extremely low, MS-paint like quality.</li>
+<li><code>{unusual pupils}</code>: Reduces eye artifacts. Pupil shape is
+highly variable between animals.</li>
+<li><code>floating head, guide lines, sketch page, ych, comissioner name,</code>:
+Reduces the occurence of unfinished sketch-like drawings often used as
+bases for Your Character Here art auctions.</li>
+<li><code>comic panel, sequence, impact (font),</code>: Reduces
+meme-format leaking.</li>
+<li><code>text</code>-related tags and <code>hard translated</code>:
+Text and dialogue is frequently present. This helps reduce text-like
+artifacts.</li>
+<li><code>high contrast</code>: Reduces the likelihood of eye-searing
+color palettes.</li>
+<li><code>what, where is your god now</code>: tags used for pictures
+with especially confusing, abstract, or disturbing/purposefully
+offensive subject matters.</li>
+<li><code>absolutely everyone</code>: Reduces the likelihood of images
+with a mess of blobs that are meant to be a huge crowd of
+characters.</li>
+<li><code>1994</code>: Unclear, but this year has a substantial amount
+of zoo content and pictures with extremely low, MS-paint like
+quality.</li>
 </ul>
-<h2 id="artist-tags-for-the-furry-model">Artist Tags for the Furry Model</h2>
-<p>The Furry model was not trained with artist tags like the Anime model was. As a result, prompting for <code>artist:artistname</code> will not result in that artist's style. <strong>However</strong>, any tag you construct this way <strong>will</strong> have consistent stylistic results. You just have to invent an artist's name, and document the results. Hopefully you will find an artist the model "hallucinates" in a pleasing way.</p>
+<h2 id="artist-tags-for-the-furry-model">Artist Tags for the Furry
+Model</h2>
+<p>The Furry model was not trained with artist tags like the Anime model
+was. As a result, prompting for <code>artist:artistname</code> will not
+result in that artist's style. <strong>However</strong>, any tag you
+construct this way <strong>will</strong> have consistent stylistic
+results. You just have to invent an artist's name, and document the
+results. Hopefully you will find an artist the model "hallucinates" in a
+pleasing way.</p>
 <h1 id="in-depth-ui-info">In-depth UI info</h1>
 <h2 id="anlas-cost-calculation">Anlas Cost Calculation</h2>
 <p>The calculation for Anlas cost uses the following algorithms:</p>
 <ul>
-<li>V1 and V2 (under 1 megapixel for plms/ddim/k_euler/k_euler_ancestral/k_lms samplers)</li>
+<li>V1 and V2 (under 1 megapixel for
+plms/ddim/k_euler/k_euler_ancestral/k_lms samplers)</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>r <span class="op">=</span> width <span class="op">*</span> height  <span class="co"># in pixels</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>size <span class="op">=</span> r <span class="op">/</span> <span class="dv">1024</span> <span class="op">/</span> <span class="dv">1024</span>  <span class="co"># in megapixels</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(<span class="fl">15.266497014243718</span> <span class="op">*</span> math.exp(size <span class="op">*</span> <span class="fl">0.6326248927474729</span>) <span class="op">-</span> <span class="fl">15.225164493059737</span>) <span class="op">*</span> steps <span class="op">/</span> <span class="dv">28</span>)</span></code></pre></div>
-<p>For V1 and V2 images over 1 megapixel or using other samplers, see the <a href="https://github.com/Aedial/novelai-api/blob/2174602d346152d38ce2b43fcec8c9666a72f89a/novelai_api/ImagePreset.py#L588">cost tables</a>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> width <span class="op">*</span> height  <span class="co"># in pixels</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> r <span class="op">/</span> <span class="dv">1024</span> <span class="op">/</span> <span class="dv">1024</span>  <span class="co"># in megapixels</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>per_image <span class="op">=</span> math.ceil(<span class="fl">15.266497014243718</span> <span class="op">*</span> math.exp(size <span class="op">*</span> <span class="fl">0.6326248927474729</span>) <span class="op">-</span> <span class="fl">15.225164493059737</span>) <span class="op">*</span> steps <span class="op">/</span> <span class="dv">28</span>)</span></code></pre></div>
+<p>For V1 and V2 images over 1 megapixel or using other samplers, see
+the <a
+href="https://github.com/Aedial/novelai-api/blob/2174602d346152d38ce2b43fcec8c9666a72f89a/novelai_api/ImagePreset.py#L588">cost
+tables</a>.</p>
 <ul>
 <li>V3</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a>r <span class="op">=</span> width <span class="op">*</span> height  <span class="co"># in pixels</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="cf">if</span> smea <span class="kw">and</span> smea_dyn:</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    sma_factor <span class="op">=</span> <span class="fl">1.4</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a><span class="cf">elif</span> smea:</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>    smea_factor <span class="op">=</span> <span class="fl">1.2</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a><span class="cf">else</span>:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>    smea_factor <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(<span class="fl">2951823174884865e-21</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">5.753298233447344e-7</span> <span class="op">*</span> r <span class="op">*</span> steps) <span class="op">*</span> smea_factor</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> width <span class="op">*</span> height  <span class="co"># in pixels</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> smea <span class="kw">and</span> smea_dyn:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    sma_factor <span class="op">=</span> <span class="fl">1.4</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> smea:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    smea_factor <span class="op">=</span> <span class="fl">1.2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    smea_factor <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>per_image <span class="op">=</span> math.ceil(<span class="fl">2951823174884865e-21</span> <span class="op">*</span> r <span class="op">+</span> <span class="fl">5.753298233447344e-7</span> <span class="op">*</span> r <span class="op">*</span> steps) <span class="op">*</span> smea_factor</span></code></pre></div>
 <p>Strength and uncond scale are then applied to the per_image cost.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(per_sample <span class="op">*</span> strength)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>per_image <span class="op">=</span> math.<span class="bu">max</span>(per_image, <span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>per_image <span class="op">=</span> math.ceil(per_image <span class="op">*</span> uncond_scale)</span></code></pre></div>
-<p>If the parameters fall within the Opus free image limit, one image is removed from the cost calculation (only applies for Opus users).</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>per_image <span class="op">=</span> math.ceil(per_sample <span class="op">*</span> strength)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>per_image <span class="op">=</span> math.<span class="bu">max</span>(per_image, <span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>per_image <span class="op">=</span> math.ceil(per_image <span class="op">*</span> uncond_scale)</span></code></pre></div>
+<p>If the parameters fall within the Opus free image limit, one image is
+removed from the cost calculation (only applies for Opus users).</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

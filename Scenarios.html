@@ -1333,55 +1333,97 @@
 <a href="." forTitle="Scenarios">Return to Index</a>
 <h1 class="title">Scenarios</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#placeholders">Placeholders</a>
+    <li><a href="#placeholders" id="toc-placeholders">Placeholders</a>
     <ul>
-    <li><a href="#placeholders-in-lorebook-entries">Placeholders in Lorebook entries</a></li>
-    <li><a href="#order-of-the-placeholders">Order of the Placeholders</a></li>
-    <li><a href="#placeholder-table-of-contents">Placeholder Table of Contents</a></li>
+    <li><a href="#placeholders-in-lorebook-entries"
+    id="toc-placeholders-in-lorebook-entries">Placeholders in Lorebook
+    entries</a></li>
+    <li><a href="#order-of-the-placeholders"
+    id="toc-order-of-the-placeholders">Order of the
+    Placeholders</a></li>
+    <li><a href="#placeholder-table-of-contents"
+    id="toc-placeholder-table-of-contents">Placeholder Table of
+    Contents</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Scenarios">Return to Index</a>
 </nav>
 
 <main>
-<p>Scenarios use <strong>Placeholders</strong> to offer customization opportunities to the end user. Think of them as Choose your own Adventure prompts.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/4749fb25-7ce1-47ff-b198-17fa790de0ef" alt="image" /></p>
+<p>Scenarios use <strong>Placeholders</strong> to offer customization
+opportunities to the end user. Think of them as Choose your own
+Adventure prompts.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/4749fb25-7ce1-47ff-b198-17fa790de0ef"
+alt="image" /></p>
 <h2 id="placeholders">Placeholders</h2>
-<p>You can add a placeholder anywhere within your story's prompt, memory, author's note and lorebook entries.</p>
+<p>You can add a placeholder anywhere within your story's prompt,
+memory, author's note and lorebook entries.</p>
 <p>Placeholders have to be written in this format:</p>
 <p><code>${1#placeholder[I'm a default value]Title goes here:Put the description here}</code></p>
 <p>The placeholder is divided into five parts:</p>
 <ul>
-<li>order: the order in which the placeholders will be displayed. 1 goes first, then 2, etc.</li>
-<li>id: the only mandatory part of the placeholder, it has to be unique. If you have more than one instance of the id, it will use the same value for each of the placeholders.</li>
-<li>default: the default content of the field when importing the value.</li>
-<li>title: The title used in the placeholder import window to tell the user what they need to fill in.</li>
-<li>description: the text displayed above the input field when importing the value. If there is no description set, the text displayed will be the id. You may want to word this like a question for ease.</li>
+<li>order: the order in which the placeholders will be displayed. 1 goes
+first, then 2, etc.</li>
+<li>id: the only mandatory part of the placeholder, it has to be unique.
+If you have more than one instance of the id, it will use the same value
+for each of the placeholders.</li>
+<li>default: the default content of the field when importing the
+value.</li>
+<li>title: The title used in the placeholder import window to tell the
+user what they need to fill in.</li>
+<li>description: the text displayed above the input field when importing
+the value. If there is no description set, the text displayed will be
+the id. You may want to word this like a question for ease.</li>
 </ul>
-<p>You cannot put these characters inside the text fields of the placeholder: $ {} [] # : @ ^ |</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e96701fe-59e0-449b-9a38-4c3b3954a5b1" alt="image" /></p>
-<h3 id="placeholders-in-lorebook-entries">Placeholders in Lorebook entries</h3>
-<p>For the lorebook entries, you can add placeholders in the <strong>Title</strong> of an entry, its <strong>Description</strong> and its <strong>Keys</strong>. If you want to use <a href="Using-Regex.html">regex</a> for your keys, you have to prefix the expression with a $. For example to match with the name of a character, you have to write $/${name}/</p>
+<p>You cannot put these characters inside the text fields of the
+placeholder: $ {} [] # : @ ^ |</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/e96701fe-59e0-449b-9a38-4c3b3954a5b1"
+alt="image" /></p>
+<h3 id="placeholders-in-lorebook-entries">Placeholders in Lorebook
+entries</h3>
+<p>For the lorebook entries, you can add placeholders in the
+<strong>Title</strong> of an entry, its <strong>Description</strong> and
+its <strong>Keys</strong>. If you want to use <a
+href="Using-Regex.html">regex</a> for your keys, you have to prefix the
+expression with a $. For example to match with the name of a character,
+you have to write <span class="math inline">/</span>{name}/</p>
 <h3 id="order-of-the-placeholders">Order of the Placeholders</h3>
-<p>Placeholders are requested to be completed by the user in the alphabetical order of their ID. This means that if you start their id with a number that increments with each placeholder, they will be requested in the order of that number.</p>
-<p>Example: ${1Age} ${2Name} ${4Gender} ${3Job} <strong>Job</strong> will be requested before <strong>Gender</strong>, because its ID comes before it.</p>
-<p>You can also define the order by preceding the id with a number, followed by a pound sign (#):</p>
+<p>Placeholders are requested to be completed by the user in the
+alphabetical order of their ID. This means that if you start their id
+with a number that increments with each placeholder, they will be
+requested in the order of that number.</p>
+<p>Example: ${1Age} ${2Name} ${4Gender} ${3Job} <strong>Job</strong>
+will be requested before <strong>Gender</strong>, because its ID comes
+before it.</p>
+<p>You can also define the order by preceding the id with a number,
+followed by a pound sign (#):</p>
 <p><code>${1#Maincharacter[Jack]Main Character:Name the main character.}</code></p>
-<p>If different entries have the same Order number, they will be processed <strong>alphabetically according to their id</strong>.</p>
-<h3 id="placeholder-table-of-contents">Placeholder Table of Contents</h3>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/fb34fc09-c732-4ccf-81b2-395e8d471f87" alt="image" /></p>
-<p>You can create a Table of Contents for placeholders where you can insert a large amount of them in advance, allowing you to easily keep track of all the placeholders you have defined.</p>
-<p>The syntax is identical to normal placeholders, with these notable differences:</p>
+<p>If different entries have the same Order number, they will be
+processed <strong>alphabetically according to their id</strong>.</p>
+<h3 id="placeholder-table-of-contents">Placeholder Table of
+Contents</h3>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/fb34fc09-c732-4ccf-81b2-395e8d471f87"
+alt="image" /></p>
+<p>You can create a Table of Contents for placeholders where you can
+insert a large amount of them in advance, allowing you to easily keep
+track of all the placeholders you have defined.</p>
+<p>The syntax is identical to normal placeholders, with these notable
+differences:</p>
 <ul>
 <li>It must be inserted at the absolute top of the prompt.</li>
-<li>The initiating symbol is a percentage sign (%) rather than a dollar sign.</li>
+<li>The initiating symbol is a percentage sign (%) rather than a dollar
+sign.</li>
 <li>Every Placeholder must be on its own new line.</li>
 </ul>
 

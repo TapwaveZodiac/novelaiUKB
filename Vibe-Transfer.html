@@ -1333,22 +1333,31 @@
 <a href="." forTitle="Vibe Transfer">Return to Index</a>
 <h1 class="title">Vibe Transfer</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#vibe-transfer">Vibe Transfer</a>
+    <li><a href="#vibe-transfer" id="toc-vibe-transfer">Vibe
+    Transfer</a>
     <ul>
-    <li><a href="#what-vibe-transfer">What Vibe Transfer?</a></li>
-    <li><a href="#why-vibe-transfer">Why Vibe Transfer?</a></li>
-    <li><a href="#when-vibe-transfer">When Vibe Transfer?</a></li>
-    <li><a href="#how-vibe-transfer">How Vibe Transfer?</a></li>
-    <li><a href="#information-extraction">Information Extraction</a></li>
-    <li><a href="#reference-strength">Reference Strength</a></li>
-    <li><a href="#other-recommendations">Other Recommendations</a></li>
+    <li><a href="#what-vibe-transfer" id="toc-what-vibe-transfer">What
+    Vibe Transfer?</a></li>
+    <li><a href="#why-vibe-transfer" id="toc-why-vibe-transfer">Why Vibe
+    Transfer?</a></li>
+    <li><a href="#when-vibe-transfer" id="toc-when-vibe-transfer">When
+    Vibe Transfer?</a></li>
+    <li><a href="#how-vibe-transfer" id="toc-how-vibe-transfer">How Vibe
+    Transfer?</a></li>
+    <li><a href="#information-extraction"
+    id="toc-information-extraction">Information Extraction</a></li>
+    <li><a href="#reference-strength"
+    id="toc-reference-strength">Reference Strength</a></li>
+    <li><a href="#other-recommendations"
+    id="toc-other-recommendations">Other Recommendations</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Vibe Transfer">Return to Index</a>
@@ -1356,68 +1365,157 @@
 
 <main>
 <h1 id="vibe-transfer">Vibe Transfer</h1>
-<p><strong>This is more a set of research notes than a proper guide.</strong> This is meant to help you interpret the feature and possibly get more out of it.</p>
-<p>Vibe Transfer is a feature that NovelAI Diffusion V3 offers. It is its own technology and should not be described as "Just" Image-Prompt Adapter, Textual Inversion, and other such utilities, although the purpose is similar.</p>
+<p><strong>This is more a set of research notes than a proper
+guide.</strong> This is meant to help you interpret the feature and
+possibly get more out of it.</p>
+<p>Vibe Transfer is a feature that NovelAI Diffusion V3 offers. It is
+its own technology and should not be described as "Just" Image-Prompt
+Adapter, Textual Inversion, and other such utilities, although the
+purpose is similar.</p>
 <h2 id="what-vibe-transfer">What Vibe Transfer?</h2>
-<p>Vibe Transfer is <em>probably</em> best described as "semantic extraction from existing image which is then used as a prompt". It is <strong>not</strong> a LORA, Image-Prompt Adapter, or Textual Inversion Embedding, but its own technology.</p>
-<p>This produces semantic data which is used <strong>concurrently</strong> with your prompt. It is not mixed and averaged with it. Instead, the relative strength of the semantic data is determined by the <em>Reference Strength</em> parameter.</p>
-<p>To make the explanation simpler, we can compare it to Image To Image and Inpainting.</p>
+<p>Vibe Transfer is <em>probably</em> best described as "semantic
+extraction from existing image which is then used as a prompt". It is
+<strong>not</strong> a LORA, Image-Prompt Adapter, or Textual Inversion
+Embedding, but its own technology.</p>
+<p>This produces semantic data which is used
+<strong>concurrently</strong> with your prompt. It is not mixed and
+averaged with it. Instead, the relative strength of the semantic data is
+determined by the <em>Reference Strength</em> parameter.</p>
+<p>To make the explanation simpler, we can compare it to Image To Image
+and Inpainting.</p>
 <p><strong>Image to Image</strong></p>
-<p>• Uses the image as a whole, and <em>then</em> iterates on it based on the prompt.</p>
-<p>• Processes image information <em>solely</em> in the image space. No semantic interpretation is made.</p>
+<p>• Uses the image as a whole, and <em>then</em> iterates on it based
+on the prompt.</p>
+<p>• Processes image information <em>solely</em> in the image space. No
+semantic interpretation is made.</p>
 <p>• Is used to make adjustments to an existing image.</p>
 <p><strong>Inpainting</strong></p>
-<p>• Uses the surrounding area to the mask, but ignores everything that is in the mask area.</p>
-<p>• Interprets the surrounding elements to the mask and attempts to generate something that melds into it.</p>
+<p>• Uses the surrounding area to the mask, but ignores everything that
+is in the mask area.</p>
+<p>• Interprets the surrounding elements to the mask and attempts to
+generate something that melds into it.</p>
 <p>• Is used to regenerate parts of an existing images.</p>
 <p><strong>Vibe Transfer</strong></p>
-<p>• Takes an existing image and then interprets it in order to extract "meaning" out of it.</p>
+<p>• Takes an existing image and then interprets it in order to extract
+"meaning" out of it.</p>
 <p>• Applies the meaning it extracted to a new generation.</p>
 <p>• Is used to tune generation towards a style or type of content.</p>
 <h2 id="why-vibe-transfer">Why Vibe Transfer?</h2>
-<p>You may remember <strong>Prompt Mixing</strong> (which you can still do). Vibe Transfer does more or less the same thing, but it is more effective, doesn't require tag-searching, and also uses <strong>no</strong> tokens, and <strong>no</strong> extra Anlas.</p>
-<p>As a result, using "Key images" for Vibe Transfer is a much more versatile and stress-free way to tune your generations. Instead of using an image entirely as a base through Image To Image, you are using an image's <em>elements</em> as a base for <em>new</em> generations.</p>
-<p>This allows you to replicate style from artists that aren't well represented in the finetune, or characters that have a low amount of art. This is done in a way that actually respects the content, whereas Image To Image fundamentally applies the existing model vectors to the image, which makes you <em>lose</em> information.</p>
+<p>You may remember <strong>Prompt Mixing</strong> (which you can still
+do). Vibe Transfer does more or less the same thing, but it is more
+effective, doesn't require tag-searching, and also uses
+<strong>no</strong> tokens, and <strong>no</strong> extra Anlas.</p>
+<p>As a result, using "Key images" for Vibe Transfer is a much more
+versatile and stress-free way to tune your generations. Instead of using
+an image entirely as a base through Image To Image, you are using an
+image's <em>elements</em> as a base for <em>new</em> generations.</p>
+<p>This allows you to replicate style from artists that aren't well
+represented in the finetune, or characters that have a low amount of
+art. This is done in a way that actually respects the content, whereas
+Image To Image fundamentally applies the existing model vectors to the
+image, which makes you <em>lose</em> information.</p>
 <h2 id="when-vibe-transfer">When Vibe Transfer?</h2>
-<p>Vibe Transfer is best used to affect your generations until you get something close enough to what you want in terms of content and style, at which point you can do one of the following.</p>
-<ol>
+<p>Vibe Transfer is best used to affect your generations until you get
+something close enough to what you want in terms of content and style,
+at which point you can do one of the following.</p>
+<ol type="1">
 <li><p>Use the image as is, because you feel it is good enough.</p></li>
-<li><p>Disable Vibe Transfer, and use Image to Image to make corrections that do not require extensive processing.</p></li>
-<li><p>Use Image to Image <strong>and</strong> Vibe Transfer simultaneously if you have trouble "preserving" the content that VT provided you. The Image to Image generation will be affected by VT and hopefully preseve that information not normally present in the model.</p></li>
+<li><p>Disable Vibe Transfer, and use Image to Image to make corrections
+that do not require extensive processing.</p></li>
+<li><p>Use Image to Image <strong>and</strong> Vibe Transfer
+simultaneously if you have trouble "preserving" the content that VT
+provided you. The Image to Image generation will be affected by VT and
+hopefully preseve that information not normally present in the
+model.</p></li>
 </ol>
-<p>In general, if the information you extracted out of VT was mostly <strong>style</strong>, you shouldn't need to keep it enabled for further processing, but if it was <strong>content and complex details</strong>, then keeping it on is probably a good idea.</p>
+<p>In general, if the information you extracted out of VT was mostly
+<strong>style</strong>, you shouldn't need to keep it enabled for
+further processing, but if it was <strong>content and complex
+details</strong>, then keeping it on is probably a good idea.</p>
 <h2 id="how-vibe-transfer">How Vibe Transfer?</h2>
-<p>In actual use, Vibe Transfer works like a concurrent prompt, which is processed along with your normal Positive/Negative prompt.</p>
-<p><strong>Reference Strength</strong> is how strong this concurrent prompt is. The higher you go, the less your Positive and Negative prompts matter. Too high, and you're just using extracting the prompt out of the image, more or less.</p>
-<p><strong>Information Extracted</strong> is the "quantity of information" that the VT model retrieves from the base image. Think of it as using a magic wand selector in image processing, and the setting is the tolerance. Higher tolerance means it'll retrieve more.</p>
+<p>In actual use, Vibe Transfer works like a concurrent prompt, which is
+processed along with your normal Positive/Negative prompt.</p>
+<p><strong>Reference Strength</strong> is how strong this concurrent
+prompt is. The higher you go, the less your Positive and Negative
+prompts matter. Too high, and you're just using extracting the prompt
+out of the image, more or less.</p>
+<p><strong>Information Extracted</strong> is the "quantity of
+information" that the VT model retrieves from the base image. Think of
+it as using a magic wand selector in image processing, and the setting
+is the tolerance. Higher tolerance means it'll retrieve more.</p>
 <h2 id="information-extraction">Information Extraction</h2>
-<p>The best way to illustrate the influence of information extraction is to generate an image with an extremely short prompt with VT, and see how much you "retrieve" from the VT image without prompting for it as you adjust the setting.</p>
-<p>For this example, we are using Aini's illustration of Clio. This is useful because Aini's illustrations have very complex shading, a definite and identifiable style, and makes use of small details quite extensively.</p>
-<p>We are using the same settings as my artist analysis sheet. This means Seed <strong>1</strong>, <strong>25</strong> Steps, Guidance of <strong>5</strong>, <strong>100%</strong> UC strength, and the <strong>Euler</strong> sampler with <strong>Native</strong> scheduling. Reference Strength is set to the default of <strong>0.6</strong></p>
-<p>The prompt here is <code>[amazing quality, very aesthetic], 1girl, blonde hair, aqua eyes, adjusting hair</code>. UC is <code>worst quality, low quality, bad image, displeasing, [abstract], bad anatomy, very displeasing, extra, unfocused, jpeg artifacts, unfinished, chromatic aberration, womb tattoo,</code></p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7c085a8c-3ab4-40c5-8421-75a72aaf06d5" alt="Ref1" /></p>
-<p>As you can see, there are <em>Information Extracted</em> thresholds where notable changes happen. Composition switches closer to the reference image at 2.955%, Style starts to carry over around 7%, and more detailed elements of shading and texture are present from 14% onwards.</p>
-<p>Returns are sensibly diminishing past that, with 30% and 100% having extremely similar outputs. Tests for 40-99% were carried out and have remarkably similar images.</p>
-<p>These thresholds are not, however, perfectly consistent. Here is a comparator with the same settings, but with the following prompt: <code>sidelocks, braided bangs, no bangs, braided bun, single hair bun, forehead, medium hair, platinum blonde hair, aqua eyes, laurel crown, laurels, leaf on head, aqua shawl, aqua choker, white dress, {{{sideless outfit}}}, cross-laced corset, golden bangle, gold ring, sandals, {{{{medium breasts}}}}, [[[[small breasts]]]], greek goddess</code> UC: <code>parted bangs, gold leaves</code></p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2e4ce97f-70df-4b96-89d3-da6e786022f8" alt="ref2" /></p>
-<p>In general, there are thresholds in the areas listed, but those shift about based on prompt complexity. It appears that order of Information selected is, more or less:</p>
+<p>The best way to illustrate the influence of information extraction is
+to generate an image with an extremely short prompt with VT, and see how
+much you "retrieve" from the VT image without prompting for it as you
+adjust the setting.</p>
+<p>For this example, we are using Aini's illustration of Clio. This is
+useful because Aini's illustrations have very complex shading, a
+definite and identifiable style, and makes use of small details quite
+extensively.</p>
+<p>We are using the same settings as my artist analysis sheet. This
+means Seed <strong>1</strong>, <strong>25</strong> Steps, Guidance of
+<strong>5</strong>, <strong>100%</strong> UC strength, and the
+<strong>Euler</strong> sampler with <strong>Native</strong> scheduling.
+Reference Strength is set to the default of <strong>0.6</strong></p>
+<p>The prompt here is
+<code>[amazing quality, very aesthetic], 1girl, blonde hair, aqua eyes, adjusting hair</code>.
+UC is
+<code>worst quality, low quality, bad image, displeasing, [abstract], bad anatomy, very displeasing, extra, unfocused, jpeg artifacts, unfinished, chromatic aberration, womb tattoo,</code></p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/7c085a8c-3ab4-40c5-8421-75a72aaf06d5"
+alt="Ref1" /></p>
+<p>As you can see, there are <em>Information Extracted</em> thresholds
+where notable changes happen. Composition switches closer to the
+reference image at 2.955%, Style starts to carry over around 7%, and
+more detailed elements of shading and texture are present from 14%
+onwards.</p>
+<p>Returns are sensibly diminishing past that, with 30% and 100% having
+extremely similar outputs. Tests for 40-99% were carried out and have
+remarkably similar images.</p>
+<p>These thresholds are not, however, perfectly consistent. Here is a
+comparator with the same settings, but with the following prompt:
+<code>sidelocks, braided bangs, no bangs, braided bun, single hair bun, forehead, medium hair, platinum blonde hair, aqua eyes, laurel crown, laurels, leaf on head, aqua shawl, aqua choker, white dress, {{{sideless outfit}}}, cross-laced corset, golden bangle, gold ring, sandals, {{{{medium breasts}}}}, [[[[small breasts]]]], greek goddess</code>
+UC: <code>parted bangs, gold leaves</code></p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/2e4ce97f-70df-4b96-89d3-da6e786022f8"
+alt="ref2" /></p>
+<p>In general, there are thresholds in the areas listed, but those shift
+about based on prompt complexity. It appears that order of Information
+selected is, more or less:</p>
 <ul>
 <li>Composition</li>
 <li>Details</li>
 <li>Shading and Coloring</li>
 </ul>
 <h2 id="reference-strength">Reference Strength</h2>
-<p>Reference Strength is the influence of the VT relative to your prompt. With a Strength of <strong>1</strong>, your prompt is effectively disregarded entirely. This is not the same as Image to Image with no Strength.</p>
-<p>Using the same settings and prompt as before, we'll now adjust Strength only, and leave IE at 100%.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b19a605c-7da5-40f1-bc09-71c9d2041b19" alt="ref3" /></p>
-<p>The thresholds are somewhat comparable at first, but it is clear that the parameter scales higher than IE does.</p>
-<p>To compare, here are the same settings, but IE is set at 50% instead of 100%.</p>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8b86b1e8-a24a-4f9b-94f6-f1def5918b8d" alt="image" /></p>
-<p>As with all settings, remember to fine-tune based on your preference. Start small and do increments of ~5% at most until you find your happy medium.</p>
+<p>Reference Strength is the influence of the VT relative to your
+prompt. With a Strength of <strong>1</strong>, your prompt is
+effectively disregarded entirely. This is not the same as Image to Image
+with no Strength.</p>
+<p>Using the same settings and prompt as before, we'll now adjust
+Strength only, and leave IE at 100%.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/b19a605c-7da5-40f1-bc09-71c9d2041b19"
+alt="ref3" /></p>
+<p>The thresholds are somewhat comparable at first, but it is clear that
+the parameter scales higher than IE does.</p>
+<p>To compare, here are the same settings, but IE is set at 50% instead
+of 100%.</p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/8b86b1e8-a24a-4f9b-94f6-f1def5918b8d"
+alt="image" /></p>
+<p>As with all settings, remember to fine-tune based on your preference.
+Start small and do increments of ~5% at most until you find your happy
+medium.</p>
 <h2 id="other-recommendations">Other Recommendations</h2>
 <p>Not organized. Just things worth experimenting with</p>
-<p>@shambibble: Since VT image doesn't need to match the size of the generated image, you can collate images with elements you want together as one big image, and feed it into VT.</p>
-<p>@Jim Lahey: You can use an image of a surface type or texture as a vibe transfer to include its effect in the generation. For example, using voluminous fur as a vibe transfer can help creatures look soft and fuzzy, especially if you are going for a more 3D-like render style.</p>
+<p>@shambibble: Since VT image doesn't need to match the size of the
+generated image, you can collate images with elements you want together
+as one big image, and feed it into VT.</p>
+<p>@Jim Lahey: You can use an image of a surface type or texture as a
+vibe transfer to include its effect in the generation. For example,
+using voluminous fur as a vibe transfer can help creatures look soft and
+fuzzy, especially if you are going for a more 3D-like render style.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>

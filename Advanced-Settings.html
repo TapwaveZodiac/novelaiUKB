@@ -1333,66 +1333,135 @@
 <a href="." forTitle="Advanced Settings">Return to Index</a>
 <h1 class="title">Advanced Settings</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 07/11/2024 at 19:26">Last updated 07/11/2024 at 19:26</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/02/2025 at
+15:13">Last updated 12/02/2025 at 15:13</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#context">Context</a></li>
-    <li><a href="#phrase-bias">Phrase Bias</a>
+    <li><a href="#context" id="toc-context">Context</a></li>
+    <li><a href="#phrase-bias" id="toc-phrase-bias">Phrase Bias</a>
     <ul>
-    <li><a href="#ensure-completion-after-start"><strong>Ensure Completion After Start</strong></a></li>
-    <li><a href="#unbias-after-generation"><strong>Unbias after Generation</strong></a></li>
+    <li><a href="#ensure-completion-after-start"
+    id="toc-ensure-completion-after-start"><strong>Ensure Completion
+    After Start</strong></a></li>
+    <li><a href="#unbias-after-generation"
+    id="toc-unbias-after-generation"><strong>Unbias after
+    Generation</strong></a></li>
     </ul></li>
-    <li><a href="#ban-token">Ban Token</a>
+    <li><a href="#ban-token" id="toc-ban-token">Ban Token</a>
     <ul>
-    <li><a href="#banned-tokens">Banned Tokens</a></li>
-    <li><a href="#ban-bracket-generation">Ban Bracket Generation</a></li>
+    <li><a href="#banned-tokens" id="toc-banned-tokens">Banned
+    Tokens</a></li>
+    <li><a href="#ban-bracket-generation"
+    id="toc-ban-bracket-generation">Ban Bracket Generation</a></li>
     </ul></li>
-    <li><a href="#stop-sequence">Stop Sequence</a>
+    <li><a href="#stop-sequence" id="toc-stop-sequence">Stop
+    Sequence</a>
     <ul>
-    <li><a href="#min-output-length">Min Output Length</a></li>
+    <li><a href="#min-output-length" id="toc-min-output-length">Min
+    Output Length</a></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Advanced Settings">Return to Index</a>
 </nav>
 
 <main>
-<p><img src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/230c9043-56d6-44a1-8491-bf97dab4e5d8" alt="image" /></p>
+<p><img
+src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/230c9043-56d6-44a1-8491-bf97dab4e5d8"
+alt="image" /></p>
 <h2 id="context">Context</h2>
-<p>Tools relative to <a href="Context.html">Context</a>. Explained on the corresponding page.</p>
+<p>Tools relative to <a href="Context.html">Context</a>. Explained on
+the corresponding page.</p>
 <h2 id="phrase-bias">Phrase Bias</h2>
-<p><strong>Phrase Bias</strong> allows you to tell the AI to <strong>increase</strong> or <strong>decrease</strong> the probability of single or groups of <strong>tokens</strong>. You may have 1024 biases enabled at once. Any extra will cause generation to fail.</p>
-<p>Rather than ban tokens outright, this is meant to nudge the model in the right direction, or avoid specific words from showing up too often, without removing them entirely.</p>
-<p><strong>Keep in mind that Phrase Bias is case sensitive.</strong> However, a variation of the first token with a space (as in, "text" and " text") will be considered, even if you do not specify it. (This does not apply if the tokens are ;, :, &lt;, &gt;, &amp;, @, #, %, ^, \n, and the entire range of unicode characters from u3000-u9faf and uff00-uff9f.)</p>
-<p>Bias is collected in <strong>Groups</strong> with a certain <strong>Bias Level</strong>, which is applied to all phrases and tokens put in the <strong>Group</strong>.</p>
-<p>To create a new <strong>Bias Group</strong>, click the ➕ button. The currently selected group can be deleted by clicking 🗑️.</p>
-<p>To enter a new phrase or token in the Group, enter it in the text box and press Enter.</p>
-<p>If you wish to insert token IDs (such as [198] for newlines), encase their numerical ID in <strong>Square Brackets: []</strong></p>
-<p>If you wish to insert the exact input, as is, case sensitive and with exact spacing, encase in <strong>Curly Braces {}</strong>.</p>
-<p><strong>Bias Level</strong> is a <em>non-linear Scale</em> from -2 (less likely) to +2 (more likely). This means the strength of the bias increases faster the higher its value: -2 is <strong>much stronger</strong> than simply "twice less likely than -1". The opposite is true for +1 and +2. A bias of <strong>-0.1 to +0.1</strong>, usually lower, works well for most uses cases.</p>
-<h3 id="ensure-completion-after-start"><strong>Ensure Completion After Start</strong></h3>
-<p>If checked, the AI will make sure <strong>Phrases</strong> are completed if their first token is generated.</p>
-<p>For example, if you've given a positive bias to the phrase "blue business suit" with this function turned <strong>off</strong>, the AI might start generating outputs featuring blue lights, blue planets, or people with blue eyes. With Ensure Completion After Start turned <strong>on</strong>, the word "blue" will <em>always</em> be followed by the phrase "business suit".</p>
-<h3 id="unbias-after-generation"><strong>Unbias after Generation</strong></h3>
-<p>If checked, the AI will disable the bias for the remainder of the generation once it has been applied once. Following the previous example, the first instance of "blue" will output "blue business suit", but all following instances will work as normal.</p>
+<p><strong>Phrase Bias</strong> allows you to tell the AI to
+<strong>increase</strong> or <strong>decrease</strong> the probability
+of single or groups of <strong>tokens</strong>. You may have 1024 biases
+enabled at once. Any extra will cause generation to fail.</p>
+<p>Rather than ban tokens outright, this is meant to nudge the model in
+the right direction, or avoid specific words from showing up too often,
+without removing them entirely.</p>
+<p><strong>Keep in mind that Phrase Bias is case sensitive.</strong>
+However, a variation of the first token with a space (as in, "text" and
+" text") will be considered, even if you do not specify it. (This does
+not apply if the tokens are ;, :, &lt;, &gt;, &amp;, @, #, %, ^, \n, and
+the entire range of unicode characters from u3000-u9faf and
+uff00-uff9f.)</p>
+<p>Bias is collected in <strong>Groups</strong> with a certain
+<strong>Bias Level</strong>, which is applied to all phrases and tokens
+put in the <strong>Group</strong>.</p>
+<p>To create a new <strong>Bias Group</strong>, click the ➕ button. The
+currently selected group can be deleted by clicking 🗑️.</p>
+<p>To enter a new phrase or token in the Group, enter it in the text box
+and press Enter.</p>
+<p>If you wish to insert token IDs (such as [198] for newlines), encase
+their numerical ID in <strong>Square Brackets: []</strong></p>
+<p>If you wish to insert the exact input, as is, case sensitive and with
+exact spacing, encase in <strong>Curly Braces {}</strong>.</p>
+<p><strong>Bias Level</strong> is a <em>non-linear Scale</em> from -2
+(less likely) to +2 (more likely). This means the strength of the bias
+increases faster the higher its value: -2 is <strong>much
+stronger</strong> than simply "twice less likely than -1". The opposite
+is true for +1 and +2. A bias of <strong>-0.1 to +0.1</strong>, usually
+lower, works well for most uses cases.</p>
+<h3 id="ensure-completion-after-start"><strong>Ensure Completion After
+Start</strong></h3>
+<p>If checked, the AI will make sure <strong>Phrases</strong> are
+completed if their first token is generated.</p>
+<p>For example, if you've given a positive bias to the phrase "blue
+business suit" with this function turned <strong>off</strong>, the AI
+might start generating outputs featuring blue lights, blue planets, or
+people with blue eyes. With Ensure Completion After Start turned
+<strong>on</strong>, the word "blue" will <em>always</em> be followed by
+the phrase "business suit".</p>
+<h3 id="unbias-after-generation"><strong>Unbias after
+Generation</strong></h3>
+<p>If checked, the AI will disable the bias for the remainder of the
+generation once it has been applied once. Following the previous
+example, the first instance of "blue" will output "blue business suit",
+but all following instances will work as normal.</p>
 <h2 id="ban-token">Ban Token</h2>
-<p>Any Tokens added here will <strong>have their probability reduced to zero</strong>. This means they <strong>will not appear in Generations</strong>. As this adjusts the relationships between Tokens, this will have an impact on the phrasing chosen by the AI. Be careful about what you ban, because this can cause some very strange wording to be generated if used incorrectly.</p>
-<p>When you add a new token to the banlist, it will also check for any variations in case, and the token with a preceding space as well. (Just like Phrase Bias does.)</p>
-<p>To prevent that from happening, and exclusively ban this token, add <strong>curly braces</strong> { } around the token you want to ban before pressing enter. You may have 2048 bans at once, any extra will cause generation to fail.</p>
+<p>Any Tokens added here will <strong>have their probability reduced to
+zero</strong>. This means they <strong>will not appear in
+Generations</strong>. As this adjusts the relationships between Tokens,
+this will have an impact on the phrasing chosen by the AI. Be careful
+about what you ban, because this can cause some very strange wording to
+be generated if used incorrectly.</p>
+<p>When you add a new token to the banlist, it will also check for any
+variations in case, and the token with a preceding space as well. (Just
+like Phrase Bias does.)</p>
+<p>To prevent that from happening, and exclusively ban this token, add
+<strong>curly braces</strong> { } around the token you want to ban
+before pressing enter. You may have 2048 bans at once, any extra will
+cause generation to fail.</p>
 <h3 id="banned-tokens">Banned Tokens</h3>
-<p>Relating to the previous setting, this field <strong>shows every Token currently blacklisted</strong> for generation. Clicking one of these tokens will remove it from the list.</p>
-<p>If you inserted an exclusive token (using curly braces), it will be displayed with brackets around it.</p>
+<p>Relating to the previous setting, this field <strong>shows every
+Token currently blacklisted</strong> for generation. Clicking one of
+these tokens will remove it from the list.</p>
+<p>If you inserted an exclusive token (using curly braces), it will be
+displayed with brackets around it.</p>
 <h3 id="ban-bracket-generation">Ban Bracket Generation</h3>
-<p>At times, you may wish to include hints to the AI that are <strong>not to be considered part of the story</strong>. These can be encapsulated in <strong>square brackets</strong> ([ and ]) to signal it is part of the <strong>Current Context</strong> while not being considered part of the actual <em>text</em> of the story.</p>
-<p>These "stage directions" are further detailed in the First Story guide. For more information on what to put between square brackets, see <strong>[Keeping Track](Advanced Writing#Keeping Track)</strong>.</p>
+<p>At times, you may wish to include hints to the AI that are
+<strong>not to be considered part of the story</strong>. These can be
+encapsulated in <strong>square brackets</strong> ([ and ]) to signal it
+is part of the <strong>Current Context</strong> while not being
+considered part of the actual <em>text</em> of the story.</p>
+<p>These "stage directions" are further detailed in the First Story
+guide. For more information on what to put between square brackets, see
+<strong>[Keeping Track](Advanced Writing#Keeping Track)</strong>.</p>
 <h2 id="stop-sequence">Stop Sequence</h2>
-<p>If you wish to end your Generations upon reaching a specific Token, simply add it to this field. Doing so will cause the Generation to <strong>end prematurely upon generating the Token</strong>.</p>
-<p>If you use periods, this will stop generations at the end of sentences. With something like "&gt;" you can use it to make the AI stop when it's "your turn".</p>
+<p>If you wish to end your Generations upon reaching a specific Token,
+simply add it to this field. Doing so will cause the Generation to
+<strong>end prematurely upon generating the Token</strong>.</p>
+<p>If you use periods, this will stop generations at the end of
+sentences. With something like "&gt;" you can use it to make the AI stop
+when it's "your turn".</p>
 <h3 id="min-output-length">Min Output Length</h3>
-<p>This adjusts the <strong>minimum number of Tokens returned by the AI before having a chance to generate the Stop token.</strong> It will never be below this target, but may exceed it.</p>
+<p>This adjusts the <strong>minimum number of Tokens returned by the AI
+before having a chance to generate the Stop token.</strong> It will
+never be below this target, but may exceed it.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
