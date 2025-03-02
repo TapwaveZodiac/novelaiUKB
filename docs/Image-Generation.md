@@ -106,7 +106,7 @@ Thus, write prompts with spaces in them if they use multiple words, and bound th
 
 When autocompleting tags, a comma will be added automatically. **Tags do not require underscores, with the exception of facial expressions like `^_^`. You should not use underscores outside of these specific tags.**
 
-Keep in mind that most non-latin characters and punctuation will be turned into `UNK` tokens and may cause tags to break. 
+Keep in mind that most non-latin characters and punctuation will be turned into `UNK` tokens. The AI generally interprets those as tildes or hearts in dialogue.
 
 Something that is important to note is that prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, but the rest is more or less normalized in strength. It can be useful, or detrimental depending on the result, to put style, composition, or artist tags at the very beginning of the prompt, as it will strongly increase their effect.
 
