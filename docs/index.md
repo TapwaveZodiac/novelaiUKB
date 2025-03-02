@@ -135,6 +135,8 @@ NovelAI before reading them.**
 
 ### **📳 [Vibe Transfer](Vibe-Transfer)**
 
+### **🔖 [Using a Bookmarklet to retrieve Danbooru tags](Tag-Retrieval-Bookmarklet)**
+
 ### **🗄️ [Database of Interesting Image Generation Finds](Database-of-Interesting-Image-Generation-Finds)**
 
 ### **🎞️ [Carlyone\'s Aesthetics Gallery](https://zele.st/NovelAI/)**
