@@ -19,25 +19,16 @@ NSFW to the prompt. Anywhere.**
 # How is the AI trained?
 
 The AI was trained on tagged images, based on the Danbooru standard.
-Boorus are "imageboards", sites where large amounts of images are
-saved in order to catalogue the body of work of artists. This stemmed
-from a difficulty to find and archive art reliably, as Japanese artists
-have a very different relationship with their works than Western
-cultures do.
+Boorus are "imageboards", sites where large amounts of images are saved in order to catalogue the body of work of artists. This stemmed from a difficulty to find and archive art reliably, as Japanese artists have a very different relationship with their works than Western cultures do.
 
-As a result, these sites were created to host as many images as
-possible, and make them easy to find by applying tags. These tags
-describe elements of the image, such as character design elements (hair,
-eyes, etc), poses, objects, and much more.
+As a result, these sites were created to host as many images as possible, and make them easy to find by applying tags. These tags describe elements of the image, such as character design elements (hair, eyes, etc), poses, objects, and much more.
 
 There are two parts to training: Quality training, and Aesthetic training. This will be explained in the next section.
 
-If you are going to go and trawl Danbooru's tag database, keep in mind
-that the site is **extremely unsafe for work!**
+If you are going to go and trawl Danbooru's tag database, keep in mind that the site is **extremely unsafe for work!**
 
-If you are using the Furry model, **you'll need to use E621's tags.**
-This means all the following information will not work for this specific
-model. E621 is just as extremely unsafe for work.
+If you are using the Furry model, **you'll need to use E621's tags.** These can also work on V4, to a degree.
+This means all the following information will not work for this specific model. E621 is just as extremely unsafe for work.
 
 ***
 
@@ -51,11 +42,11 @@ This has several implications:
 
 • The AI does not have pure semantic understanding of tags. It just knows that this tag tends to lead to those shapes and those colors. It does not understand what hair *is*, but just how it *looks* and how it is usually drawn.
 
-• The AI does not know what applies to what in the image, this means you can't tell it "I want this, but ONLY for this character". This is why it can struggle with multiple characters in long prompts.
+• For older models, the AI does not know what applies to what in the image, this means you can't tell it "I want this, but ONLY for this character". This is why it can struggle with multiple characters in long prompts. **For V4, you have character tagging, but it is not perfect. Sometimes, the character may merge together.**
 
 ## Noise V. Sampler:  Steps, Scale/Guidance and Seed
 
-Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps).
+Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps). Most NAI models were trained from **Stable Diffusion** models. V4 is an inhouse model.
 
 Steps are carried out by a **Sampler**, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are *Ancestral*, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers. 
 
@@ -69,23 +60,25 @@ However,  **Negative Guidance Scale** *does*, because it uses additional process
 
 Effectively, Noise Schedules are variations of the same Sampler's algorithm.
 
-`native`, `exponential` and `polyexponential` are *mostly* the same, with Polyexponential being the most similar to `native` in its output. `karras` leads to very different generations on the same seed.
+For V4, `Karras` is the default noise scheduler. `native`, `exponential` and `polyexponential` are *mostly* comparable to each other, with minute differences.
 
 ## The limits of Guidance
 
-Guidance is nice and all, but V2 and **especially V3** work best at a narrow band of scale. V2 works well from 3 to 11, while V3 works best at 2-6.
+Guidance is nice and all, but V2 and **especially V3 and V4** work best at a narrow band of scale. V2 works well from 3 to 11, while V3 and V4 works best at 2-6.
 
 Guidance is much stronger on V3 because it uses a different base model, which is more reactive than V2.
 
 Higher scale leads to stronger contrast, stronger outlines, and all around stronger "bounding" of elements. This can also cause some elements to overpower others more readily. This is why low scale is considered more "painterly", because noise is resolved more loosely, which leads to the aesthetic "blurriness" of mediums like watercolor, oil paint, etc.
 
+Addtionally, with multiple character prompts, higher scale may be preferable.
+
 To allow for a stronger Prompt Guidance without having those issues, the advanced setting **Prompt Guidance Rescale** attempts to compensate for them, but this will result in a blurrier output. You can always use image 2 image to refine the picture once you feel the base is good enough.
 
-Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1.
+Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1. Start in increments of 0.1 or 0.2 with the same seed, and decide what you prefer from there.
 
 ## SMEA
 
-SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**.
+SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**. SMEA is used for V1-V3 models, and V4 uses its own solution independently, meaning it does not require it.
 
 SMEA requires considerably more compute (and its Dynamic version even moreso), so it will lead to **increased Anlas costs**. The other issue is that generating with SMEA with the same seed will lead to very different results than without, so you cannot try and find a good base cheaply, then regenerate it with SMEA.
 
@@ -93,7 +86,9 @@ As a consequence of how it functions, SMEA reduces the influence of Guidance. Th
 
 ## Decrisper
 
-When operating at high Scale settings, the aesthetics can get lost as contrast grows excessive, shapes break apart, and colors leak into the wrong areas. To correct this, Decrisper dynamically sets thresholds on the [image latents](https://x.com/Birchlabs/status/1582165379832348672) for every diffusion step, in order to keep them in a more "expected" space. This helps keep things on track and avoid a breakdown of style during generation at higher scale.
+When operating at high Scale settings, the aesthetics can get lost as contrast grows excessive, shapes break apart, and colors leak into the wrong areas. To correct this, Decrisper dynamically sets thresholds on the [image latents](https://x.com/Birchlabs/status/1582165379832348672) for every diffusion step, in order to keep them in a more "expected" space. This helps keep things on track and avoid a breakdown of style during generation at higher scale. You may require to turn it on as early as ~7-8 Scale on V3.
+
+Decrisper has no effect on V4 and isn't available for it.
 
 ## Variety Booster
 
@@ -105,91 +100,69 @@ NovelAI detects when the general composition and body shape (if applicable) is p
 
 # Tag-based Prompting
 
-To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use
-commas to separate tags. While tags on Boorus use underscores instead of
-spaces, the parser replaced all underscores 'with spaces' to make it
-easier to write prompts.
+To use Tags in NAIDiffusion, simply assemble a list of tags freely. Use commas to separate tags. While tags on Boorus use underscores instead of spaces, the parser replaced all underscores 'with spaces' to make it easier to write prompts.
 
-Thus, write prompts with spaces in them if they use multiple words, and
-bound them with commas. Forgetting a comma might cause the prompt to be
-interpreted incorrectly.
+Thus, write prompts with spaces in them if they use multiple words, and bound them with commas. Forgetting a comma might cause the prompt to be interpreted incorrectly. **It is important to write your tags in all lowercase (even for proper nouns) and properly space them, as the tokenizer will not automatically flatten case or correct spacing. Try to only use latin characters and punctuation.**
 
-Something that is important to note is that prompts are interpreted with
-linear priority, which is the reverse of text generation. What comes
-first has more weight, but the rest is more or less normalized in
-strength.
+When autocompleting tags, a comma will be added automatically. **Tags do not require underscores, with the exception of facial expressions like `^_^`. You should not use underscores outside of these specific tags.**
 
-**When weighing tags with curly braces or square brackets, stacking them
-has a multiplicative effect, rather than additive. The multiplier is 1.05 per pair of brackets**.
+Keep in mind that most non-latin characters and punctuation will be turned into `UNK` tokens and may cause tags to break. 
 
-Tag-based prompts tends to lead to consistent designs. However, they
-come out stylistically different and less diverse than Prose-based
-prompts.
+Something that is important to note is that prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, but the rest is more or less normalized in strength. It can be useful, or detrimental depending on the result, to put style, composition, or artist tags at the very beginning of the prompt, as it will strongly increase their effect.
 
-There are several tag categories that are important to know, due to how
-extensively they were used in tagging.
+Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts.
+
+There are several tag categories that are important to know, due to how extensively they were used in tagging.
 
 ## Quality Tags And Aesthetic Tags
 
-You may have heard of the `masterpiece` tag being used to "improve
-generation quality". This goes a little bit more in depth.
+You may have heard of the `masterpiece` tag being used to "improve generation quality". This goes a little bit more in depth.
 
-Images were classified according to a percentile "quality score".
-Different tags were then applied to training images based on that score.
+Images were classified according to a percentile "quality score". Different tags were then applied to training images based on that score.
 
 **For V1**, from highest percentiles to lowest percentiles:
 
 `masterpiece, best quality, high quality, normal quality, low quality, worst quality`
 
-**For V2**, from highest percentiles to lowest percentiles:
+**For V2 onwards**, from highest percentiles to lowest percentiles:
 
 `best quality, amazing quality, great quality, normal quality, bad quality, worst quality`
 
 Keep in mind that "amazing quality" incidentally has more NSFW content, so it may be more appropriate to use for NSFW images, as opposed to "best quality". (This also explains why it tends to generate beaches and people in swimsuits.)
 
-If you use any of the Unwanted Content default filters, `worst quality, bad quality,`
-are **automatically inserted in Unwanted Content**. You can disable the filter or
-write them in your prompt to activate them anyway.
+If you use any of the Unwanted Content default filters, `worst quality, bad quality,` are **automatically inserted in Unwanted Content**. You can disable the filter or write them in your prompt to activate them anyway.
 
 **Aesthetic tags** are used exclusively in V2 and V3 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are:
 `very aesthetic, aesthetic, displeasing, very displeasing`
+
 Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.
 
-You only need one tag for quality and one for aesthtics, though generally you won't need one. It is
-better to downbias bad things than overly bias "good" things, as this
-may damage creativity. Generally just using the default Unwanted Content
-filters will be fine.
+You only need one tag for quality and one for aesthtics, though generally you won't need one. It is better to downbias bad things than overly bias "good" things, as this may damage creativity. Generally just using the default Unwanted Content and Quality Tag presets will be fine.
 
 ## Counting Characters and Gender
 
-One of the ubiquitous booru tags is the gender count tag. Whenever there
-is a number of characters in frame, then they are counted by gender.
+**For V4, this mostly helps for composition. Character tagging mostly supersedes this, but it can be useful to use gender/number tags as to ensure consistency.**
 
-The tag format is always the same. A number from one to 6 (with a plus
-if more than 6), followed immediately by the gender. `1boy, 2girls`
+One of the ubiquitous booru tags is the gender count tag. Whenever there is a number of characters in frame, then they are counted by gender.
 
-You can also use `other` as a gender for androgynous or transgender
-characters. Generally, they will look rather feminine nonetheless.
+The tag format is always the same. A number from one to 6 (with a plus if more than 6), followed immediately by the gender. `1boy, 2girls`.
 
-This tag is almost universally put in first position because it starts
-with a number rather than a letter, but you can put it anywhere. Those
-tags are **very** powerful, so you might not even need to use them, if
-you simply describe a character. It is mostly to make sure you have that
-number of characters in frame, or reinforce gender expectations.
+You can also use `other` as a gender for androgynous or transgender characters. Generally, they will look rather feminine nonetheless.
 
-If you are looking to generate gender noncomforming characters, here are
-a few tags.
+This tag is almost universally put in first position because it starts with a number rather than a letter, but you can put it anywhere. Those tags are **very** powerful, so you might not even need to use them, if you simply describe a character. It is mostly to make sure you have that number of characters in frame, or reinforce gender expectations.
 
-`twink, otoko no ko,` or `1girl, flat chest` can help generate soft boys.
+**However, V4 strongly expects these tags, even if using multi-character prompts. You should try to include them as a result.**
 
-`toned female, tomboy, tough` can help generate butch girls.
+If you are looking to generate gender noncomforming characters, here are a few tags.
+
+`twink, otoko no ko,` or `1girl, flat chest` can help generate soft boys. (You may need to put `breasts` and similar tags in Unwanted Content)
+
+`toned female, tomboy` can help generate butch girls.
 
 ## Character Reference and Artist Reference
 
-After you specified quality and character number/gender, you'll want to
-specify, if applicable, the **Reference Character**, followed by its **source franchise**.
-Keep in mind that Boorus use Japanese name order, meaning that family
-name comes first for Japanese characters.
+After you specified quality and character number/gender, you'll want to specify, if applicable, the **Reference Character**, followed by its **source franchise**.
+Keep in mind that Boorus use Japanese name order, meaning that family name comes first for Japanese characters.
 
 `yor briar, spy x family`
 
@@ -197,45 +170,39 @@ name comes first for Japanese characters.
 
 If you wish to use an artist's style, use `artist:(artistname)`.
 
-For example, if you want to generate Makoto Kusanagi in the style of the
-latest Ghost in the Shell production, you would use:
+For example, if you want to generate Makoto Kusanagi in the style of the latest Ghost in the Shell production, you would use:
 
 `Kusanagi Makoto, ghost in the shell, Artist:Ilya Kuvshinov,`
 
-You can, of course, put this information anywhere else, this is simply
-how file names are generally arranged.
+You can, of course, put this information anywhere else, this is simply how file names are generally arranged.
+
+**Keep in mind that characters with a low amount of images are easier to generate on the curated model *if* their images are mostly safe for work.**
+
+### "Hallucinated Artists"
+
+When using `artist:` You can add *any* name as an artist name, rather than a real one. Sometimes, the effect is quite remarkable and consistent. Experiment and document those you enjoy most!
 
 ## Tag Interaction
 
-An easy way to mess up your generations (or improve them!) is to have
-tags that interact. One common example of tags overwriting each other is
-as follows:
+An easy way to mess up your generations (or improve them!) is to have tags that interact. One common example of tags overwriting each other is as follows:
 
 `1girl, brown hair, blue eyes, sleeping, eyes closed, laying down`
 
-While the problem is not immediately apparent, specifying an eye colour
-*and* them being closed means that one will be ignored in favour of the
-other. **Make sure you don't specify information about things that are
-not in frame.** Images on Danbooru follow the **"tag what you *see*"** guideline.
+While the problem is not immediately apparent, specifying an eye colour *and* them being closed means that one will be ignored in favour of the other. **Make sure you don't specify information about things that are not in frame.** Images on Danbooru follow the **"tag what you *see*"** guideline.
 
 A more positive example is:
 
 `1girl, black hair, blue highlights, blue eyes,`
 
-Putting a color highlight next to the hair color will give you colored
-strands and bangs. Adjust the wording until you get the specifics you
-like!
+Putting a color highlight next to the hair color will give you colored strands and bangs. Adjust the wording until you get the specifics you like!
 
 ### Incomplete Interactions
 
-Breaking up interactions that occur naturally can result in artifacts or
-odd elements. It is easy to achieve if you strengthen a specific part of
-a tag rather than the whole tag.
+Breaking up interactions that occur naturally can result in artifacts or odd elements. It is easy to achieve if you strengthen a specific part of a tag rather than the whole tag.
 
 `1girl, black hair, {{{orange}}} eyes`
 
-This can lead to the spontaneous appearance of tasty, tasty oranges
-everywhere in frame. Whether or not this is a bad thing is up to you.
+This can lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame. Whether or not this is a bad thing is up to you.
 
 ### Priority Interference
 
@@ -247,24 +214,16 @@ Can lead to the hair being tinted blue, or being blue outright. Eyes tend to hav
 
 ### Mutual Dependencies
 
-Some tags implicitly require each other and can lead to artifacts or
-tags being ignored if one of them is banned through Undesired Content.
-For example, requesting `gloves` but having `hands` in Undesired Content
-can lead to weird generations. Make sure you account for these
-dependencies to avoid this!
+Some tags implicitly require each other and can lead to artifacts or tags being ignored if one of them is banned through Undesired Content.
+For example, requesting `gloves` needs hands to be visible, so if you want no hands in frame, do not request anything that hands would manipulate or wear, or gestures that require hands to be performed.
 
 ### Facial Expressions
 
-You'll quickly realize that facial expression tags are non-intuitive
-and lead to odd faces. This is because emotions aren't often tagged,
-and their vectors are surprisingly strong. Try putting `shy` in UC and you'll see
-what this leads to. Some like `pensive` work fine as is.
+You'll quickly realize that facial expression tags are non-intuitive and lead to odd faces. This is because emotions aren't often tagged, and their vectors are surprisingly strong. Try putting `shy` in UC and you'll see what this leads to. Some like `pensive` work fine as is.
 
-There are various emotes that can be used as facial expressions, with
-fairly strong vectors: `:), :(, :3` and so on.
+There are various emotes that can be used as facial expressions, with fairly strong vectors: `:), :(, :3` and so on.
 
-Be aware that some, like :|, can break the prompt. Try using an emoji
-instead: 😐, or look up the tag database. (For instance, this would be `expressionless`)
+Be aware that some, like :|, can break the prompt. Try using an emoji instead: 😐, or look up the tag database. (For instance, this would be `expressionless`)
 
 Having characters look in certain directions also tends to force certain poses. `looking back` has a strong tendency to partially obscure the face with the shoulder, and make the character bend over.
 
@@ -294,11 +253,15 @@ and
 
 Are fundamentally the same.
 
+You can automatically strengthen a tag by highlighting the entire tag in the text box, then pressing any **opening** bracket or curly brace key. It will automatically frame the tag with the type you've selected.
+
 ## Unwanted Content, or "Negative Prompting"
 
 Unwanted Content is a way to direct the generation away from things you'd like to avoid. By virtue of how it works, UC is rather "destructive", so you should keep it as short and focused as possible. Generate with a short UC, then narrow it down based on what you need per image.
 
 There are multiple default UC presets, we will focus on V3's specifically to explain what each element does.
+
+V3
 
 Light: `nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing`
 
@@ -321,28 +284,70 @@ Human Focus: `lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg a
 * `[abstract]`: Reduces overly geometric and amorphous shaping of objects and people.
 * ` @_@, mismatched pupils, heart-shaped pupils, glowing eyes`: Several eye-related tags that may incidentally leak into a generation. Reducing their influence means that eyes should generate "cleaner" most of the time.
 
+
+== V4 information TBA ==
+
 ***
+
+# Character Prompting
+
+V4 allows you to specify prompts *per character*. The base prompt will apply to the entire scene. 
+
+## Per-character Tagging
+Each character prompt uses its tags for a single character, this includes unwanted content. To create a new character prompt, click "Add Character".
+
+![image](https://github.com/user-attachments/assets/6634ddc8-d9d9-4686-b0e6-a25eda2e4a96)
+
+Be mindful that there can be some leakage between characters, especially when using compositions that focus on a single character, such as `portrait`.
+
+## Positioning
+
+By default, the AI has a general idea of how to position characters based on what interactions you have specified. Otherwise, you can center them to a specific 5*5 grid position on the canvas. Be careful not to forget to adjust it if you have made changes to posing/interaction tags.
+
+If no positions are specified, the AI will tend to order characters from *top to bottom, left to right*.
+
+## Interaction source and target
+
+Any interaction such as `licking another's face` can have a **Target** and a **Source**. To define the target, put the tag in their prompt, and append `target#` immediately before the tag in question: `target#licking another's face,` Source works the same, with `source#` instead. You may also use `mutual#` for actions that the characters are doing to each other.
+
+Keep in mind that the AI may sometimes mix the roles up and be confused. Higher Guidance **can** alleviate that, but this may cause other issues.
+
+***
+
 # Prose Prompting
 
-To prose-prompt in NAIDiffusion, simply write a sentence describing the
-image. Use commas to separate clauses. Try to keep clauses short and
-using as little grammatical words as possible. Try to phrase your
-sentences so that you use vocabulary close to Booru tags.
+To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to write neatly with proper grammar and punctuation. Try to phrase your sentences so that you use vocabulary close to Booru tags.
 
-Again, prompts are interpreted with linear priority, which is the
-reverse of text generation. What comes first has more weight, so keep
-the core content at the beginning of the sentence.
+Again, prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, so keep the core content at the beginning of the sentence.
 
-Prose-based prompts tends to lead to more varied output. They are
-stylistically different and more diverse than Tag-based prompts, and are
-best suited for situations or scenes which are very dynamic and which do
-not require consistent character portrayal.
+Prose-based prompts tends to lead to more varied output. They are stylistically different and more diverse than Tag-based prompts, and are best suited for situations or scenes which are very dynamic and which do not require consistent character portrayal.
 
 ### Story Conversion
 
-You can, with some slight adjustments, copy paste excerpts from your
-story and use them as prompts. There might be some fine tuning needed,
-but you should get something similar to what was described.
+You can, with some slight adjustments, copy paste excerpts from your story and use them as prompts. There might be some fine tuning needed, but you should get something similar to what was described.
+
+***
+
+# Text-on-image Prompting
+
+You can request V4 to generate text by using `text:your text here.`
+
+When using Text prompting, write your prompt as normal, and end it on a period. (**.**) Then, add the text prompting at the very end of the prompt, after this period.
+
+If you want to have multiple units of text, separate them with a **linebreak**. Make sure your text units end on a period, exclamation or question mark if possible.
+
+Both of these examples work, your mileage may vary:
+
+```
+2girls, full body, speech bubble.
+Text: Go to bed!
+Text: I don't want to...
+```
+
+```
+2girls, full body, speech bubble, Text: Go to bed!
+I don't want to...
+```
 
 ***
 
@@ -397,17 +402,15 @@ You should avoid using any UC outside of default UC when inpainting as well, for
 
 ### CLIP Interrogator
 
-[Clip Interrogator](https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb#scrollTo=YQk0eemUrSC7)
-can be used to read an image you like and extract tags and prose that
-will help you refine your prompt.
+[Clip Interrogator](https://colab.research.google.com/github/pharmapsychotic/clip-interrogator/blob/main/clip_interrogator.ipynb#scrollTo=YQk0eemUrSC7) can be used to read an image you like and extract tags and prose that will help you refine your prompt.
+
+**V4 does not use CLIP, therefore, this is less useful when seeking tags for V4.**
 
 ### Combo Prompting
 
-If you are generating an image of a specific character that has a small
-amount of pictures, you can combine a prose prompt and tags appends in
-order to obtain something closer to the desired result.
+If you are generating an image of a specific character that has trouble coming out consistently, perhaps because there are other characters with a similar name, you can combine character and franchise tags in order to obtain something closer to the desired result.
 
-`a picture of {ayanami} from azur lane, white hair, red eyes, ponytail,`
+`sotheby, Reverse:1999,`
 
 # Vibe Transfer
 
@@ -425,9 +428,19 @@ Experiment and perhaps contribute your research efforts to this wiki!
 
 ***
 
+# But what about ControlNet? And LoRAs?
+
+V4 is an inhouse model, and most plugins are designed for Stable Diffusion. It's like trying to put an USB key in a HDMI port. Maybe it looks similar, but it's not going to work. LoRAs are also risky, as they allow the model to generate content that Anlatan isn't legally allowed to provide, such as photorealistic renders.
+
+Therefore, be patient, and hope for the team to develop inhouse tools!
+
+***
+
 # Furry Model
 
 The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.
+
+**In V4, you can use E621 tags by adding `fur dataset` at the start of the prompt.**
 
 ## Tag differences
 The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Danbooru tags. This leads to several important differences:
@@ -476,7 +489,7 @@ per_image = math.ceil(15.266497014243718 * math.exp(size * 0.6326248927474729) -
 ```
 For V1 and V2 images over 1 megapixel or using other samplers, see the [cost tables](https://github.com/Aedial/novelai-api/blob/2174602d346152d38ce2b43fcec8c9666a72f89a/novelai_api/ImagePreset.py#L588).
 
-- V3
+- V3 & V4
 ```python
 r = width * height  # in pixels
 
