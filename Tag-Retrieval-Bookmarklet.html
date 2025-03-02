@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc-markdown-css-theme" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Advanced Settings</title>
+  <title>Tag Retrieval Bookmarklet</title>
   <style>
   /*
   To be used for Custom CSS, kept separate to distinguish it from Stylses sourced elsewhere
@@ -1330,8 +1330,8 @@
 <body>
 
 <header>
-<a href="." forTitle="Advanced Settings">Return to Index</a>
-<h1 class="title">Advanced Settings</h1>
+<a href="." forTitle="Tag Retrieval Bookmarklet">Return to Index</a>
+<h1 class="title">Tag Retrieval Bookmarklet</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 02/03/2025 at
 08:18">Last updated 02/03/2025 at 08:18</time></p>
@@ -1341,127 +1341,214 @@
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
-    <li><a href="#context" id="toc-context">Context</a></li>
-    <li><a href="#phrase-bias" id="toc-phrase-bias">Phrase Bias</a>
+    <li><a href="#how-to-make-a-bookmarklet-to-auto-copy-tags"
+    id="toc-how-to-make-a-bookmarklet-to-auto-copy-tags">How to Make a
+    Bookmarklet to Auto Copy Tags</a>
     <ul>
-    <li><a href="#ensure-completion-after-start"
-    id="toc-ensure-completion-after-start"><strong>Ensure Completion
-    After Start</strong></a></li>
-    <li><a href="#unbias-after-generation"
-    id="toc-unbias-after-generation"><strong>Unbias after
-    Generation</strong></a></li>
-    </ul></li>
-    <li><a href="#ban-token" id="toc-ban-token">Ban Token</a>
+    <li><a href="#step-1-create-a-new-bookmark"
+    id="toc-step-1-create-a-new-bookmark">Step 1: Create a New
+    Bookmark</a>
     <ul>
-    <li><a href="#banned-tokens" id="toc-banned-tokens">Banned
-    Tokens</a></li>
-    <li><a href="#ban-bracket-generation"
-    id="toc-ban-bracket-generation">Ban Bracket Generation</a></li>
+    <li><a href="#safari-ios--macos"
+    id="toc-safari-ios--macos"><strong>Safari (iOS &amp;
+    macOS)</strong></a></li>
+    <li><a href="#google-chrome-desktop--android"
+    id="toc-google-chrome-desktop--android"><strong>Google Chrome
+    (Desktop &amp; Android)</strong></a></li>
+    <li><a href="#mozilla-firefox-desktop--android"
+    id="toc-mozilla-firefox-desktop--android"><strong>Mozilla Firefox
+    (Desktop &amp; Android)</strong></a></li>
     </ul></li>
-    <li><a href="#stop-sequence" id="toc-stop-sequence">Stop
-    Sequence</a>
+    <li><a href="#step-2-edit-the-bookmark-url"
+    id="toc-step-2-edit-the-bookmark-url">Step 2: Edit the Bookmark
+    URL</a>
     <ul>
-    <li><a href="#min-output-length" id="toc-min-output-length">Min
-    Output Length</a></li>
+    <li><a href="#safari-ios--macos-1"
+    id="toc-safari-ios--macos-1"><strong>Safari (iOS &amp;
+    macOS)</strong></a></li>
+    <li><a href="#google-chrome-desktop--android-1"
+    id="toc-google-chrome-desktop--android-1"><strong>Google Chrome
+    (Desktop &amp; Android)</strong></a></li>
+    <li><a href="#mozilla-firefox-desktop--android-1"
+    id="toc-mozilla-firefox-desktop--android-1"><strong>Mozilla Firefox
+    (Desktop &amp; Android)</strong></a></li>
     </ul></li>
+    <li><a href="#step-3-use-the-bookmarklet"
+    id="toc-step-3-use-the-bookmarklet">Step 3: Use the Bookmarklet</a>
+    <ul>
+    <li><a href="#notes" id="toc-notes">Notes:</a></li>
+    </ul></li>
+    </ul></li>
+    <li><a href="#bookmarklet-code"
+    id="toc-bookmarklet-code">Bookmarklet code</a></li>
     </ul>
-  <a href="." forTitle="Advanced Settings">Return to Index</a>
+  <a href="." forTitle="Tag Retrieval Bookmarklet">Return to Index</a>
 </nav>
 
 <main>
-<p><img
-src="https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/230c9043-56d6-44a1-8491-bf97dab4e5d8"
-alt="image" /></p>
-<h2 id="context">Context</h2>
-<p>Tools relative to <a href="Context.html">Context</a>. Explained on
-the corresponding page.</p>
-<h2 id="phrase-bias">Phrase Bias</h2>
-<p><strong>Phrase Bias</strong> allows you to tell the AI to
-<strong>increase</strong> or <strong>decrease</strong> the probability
-of single or groups of <strong>tokens</strong>. You may have 1024 biases
-enabled at once. Any extra will cause generation to fail.</p>
-<p>Rather than ban tokens outright, this is meant to nudge the model in
-the right direction, or avoid specific words from showing up too often,
-without removing them entirely.</p>
-<p><strong>Keep in mind that Phrase Bias is case sensitive.</strong>
-However, a variation of the first token with a space (as in, "text" and
-" text") will be considered, even if you do not specify it. (This does
-not apply if the tokens are ;, :, &lt;, &gt;, &amp;, @, #, %, ^, \n, and
-the entire range of unicode characters from u3000-u9faf and
-uff00-uff9f.)</p>
-<p>Bias is collected in <strong>Groups</strong> with a certain
-<strong>Bias Level</strong>, which is applied to all phrases and tokens
-put in the <strong>Group</strong>.</p>
-<p>To create a new <strong>Bias Group</strong>, click the ➕ button. The
-currently selected group can be deleted by clicking 🗑️.</p>
-<p>To enter a new phrase or token in the Group, enter it in the text box
-and press Enter.</p>
-<p>If you wish to insert token IDs (such as [198] for newlines), encase
-their numerical ID in <strong>Square Brackets: []</strong></p>
-<p>If you wish to insert the exact input, as is, case sensitive and with
-exact spacing, encase in <strong>Curly Braces {}</strong>.</p>
-<p><strong>Bias Level</strong> is a <em>non-linear Scale</em> from -2
-(less likely) to +2 (more likely). This means the strength of the bias
-increases faster the higher its value: -2 is <strong>much
-stronger</strong> than simply "twice less likely than -1". The opposite
-is true for +1 and +2. A bias of <strong>-0.1 to +0.1</strong>, usually
-lower, works well for most uses cases.</p>
-<h3 id="ensure-completion-after-start"><strong>Ensure Completion After
-Start</strong></h3>
-<p>If checked, the AI will make sure <strong>Phrases</strong> are
-completed if their first token is generated.</p>
-<p>For example, if you've given a positive bias to the phrase "blue
-business suit" with this function turned <strong>off</strong>, the AI
-might start generating outputs featuring blue lights, blue planets, or
-people with blue eyes. With Ensure Completion After Start turned
-<strong>on</strong>, the word "blue" will <em>always</em> be followed by
-the phrase "business suit".</p>
-<h3 id="unbias-after-generation"><strong>Unbias after
-Generation</strong></h3>
-<p>If checked, the AI will disable the bias for the remainder of the
-generation once it has been applied once. Following the previous
-example, the first instance of "blue" will output "blue business suit",
-but all following instances will work as normal.</p>
-<h2 id="ban-token">Ban Token</h2>
-<p>Any Tokens added here will <strong>have their probability reduced to
-zero</strong>. This means they <strong>will not appear in
-Generations</strong>. As this adjusts the relationships between Tokens,
-this will have an impact on the phrasing chosen by the AI. Be careful
-about what you ban, because this can cause some very strange wording to
-be generated if used incorrectly.</p>
-<p>When you add a new token to the banlist, it will also check for any
-variations in case, and the token with a preceding space as well. (Just
-like Phrase Bias does.)</p>
-<p>To prevent that from happening, and exclusively ban this token, add
-<strong>curly braces</strong> { } around the token you want to ban
-before pressing enter. You may have 2048 bans at once, any extra will
-cause generation to fail.</p>
-<h3 id="banned-tokens">Banned Tokens</h3>
-<p>Relating to the previous setting, this field <strong>shows every
-Token currently blacklisted</strong> for generation. Clicking one of
-these tokens will remove it from the list.</p>
-<p>If you inserted an exclusive token (using curly braces), it will be
-displayed with brackets around it.</p>
-<h3 id="ban-bracket-generation">Ban Bracket Generation</h3>
-<p>At times, you may wish to include hints to the AI that are
-<strong>not to be considered part of the story</strong>. These can be
-encapsulated in <strong>square brackets</strong> ([ and ]) to signal it
-is part of the <strong>Current Context</strong> while not being
-considered part of the actual <em>text</em> of the story.</p>
-<p>These "stage directions" are further detailed in the First Story
-guide. For more information on what to put between square brackets, see
-<strong>[Keeping Track](Advanced Writing#Keeping Track)</strong>.</p>
-<h2 id="stop-sequence">Stop Sequence</h2>
-<p>If you wish to end your Generations upon reaching a specific Token,
-simply add it to this field. Doing so will cause the Generation to
-<strong>end prematurely upon generating the Token</strong>.</p>
-<p>If you use periods, this will stop generations at the end of
-sentences. With something like "&gt;" you can use it to make the AI stop
-when it's "your turn".</p>
-<h3 id="min-output-length">Min Output Length</h3>
-<p>This adjusts the <strong>minimum number of Tokens returned by the AI
-before having a chance to generate the Stop token.</strong> It will
-never be below this target, but may exceed it.</p>
+<h1 id="how-to-make-a-bookmarklet-to-auto-copy-tags">How to Make a
+Bookmarklet to Auto Copy Tags</h1>
+<p>Bookmarklet by <em>Oathgate &amp; ght901</em></p>
+<p>Tutorial by <em>Oathgate</em></p>
+<p>A <strong>bookmarklet</strong> is a small JavaScript snippet saved as
+a bookmark. This guide will show you how to create one for
+<strong>Safari, Chrome, and Firefox</strong> to copy tags
+automatically.</p>
+<p>You will find the code at the end of this article.</p>
+<hr />
+<h2 id="step-1-create-a-new-bookmark">Step 1: Create a New Bookmark</h2>
+<h3 id="safari-ios--macos"><strong>Safari (iOS &amp;
+macOS)</strong></h3>
+<ol type="1">
+<li>Open <strong>Safari</strong>.</li>
+<li>Navigate to any webpage (e.g., <code>example.com</code>).</li>
+<li>Tap the <strong>Share</strong> button (square with an arrow pointing
+up).</li>
+<li>Select <strong>Add Bookmark</strong> from the menu.</li>
+<li>Give the bookmark a name (e.g., "Copy Tags").</li>
+<li>Save it to <strong>Favorites</strong> or any preferred folder.</li>
+</ol>
+<h3 id="google-chrome-desktop--android"><strong>Google Chrome (Desktop
+&amp; Android)</strong></h3>
+<ol type="1">
+<li>Open <strong>Chrome</strong>.</li>
+<li>Navigate to any webpage.</li>
+<li>Click or tap the <strong>star icon</strong> in the address bar.</li>
+<li>Edit the name to something recognizable (e.g., "Copy Tags").</li>
+<li>Save it to the <strong>Bookmarks Bar</strong> or any folder.</li>
+</ol>
+<h3 id="mozilla-firefox-desktop--android"><strong>Mozilla Firefox
+(Desktop &amp; Android)</strong></h3>
+<ol type="1">
+<li>Open <strong>Firefox</strong>.</li>
+<li>Navigate to any webpage.</li>
+<li>Click the <strong>star icon</strong> in the address bar to bookmark
+the page.</li>
+<li>Click <strong>Edit</strong> and rename it (e.g., "Copy Tags").</li>
+<li>Save it to your preferred location.</li>
+</ol>
+<hr />
+<h2 id="step-2-edit-the-bookmark-url">Step 2: Edit the Bookmark URL</h2>
+<h3 id="safari-ios--macos-1"><strong>Safari (iOS &amp;
+macOS)</strong></h3>
+<ol type="1">
+<li>Open <strong>Bookmarks</strong>:
+<ul>
+<li>Tap the <strong>Bookmarks</strong> icon (open book).</li>
+<li>Find the bookmark you just created.</li>
+</ul></li>
+<li>Tap and hold the bookmark, then select <strong>Edit</strong>.</li>
+<li>Delete the existing URL and paste the <strong>bookmarklet
+code</strong> you copied earlier.</li>
+<li>Tap <strong>Done</strong> to save.</li>
+</ol>
+<h3 id="google-chrome-desktop--android-1"><strong>Google Chrome (Desktop
+&amp; Android)</strong></h3>
+<ol type="1">
+<li>Open the <strong>Bookmarks Manager</strong>:
+<ul>
+<li>On <strong>desktop</strong>, press <code>Ctrl + Shift + O</code>
+(<code>Cmd + Option + B</code> on macOS).</li>
+<li>On <strong>mobile</strong>, go to <strong>Menu &gt;
+Bookmarks</strong>.</li>
+</ul></li>
+<li>Find the bookmark, then click or tap <strong>Edit</strong>.</li>
+<li>Replace the URL with the <strong>bookmarklet code</strong>.</li>
+<li>Save the changes.</li>
+</ol>
+<h3 id="mozilla-firefox-desktop--android-1"><strong>Mozilla Firefox
+(Desktop &amp; Android)</strong></h3>
+<ol type="1">
+<li>Open <strong>Bookmarks</strong> (<code>Ctrl + Shift + B</code> on
+desktop).</li>
+<li>Find the bookmark and select <strong>Edit</strong>.</li>
+<li>Replace the existing URL with the <strong>bookmarklet
+code</strong>.</li>
+<li>Save the changes.</li>
+</ol>
+<hr />
+<h2 id="step-3-use-the-bookmarklet">Step 3: Use the Bookmarklet</h2>
+<ol type="1">
+<li>Open a webpage where you want to run the bookmarklet.</li>
+<li>Open <strong>Bookmarks</strong>.</li>
+<li>Select your bookmarklet (e.g., "Copy Tags").</li>
+<li>The bookmarklet will run, copying the tags to your clipboard for
+easy pasting.</li>
+</ol>
+<hr />
+<h3 id="notes">Notes:</h3>
+<ul>
+<li>Some browsers (especially <strong>Chrome</strong> on iOS) may
+<strong>block JavaScript execution</strong> from bookmarks. If this
+happens, try using <strong>Safari</strong> or <strong>Firefox</strong>
+instead.</li>
+<li>If the bookmarklet doesn't work immediately, ensure that
+<strong>JavaScript is enabled</strong> in your browser settings.</li>
+</ul>
+<h1 id="bookmarklet-code">Bookmarklet code</h1>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>javascript<span class="op">:</span> (<span class="kw">function</span> () {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">copyTags</span>() {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> replacements <span class="op">=</span> {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">v</span><span class="op">:</span> <span class="st">&quot;peace sign&quot;</span><span class="op">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;double v&quot;</span><span class="op">:</span> <span class="st">&quot;double peace&quot;</span><span class="op">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;|_|&quot;</span><span class="op">:</span> <span class="st">&quot;bar eyes&quot;</span><span class="op">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;</span><span class="sc">\\</span><span class="st">||/&quot;</span><span class="op">:</span> <span class="st">&quot;opem </span><span class="sc">\\</span><span class="st">m/&quot;</span><span class="op">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;:|&quot;</span><span class="op">:</span> <span class="st">&quot;neutral face&quot;</span><span class="op">,</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;;|&quot;</span><span class="op">:</span> <span class="st">&quot;neutral face&quot;</span><span class="op">,</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;eyepatch bikini&quot;</span><span class="op">:</span> <span class="st">&quot;square bikini&quot;</span><span class="op">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;tachi-e&quot;</span><span class="op">:</span> <span class="st">&quot;character image&quot;</span><span class="op">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> blockedTags <span class="op">=</span> [<span class="st">&quot;original&quot;</span>]<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> regex <span class="op">=</span> <span class="ss">/</span><span class="sc">(\d(</span><span class="ss">boy</span><span class="sc">|</span><span class="ss">girl</span><span class="sc">|</span><span class="ss">other</span><span class="sc">)</span><span class="ss">s</span><span class="sc">?)</span><span class="ss">/i</span><span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> tags <span class="op">=</span> [</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.artist-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.character-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.copyright-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.general-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>((li) <span class="kw">=&gt;</span> li<span class="op">.</span><span class="fu">getAttribute</span>(<span class="st">&quot;data-tag-name&quot;</span>))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">filter</span>((tag) <span class="kw">=&gt;</span> tag <span class="op">&amp;&amp;</span> tag<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>blockedTags<span class="op">.</span><span class="fu">includes</span>(tag))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>((tag) <span class="kw">=&gt;</span> (tag<span class="op">.</span><span class="at">length</span> <span class="op">&lt;=</span> <span class="dv">3</span> <span class="op">?</span> tag <span class="op">:</span> tag<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/_/g</span><span class="op">,</span> <span class="st">&quot; &quot;</span>)))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>((tag) <span class="kw">=&gt;</span> replacements[tag] <span class="op">||</span> tag)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (regex<span class="op">.</span><span class="fu">test</span>(a)) {</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (regex<span class="op">.</span><span class="fu">test</span>(b)) {</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">join</span>(<span class="st">&quot;, &quot;</span>)<span class="op">;</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>tags) {</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&quot;No tags found!&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span>) {</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">writeText</span>(tags)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>          <span class="fu">alert</span>(<span class="st">&quot;Tags copied to clipboard!&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">catch</span>((err) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>          <span class="bu">console</span><span class="op">.</span><span class="fu">warn</span>(<span class="st">&quot;Clipboard copy failed.&quot;</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>          <span class="fu">prompt</span>(<span class="st">&quot;Copy to clipboard: Ctrl+C, Enter&quot;</span><span class="op">,</span> tags)<span class="op">;</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> textarea <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&quot;textarea&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      textarea<span class="op">.</span><span class="at">value</span> <span class="op">=</span> tags<span class="op">;</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">appendChild</span>(textarea)<span class="op">;</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      textarea<span class="op">.</span><span class="fu">select</span>()<span class="op">;</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">execCommand</span>(<span class="st">&quot;copy&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">removeChild</span>(textarea)<span class="op">;</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&quot;Tags copied!&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">copyTags</span>()<span class="op">;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>})()<span class="op">;</span><span class="vs">```</span></span></code></pre></div>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
