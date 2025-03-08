@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Image Generation">Return to Index</a>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 02/03/2025 at
-13:52">Last updated 02/03/2025 at 13:52</time></p>
+  <p class="date before-toc"><time datetime="Last updated 08/03/2025 at
+12:22">Last updated 08/03/2025 at 12:22</time></p>
 </blockquote>
 </header>
 
@@ -1404,8 +1404,13 @@
     <li><a href="#prose-prompting" id="toc-prose-prompting">Prose
     Prompting</a>
     <ul>
+    <li><a href="#referring-to-characters-in-a-prose-prompt"
+    id="toc-referring-to-characters-in-a-prose-prompt">Referring to
+    Characters in a Prose Prompt</a>
+    <ul>
     <li><a href="#story-conversion" id="toc-story-conversion">Story
     Conversion</a></li>
+    </ul></li>
     </ul></li>
     <li><a href="#text-on-image-prompting"
     id="toc-text-on-image-prompting">Text-on-image Prompting</a></li>
@@ -1884,8 +1889,12 @@ may cause other issues.</p>
 <h1 id="prose-prompting">Prose Prompting</h1>
 <p>To prose-prompt in NAIDiffusion, simply write a sentence describing
 the image. Use commas to separate clauses. Try to write neatly with
-proper grammar and punctuation. Try to phrase your sentences so that you
-use vocabulary close to Booru tags.</p>
+proper grammar and punctuation, and try to phrase your sentences so that
+you use vocabulary close to Booru tags. You can use prose both for scene
+(main prompt), or character prompts, but it is more difficult to
+reliably describe characters in prose.</p>
+<p>It is recommended to use prose to describe scene, image composition
+and style. Elements are usually easier to simply tag like usual.</p>
 <p>Again, prompts are interpreted with linear priority, which is the
 reverse of text generation. What comes first has more weight, so keep
 the core content at the beginning of the sentence.</p>
@@ -1893,6 +1902,14 @@ the core content at the beginning of the sentence.</p>
 stylistically different and more diverse than Tag-based prompts, and are
 best suited for situations or scenes which are very dynamic and which do
 not require consistent character portrayal.</p>
+<h2 id="referring-to-characters-in-a-prose-prompt">Referring to
+Characters in a Prose Prompt</h2>
+<p>When adding character prompts, start them with the name you wish to
+use to refer to the character in the prompt. Do not put it in quotes.
+You can either follow it with a colon or a comma, but be aware that some
+names are valid tags and may be interpreted as such.</p>
+<p>After this, use the name at the start of character prompts to refer
+to that character in your prose prompt.</p>
 <h3 id="story-conversion">Story Conversion</h3>
 <p>You can, with some slight adjustments, copy paste excerpts from your
 story and use them as prompts. There might be some fine tuning needed,
