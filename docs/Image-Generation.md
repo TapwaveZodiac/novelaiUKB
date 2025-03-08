@@ -316,11 +316,19 @@ Keep in mind that the AI may sometimes mix the roles up and be confused. Higher 
 
 # Prose Prompting
 
-To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to write neatly with proper grammar and punctuation. Try to phrase your sentences so that you use vocabulary close to Booru tags.
+To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to write neatly with proper grammar and punctuation, and try to phrase your sentences so that you use vocabulary close to Booru tags. You can use prose both for scene (main prompt), or character prompts, but it is more difficult to reliably describe characters in prose.
+
+It is recommended to use prose to describe scene, image composition and style. Elements are usually easier to simply tag like usual.
 
 Again, prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, so keep the core content at the beginning of the sentence.
 
 Prose-based prompts tends to lead to more varied output. They are stylistically different and more diverse than Tag-based prompts, and are best suited for situations or scenes which are very dynamic and which do not require consistent character portrayal.
+
+## Referring to Characters in a Prose Prompt
+
+When adding character prompts, start them with the name you wish to use to refer to the character in the prompt. Do not put it in quotes. You can either follow it with a colon or a comma, but be aware that some names are valid tags and may be interpreted as such.
+
+After this, use the name at the start of character prompts to refer to that character in your prose prompt.
 
 ### Story Conversion
 
