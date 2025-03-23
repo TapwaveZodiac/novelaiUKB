@@ -255,6 +255,12 @@ Are fundamentally the same.
 
 You can automatically strengthen a tag by highlighting the entire tag in the text box, then pressing any **opening** bracket or curly brace key. It will automatically frame the tag with the type you've selected.
 
+If you are using **legacy prompt conditioning**, the math is different, and strengthening is limited to a factor of ~1.42. The table below can be used as a reference, with "old" being legacy, and "modified" being the original 5% math.
+
+![image](https://github.com/user-attachments/assets/44740f46-86c9-4421-a728-eb57ccd88e11)
+
+Table graciously provided by **DarkTentacleMaster**!
+
 ## Unwanted Content, or "Negative Prompting"
 
 Unwanted Content is a way to direct the generation away from things you'd like to avoid. By virtue of how it works, UC is rather "destructive", so you should keep it as short and focused as possible. Generate with a short UC, then narrow it down based on what you need per image.
