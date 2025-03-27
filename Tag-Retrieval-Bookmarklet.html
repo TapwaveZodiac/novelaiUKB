@@ -1334,7 +1334,7 @@
 <h1 class="title">Tag Retrieval Bookmarklet</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 27/03/2025 at
-16:55">Last updated 27/03/2025 at 16:55</time></p>
+17:15">Last updated 27/03/2025 at 17:15</time></p>
 </blockquote>
 </header>
 
@@ -1556,68 +1556,70 @@ class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">copyTags</span>()<span class="op">;</span></span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>})()<span class="op">;</span></span></code></pre></div>
 <h3 id="furry">Furry:</h3>
-<pre class="javascript:"><code>  function copyTags() {
-    const replacements = {
-      v: &quot;peace sign&quot;,
-      &quot;double v&quot;: &quot;double peace&quot;,
-      &quot;|_|&quot;: &quot;bar eyes&quot;,
-      &quot;\\||/&quot;: &quot;opem \\m/&quot;,
-      &quot;:|&quot;: &quot;neutral face&quot;,
-      &quot;;|&quot;: &quot;neutral face&quot;,
-      &quot;eyepatch bikini&quot;: &quot;square bikini&quot;,
-      &quot;tachi-e&quot;: &quot;character image&quot;,
-    };
-    const blockedTags = [&quot;original&quot;];
-    const regex = /\b(male|female|ambigious gender)\b/i;
-    const tags = [
-      ...document.querySelectorAll(&quot;ul.species-tag-list li&quot;),
-      ...document.querySelectorAll(&quot;ul.artist-tag-list li&quot;),
-      ...document.querySelectorAll(&quot;ul.copyright-tag-list li&quot;),
-      ...document.querySelectorAll(&quot;ul.character-tag-list li&quot;),
-      ...document.querySelectorAll(&quot;ul.general-tag-list li&quot;),
-    ]
-      .map((li) =&gt; li.getAttribute(&quot;data-name&quot;))
-      .filter((tag) =&gt; tag &amp;&amp; tag.length &gt; 0 &amp;&amp; !blockedTags.includes(tag))
-      .map((tag) =&gt; (tag.length &lt;= 3 ? tag : tag.replace(/_/g, &quot; &quot;)))
-      .map((tag) =&gt; replacements[tag] || tag)
-      .sort((a, b) =&gt; {
-        if (regex.test(a)) {
-          return -1;
-        }
-        if (regex.test(b)) {
-          return 1;
-        }
-        return 0;
-      })
-      .join(&quot;, &quot;);
-
-    if (!tags) {
-      alert(&quot;No tags found!&quot;);
-      return;
-    }
-
-    if (navigator.clipboard) {
-      navigator.clipboard
-        .writeText(decodeURIComponent(&quot;fur dataset, &quot; + tags))
-        .then(() =&gt; {
-          alert(&quot;Tags copied to clipboard!&quot;);
-        })
-        .catch((err) =&gt; {
-          console.warn(&quot;Clipboard copy failed.&quot;, err);
-          prompt(&quot;Copy to clipboard: Ctrl+C, Enter&quot;, tags);
-        });
-    } else {
-      let textarea = document.createElement(&quot;textarea&quot;);
-      textarea.value = tags;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand(&quot;copy&quot;);
-      document.body.removeChild(textarea);
-      alert(&quot;Tags copied!&quot;);
-    }
-  }
-  copyTags();
-})();</code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>javascript<span class="op">:</span> (<span class="kw">function</span> () {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">copyTags</span>() {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> replacements <span class="op">=</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">v</span><span class="op">:</span> <span class="st">&quot;peace sign&quot;</span><span class="op">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;double v&quot;</span><span class="op">:</span> <span class="st">&quot;double peace&quot;</span><span class="op">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;|_|&quot;</span><span class="op">:</span> <span class="st">&quot;bar eyes&quot;</span><span class="op">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;</span><span class="sc">\\</span><span class="st">||/&quot;</span><span class="op">:</span> <span class="st">&quot;opem </span><span class="sc">\\</span><span class="st">m/&quot;</span><span class="op">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;:|&quot;</span><span class="op">:</span> <span class="st">&quot;neutral face&quot;</span><span class="op">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;;|&quot;</span><span class="op">:</span> <span class="st">&quot;neutral face&quot;</span><span class="op">,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;eyepatch bikini&quot;</span><span class="op">:</span> <span class="st">&quot;square bikini&quot;</span><span class="op">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;tachi-e&quot;</span><span class="op">:</span> <span class="st">&quot;character image&quot;</span><span class="op">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> blockedTags <span class="op">=</span> [<span class="st">&quot;original&quot;</span>]<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> regex <span class="op">=</span> <span class="ss">/</span><span class="sc">\b(</span><span class="ss">male</span><span class="sc">|</span><span class="ss">female</span><span class="sc">|</span><span class="ss">ambigious gender</span><span class="sc">)\b</span><span class="ss">/i</span><span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> tags <span class="op">=</span> [</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.species-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.artist-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.copyright-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.character-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>      <span class="op">...</span><span class="bu">document</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">&quot;ul.general-tag-list li&quot;</span>)<span class="op">,</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>((li) <span class="kw">=&gt;</span> li<span class="op">.</span><span class="fu">getAttribute</span>(<span class="st">&quot;data-name&quot;</span>))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">filter</span>((tag) <span class="kw">=&gt;</span> tag <span class="op">&amp;&amp;</span> tag<span class="op">.</span><span class="at">length</span> <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>blockedTags<span class="op">.</span><span class="fu">includes</span>(tag))</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>((tag) <span class="kw">=&gt;</span> (tag<span class="op">.</span><span class="at">length</span> <span class="op">&lt;=</span> <span class="dv">3</span> <span class="op">?</span> tag <span class="op">:</span> tag<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/_/g</span><span class="op">,</span> <span class="st">&quot; &quot;</span>)))</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">map</span>((tag) <span class="kw">=&gt;</span> replacements[tag] <span class="op">||</span> tag)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (regex<span class="op">.</span><span class="fu">test</span>(a)) {</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (regex<span class="op">.</span><span class="fu">test</span>(b)) {</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">join</span>(<span class="st">&quot;, &quot;</span>)<span class="op">;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>tags) {</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&quot;No tags found!&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span>) {</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>      <span class="bu">navigator</span><span class="op">.</span><span class="at">clipboard</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">writeText</span>(<span class="pp">decodeURIComponent</span>(<span class="st">&quot;fur dataset, &quot;</span> <span class="op">+</span> tags))</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>          <span class="fu">alert</span>(<span class="st">&quot;Tags copied to clipboard!&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">catch</span>((err) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>          <span class="bu">console</span><span class="op">.</span><span class="fu">warn</span>(<span class="st">&quot;Clipboard copy failed.&quot;</span><span class="op">,</span> err)<span class="op">;</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>          <span class="fu">prompt</span>(<span class="st">&quot;Copy to clipboard: Ctrl+C, Enter&quot;</span><span class="op">,</span> tags)<span class="op">;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> textarea <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">&quot;textarea&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>      textarea<span class="op">.</span><span class="at">value</span> <span class="op">=</span> tags<span class="op">;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">appendChild</span>(textarea)<span class="op">;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>      textarea<span class="op">.</span><span class="fu">select</span>()<span class="op">;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="fu">execCommand</span>(<span class="st">&quot;copy&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>      <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">removeChild</span>(textarea)<span class="op">;</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>      <span class="fu">alert</span>(<span class="st">&quot;Tags copied!&quot;</span>)<span class="op">;</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">copyTags</span>()<span class="op">;</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>})()<span class="op">;</span></span></code></pre></div>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
