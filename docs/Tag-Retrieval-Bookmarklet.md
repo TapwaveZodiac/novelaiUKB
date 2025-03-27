@@ -1,6 +1,6 @@
 # How to Make a Bookmarklet to Auto Copy Tags
 
-Bookmarklet by *Oathgate & ght901*
+Bookmarklet by *Oathgate & ght901 & JustAnotherGuy*
 
 Tutorial by *Oathgate*
 
@@ -76,6 +76,7 @@ You will find the code at the end of this article.
 - If the bookmarklet doesn't work immediately, ensure that **JavaScript is enabled** in your browser settings.
 
 # Bookmarklet code
+### Anime:
 ```javascript
 javascript: (function () {
   function copyTags() {
@@ -120,6 +121,72 @@ javascript: (function () {
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(tags)
+        .then(() => {
+          alert("Tags copied to clipboard!");
+        })
+        .catch((err) => {
+          console.warn("Clipboard copy failed.", err);
+          prompt("Copy to clipboard: Ctrl+C, Enter", tags);
+        });
+    } else {
+      let textarea = document.createElement("textarea");
+      textarea.value = tags;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      alert("Tags copied!");
+    }
+  }
+  copyTags();
+})();
+```
+
+### Furry:
+```javascript: (function () {
+  function copyTags() {
+    const replacements = {
+      v: "peace sign",
+      "double v": "double peace",
+      "|_|": "bar eyes",
+      "\\||/": "opem \\m/",
+      ":|": "neutral face",
+      ";|": "neutral face",
+      "eyepatch bikini": "square bikini",
+      "tachi-e": "character image",
+    };
+    const blockedTags = ["original"];
+    const regex = /\b(male|female|ambigious gender)\b/i;
+    const tags = [
+      ...document.querySelectorAll("ul.species-tag-list li"),
+      ...document.querySelectorAll("ul.artist-tag-list li"),
+      ...document.querySelectorAll("ul.copyright-tag-list li"),
+      ...document.querySelectorAll("ul.character-tag-list li"),
+      ...document.querySelectorAll("ul.general-tag-list li"),
+    ]
+      .map((li) => li.getAttribute("data-name"))
+      .filter((tag) => tag && tag.length > 0 && !blockedTags.includes(tag))
+      .map((tag) => (tag.length <= 3 ? tag : tag.replace(/_/g, " ")))
+      .map((tag) => replacements[tag] || tag)
+      .sort((a, b) => {
+        if (regex.test(a)) {
+          return -1;
+        }
+        if (regex.test(b)) {
+          return 1;
+        }
+        return 0;
+      })
+      .join(", ");
+
+    if (!tags) {
+      alert("No tags found!");
+      return;
+    }
+
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(decodeURIComponent("fur dataset, " + tags))
         .then(() => {
           alert("Tags copied to clipboard!");
         })
