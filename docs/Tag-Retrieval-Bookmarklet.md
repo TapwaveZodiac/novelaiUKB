@@ -143,7 +143,8 @@ javascript: (function () {
 ```
 
 ### Furry:
-```javascript: (function () {
+```javascript
+javascript: (function () {
   function copyTags() {
     const replacements = {
       v: "peace sign",
