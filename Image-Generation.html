@@ -1334,7 +1334,7 @@
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 27/03/2025 at
-17:15">Last updated 27/03/2025 at 17:15</time></p>
+20:36">Last updated 27/03/2025 at 20:36</time></p>
 </blockquote>
 </header>
 
@@ -1387,6 +1387,14 @@
     <li><a href="#strenghtening-and-weakning-math"
     id="toc-strenghtening-and-weakning-math">Strenghtening and Weakning
     Math</a></li>
+    <li><a href="#setting-the-base-weighing"
+    id="toc-setting-the-base-weighing">Setting the Base
+    weighing</a></li>
+    <li><a href="#strengthen-autocomplete"
+    id="toc-strengthen-autocomplete">Strengthen autocomplete</a></li>
+    <li><a href="#strenghtening-value-cheat-sheet"
+    id="toc-strenghtening-value-cheat-sheet">Strenghtening value cheat
+    sheet</a></li>
     <li><a href="#unwanted-content-or-negative-prompting"
     id="toc-unwanted-content-or-negative-prompting">Unwanted Content, or
     "Negative Prompting"</a></li>
@@ -1776,10 +1784,11 @@ Math</h2>
 <p>You may have seen curly braces and square brackets be used to make a
 tag stronger or weaker. Here is a more direct explanation.</p>
 <p>Each tag has a base value of 1.</p>
-<p>If <code>]</code> or <code>{</code> is present, multiply the value of
-all tags following it by 1.05 (a 5% increase). If <code>}</code> or
-<code>[</code> is present, divide the value of all tags following it by
-1.05 (a 5% decrease).</p>
+<p>If <code>]</code> or <code>{</code> is present, multiply the
+<strong>weight multiplier</strong> for all tags following it by 1.05 (a
+5% increase). If <code>}</code> or <code>[</code> is present, multiply
+the <strong>weight multiplier</strong> for all tags following it by 0.95
+(a 5% decrease).</p>
 <p>This operation is <strong>multiplicative</strong>, and <strong>make
 generations partially non-deterministic.</strong> In the following
 examples:</p>
@@ -1792,18 +1801,65 @@ open them!</p>
 <p>and</p>
 <p><code>]blue eyes, black hair</code></p>
 <p>Are fundamentally the same.</p>
+<h2 id="setting-the-base-weighing">Setting the Base weighing</h2>
+<p>You can directly specify the tag weight by entering a number, then
+<strong>two</strong> colons. <code>1.05::</code>, for example, adds 5%
+to the weight.</p>
+<p>The weight affected by this is the <em>base weight</em>. Weight
+affected by braces and brackets is a <em>multiplier</em> that is
+calculated <em>on top</em> of the base weight.</p>
+<p>This will affect <strong>every tag afterwards</strong> until you
+close the weighing section with another pair of colons: <code>::</code>.
+which is equivalent to setting the <em>base weight</em> to 1, refer to
+the table below for values equivalent to the number of braces you would
+have used. <strong>You can have as many decimal places as you want when
+specifying your base weight</strong>, technically, but don't overdo it,
+or it may break the parser.</p>
+<p>e.g. <code>1.2::long hair, blue hair, wavy hair::, blunt bangs</code>
+will strengthen everything from long hair to wavy hair, then set the
+base weight back to 1.</p>
+<p>You can use braces and brackets after setting the base weighing, as
+this sets the multiplier, which is then applied to the base weight. i.e
+setting the base weight to 1.2 and using a set of braces will do
+1.2*1.05.</p>
+<p><strong>However, setting the Base Weighing immediately closes braces
+and brackets opened before you did so, if they are still
+open.</strong></p>
+<p>This means that you <strong>shouldn't close</strong> anything you
+have opened <strong>before</strong> the base weight setting!</p>
+<p><img
+src="https://github.com/user-attachments/assets/55782f7c-f523-4ce4-bc92-c7b36a1102fc"
+alt="image" /></p>
+<p>It will be interpreted as a loose bracket/brace and change the
+multiplier once again.</p>
+<p>Specifically, it uses this regex for parsing:
+<code>-?\d*\.?\d*::</code>. This means that entering <code>-.</code>,
+<code>-.::</code>or <code>-::</code>as the value is equivalent to
+setting the base weight to 0. <code>::</code> without a value is
+equivalent to <code>1::</code>.</p>
+<p><strong>If you are weighing prose or anything that ends on a period,
+or a number put a space before the closing colons.</strong> This is
+because a period followed by two colons will be interpreted as a
+zero-weight, and any number will be interpreted as the weight as
+well.</p>
+<p>i.e <code>1.2::year 2002::</code> will set base weight to 2002 and
+cause shenanigans. Do <code>1.2::year 2002 ::</code> instead.</p>
+<h2 id="strengthen-autocomplete">Strengthen autocomplete</h2>
 <p>You can automatically strengthen a tag by highlighting the entire tag
 in the text box, then pressing any <strong>opening</strong> bracket or
 curly brace key. It will automatically frame the tag with the type
-you've selected.</p>
-<p>If you are using <strong>legacy prompt conditioning</strong>, the
-math is different, and strengthening is limited to a factor of ~1.42.
-The table below can be used as a reference, with "old" being legacy, and
-"modified" being the original 5% math.</p>
+you've selected. This doesn't work with numerical weighing (yet).</p>
+<h2 id="strenghtening-value-cheat-sheet">Strenghtening value cheat
+sheet</h2>
 <p><img
 src="https://github.com/user-attachments/assets/44740f46-86c9-4421-a728-eb57ccd88e11"
 alt="image" /></p>
 <p>Table graciously provided by <strong>DarkTentacleMaster</strong>!</p>
+<p>If you are using <strong>legacy prompt conditioning</strong>, the
+model reads the prompt differently. There is no easy explanation for
+this that we have access to (even from the devs).Keep in mind the "old"
+math is purely here for historical reasons. Only the right side of the
+table is in use.</p>
 <h2 id="unwanted-content-or-negative-prompting">Unwanted Content, or
 "Negative Prompting"</h2>
 <p>Unwanted Content is a way to direct the generation away from things
