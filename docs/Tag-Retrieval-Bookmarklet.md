@@ -1,6 +1,6 @@
 # How to Make a Bookmarklet to Auto Copy Tags
 
-Bookmarklet by *Oathgate & ght901*
+Bookmarklet by *Oathgate & ght901 & JustAnotherGuy*
 
 Tutorial by *Oathgate*
 
