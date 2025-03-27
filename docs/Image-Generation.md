@@ -233,8 +233,8 @@ You may have seen curly braces and square brackets be used to make a tag stronge
 
 Each tag has a base value of 1.
 
-If `]` or `{` is present, multiply the value of all tags following it by 1.05 (a 5% increase).
-If `}` or `[` is present, divide the value of all tags following it by 1.05 (a 5% decrease).
+If `]` or `{` is present, multiply the **weight multiplier** for all tags following it by 1.05 (a 5% increase).
+If `}` or `[` is present, multiply the **weight multiplier** for all tags following it by 0.95 (a 5% decrease).
 
 This operation is **multiplicative**, and **make generations partially non-deterministic.** In the following examples:
 
@@ -253,13 +253,44 @@ and
 
 Are fundamentally the same.
 
-You can automatically strengthen a tag by highlighting the entire tag in the text box, then pressing any **opening** bracket or curly brace key. It will automatically frame the tag with the type you've selected.
+## Setting the Base weighing
 
-If you are using **legacy prompt conditioning**, the math is different, and strengthening is limited to a factor of ~1.42. The table below can be used as a reference, with "old" being legacy, and "modified" being the original 5% math.
+You can directly specify the tag weight by entering a number, then **two** colons. `1.05::`, for example, adds 5% to the weight.
+
+The weight affected by this is the *base weight*. Weight affected by braces and brackets is a *multiplier* that is calculated *on top* of the base weight.
+
+This will affect **every tag afterwards** until you close the weighing section with another pair of colons: `::`. which is equivalent to setting the *base weight* to 1, refer to the table below for values equivalent to the number of braces you would have used. **You can have as many decimal places as you want when specifying your base weight**, technically, but don't overdo it, or it may break the parser.
+
+e.g. `1.2::long hair, blue hair, wavy hair::, blunt bangs` will strengthen everything from long hair to wavy hair, then set the base weight back to 1.
+
+You can use braces and brackets after setting the base weighing, as this sets the multiplier, which is then applied to the base weight. i.e setting the base weight to 1.2 and using a set of braces will do 1.2*1.05.
+
+**However, setting the Base Weighing immediately closes braces and brackets opened before you did so, if they are still open.**
+
+This means that you **shouldn't close** anything you have opened **before** the base weight setting! 
+
+![image](https://github.com/user-attachments/assets/55782f7c-f523-4ce4-bc92-c7b36a1102fc)
+
+It will be interpreted as a loose bracket/brace and change the multiplier once again.
+
+Specifically, it uses this regex for parsing: `-?\d*\.?\d*::`. This means that entering `-.`, `-.::`or `-::`as the value is equivalent to setting the base weight to 0. `::` without a value is equivalent to `1::`. 
+
+**If you are weighing prose or anything that ends on a period, or a number put a space before the closing colons.** This is because a period followed by two colons will be interpreted as a zero-weight, and any number will be interpreted as the weight as well.
+
+i.e `1.2::year 2002::` will set base weight to 2002 and cause shenanigans. Do `1.2::year 2002 ::` instead.
+
+## Strengthen autocomplete
+
+You can automatically strengthen a tag by highlighting the entire tag in the text box, then pressing any **opening** bracket or curly brace key. It will automatically frame the tag with the type you've selected. This doesn't work with numerical weighing (yet).
+
+## Strenghtening value cheat sheet
 
 ![image](https://github.com/user-attachments/assets/44740f46-86c9-4421-a728-eb57ccd88e11)
 
-Table graciously provided by **DarkTentacleMaster**!
+Table graciously provided by **DarkTentacleMaster**! 
+
+If you are using **legacy prompt conditioning**, the model reads the prompt differently.
+There is no easy explanation for this that we have access to (even from the devs).Keep in mind the "old" math is purely here for historical reasons. Only the right side of the table is in use.
 
 ## Unwanted Content, or "Negative Prompting"
 
