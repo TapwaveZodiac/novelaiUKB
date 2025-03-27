@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Tag Retrieval Bookmarklet">Return to Index</a>
 <h1 class="title">Tag Retrieval Bookmarklet</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 23/03/2025 at
-11:59">Last updated 23/03/2025 at 11:59</time></p>
+  <p class="date before-toc"><time datetime="Last updated 27/03/2025 at
+16:55">Last updated 27/03/2025 at 16:55</time></p>
 </blockquote>
 </header>
 
@@ -1380,7 +1380,11 @@
     </ul></li>
     </ul></li>
     <li><a href="#bookmarklet-code"
-    id="toc-bookmarklet-code">Bookmarklet code</a></li>
+    id="toc-bookmarklet-code">Bookmarklet code</a>
+    <ul>
+    <li><a href="#anime" id="toc-anime">Anime:</a></li>
+    <li><a href="#furry" id="toc-furry">Furry:</a></li>
+    </ul></li>
     </ul>
   <a href="." forTitle="Tag Retrieval Bookmarklet">Return to Index</a>
 </nav>
@@ -1388,7 +1392,8 @@
 <main>
 <h1 id="how-to-make-a-bookmarklet-to-auto-copy-tags">How to Make a
 Bookmarklet to Auto Copy Tags</h1>
-<p>Bookmarklet by <em>Oathgate &amp; ght901</em></p>
+<p>Bookmarklet by <em>Oathgate &amp; ght901 &amp;
+JustAnotherGuy</em></p>
 <p>Tutorial by <em>Oathgate</em></p>
 <p>A <strong>bookmarklet</strong> is a small JavaScript snippet saved as
 a bookmark. This guide will show you how to create one for
@@ -1486,6 +1491,7 @@ instead.</li>
 <strong>JavaScript is enabled</strong> in your browser settings.</li>
 </ul>
 <h1 id="bookmarklet-code">Bookmarklet code</h1>
+<h3 id="anime">Anime:</h3>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>javascript<span class="op">:</span> (<span class="kw">function</span> () {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">copyTags</span>() {</span>
@@ -1549,6 +1555,69 @@ class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-
 <span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">copyTags</span>()<span class="op">;</span></span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>})()<span class="op">;</span></span></code></pre></div>
+<h3 id="furry">Furry:</h3>
+<pre class="javascript:"><code>  function copyTags() {
+    const replacements = {
+      v: &quot;peace sign&quot;,
+      &quot;double v&quot;: &quot;double peace&quot;,
+      &quot;|_|&quot;: &quot;bar eyes&quot;,
+      &quot;\\||/&quot;: &quot;opem \\m/&quot;,
+      &quot;:|&quot;: &quot;neutral face&quot;,
+      &quot;;|&quot;: &quot;neutral face&quot;,
+      &quot;eyepatch bikini&quot;: &quot;square bikini&quot;,
+      &quot;tachi-e&quot;: &quot;character image&quot;,
+    };
+    const blockedTags = [&quot;original&quot;];
+    const regex = /\b(male|female|ambigious gender)\b/i;
+    const tags = [
+      ...document.querySelectorAll(&quot;ul.species-tag-list li&quot;),
+      ...document.querySelectorAll(&quot;ul.artist-tag-list li&quot;),
+      ...document.querySelectorAll(&quot;ul.copyright-tag-list li&quot;),
+      ...document.querySelectorAll(&quot;ul.character-tag-list li&quot;),
+      ...document.querySelectorAll(&quot;ul.general-tag-list li&quot;),
+    ]
+      .map((li) =&gt; li.getAttribute(&quot;data-name&quot;))
+      .filter((tag) =&gt; tag &amp;&amp; tag.length &gt; 0 &amp;&amp; !blockedTags.includes(tag))
+      .map((tag) =&gt; (tag.length &lt;= 3 ? tag : tag.replace(/_/g, &quot; &quot;)))
+      .map((tag) =&gt; replacements[tag] || tag)
+      .sort((a, b) =&gt; {
+        if (regex.test(a)) {
+          return -1;
+        }
+        if (regex.test(b)) {
+          return 1;
+        }
+        return 0;
+      })
+      .join(&quot;, &quot;);
+
+    if (!tags) {
+      alert(&quot;No tags found!&quot;);
+      return;
+    }
+
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(decodeURIComponent(&quot;fur dataset, &quot; + tags))
+        .then(() =&gt; {
+          alert(&quot;Tags copied to clipboard!&quot;);
+        })
+        .catch((err) =&gt; {
+          console.warn(&quot;Clipboard copy failed.&quot;, err);
+          prompt(&quot;Copy to clipboard: Ctrl+C, Enter&quot;, tags);
+        });
+    } else {
+      let textarea = document.createElement(&quot;textarea&quot;);
+      textarea.value = tags;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand(&quot;copy&quot;);
+      document.body.removeChild(textarea);
+      alert(&quot;Tags copied!&quot;);
+    }
+  }
+  copyTags();
+})();</code></pre>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
