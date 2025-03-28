@@ -193,7 +193,7 @@ javascript: (function () {
         })
         .catch((err) => {
           console.warn("Clipboard copy failed.", err);
-          prompt("Copy to clipboard: Ctrl+C, Enter", tags);
+          prompt("Copy to clipboard: Ctrl+C, Enter", decodeURIComponent("fur dataset, " + tags));
         });
     } else {
       let textarea = document.createElement("textarea");
