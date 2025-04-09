@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Image Generation">Return to Index</a>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 28/03/2025 at
-09:08">Last updated 28/03/2025 at 09:08</time></p>
+  <p class="date before-toc"><time datetime="Last updated 09/04/2025 at
+20:31">Last updated 09/04/2025 at 20:31</time></p>
 </blockquote>
 </header>
 
@@ -1422,6 +1422,8 @@
     </ul></li>
     <li><a href="#text-on-image-prompting"
     id="toc-text-on-image-prompting">Text-on-image Prompting</a></li>
+    <li><a href="#tag-randomization" id="toc-tag-randomization">Tag
+    Randomization</a></li>
     <li><a href="#image-to-image-practices"
     id="toc-image-to-image-practices">Image to Image Practices</a></li>
     <li><a href="#bounding--prompting-for-inpainting"
@@ -1994,6 +1996,40 @@ Text: Go to bed!
 Text: I don&#39;t want to...</code></pre>
 <pre><code>2girls, full body, speech bubble, Text: Go to bed!
 I don&#39;t want to...</code></pre>
+<hr />
+<h1 id="tag-randomization">Tag Randomization</h1>
+<p>You can randomize a section of your prompt by encasing it with pairs
+of pipe characters: <code>||</code>. Once a randomized section is open,
+write any tag you want, then add a single pipe <code>|</code> to add
+another tag to be randomly selected. Close with another pair of pipe
+characters.</p>
+<p>You can also only put in part of a tag, if you want to randomize the
+color of hair or eyes, for example. Both
+<code>||tareme|tsurime|jitome||</code> and
+<code>||red|blue|orange|| eyes</code> work.</p>
+<p>Remember not to put spaces at the end of a random selection. Just put
+it at the end of the entire section so that it formats neatly. That
+means <code>||burger |hotdog ||</code> is bad (it'll doublespace).
+However something like <code>||red |blue ||eyes</code> works as well.
+Just make sure that it leads to a properly spaced prompt after an option
+is selected.</p>
+<p>You can also have a random "nothing" option by just putting a single
+comma as a random selection. <code>||tall|,|short||</code> Double-commas
+get purged from the prompt, so this results in a blank if the option is
+selected.</p>
+<p>You can strengthen and weaken tags inside a random selection just
+like anywhere else.</p>
+<p>The strengthening will only apply to the selection if it was picked
+<em>as long as the brackets or weighing factor is inside the random
+selection</em>. Like this: <code>||1.2::tomato::|{{potato}}||</code></p>
+<p>Otherwise it'll apply to the entire set of options, like this:
+<code>1.2::||foo|bar||::</code> This will apply 1.2 to both options.
+(You can still add brackets and braces in there afterwards.)</p>
+<p>It is also possible to randomize your weight factor! Try
+<code>||1.1::|1.2::|1.3::||</code></p>
+<p>After you used a random prompt, check the "Actual Prompt" at the
+bottom to get the result with all the final selections only. The rest
+will have been purged.</p>
 <hr />
 <h1 id="image-to-image-practices">Image to Image Practices</h1>
 <p>Variations are just Image to Image queued multiple times for the same
