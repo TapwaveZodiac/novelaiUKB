@@ -396,6 +396,28 @@ I don't want to...
 
 ***
 
+# Tag Randomization
+
+You can randomize a section of your prompt by encasing it with pairs of pipe characters: `||`. Once a randomized section is open, write any tag you want, then add a single pipe `|` to add another tag to be randomly selected. Close with another pair of pipe characters. 
+
+You can also only put in part of a tag, if you want to randomize the color of hair or eyes, for example. Both `||tareme|tsurime|jitome||` and `||red|blue|orange|| eyes` work.
+
+Remember not to put spaces at the end of a random selection. Just put it at the end of the entire section so that it formats neatly. That means `||burger |hotdog ||` is bad (it'll doublespace). However something like `||red |blue ||eyes` works as well. Just make sure that it leads to a properly spaced prompt after an option is selected.
+
+You can also have a random "nothing" option by just putting a single comma as a random selection. `||tall|,|short||` Double-commas get purged from the prompt, so this results in a blank if the option is selected.
+
+You can strengthen and weaken tags inside a random selection just like anywhere else.
+
+The strengthening will only apply to the selection if it was picked *as long as the brackets or weighing factor is inside the random selection*. Like this: `||1.2::tomato::|{{potato}}||`
+
+Otherwise it'll apply to the entire set of options, like this: `1.2::||foo|bar||::` This will apply 1.2 to both options. (You can still add brackets and braces in there afterwards.)
+
+It is also possible to randomize your weight factor! Try `||1.1::|1.2::|1.3::||`
+
+After you used a random prompt, check the "Actual Prompt" at the bottom to get the result with all the final selections only. The rest will have been purged.
+
+***
+
 # Image to Image Practices
 
 Variations are just Image to Image queued multiple times for the same image.
