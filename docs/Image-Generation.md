@@ -300,13 +300,23 @@ Unwanted Content is a way to direct the generation away from things you'd like t
 
 There are multiple default UC presets, we will focus on V3's specifically to explain what each element does.
 
-V3
+### V3 UC
 
 Light: `nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing`
 
 Heavy: `nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]`
 
-Human Focus: `lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes`
+Human Focus: `nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes`
+
+### V4.5 UC
+
+Light: `nsfw, blurry, lowres, upscaled, artistic error, scan artifacts, jpeg artifacts, logo, too many watermarks, negative space, blank page`
+
+Heavy: `nsfw, blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page`
+
+Human Focus: `nsfw, blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page`
+
+### UC Explanation
 
 * nsfw: Prevents generating explicit pictures without explicit request from the user.
 * lowres: Reduces artifacts caused by upscaling low-res images to larger canvas sizes.
@@ -320,11 +330,12 @@ Human Focus: `lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg a
 * (very) displeasing: Like `worst quality, bad quality` but for Aesthetic tuning.
 * chromatic aberration: Reduces color artifacting that can occur in blue, red, and mixed hues thereof. Especially happens on outlines. (This is an effect similar to Bicolor 3D stereoscopy.)
 * scan: Reduces scan-induced artifacts such as odd banded lighting and messy outlines.
+* blank page, negative space: Reduces blank space in the canvas.
+* multiple views: Can cause weird anatomy and poorly rendered cutins.
 * `[abstract]`: Reduces overly geometric and amorphous shaping of objects and people.
 * ` @_@, mismatched pupils, heart-shaped pupils, glowing eyes`: Several eye-related tags that may incidentally leak into a generation. Reducing their influence means that eyes should generate "cleaner" most of the time.
 
 
-== V4 information TBA ==
 
 ***
 
