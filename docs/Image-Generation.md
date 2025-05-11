@@ -478,7 +478,7 @@ It is better to inpaint large areas as opposed to small ones, details are best h
 
 A common issue that people encounter when inpainting is confusion as to what you should prompt for. In V4 and beyond, changing or adding what you want to your existing prompt tends to work well when the masked area logically aligns with what you want to adjust.
 
-When using Focused Area Inpainting or inpainting with older models, it's often helpful to **only** prompt for what must appear in the inpainted area. Using your full prompt may cause the model to try and cram all these things into the inpainting area, which will look messy and wrong.
+When using Focused Area Inpainting or inpainting with models before V4, it's often helpful to **only** prompt for what must appear in the inpainted area. Using your full prompt may cause the model to try and cram all these things into the inpainting area, which will look messy and wrong. Doing the same when inpainting normally in V4 and beyond can be helpful, but the model often 'understands' what's already present well enough for it to be unnecessary.
 
 You should avoid using any UC outside of default UC that isn't relevant to the inpainted region as well, for the same reason.
 
