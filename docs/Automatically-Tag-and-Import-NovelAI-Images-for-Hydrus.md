@@ -1,4 +1,4 @@
-# Automatically Tag NovelAI Images for Hydrus
+# Automatically Tag and Import NovelAI Images for Hydrus
 
 *by MiyaNya/.yamii.*
 
