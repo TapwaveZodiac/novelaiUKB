@@ -27,7 +27,7 @@ There are two parts to training: Quality training, and Aesthetic training. This 
 
 If you are going to go and trawl Danbooru's tag database, keep in mind that the site is **extremely unsafe for work!**
 
-If you are using the Furry model, **you'll need to use E621's tags.** These can also work on V4, to a degree.
+If you are using the Furry model, **you'll need to use E621's tags.** These can also work on V4, see the "Furry Model" section for details.
 This means all the following information will not work for this specific model. E621 is just as extremely unsafe for work.
 
 ***
@@ -46,9 +46,9 @@ This has several implications:
 
 ## Noise V. Sampler:  Steps, Scale/Guidance and Seed
 
-Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps). Most NAI models were trained from **Stable Diffusion** models. V4 is an inhouse model.
+Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps). V4 and beyond, The most recent NAI models, were trained from scratch inhouse. Older NAI models were trained from Stable Diffusion.
 
-Steps are carried out by a **Sampler**, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are *Ancestral*, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers. 
+Steps are carried out by a **Sampler**, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are *Ancestral*, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers.
 
 (That does not mean they perform better **in general**, just that it costs less to get them to look decent.)
 
@@ -66,13 +66,13 @@ For V4, `Karras` is the default noise scheduler. `native`, `exponential` and `po
 
 Guidance is nice and all, but V2 and **especially V3 and V4** work best at a narrow band of scale. V2 works well from 3 to 11, while V3 and V4 works best at 2-6.
 
-Guidance is much stronger on V3 because it uses a different base model, which is more reactive than V2.
+Guidance is much stronger on V3 because it uses a different base model, which is more reactive than V2. V4 and 4.5 are also much more reactive than older models.
 
 Higher scale leads to stronger contrast, stronger outlines, and all around stronger "bounding" of elements. This can also cause some elements to overpower others more readily. This is why low scale is considered more "painterly", because noise is resolved more loosely, which leads to the aesthetic "blurriness" of mediums like watercolor, oil paint, etc.
 
 Addtionally, with multiple character prompts, higher scale may be preferable.
 
-To allow for a stronger Prompt Guidance without having those issues, the advanced setting **Prompt Guidance Rescale** attempts to compensate for them, but this will result in a blurrier output. You can always use image 2 image to refine the picture once you feel the base is good enough.
+To allow for a stronger Prompt Guidance without having those issues, the advanced setting **Prompt Guidance Rescale** attempts to compensate for them, but this can result in blurrier, less saturated output. As Prompt Guidance increases, higher rescale values can typically be used without significant detrimental effects. You can always use image 2 image to refine the picture once you feel the base is good enough.
 
 Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1. Start in increments of 0.1 or 0.2 with the same seed, and decide what you prefer from there.
 
@@ -90,7 +90,7 @@ When operating at high Scale settings, the aesthetics can get lost as contrast g
 
 Decrisper has no effect on V4 and isn't available for it.
 
-## Variety Booster
+## Variety Booster (Variety+)
 
 A side effect of high scale setting is that the increase in consistency results in a loss in variety. In order to circumvent that, you can let the model generate without guidance for a very small amount of steps, letting it start with a more audacious base, and *then* enable guidance and get the positive effects of a higher setting, without compromising the model's creative abilities.
 
@@ -110,7 +110,7 @@ Keep in mind that most non-latin characters and punctuation will be turned into 
 
 Something that is important to note is that prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, but the rest is more or less normalized in strength. It can be useful, or detrimental depending on the result, to put style, composition, or artist tags at the very beginning of the prompt, as it will strongly increase their effect.
 
-Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts.
+Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts, which can be very effective in V4 and beyond.
 
 There are several tag categories that are important to know, due to how extensively they were used in tagging.
 
@@ -132,10 +132,12 @@ Keep in mind that "amazing quality" incidentally has more NSFW content, so it ma
 
 If you use any of the Unwanted Content default filters, `worst quality, bad quality,` are **automatically inserted in Unwanted Content**. You can disable the filter or write them in your prompt to activate them anyway.
 
-**Aesthetic tags** are used exclusively in V2 and V3 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are:
+**Aesthetic tags** are used exclusively in V2 and onwards to designate pictures which match the intended "feel" of the model, as opposed to images that diverge too greatly from the aesthetic that NovelAI sought. The tags for Aesthetics are:
 `very aesthetic, aesthetic, displeasing, very displeasing`
 
 Effectively, displeasing images stray too far from the intended "look" of NAI Diffusion, or have aesthetics considered "poor" so that the model knows to avoid them.
+
+In V4.5, the `masterpiece` tag is repurposed as an aesthetic tag beyond `very aesthetic`
 
 You only need one tag for quality and one for aesthtics, though generally you won't need one. It is better to downbias bad things than overly bias "good" things, as this may damage creativity. Generally just using the default Unwanted Content and Quality Tag presets will be fine.
 
@@ -210,7 +212,7 @@ As tags placed earlier in the prompt have more strength, colors and other elemen
 
 `blue eyes, black hair`
 
-Can lead to the hair being tinted blue, or being blue outright. Eyes tend to have powerful color influence on other elements, as most character designers tend to match palette to the eyes. Thus, it may be better to write the hair tags first to avoid that.
+Can lead to the hair being tinted blue, or being blue outright (though the latter is rare in recent models). Eyes tend to have powerful color influence on other elements, as most character designers tend to match palette to the eyes. Thus, it may be better to write the hair tags first to avoid that.
 
 ### Mutual Dependencies
 
@@ -255,7 +257,7 @@ Are fundamentally the same.
 
 ## Setting the Base weighing
 
-You can directly specify the tag weight by entering a number, then **two** colons. `1.05::`, for example, adds 5% to the weight.
+In V4 and beyond, you can directly specify the tag weight by entering a number, then **two** colons. `1.05::`, for example, adds 5% to the weight.
 
 The weight affected by this is the *base weight*. Weight affected by braces and brackets is a *multiplier* that is calculated *on top* of the base weight.
 
@@ -341,7 +343,7 @@ Be mindful that there can be some leakage between characters, especially when us
 
 By default, the AI has a general idea of how to position characters based on what interactions you have specified. Otherwise, you can center them to a specific 5*5 grid position on the canvas. Be careful not to forget to adjust it if you have made changes to posing/interaction tags.
 
-If no positions are specified, the AI will tend to order characters from *top to bottom, left to right*.
+The AI will tend to order characters from *top to bottom, left to right*, even when specified. As such, it's best to have the order of the character boxes align with this tendency regardless of custom positions.
 
 ## Interaction source and target
 
@@ -355,7 +357,7 @@ Keep in mind that the AI may sometimes mix the roles up and be confused. Higher 
 
 To prose-prompt in NAIDiffusion, simply write a sentence describing the image. Use commas to separate clauses. Try to write neatly with proper grammar and punctuation, and try to phrase your sentences so that you use vocabulary close to Booru tags. You can use prose both for scene (main prompt), or character prompts, but it is more difficult to reliably describe characters in prose.
 
-It is recommended to use prose to describe scene, image composition and style. Elements are usually easier to simply tag like usual.
+It is recommended to use prose to describe scene, image composition and style. Other elements are usually easier to simply tag like usual.
 
 Again, prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, so keep the core content at the beginning of the sentence.
 
@@ -510,7 +512,7 @@ In V4.5 and above, including `background dataset` will pull the generations in a
 
 The Furry Model is based on a different dataset, and tagging practices. By default, it is set to a higher Scale setting (6.2) and may benefit from running at slightly higher Scale than Anime does.
 
-**In V4, you can use E621 tags by adding `fur dataset` at the start of the prompt.**
+**In V4 and beyond, you can use E621 tags by adding `fur dataset` at the start of the prompt.**
 
 ## Tag differences
 The Furry Model uses [E621 Tags](https://e621.net/wiki_pages/1671) instead of Danbooru tags. This leads to several important differences:
