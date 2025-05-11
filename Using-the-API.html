@@ -1334,7 +1334,7 @@
 <h1 class="title">Using the API</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-14:57">Last updated 11/05/2025 at 14:57</time></p>
+15:04">Last updated 11/05/2025 at 15:04</time></p>
 </blockquote>
 </header>
 
@@ -1524,11 +1524,13 @@ some aspects.</p>
 <p>Here is a breakdown of each endpoint, but <strong>with only the
 <em>undocumented</em> arguments, types, and schemas</strong>. Documented
 args, types and schemas are present in the documentation.
-<strong>Each</strong> endpoint should be prepended with "<a
-href="https://api.novelai.net&quot;">https://api.novelai.net"</a> for
-<strong>text</strong>, and "<a
-href="https://image.novelai.net&quot;">https://image.novelai.net"</a>
-for images.</p>
+<strong>Each</strong> endpoint should be prepended with <a
+href="https://api.novelai.net">https://api.novelai.net</a> for
+<strong>text on any model from Sigurd to Clio</strong>, <a
+href="https://text.novelai.net">https://text.novelai.net</a> for
+<strong>text on Kayra and Erato</strong>, and <a
+href="https://image.novelai.net">https://image.novelai.net</a> for
+<strong>images</strong>.</p>
 <p>Several responses can come from any endpoint:</p>
 <ul>
 <li>A Cloudflare error with an HTML response</li>
@@ -1632,7 +1634,7 @@ applying sampling.</p>
 <p>Infilling, or Bidirectional inline generation, is a specific feature
 and a totally different way of generating, which takes into account both
 the text before and after the targeted spot.</p>
-<p>The current model used for infilling is GPT-J-6B, but it is unsure
+<p>The current model used for infilling is GPT-J-6B, but it is incertain
 whether it is a finetune or a module v2. It uses token 50261 as mask for
 the part to replace, token 50257 at the end of context sent to prompt it
 into infilling mode, and token 50258 for the end of generation (so put
