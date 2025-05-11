@@ -502,6 +502,9 @@ V4 is an inhouse model, and most plugins are designed for Stable Diffusion. It's
 Therefore, be patient, and hope for the team to develop inhouse tools!
 
 ***
+# Alternative Dataset
+
+In V4.5 and above, including `background dataset` will pull the generations in a different direction, focusing on scenery, inanimate objects, and sometimes animals.
 
 # Furry Model
 
