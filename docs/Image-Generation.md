@@ -206,9 +206,9 @@ Breaking up interactions that occur naturally can result in artifacts or odd ele
 
 `1girl, black hair, {{{orange}}} eyes`
 
-This can, particularly on V2, lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame. On V3, it tends to result in more of the color orange throughout the image, sometimes accompanied by the fruit. Whether or not this is a bad thing is up to you.
+This can lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame, as well as resulting in more of the color orange throughout the image. Whether or not this is a bad thing is up to you.
 
-On V4 and beyond, this effect is much less pronounced. Applying sufficiently high emphasis to something can still result in some amount of bleeding to the rest of the image, but it is generally more well behaved.
+On V4 and beyond, this effect is much less pronounced. Applying sufficiently high emphasis to something can still result in some amount of bleeding to the rest of the image, but significantly less so.
 
 ### Priority Interference
 
