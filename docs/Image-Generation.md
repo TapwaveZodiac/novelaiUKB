@@ -46,7 +46,7 @@ This has several implications:
 
 ## Noise V. Sampler:  Steps, Scale/Guidance and Seed
 
-Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps). V4 and V4.5, The most recent NAI models, were trained from scratch inhouse. Older NAI models were trained from Stable Diffusion.
+Diffusion models work by using Steps to resolve noise. The more steps, the more compute is used, (which is why the Anlas cost goes up with steps). V4 and beyond, The most recent NAI models, were trained from scratch inhouse. Older NAI models were trained from Stable Diffusion.
 
 Steps are carried out by a **Sampler**, which attempts to resolve the noise based on an algorithm. Each Sampler uses a different algorithm, and has different results. Some Sampler are *Ancestral*, meaning they iterate in a way that performs well at lower steps more quickly than non-Ancestral samplers.
 
@@ -110,7 +110,7 @@ Keep in mind that most non-latin characters and punctuation will be turned into 
 
 Something that is important to note is that prompts are interpreted with linear priority, which is the reverse of text generation. What comes first has more weight, but the rest is more or less normalized in strength. It can be useful, or detrimental depending on the result, to put style, composition, or artist tags at the very beginning of the prompt, as it will strongly increase their effect.
 
-Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts, which can be very effective in V4.
+Tag-based prompts tends to lead to consistent designs. However, they come out stylistically different and less diverse than Prose-based prompts, which can be very effective in V4 and beyond.
 
 There are several tag categories that are important to know, due to how extensively they were used in tagging.
 
@@ -212,7 +212,7 @@ As tags placed earlier in the prompt have more strength, colors and other elemen
 
 `blue eyes, black hair`
 
-Can lead to the hair being tinted blue, or being blue outright (though the latter is rare in the models). Eyes tend to have powerful color influence on other elements, as most character designers tend to match palette to the eyes. Thus, it may be better to write the hair tags first to avoid that.
+Can lead to the hair being tinted blue, or being blue outright (though the latter is rare in recent models). Eyes tend to have powerful color influence on other elements, as most character designers tend to match palette to the eyes. Thus, it may be better to write the hair tags first to avoid that.
 
 ### Mutual Dependencies
 
