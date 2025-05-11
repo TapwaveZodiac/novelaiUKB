@@ -1335,16 +1335,29 @@ Finds">Return to Index</a>
 <h1 class="title">Database of Interesting Image Generation Finds</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-12:49">Last updated 11/05/2025 at 12:49</time></p>
+14:14">Last updated 11/05/2025 at 14:14</time></p>
 </blockquote>
 </header>
 
   <nav id="TOC" role="doc-toc">
       <h2 id="toc-title">Contents</h2>
     <ul>
+    <li><a href="#v4" id="toc-v4">V4+</a>
+    <ul>
+    <li><a href="#text-unsupported-character-style-seeding"
+    id="toc-text-unsupported-character-style-seeding">Text: unsupported
+    character style seeding</a></li>
+    <li><a href="#0-or-micro-strength-tags"
+    id="toc-0-or-micro-strength-tags">0 or Micro-strength tags</a></li>
+    <li><a href="#vibe-self-negation" id="toc-vibe-self-negation">Vibe
+    Self-Negation</a></li>
+    </ul></li>
+    <li><a href="#v1-v2" id="toc-v1-v2">V1-V2</a>
+    <ul>
     <li><a href="#tags-and-tag-combos" id="toc-tags-and-tag-combos">Tags
     and Tag Combos</a></li>
     <li><a href="#magic-ucs" id="toc-magic-ucs">Magic UCs</a></li>
+    </ul></li>
     </ul>
   <a href="." forTitle="Database of Interesting Image Generation
 Finds">Return to Index</a>
@@ -1354,6 +1367,31 @@ Finds">Return to Index</a>
 <p>This page serves to catalogue interesting tags for image generation,
 which can lead to useful behavior, or have unusual effects that can be
 exploited <strong>reliably</strong>.</p>
+<h1 id="v4">V4+</h1>
+<h2 id="text-unsupported-character-style-seeding">Text: unsupported
+character style seeding</h2>
+<p>If <code>text:</code> is followed by non-ASCII characters, unexpected
+behavior occurs. Normally, non-conventional characters are converted
+into <code>UNK</code> tokens. However, if these characters are in a
+<code>text:</code> segment, this does not appear to be the case, even
+though it should be.</p>
+<p>Expected behavior would be that <code>text:ドキドキ</code>
+and　<code>text:フラフラ</code>, being the same length, should encode
+the same way, as <code>text:</code> followed by four <code>UNK</code>.
+Instead, these will generate different images. This appears to have a
+strong influence on style and can be used for style seeding.</p>
+<h2 id="0-or-micro-strength-tags">0 or Micro-strength tags</h2>
+<p>The mere presence of a tag, even if it is <code>0.001:tag::</code> or
+<code>0::tag::</code>, has an influence on generations. This is
+remarkably powerful at influencing style, especially for things such as
+<code>nsfw</code> and other medium tags.</p>
+<h2 id="vibe-self-negation">Vibe Self-Negation</h2>
+<p>Since Vibe Transfer appears to convey pose and character information
+at low IE, and style information at higher IE, using the same Vibe
+twice, but setting the second instance at negative strength, and
+IE~0.1-0.3 should keep the style information but cancel out the
+character/pose adherence.</p>
+<h1 id="v1-v2">V1-V2</h1>
 <h2 id="tags-and-tag-combos">Tags and Tag Combos</h2>
 <blockquote>
 <p>prismatic</p>
