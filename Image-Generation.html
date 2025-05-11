@@ -1334,7 +1334,7 @@
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-17:03">Last updated 11/05/2025 at 17:03</time></p>
+17:32">Last updated 11/05/2025 at 17:32</time></p>
 </blockquote>
 </header>
 
@@ -1353,8 +1353,8 @@
     id="toc-the-limits-of-guidance">The limits of Guidance</a></li>
     <li><a href="#smea" id="toc-smea">SMEA</a></li>
     <li><a href="#decrisper" id="toc-decrisper">Decrisper</a></li>
-    <li><a href="#variety-booster" id="toc-variety-booster">Variety
-    Booster</a></li>
+    <li><a href="#variety-booster-variety"
+    id="toc-variety-booster-variety">Variety Booster (Variety+)</a></li>
     </ul></li>
     <li><a href="#tag-based-prompting"
     id="toc-tag-based-prompting">Tag-based Prompting</a>
@@ -1498,9 +1498,9 @@ training. This will be explained in the next section.</p>
 <p>If you are going to go and trawl Danbooru's tag database, keep in
 mind that the site is <strong>extremely unsafe for work!</strong></p>
 <p>If you are using the Furry model, <strong>you'll need to use E621's
-tags.</strong> These can also work on V4, to a degree. This means all
-the following information will not work for this specific model. E621 is
-just as extremely unsafe for work.</p>
+tags.</strong> These can also work on V4, see the "Furry Model" section
+for details. This means all the following information will not work for
+this specific model. E621 is just as extremely unsafe for work.</p>
 <hr />
 <h1 id="diffusion-models">Diffusion Models</h1>
 <p>A diffusion model works by resolving noise into an image. If you ever
@@ -1525,8 +1525,9 @@ perfect. Sometimes, the character may merge together.</strong></p>
 Steps, Scale/Guidance and Seed</h2>
 <p>Diffusion models work by using Steps to resolve noise. The more
 steps, the more compute is used, (which is why the Anlas cost goes up
-with steps). Most NAI models were trained from <strong>Stable
-Diffusion</strong> models. V4 is an inhouse model.</p>
+with steps). V4 and beyond, The most recent NAI models, were trained
+from scratch inhouse. Older NAI models were trained from Stable
+Diffusion.</p>
 <p>Steps are carried out by a <strong>Sampler</strong>, which attempts
 to resolve the noise based on an algorithm. Each Sampler uses a
 different algorithm, and has different results. Some Sampler are
@@ -1559,7 +1560,8 @@ other, with minute differences.</p>
 V4</strong> work best at a narrow band of scale. V2 works well from 3 to
 11, while V3 and V4 works best at 2-6.</p>
 <p>Guidance is much stronger on V3 because it uses a different base
-model, which is more reactive than V2.</p>
+model, which is more reactive than V2. V4 and 4.5 are also much more
+reactive than older models.</p>
 <p>Higher scale leads to stronger contrast, stronger outlines, and all
 around stronger "bounding" of elements. This can also cause some
 elements to overpower others more readily. This is why low scale is
@@ -1570,9 +1572,11 @@ oil paint, etc.</p>
 preferable.</p>
 <p>To allow for a stronger Prompt Guidance without having those issues,
 the advanced setting <strong>Prompt Guidance Rescale</strong> attempts
-to compensate for them, but this will result in a blurrier output. You
-can always use image 2 image to refine the picture once you feel the
-base is good enough.</p>
+to compensate for them, but this can result in blurrier, less saturated
+output. As Prompt Guidance increases, higher rescale values can
+typically be used without significant detrimental effects. You can
+always use image 2 image to refine the picture once you feel the base is
+good enough.</p>
 <p>Much like Negative Prompt Guidance, you should adjust Rescale in very
 small increments starting from 1. Start in increments of 0.1 or 0.2 with
 the same seed, and decide what you prefer from there.</p>
@@ -1601,7 +1605,7 @@ latents</a> for every diffusion step, in order to keep them in a more
 of style during generation at higher scale. You may require to turn it
 on as early as ~7-8 Scale on V3.</p>
 <p>Decrisper has no effect on V4 and isn't available for it.</p>
-<h2 id="variety-booster">Variety Booster</h2>
+<h2 id="variety-booster-variety">Variety Booster (Variety+)</h2>
 <p>A side effect of high scale setting is that the increase in
 consistency results in a loss in variety. In order to circumvent that,
 you can let the model generate without guidance for a very small amount
@@ -1640,7 +1644,7 @@ put style, composition, or artist tags at the very beginning of the
 prompt, as it will strongly increase their effect.</p>
 <p>Tag-based prompts tends to lead to consistent designs. However, they
 come out stylistically different and less diverse than Prose-based
-prompts.</p>
+prompts, which can be very effective in V4 and beyond.</p>
 <p>There are several tag categories that are important to know, due to
 how extensively they were used in tagging.</p>
 <h2 id="quality-tags-and-aesthetic-tags">Quality Tags And Aesthetic
@@ -1664,7 +1668,7 @@ beaches and people in swimsuits.)</p>
 <code>worst quality, bad quality,</code> are <strong>automatically
 inserted in Unwanted Content</strong>. You can disable the filter or
 write them in your prompt to activate them anyway.</p>
-<p><strong>Aesthetic tags</strong> are used exclusively in V2 and V3 and
+<p><strong>Aesthetic tags</strong> are used exclusively in V2 and
 onwards to designate pictures which match the intended "feel" of the
 model, as opposed to images that diverge too greatly from the aesthetic
 that NovelAI sought. The tags for Aesthetics are:
@@ -1672,6 +1676,8 @@ that NovelAI sought. The tags for Aesthetics are:
 <p>Effectively, displeasing images stray too far from the intended
 "look" of NAI Diffusion, or have aesthetics considered "poor" so that
 the model knows to avoid them.</p>
+<p>In V4.5, the <code>masterpiece</code> tag is repurposed as an
+aesthetic tag beyond <code>very aesthetic</code></p>
 <p>You only need one tag for quality and one for aesthtics, though
 generally you won't need one. It is better to downbias bad things than
 overly bias "good" things, as this may damage creativity. Generally just
@@ -1757,10 +1763,11 @@ you.</p>
 <p>As tags placed earlier in the prompt have more strength, colors and
 other elements tend to leak.</p>
 <p><code>blue eyes, black hair</code></p>
-<p>Can lead to the hair being tinted blue, or being blue outright. Eyes
-tend to have powerful color influence on other elements, as most
-character designers tend to match palette to the eyes. Thus, it may be
-better to write the hair tags first to avoid that.</p>
+<p>Can lead to the hair being tinted blue, or being blue outright
+(though the latter is rare in recent models). Eyes tend to have powerful
+color influence on other elements, as most character designers tend to
+match palette to the eyes. Thus, it may be better to write the hair tags
+first to avoid that.</p>
 <h3 id="mutual-dependencies">Mutual Dependencies</h3>
 <p>Some tags implicitly require each other and can lead to artifacts or
 tags being ignored if one of them is banned through Undesired Content.
@@ -1806,9 +1813,9 @@ open them!</p>
 <p><code>]blue eyes, black hair</code></p>
 <p>Are fundamentally the same.</p>
 <h2 id="setting-the-base-weighing">Setting the Base weighing</h2>
-<p>You can directly specify the tag weight by entering a number, then
-<strong>two</strong> colons. <code>1.05::</code>, for example, adds 5%
-to the weight.</p>
+<p>In V4 and beyond, you can directly specify the tag weight by entering
+a number, then <strong>two</strong> colons. <code>1.05::</code>, for
+example, adds 5% to the weight.</p>
 <p>The weight affected by this is the <em>base weight</em>. Weight
 affected by braces and brackets is a <em>multiplier</em> that is
 calculated <em>on top</em> of the base weight.</p>
@@ -1939,8 +1946,10 @@ based on what interactions you have specified. Otherwise, you can center
 them to a specific 5*5 grid position on the canvas. Be careful not to
 forget to adjust it if you have made changes to posing/interaction
 tags.</p>
-<p>If no positions are specified, the AI will tend to order characters
-from <em>top to bottom, left to right</em>.</p>
+<p>The AI will tend to order characters from <em>top to bottom, left to
+right</em>, even when specified. As such, it's best to have the order of
+the character boxes align with this tendency regardless of custom
+positions.</p>
 <h2 id="interaction-source-and-target">Interaction source and
 target</h2>
 <p>Any interaction such as <code>licking another's face</code> can have
@@ -1962,7 +1971,8 @@ you use vocabulary close to Booru tags. You can use prose both for scene
 (main prompt), or character prompts, but it is more difficult to
 reliably describe characters in prose.</p>
 <p>It is recommended to use prose to describe scene, image composition
-and style. Elements are usually easier to simply tag like usual.</p>
+and style. Other elements are usually easier to simply tag like
+usual.</p>
 <p>Again, prompts are interpreted with linear priority, which is the
 reverse of text generation. What comes first has more weight, so keep
 the core content at the beginning of the sentence.</p>
@@ -2144,7 +2154,7 @@ inanimate objects, and sometimes animals.</p>
 <p>The Furry Model is based on a different dataset, and tagging
 practices. By default, it is set to a higher Scale setting (6.2) and may
 benefit from running at slightly higher Scale than Anime does.</p>
-<p><strong>In V4, you can use E621 tags by adding
+<p><strong>In V4 and beyond, you can use E621 tags by adding
 <code>fur dataset</code> at the start of the prompt.</strong></p>
 <h2 id="tag-differences">Tag differences</h2>
 <p>The Furry Model uses <a href="https://e621.net/wiki_pages/1671">E621
