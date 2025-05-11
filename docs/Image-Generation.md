@@ -72,6 +72,8 @@ Addtionally, with multiple character prompts, higher scale may be preferable.
 
 To allow for a stronger Prompt Guidance without having those issues, the advanced setting **Prompt Guidance Rescale** attempts to compensate for them, but this can result in blurrier, less saturated output. As Prompt Guidance increases, higher rescale values can typically be used without significant detrimental effects. You can always use image 2 image to refine the picture once you feel the base is good enough.
 
+You should adjust Rescale in very small increments, starting from 0. Start in increments of 0.1 or 0.2 with the same seed, and decide what you prefer from there.
+
 ## SMEA
 
 SMEA is an application of Euler Ancestral sampling, but instead of being applied once per generation, it is applied iteratively, per step. This can result in increased image quality, and is especially useful at **larger resolutions than the base resolutions**. SMEA is used for V1-V3 models, and V4 uses its own solution independently, meaning it does not require it.
