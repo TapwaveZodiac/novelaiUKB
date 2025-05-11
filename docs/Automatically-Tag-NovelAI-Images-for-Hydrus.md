@@ -9,12 +9,13 @@ This is a script for generating "sidecars" which are files containing tags that 
 2. [Hydrus Network](https://github.com/hydrusnetwork/hydrus)
    
 ## Using the script:
-1. Create a file named "generate_sidecars.py" somewhere on your PC. **DO NOT PUT IT IN THE SAME FOLDER AS HYDRUS.**
-2. Add the code below inside it. Save the file.
-3. Make a folder called import_images, and put your images there.
-4. Run CMD in the folder with the py file. Then, execute `py -m pip install pillow`.
-5. Once pillow is installed, `py generate_sidecars.py`
-6. Now your import folder will be full of text files containing the tags for the images.
+1. Create a folder to set up the process. **DO NOT PUT IT IN THE SAME FOLDER AS HYDRUS.**
+2. Inside this folder, create a file named `generate_sidecars.py` 
+3. Add the code below inside it. Save the file.
+4. Make a folder called `import_images`, and put your images there.
+5. Run CMD in the folder with the py file. Then, execute `py -m pip install pillow`.
+6. Once pillow is installed, `py generate_sidecars.py`
+7. Now your import folder will be full of text files containing the tags for the images.
 
 ## Importing to Hydrus:
 1. file -> import files...
@@ -40,7 +41,6 @@ def main():
     
     for root, dirs, files in reversed(list(os.walk(dirPath))):
         for filename in reversed(files):
-            # Process files here
     
             if not(filename.endswith(".png")):
                 continue
@@ -73,7 +73,7 @@ def main():
             tags = tags.replace("{","")
             tags = tags.replace("}","")
             tags = re.sub(r'-\d*\.?\d*::.*?::', '', tags) # remove tags with negative emphasis
-            tags = re.sub(r'-?\d*\.?\d*::', '', tags)
+            tags = re.sub(r'-?\d*\.?\d*::', '', tags) # remove all ## and any number behind it
             #tags = re.sub(r'(?<!\d)\b(girl|boy)\b', '', tags)
             
             tag_array = [x.strip() for x in re.split(r'[.,|]', tags)]
@@ -89,7 +89,7 @@ def main():
 
 
 def write_to_file (output_file, output_string):
-    with open(output_file, 'w') as file:
+    with open(output_file, 'w', encoding='utf-8') as file:
         file.write(output_string)
         
 if __name__ == '__main__':
