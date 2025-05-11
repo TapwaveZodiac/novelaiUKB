@@ -1335,7 +1335,7 @@ Hydrus">Return to Index</a>
 <h1 class="title">Automatically Tag NovelAI Images for Hydrus</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-15:04">Last updated 11/05/2025 at 15:04</time></p>
+17:03">Last updated 11/05/2025 at 17:03</time></p>
 </blockquote>
 </header>
 
@@ -1374,11 +1374,13 @@ Network</a></li>
 </ol>
 <h2 id="using-the-script">Using the script:</h2>
 <ol type="1">
-<li>Create a file named "generate_sidecars.py" somewhere on your
-PC.</li>
+<li>Create a file named "generate_sidecars.py" somewhere on your PC.
+<strong>DO NOT PUT IT IN THE SAME FOLDER AS HYDRUS.</strong></li>
 <li>Add the code below inside it. Save the file.</li>
 <li>Make a folder called import_images, and put your images there.</li>
-<li>Double click generate_sidecars.py.</li>
+<li>Run CMD in the folder with the py file. Then, execute
+<code>py -m pip install pillow</code>.</li>
+<li>Once pillow is installed, <code>py generate_sidecars.py</code></li>
 <li>Now your import folder will be full of text files containing the
 tags for the images.</li>
 </ol>
