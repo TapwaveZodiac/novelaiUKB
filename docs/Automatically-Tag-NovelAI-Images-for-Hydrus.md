@@ -5,7 +5,7 @@
 This is a script for generating "sidecars" which are files containing tags that Hydrus will import alongside your NovelAI generated images. 
 
 ## Prerequisites:
-1. Python
+1. [Python 3.11](https://www.python.org/downloads/release/python-3119/)
 2. [Hydrus Network](https://github.com/hydrusnetwork/hydrus)
    
 ## Using the script:
