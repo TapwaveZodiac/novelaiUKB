@@ -1335,7 +1335,7 @@ Hydrus">Return to Index</a>
 <h1 class="title">Automatically Tag NovelAI Images for Hydrus</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-17:32">Last updated 11/05/2025 at 17:32</time></p>
+17:42">Last updated 11/05/2025 at 17:42</time></p>
 </blockquote>
 </header>
 
@@ -1374,10 +1374,13 @@ Network</a></li>
 </ol>
 <h2 id="using-the-script">Using the script:</h2>
 <ol type="1">
-<li>Create a file named "generate_sidecars.py" somewhere on your PC.
-<strong>DO NOT PUT IT IN THE SAME FOLDER AS HYDRUS.</strong></li>
+<li>Create a folder to set up the process. <strong>DO NOT PUT IT IN THE
+SAME FOLDER AS HYDRUS.</strong></li>
+<li>Inside this folder, create a file named
+<code>generate_sidecars.py</code></li>
 <li>Add the code below inside it. Save the file.</li>
-<li>Make a folder called import_images, and put your images there.</li>
+<li>Make a folder called <code>import_images</code>, and put your images
+there.</li>
 <li>Run CMD in the folder with the py file. Then, execute
 <code>py -m pip install pillow</code>.</li>
 <li>Once pillow is installed, <code>py generate_sidecars.py</code></li>
@@ -1408,62 +1411,61 @@ class="sourceCode Python"><code class="sourceCode python"><span id="cb1-1"><a hr
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> root, dirs, files <span class="kw">in</span> <span class="bu">reversed</span>(<span class="bu">list</span>(os.walk(dirPath))):</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> filename <span class="kw">in</span> <span class="bu">reversed</span>(files):</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Process files here</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span>(filename.endswith(<span class="st">&quot;.png&quot;</span>)):</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            image_path <span class="op">=</span> os.path.join(root, filename)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            sidecar_path <span class="op">=</span> os.path.splitext(image_path)[<span class="dv">0</span>] <span class="op">+</span> <span class="st">&quot;.txt&quot;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> os.path.isfile(sidecar_path):</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            im <span class="op">=</span> Image.<span class="bu">open</span>(image_path)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            comment <span class="op">=</span> json.loads(im.info[<span class="st">&#39;Comment&#39;</span>]) <span class="cf">if</span> <span class="st">&#39;Comment&#39;</span> <span class="kw">in</span> im.info <span class="cf">else</span> <span class="st">&#39;&#39;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">&#39;actual_prompts&#39;</span> <span class="kw">in</span> comment:</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                tags <span class="op">=</span> comment[<span class="st">&quot;actual_prompts&quot;</span>][<span class="st">&quot;prompt&quot;</span>][<span class="st">&quot;base_caption&quot;</span>].lower()</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> char_prompt <span class="kw">in</span> comment[<span class="st">&quot;actual_prompts&quot;</span>][<span class="st">&quot;prompt&quot;</span>][<span class="st">&quot;char_captions&quot;</span>]:</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                    tags <span class="op">+=</span> <span class="st">&#39;, &#39;</span> <span class="op">+</span> char_prompt[<span class="st">&quot;char_caption&quot;</span>].lower()</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> <span class="st">&#39;Description&#39;</span> <span class="kw">in</span> im.info:</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                tags <span class="op">=</span> im.info[<span class="st">&#39;Description&#39;</span>].lower()</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">&#39;v4_prompt&#39;</span> <span class="kw">in</span> comment <span class="kw">and</span> <span class="st">&#39;char_captions&#39;</span> <span class="kw">in</span> comment[<span class="st">&#39;v4_prompt&#39;</span>][<span class="st">&#39;caption&#39;</span>]:</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> char_prompt <span class="kw">in</span> comment[<span class="st">&#39;v4_prompt&#39;</span>][<span class="st">&#39;caption&#39;</span>][<span class="st">&#39;char_captions&#39;</span>]:</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                        tags <span class="op">+=</span> <span class="st">&#39;, &#39;</span> <span class="op">+</span> char_prompt[<span class="st">&#39;char_caption&#39;</span>].lower()</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(im.info)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;[&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;]&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;{&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;}&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> re.sub(<span class="vs">r&#39;-\d*\.?\d*::.*?::&#39;</span>, <span class="st">&#39;&#39;</span>, tags) <span class="co"># remove tags with negative emphasis</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> re.sub(<span class="vs">r&#39;-?\d*\.?\d*::&#39;</span>, <span class="st">&#39;&#39;</span>, tags)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>            <span class="co">#tags = re.sub(r&#39;(?&lt;!\d)\b(girl|boy)\b&#39;, &#39;&#39;, tags)</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            tag_array <span class="op">=</span> [x.strip() <span class="cf">for</span> x <span class="kw">in</span> re.split(<span class="vs">r&#39;[.,|]&#39;</span>, tags)]</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            tag_array.append(<span class="st">&#39;model:&#39;</span> <span class="op">+</span> im.info[<span class="st">&quot;Source&quot;</span>])</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>            tag_array.append(<span class="st">&#39;sampler:&#39;</span> <span class="op">+</span> comment[<span class="st">&quot;sampler&quot;</span>])</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            sidecar_text <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>.join(tag_array)</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(sidecar_path)</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>            write_to_file(sidecar_path, sidecar_text)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span>(filename.endswith(<span class="st">&quot;.png&quot;</span>)):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            image_path <span class="op">=</span> os.path.join(root, filename)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            sidecar_path <span class="op">=</span> os.path.splitext(image_path)[<span class="dv">0</span>] <span class="op">+</span> <span class="st">&quot;.txt&quot;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> os.path.isfile(sidecar_path):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            im <span class="op">=</span> Image.<span class="bu">open</span>(image_path)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            comment <span class="op">=</span> json.loads(im.info[<span class="st">&#39;Comment&#39;</span>]) <span class="cf">if</span> <span class="st">&#39;Comment&#39;</span> <span class="kw">in</span> im.info <span class="cf">else</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">&#39;actual_prompts&#39;</span> <span class="kw">in</span> comment:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                tags <span class="op">=</span> comment[<span class="st">&quot;actual_prompts&quot;</span>][<span class="st">&quot;prompt&quot;</span>][<span class="st">&quot;base_caption&quot;</span>].lower()</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> char_prompt <span class="kw">in</span> comment[<span class="st">&quot;actual_prompts&quot;</span>][<span class="st">&quot;prompt&quot;</span>][<span class="st">&quot;char_captions&quot;</span>]:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                    tags <span class="op">+=</span> <span class="st">&#39;, &#39;</span> <span class="op">+</span> char_prompt[<span class="st">&quot;char_caption&quot;</span>].lower()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> <span class="st">&#39;Description&#39;</span> <span class="kw">in</span> im.info:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>                tags <span class="op">=</span> im.info[<span class="st">&#39;Description&#39;</span>].lower()</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="st">&#39;v4_prompt&#39;</span> <span class="kw">in</span> comment <span class="kw">and</span> <span class="st">&#39;char_captions&#39;</span> <span class="kw">in</span> comment[<span class="st">&#39;v4_prompt&#39;</span>][<span class="st">&#39;caption&#39;</span>]:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> char_prompt <span class="kw">in</span> comment[<span class="st">&#39;v4_prompt&#39;</span>][<span class="st">&#39;caption&#39;</span>][<span class="st">&#39;char_captions&#39;</span>]:</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                        tags <span class="op">+=</span> <span class="st">&#39;, &#39;</span> <span class="op">+</span> char_prompt[<span class="st">&#39;char_caption&#39;</span>].lower()</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(im.info)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;[&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;]&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;{&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> tags.replace(<span class="st">&quot;}&quot;</span>,<span class="st">&quot;&quot;</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> re.sub(<span class="vs">r&#39;-\d*\.?\d*::.*?::&#39;</span>, <span class="st">&#39;&#39;</span>, tags) <span class="co"># remove tags with negative emphasis</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>            tags <span class="op">=</span> re.sub(<span class="vs">r&#39;-?\d*\.?\d*::&#39;</span>, <span class="st">&#39;&#39;</span>, tags) <span class="co"># remove all ## and any number behind it</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>            <span class="co">#tags = re.sub(r&#39;(?&lt;!\d)\b(girl|boy)\b&#39;, &#39;&#39;, tags)</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            tag_array <span class="op">=</span> [x.strip() <span class="cf">for</span> x <span class="kw">in</span> re.split(<span class="vs">r&#39;[.,|]&#39;</span>, tags)]</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            tag_array.append(<span class="st">&#39;model:&#39;</span> <span class="op">+</span> im.info[<span class="st">&quot;Source&quot;</span>])</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            tag_array.append(<span class="st">&#39;sampler:&#39;</span> <span class="op">+</span> comment[<span class="st">&quot;sampler&quot;</span>])</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            sidecar_text <span class="op">=</span> <span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>.join(tag_array)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(sidecar_path)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>            write_to_file(sidecar_path, sidecar_text)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_to_file (output_file, output_string):</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">&#39;w&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.write(output_string)</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>     main()</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co"># by .yamii.```</span></span></code></pre></div>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> write_to_file (output_file, output_string):</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(output_file, <span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.write(output_string)</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>     main()</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="co"># by .yamii.```</span></span></code></pre></div>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
