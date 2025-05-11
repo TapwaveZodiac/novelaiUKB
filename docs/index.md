@@ -21,6 +21,10 @@ You can find short descriptions for various terms and concepts here. Get up to s
 
 ## 🔗 Useful Links & Resources
 
+**Tools for NovelAI**
+
+- 📔 [Automatically Tag and Import NovelAI Images for Hydrus](Automatically-Tag-and-Import-NovelAI-Images-for-Hydrus)
+
 **Official Links**
 
 -   🌎 [Official Website](https://novelai.net/)
