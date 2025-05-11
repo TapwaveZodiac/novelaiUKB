@@ -38,7 +38,7 @@ aspects.
 Here is a breakdown of each endpoint, but **with only the *undocumented*
 arguments, types, and schemas**. Documented args, types and schemas are
 present in the documentation. **Each** endpoint should be prepended with
-"https://api.novelai.net" for **text**, and "https://image.novelai.net" for images.
+https://api.novelai.net for **text on any model from Sigurd to Clio**, https://text.novelai.net for **text on Kayra and Erato**, and https://image.novelai.net for **images**.
 
 Several responses can come from any endpoint:
 
@@ -148,7 +148,7 @@ Infilling, or Bidirectional inline generation, is a specific feature and
 a totally different way of generating, which takes into account both the
 text before and after the targeted spot.
 
-The current model used for infilling is GPT-J-6B, but it is unsure
+The current model used for infilling is GPT-J-6B, but it is incertain
 whether it is a finetune or a module v2. It uses token 50261 as mask for
 the part to replace, token 50257 at the end of context sent to prompt it
 into infilling mode, and token 50258 for the end of generation (so put
