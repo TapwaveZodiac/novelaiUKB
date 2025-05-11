@@ -1,6 +1,20 @@
 This page serves to catalogue interesting tags for image generation, which can lead to useful behavior, or have unusual effects that can be exploited **reliably**.
 
+# V4+
 
+## Text: unsupported character style seeding
+
+If `text:` is followed by non-ASCII characters, unexpected behavior occurs. Normally, non-conventional characters are converted into `UNK` tokens. However, if these characters are in a `text:` segment, this does not appear to be the case, even though it should be.
+
+Expected behavior would be that `text:ドキドキ` and　`text:フラフラ`, being the same length, should encode the same way, as `text:` followed by four `UNK`. Instead, these will generate different images. This appears to have a strong influence on style and can be used for style seeding.
+
+## 0 or Micro-strength tags
+The mere presence of a tag, even if it is `0.001:tag::` or `0::tag::`, has an influence on generations. This is remarkably powerful at influencing style, especially for things such as `nsfw` and other medium tags.
+
+## Vibe Self-Negation
+Since Vibe Transfer appears to convey pose and character information at low IE, and style information at higher IE, using the same Vibe twice, but setting the second instance at negative strength, and IE~0.1-0.3 should keep the style information but cancel out the character/pose adherence.
+
+# V1-V2
 ## Tags and Tag Combos
 
 > prismatic
