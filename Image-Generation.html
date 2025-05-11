@@ -1334,7 +1334,7 @@
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-18:03">Last updated 11/05/2025 at 18:03</time></p>
+18:11">Last updated 11/05/2025 at 18:11</time></p>
 </blockquote>
 </header>
 
@@ -1397,7 +1397,13 @@
     sheet</a></li>
     <li><a href="#unwanted-content-or-negative-prompting"
     id="toc-unwanted-content-or-negative-prompting">Unwanted Content, or
-    "Negative Prompting"</a></li>
+    "Negative Prompting"</a>
+    <ul>
+    <li><a href="#v3-uc" id="toc-v3-uc">V3 UC</a></li>
+    <li><a href="#v45-uc" id="toc-v45-uc">V4.5 UC</a></li>
+    <li><a href="#uc-explanation" id="toc-uc-explanation">UC
+    Explanation</a></li>
+    </ul></li>
     </ul></li>
     <li><a href="#character-prompting"
     id="toc-character-prompting">Character Prompting</a>
@@ -1880,13 +1886,21 @@ Generate with a short UC, then narrow it down based on what you need per
 image.</p>
 <p>There are multiple default UC presets, we will focus on V3's
 specifically to explain what each element does.</p>
-<p>V3</p>
+<h3 id="v3-uc">V3 UC</h3>
 <p>Light:
 <code>nsfw, lowres, jpeg artifacts, worst quality, watermark, blurry, very displeasing</code></p>
 <p>Heavy:
 <code>nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract]</code></p>
 <p>Human Focus:
-<code>lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code></p>
+<code>nsfw, lowres, {bad}, error, fewer, extra, missing, worst quality, jpeg artifacts, bad quality, watermark, unfinished, displeasing, chromatic aberration, signature, extra digits, artistic error, username, scan, [abstract], bad anatomy, bad hands, @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code></p>
+<h3 id="v45-uc">V4.5 UC</h3>
+<p>Light:
+<code>nsfw, blurry, lowres, upscaled, artistic error, scan artifacts, jpeg artifacts, logo, too many watermarks, negative space, blank page</code></p>
+<p>Heavy:
+<code>nsfw, blurry, lowres, upscaled, artistic error, film grain, scan artifacts, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, negative space, blank page</code></p>
+<p>Human Focus:
+<code>nsfw, blurry, lowres, upscaled, artistic error, film grain, scan artifacts, bad anatomy, bad hands, worst quality, bad quality, jpeg artifacts, very displeasing, chromatic aberration, halftone, multiple views, logo, too many watermarks, @_@, mismatched pupils, glowing eyes, negative space, blank page</code></p>
+<h3 id="uc-explanation">UC Explanation</h3>
 <ul>
 <li>nsfw: Prevents generating explicit pictures without explicit request
 from the user.</li>
@@ -1918,6 +1932,9 @@ blue, red, and mixed hues thereof. Especially happens on outlines. (This
 is an effect similar to Bicolor 3D stereoscopy.)</li>
 <li>scan: Reduces scan-induced artifacts such as odd banded lighting and
 messy outlines.</li>
+<li>blank page, negative space: Reduces blank space in the canvas.</li>
+<li>multiple views: Can cause weird anatomy and poorly rendered
+cutins.</li>
 <li><code>[abstract]</code>: Reduces overly geometric and amorphous
 shaping of objects and people.</li>
 <li><code> @_@, mismatched pupils, heart-shaped pupils, glowing eyes</code>:
@@ -1925,7 +1942,6 @@ Several eye-related tags that may incidentally leak into a generation.
 Reducing their influence means that eyes should generate "cleaner" most
 of the time.</li>
 </ul>
-<p>== V4 information TBA ==</p>
 <hr />
 <h1 id="character-prompting">Character Prompting</h1>
 <p>V4 allows you to specify prompts <em>per character</em>. The base
