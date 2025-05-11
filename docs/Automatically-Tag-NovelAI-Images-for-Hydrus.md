@@ -9,11 +9,12 @@ This is a script for generating "sidecars" which are files containing tags that 
 2. [Hydrus Network](https://github.com/hydrusnetwork/hydrus)
    
 ## Using the script:
-1. Create a file named "generate_sidecars.py" somewhere on your PC.
+1. Create a file named "generate_sidecars.py" somewhere on your PC. **DO NOT PUT IT IN THE SAME FOLDER AS HYDRUS.**
 2. Add the code below inside it. Save the file.
 3. Make a folder called import_images, and put your images there.
-4. Double click generate_sidecars.py.
-5. Now your import folder will be full of text files containing the tags for the images.
+4. Run CMD in the folder with the py file. Then, execute `py -m pip install pillow`.
+5. Once pillow is installed, `py generate_sidecars.py`
+6. Now your import folder will be full of text files containing the tags for the images.
 
 ## Importing to Hydrus:
 1. file -> import files...
