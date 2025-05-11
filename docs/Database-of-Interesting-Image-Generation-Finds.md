@@ -2,17 +2,23 @@ This page serves to catalogue interesting tags for image generation, which can l
 
 # V4+
 
-## Text: unsupported character style seeding
+## V4.5 Text: character style seeding
 
-If `text:` is followed by non-ASCII characters, unexpected behavior occurs. Normally, non-conventional characters are converted into `UNK` tokens. However, if these characters are in a `text:` segment, this does not appear to be the case, even though it should be.
+If `Text:` is followed by non-ASCII characters, unexpected behavior occurs. Normally, non-conventional characters are converted into `UNK` tokens. However, if these characters are in a `Text:` segment, this does not appear to be the case, even though it should be.
 
-Expected behavior would be that `text:ドキドキ` and　`text:フラフラ`, being the same length, should encode the same way, as `text:` followed by four `UNK`. Instead, these will generate different images. This appears to have a strong influence on style and can be used for style seeding.
+Expected behavior would be that `Text:ドキドキ` and　`Text:フラフラ`, being the same length, should encode the same way, as `Text:` followed by four `UNK`.
+On V4.5, this generates different images instead. This is because V4.5's tokenizer supports Japanese tokens, but these have not been trained for, and their effect isn't properly defined as a result.
 
 ## 0 or Micro-strength tags
-The mere presence of a tag, even if it is `0.001:tag::` or `0::tag::`, has an influence on generations. This is remarkably powerful at influencing style, especially for things such as `nsfw` and other medium tags.
+The mere presence of a tag, even if it is `0.001:tag::` or `0::tag::`, has an influence on generations. This is remarkably powerful at influencing style, especially for things such as `nsfw` and other artistic medium tags. This is because a token appearing at all affects the semantics of all other tokens.
 
-## Vibe Self-Negation
-Since Vibe Transfer appears to convey pose and character information at low IE, and style information at higher IE, using the same Vibe twice, but setting the second instance at negative strength, and IE~0.1-0.3 should keep the style information but cancel out the character/pose adherence.
+## Tag Strength Normalization
+
+On V4 tag emphasis is Zero-sum. This means that if you strengthen a tag, other tags are weakened. This is not the case on V4.5. 
+
+## Vibe Low/High Pass Filter
+
+Since Vibe Transfer appears to convey pose and character information at low IE, and style information at higher IE, using the same Vibe twice, but setting the second instance at negative strength, and IE~0.1-0.3 should keep the style information but cancel out the character/pose adherence. This works like a low pass filter. The opposite is also possible for a high pass filter.
 
 # V1-V2
 ## Tags and Tag Combos
