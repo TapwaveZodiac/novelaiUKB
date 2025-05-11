@@ -23,7 +23,8 @@ You can find short descriptions for various terms and concepts here. Get up to s
 
 **Tools for NovelAI**
 
-- 📔 **[Automatically Tag and Import NovelAI Images for Hydrus](Automatically-Tag-and-Import-NovelAI-Images-for-Hydrus)**
+- **📔 [Automatically Tag and Import NovelAI Images for Hydrus](Automatically-Tag-and-Import-NovelAI-Images-for-Hydrus)**
+- **🔖 [Using a Bookmarklet to retrieve Danbooru tags](Tag-Retrieval-Bookmarklet)**
 
 **Official Links**
 
@@ -40,6 +41,7 @@ You can find short descriptions for various terms and concepts here. Get up to s
 
 -   **📱 [Installing NovelAI on Mobile](Installing-NovelAI-on-Mobile)**
 -   **👩🏿‍🔬 [TravellingRobot\'s Research Wiki](https://github.com/TravellingRobot/NAI_Community_Research/wiki)**
+-   **🎞️ [Carlyone\'s Aesthetics Gallery](https://zele.st/NovelAI/)**
 
 # ❓ Detailed Help
 
@@ -139,11 +141,7 @@ NovelAI before reading them.**
 
 ### **📳 [Vibe Transfer](Vibe-Transfer)**
 
-### **🔖 [Using a Bookmarklet to retrieve Danbooru tags](Tag-Retrieval-Bookmarklet)**
-
 ### **🗄️ [Database of Interesting Image Generation Finds](Database-of-Interesting-Image-Generation-Finds)**
-
-### **🎞️ [Carlyone\'s Aesthetics Gallery](https://zele.st/NovelAI/)**
 
 ***
 
