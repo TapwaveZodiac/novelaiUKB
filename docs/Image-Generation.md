@@ -28,7 +28,7 @@ There are two parts to training: Quality training, and Aesthetic training. This 
 If you are going to go and trawl Danbooru's tag database, keep in mind that the site is **extremely unsafe for work!**
 
 If you are using the Furry model, **you'll need to use E621's tags.** These can also work on V4, see the "Furry Model" section for details.
-This means all the following information will not work for this specific model. E621 is just as extremely unsafe for work.
+This means some of the following information will not work for this specific model. E621 is just as extremely unsafe for work.
 
 ***
 
@@ -54,13 +54,11 @@ Steps are carried out by a **Sampler**, which attempts to resolve the noise base
 
 Scale/Guidance affects *how much* the prompt affects the Sample steps, but not their "intensity" or their "length". **All steps are equal in terms of compute**. Guidance thus does *not* affect cost.
 
-However,  **Negative Guidance Scale** *does*, because it uses additional processing power to run **CFG** or **Classifier-Free Guidance**. If the Negative Guidance is equal to Positive Guidance, then there is no need for extra compute, and the cost is the same.
-
 **Noise** is the primordial soup from which the AI will unravel an image. **Seed** is what decides the base noise pattern, however, **Noise Schedule** in Advanced Settings changes how that noise is generated and interpreted by the sampler, resulting in different outputs with the same seed.
 
 Effectively, Noise Schedules are variations of the same Sampler's algorithm.
 
-For V4, `Karras` is the default noise scheduler. `native`, `exponential` and `polyexponential` are *mostly* comparable to each other, with minute differences.
+For V4, `Karras` is the default noise scheduler. `exponential` and `polyexponential` are *mostly* comparable to each other, with minute differences.
 
 ## The limits of Guidance
 
@@ -74,7 +72,7 @@ Addtionally, with multiple character prompts, higher scale may be preferable.
 
 To allow for a stronger Prompt Guidance without having those issues, the advanced setting **Prompt Guidance Rescale** attempts to compensate for them, but this can result in blurrier, less saturated output. As Prompt Guidance increases, higher rescale values can typically be used without significant detrimental effects. You can always use image 2 image to refine the picture once you feel the base is good enough.
 
-Much like Negative Prompt Guidance, you should adjust Rescale in very small increments starting from 1. Start in increments of 0.1 or 0.2 with the same seed, and decide what you prefer from there.
+You should adjust Rescale in very small increments, starting from 0. Start in increments of 0.1 or 0.2 with the same seed, and decide what you prefer from there.
 
 ## SMEA
 
@@ -95,6 +93,10 @@ Decrisper has no effect on V4 and isn't available for it.
 A side effect of high scale setting is that the increase in consistency results in a loss in variety. In order to circumvent that, you can let the model generate without guidance for a very small amount of steps, letting it start with a more audacious base, and *then* enable guidance and get the positive effects of a higher setting, without compromising the model's creative abilities.
 
 NovelAI detects when the general composition and body shape (if applicable) is present, and then enables Guidance for the remainder of the steps. Keep in mind that this requires your negative prompt to only kick in at the same time as guidance, so this can lead to it being less effective, and artifacts or unusual props appearing.
+
+## Historical deprecated and deleted features
+
+**Undesired Content Strength** was a feature in that allowed you to set the strength of Guidance for the Undesired Content separately from the Base Prompt, either strengthening or lessening its influence. If the Undesired Content Stregth was changed from its default value of 100%, the cost of compute and thereby the anlas cost would increase. It was retired due to low usage rates and technical complexity.
 
 ***
 
@@ -200,11 +202,13 @@ Putting a color highlight next to the hair color will give you colored strands a
 
 ### Incomplete Interactions
 
-Breaking up interactions that occur naturally can result in artifacts or odd elements. It is easy to achieve if you strengthen a specific part of a tag rather than the whole tag.
+Breaking up interactions that occur naturally can result in artifacts or odd elements, especially on older models. It is easy to achieve if you strengthen a specific part of a tag rather than the whole tag.
 
 `1girl, black hair, {{{orange}}} eyes`
 
-This can lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame. Whether or not this is a bad thing is up to you.
+This can lead to the spontaneous appearance of tasty, tasty oranges everywhere in frame, as well as resulting in more of the color orange throughout the image. Whether or not this is a bad thing is up to you.
+
+On V4 and beyond, this effect is much less pronounced. Applying sufficiently high emphasis to something can still result in some amount of bleeding to the rest of the image, but significantly less so.
 
 ### Priority Interference
 
@@ -472,11 +476,11 @@ It is better to inpaint large areas as opposed to small ones, details are best h
 
 ## Prompting
 
-A common issue that people encounter when inpainting is confusion as to what you should prompt for.
+A common issue that people encounter when inpainting is confusion as to what you should prompt for. In V4 and beyond, changing or adding what you want to your existing prompt tends to work well when the masked area logically aligns with what you want to adjust.
 
-When inpainting, **only** prompt for what must appear in the inpainted area. Do not use your full prompt! This may cause the model to try and cram all these things into the inpainting area, which will look messy and wrong.
+When using Focused Area Inpainting or inpainting with models before V4, it's often helpful to **only** prompt for what must appear in the inpainted area. Using your full prompt may cause the model to try and cram all these things into the inpainting area, which will look messy and wrong. Doing the same when inpainting normally in V4 and beyond can be helpful, but the model often 'understands' what's already present well enough for it to be unnecessary.
 
-You should avoid using any UC outside of default UC when inpainting as well, for the same reason.
+You should avoid using any UC outside of default UC that isn't relevant to the inpainted region as well, for the same reason.
 
 ***
 
