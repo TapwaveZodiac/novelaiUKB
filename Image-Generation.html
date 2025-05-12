@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Image Generation">Return to Index</a>
 <h1 class="title">Image Generation</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 11/05/2025 at
-20:41">Last updated 11/05/2025 at 20:41</time></p>
+  <p class="date before-toc"><time datetime="Last updated 12/05/2025 at
+15:59">Last updated 12/05/2025 at 15:59</time></p>
 </blockquote>
 </header>
 
@@ -1355,6 +1355,9 @@
     <li><a href="#decrisper" id="toc-decrisper">Decrisper</a></li>
     <li><a href="#variety-booster-variety"
     id="toc-variety-booster-variety">Variety Booster (Variety+)</a></li>
+    <li><a href="#historical-deprecated-and-deleted-features"
+    id="toc-historical-deprecated-and-deleted-features">Historical
+    deprecated and deleted features</a></li>
     </ul></li>
     <li><a href="#tag-based-prompting"
     id="toc-tag-based-prompting">Tag-based Prompting</a>
@@ -1505,8 +1508,8 @@ training. This will be explained in the next section.</p>
 mind that the site is <strong>extremely unsafe for work!</strong></p>
 <p>If you are using the Furry model, <strong>you'll need to use E621's
 tags.</strong> These can also work on V4, see the "Furry Model" section
-for details. This means all the following information will not work for
-this specific model. E621 is just as extremely unsafe for work.</p>
+for details. This means some of the following information will not work
+for this specific model. E621 is just as extremely unsafe for work.</p>
 <hr />
 <h1 id="diffusion-models">Diffusion Models</h1>
 <p>A diffusion model works by resolving noise into an image. If you ever
@@ -1545,11 +1548,6 @@ just that it costs less to get them to look decent.)</p>
 Sample steps, but not their "intensity" or their "length". <strong>All
 steps are equal in terms of compute</strong>. Guidance thus does
 <em>not</em> affect cost.</p>
-<p>However, <strong>Negative Guidance Scale</strong> <em>does</em>,
-because it uses additional processing power to run <strong>CFG</strong>
-or <strong>Classifier-Free Guidance</strong>. If the Negative Guidance
-is equal to Positive Guidance, then there is no need for extra compute,
-and the cost is the same.</p>
 <p><strong>Noise</strong> is the primordial soup from which the AI will
 unravel an image. <strong>Seed</strong> is what decides the base noise
 pattern, however, <strong>Noise Schedule</strong> in Advanced Settings
@@ -1558,9 +1556,8 @@ resulting in different outputs with the same seed.</p>
 <p>Effectively, Noise Schedules are variations of the same Sampler's
 algorithm.</p>
 <p>For V4, <code>Karras</code> is the default noise scheduler.
-<code>native</code>, <code>exponential</code> and
-<code>polyexponential</code> are <em>mostly</em> comparable to each
-other, with minute differences.</p>
+<code>exponential</code> and <code>polyexponential</code> are
+<em>mostly</em> comparable to each other, with minute differences.</p>
 <h2 id="the-limits-of-guidance">The limits of Guidance</h2>
 <p>Guidance is nice and all, but V2 and <strong>especially V3 and
 V4</strong> work best at a narrow band of scale. V2 works well from 3 to
@@ -1583,9 +1580,9 @@ output. As Prompt Guidance increases, higher rescale values can
 typically be used without significant detrimental effects. You can
 always use image 2 image to refine the picture once you feel the base is
 good enough.</p>
-<p>Much like Negative Prompt Guidance, you should adjust Rescale in very
-small increments starting from 1. Start in increments of 0.1 or 0.2 with
-the same seed, and decide what you prefer from there.</p>
+<p>You should adjust Rescale in very small increments, starting from 0.
+Start in increments of 0.1 or 0.2 with the same seed, and decide what
+you prefer from there.</p>
 <h2 id="smea">SMEA</h2>
 <p>SMEA is an application of Euler Ancestral sampling, but instead of
 being applied once per generation, it is applied iteratively, per step.
@@ -1623,6 +1620,15 @@ applicable) is present, and then enables Guidance for the remainder of
 the steps. Keep in mind that this requires your negative prompt to only
 kick in at the same time as guidance, so this can lead to it being less
 effective, and artifacts or unusual props appearing.</p>
+<h2 id="historical-deprecated-and-deleted-features">Historical
+deprecated and deleted features</h2>
+<p><strong>Undesired Content Strength</strong> was a feature in that
+allowed you to set the strength of Guidance for the Undesired Content
+separately from the Base Prompt, either strengthening or lessening its
+influence. If the Undesired Content Stregth was changed from its default
+value of 100%, the cost of compute and thereby the anlas cost would
+increase. It was retired due to low usage rates and technical
+complexity.</p>
 <hr />
 <h1 id="tag-based-prompting">Tag-based Prompting</h1>
 <p>To use Tags in NAIDiffusion, simply assemble a list of tags freely.
@@ -1759,12 +1765,16 @@ colored strands and bangs. Adjust the wording until you get the
 specifics you like!</p>
 <h3 id="incomplete-interactions">Incomplete Interactions</h3>
 <p>Breaking up interactions that occur naturally can result in artifacts
-or odd elements. It is easy to achieve if you strengthen a specific part
-of a tag rather than the whole tag.</p>
+or odd elements, especially on older models. It is easy to achieve if
+you strengthen a specific part of a tag rather than the whole tag.</p>
 <p><code>1girl, black hair, {{{orange}}} eyes</code></p>
 <p>This can lead to the spontaneous appearance of tasty, tasty oranges
-everywhere in frame. Whether or not this is a bad thing is up to
+everywhere in frame, as well as resulting in more of the color orange
+throughout the image. Whether or not this is a bad thing is up to
 you.</p>
+<p>On V4 and beyond, this effect is much less pronounced. Applying
+sufficiently high emphasis to something can still result in some amount
+of bleeding to the rest of the image, but significantly less so.</p>
 <h3 id="priority-interference">Priority Interference</h3>
 <p>As tags placed earlier in the prompt have more strength, colors and
 other elements tend to leak.</p>
@@ -2102,13 +2112,18 @@ are best handled by Image to Image. Very small Inpaint canvases are very
 difficult for the AI to handle.</p>
 <h2 id="prompting">Prompting</h2>
 <p>A common issue that people encounter when inpainting is confusion as
-to what you should prompt for.</p>
-<p>When inpainting, <strong>only</strong> prompt for what must appear in
-the inpainted area. Do not use your full prompt! This may cause the
-model to try and cram all these things into the inpainting area, which
-will look messy and wrong.</p>
-<p>You should avoid using any UC outside of default UC when inpainting
-as well, for the same reason.</p>
+to what you should prompt for. In V4 and beyond, changing or adding what
+you want to your existing prompt tends to work well when the masked area
+logically aligns with what you want to adjust.</p>
+<p>When using Focused Area Inpainting or inpainting with models before
+V4, it's often helpful to <strong>only</strong> prompt for what must
+appear in the inpainted area. Using your full prompt may cause the model
+to try and cram all these things into the inpainting area, which will
+look messy and wrong. Doing the same when inpainting normally in V4 and
+beyond can be helpful, but the model often 'understands' what's already
+present well enough for it to be unnecessary.</p>
+<p>You should avoid using any UC outside of default UC that isn't
+relevant to the inpainted region as well, for the same reason.</p>
 <hr />
 <h3 id="clip-interrogator">CLIP Interrogator</h3>
 <p><a
