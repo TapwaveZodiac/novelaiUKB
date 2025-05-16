@@ -1,6 +1,6 @@
 # NovelAI Image Generator Enhancements
 
-*by Esbe1175/Archon**
+*by Esbe1175/Archon*
 
 **NovelAI Image Generator Enhancements** is a userscript for [Tampermonkey](https://www.tampermonkey.net/), [Greasemonkey](https://www.greasespot.net/), or [Violentmonkey](https://violentmonkey.github.io/), which brings quality-of-life and usability enhancements. Currently, it has a small but useful feature set, designed to fit in seamlessly with the NovelAI Image Generator's interface—as if it were meant to be there all along.
 
