@@ -14,11 +14,12 @@ Currently, NovelAI Image Generator Enhancements offers three features: **Prompt 
 - Accessible via a dedicated button next to the prompt settings icon.
 
 #### The button in the interface
-![[Pasted image 20250516195028.png]]
+![Pasted image 20250516194952](https://github.com/user-attachments/assets/e23f2d4a-40c8-4ea1-ba58-ad1d5b475765)
+
 
 | example A1111 prompt before conversion | after conversion                     |
 | -------------------------------------- | ------------------------------------ |
-| ![[Pasted image 20250516194644.png]]   | ![[Pasted image 20250516194830.png]] |
+|  ![Pasted image 20250516194644](https://github.com/user-attachments/assets/52d6098f-5781-4a3e-9662-344933608f3c) | ![Pasted image 20250516194830](https://github.com/user-attachments/assets/2165ee3e-119a-4bd4-8e4b-33c7c2087e27) |
 
 ---
 
@@ -28,7 +29,7 @@ Currently, NovelAI Image Generator Enhancements offers three features: **Prompt 
 - Allows for more precise control over reference image influence.
 
 #### Example of the expanded slider bounds in use
-![[Pasted image 20250516195125.png]]
+![Pasted image 20250516195125](https://github.com/user-attachments/assets/9900347a-227b-4d13-837d-4024f1e82568)
 
 ---
 
@@ -41,7 +42,8 @@ Currently, NovelAI Image Generator Enhancements offers three features: **Prompt 
     - Ctrl: Snap to whole numbers (1, 2, 3, ...)
 
 #### Example UI while hovering a weight
-![[Pasted image 20250516195253.png]]
+![Pasted image 20250516195253](https://github.com/user-attachments/assets/a8b76099-e367-4a8f-9671-3590f12aee24)
+
 
 *note: this feature does not support the "old" {{{tag}}}/\[\[\[tag\]\]\] emphasis format, but will not break it*
 
