@@ -69,7 +69,7 @@ Contextual lorebooks may be present before or after the Author's Note depending 
 
 ## Lorebook
 
-The default search range for Lorebook keys is now 4000 characters of story text starting from the bottom.
+The default search range for Lorebook keys is now 150,000 characters of story text starting from the bottom, for normal entries. 4K for special conditional keys, but this can be increased.
 
 Entries are likely ordered by **creation date**, so if ordering is important, just duplicate them in the order you want them to appear.
 
