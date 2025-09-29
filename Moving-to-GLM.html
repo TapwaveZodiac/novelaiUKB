@@ -1334,7 +1334,7 @@
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 29/09/2025 at
-19:57">Last updated 29/09/2025 at 19:57</time></p>
+20:16">Last updated 29/09/2025 at 20:16</time></p>
 </blockquote>
 </header>
 
@@ -1399,11 +1399,13 @@ author's note, as well as <strong>Conditional Lorebook
 Entries</strong>.</p>
 <p><strong>Assistant</strong> is everything the model produces.</p>
 <h2 id="gmask--sop">gMASK &amp; sop</h2>
-<p>[gMASK]<code>&lt;sop&gt;</code> are a pair of reserved markers. You
-can add them yourself, but in this case you <strong>must build the whole
-context manully</strong>, including <em>not including /nothink</em>.
-This means none of the text injection (lorebook, memory, etc) are used
-<em>at all</em>, you must put them in and categorize them yourself.</p>
+<p>[gMASK]<code>&lt;sop&gt;</code> are a pair of reserved markers which
+must be kept together.</p>
+<p>You can add them yourself, but in this case you <strong>must build
+the whole context manully</strong>, including <em>not including
+/nothink</em>. This means none of the text injection (lorebook, memory,
+etc) are used <em>at all</em>, you must put them in and categorize them
+yourself.</p>
 <h1 id="changes">Changes</h1>
 <h2 id="context">Context</h2>
 <h3 id="window">Window</h3>
@@ -1440,11 +1442,26 @@ Story
 story text. Contextual lorebooks may be present before or after the
 Author's Note depending on the size of your paragraphs.</p>
 <h2 id="lorebook">Lorebook</h2>
-<p>The default search range for Lorebook keys is now 150,000 characters
-of story text starting from the bottom.</p>
+<p>The default search range for Lorebook keys is now 4000 characters of
+story text starting from the bottom.</p>
+<p>Entries are likely ordered by <strong>creation date</strong>, so if
+ordering is important, just duplicate them in the order you want them to
+appear.</p>
+<p>The system is told to understand ---- as a separator in the default
+system prompt, but you can change that if you want.</p>
 <p>Most of the lorebook settings, such as positioning and ordering, are
-now gone. The system is told to understand ---- as a separator in the
-default system prompt, but you can change that if you want.</p>
+now gone. Instead you have <strong>conditional entries</strong>, which
+use any combination of these conditions: • True: Always returns TRUE. •
+Keyword Match: Looks for keys like in the good old days, returns TRUE if
+key is found in the search range. • Lorebook Entry Active: Checks if the
+specified lorebook entry has been activated and returns TRUE if it is. •
+AND group: Checks if all contained conditions are true, then returns
+TRUE if they are. • OR group: Checks if any contained conditions are
+true, then returns TRUE if they are. • NOT: Returns TRUE but if the
+contained conditions are true, returns FALSE.</p>
+<p>The model checks if <em>any</em> of the top-level conditions are TRUE
+in order to activate the entry. If you have a TRUE as a top level
+condition, it's effectively always on, just positioned differently.</p>
 
 <!-- Javascript added by toc-css.lua to make TOC expandable on click -->
 <script>
