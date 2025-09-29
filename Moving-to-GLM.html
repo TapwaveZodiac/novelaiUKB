@@ -1334,7 +1334,7 @@
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 29/09/2025 at
-20:16">Last updated 29/09/2025 at 20:16</time></p>
+20:28">Last updated 29/09/2025 at 20:28</time></p>
 </blockquote>
 </header>
 
@@ -1451,14 +1451,20 @@ appear.</p>
 system prompt, but you can change that if you want.</p>
 <p>Most of the lorebook settings, such as positioning and ordering, are
 now gone. Instead you have <strong>conditional entries</strong>, which
-use any combination of these conditions: • True: Always returns TRUE. •
-Keyword Match: Looks for keys like in the good old days, returns TRUE if
-key is found in the search range. • Lorebook Entry Active: Checks if the
-specified lorebook entry has been activated and returns TRUE if it is. •
-AND group: Checks if all contained conditions are true, then returns
-TRUE if they are. • OR group: Checks if any contained conditions are
-true, then returns TRUE if they are. • NOT: Returns TRUE but if the
-contained conditions are true, returns FALSE.</p>
+use any combination of these conditions:</p>
+<ul>
+<li>True: Always returns TRUE.</li>
+<li>Keyword Match: Looks for keys like in the good old days, returns
+TRUE if key is found in the search range.</li>
+<li>Lorebook Entry Active: Checks if the specified lorebook entry has
+been activated and returns TRUE if it is.</li>
+<li>AND group: Checks if all contained conditions are true, then returns
+TRUE if they are.</li>
+<li>OR group: Checks if any contained conditions are true, then returns
+TRUE if they are.</li>
+<li>NOT: Returns TRUE but if the contained conditions are true, returns
+FALSE.</li>
+</ul>
 <p>The model checks if <em>any</em> of the top-level conditions are TRUE
 in order to activate the entry. If you have a TRUE as a top level
 condition, it's effectively always on, just positioned differently.</p>
