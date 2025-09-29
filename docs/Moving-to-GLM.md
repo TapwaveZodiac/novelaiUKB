@@ -7,7 +7,19 @@ This page serves as an inventory of major changes from Erato/Kayra to GLM 4.5.
 
 ## Instructions
 
-There are three types of attribution for GLM. <|user|>, <|system|>, and <|assistant|> 
+GLM must have an instruction active at all times. If your context is empty, the default is `Write a story, or perhaps a poem.`. If it has any content, this becomes `Write.` This is always in effect in System space (see Attribution Blocks below).
+
+You can change this instruction by having the **very first paragraph of your story** contain an {-initiated instruction, which will overwrite the default instruction.
+
+## Attribution blocks
+
+There are three types of attribution for GLM. <|user|>, <|system|>, and <|assistant|>.
+Blocks are declared and are concluded whenever another one is declared. Every block declaration **must be followed by a new line**. You can declare the next block at the end of a paragraph, i.e
+```
+foobar<|user|>
+do as I say my peon<|assistant|>
+yes my mamster
+```
 
 **User** blocks are initiated by writing instructions like you would for Kayra or Erato, by starting a paragraph with an opening curly brace {. You don't need to close it. **Memory** and **Always On Lorebook Entries** are in user block by default.
 
@@ -15,8 +27,8 @@ There are three types of attribution for GLM. <|user|>, <|system|>, and <|assist
 
 **Assistant** is everything the model produces.
 
-## gMASK<sop>
-[gMASK]<sop> are a pair of reserved markers. You can add them yourself, but in this case you **must build the whole context manully**, including *not including /nothink*.
+## gMASK & sop
+[gMASK]`<sop>` are a pair of reserved markers. You can add them yourself, but in this case you **must build the whole context manully**, including *not including /nothink*.
 This means none of the text injection (lorebook, memory, etc) are used *at all*, you must put them in and categorize them yourself.
 
 # Changes
@@ -40,15 +52,19 @@ Always-On Lorebooks
 Write. + /nothink #This is a default instruction. If you provide one it'll be replaced by yours.
 <|system|>
 Author's note #3 paragraphs from bottom
-Contextual Lorebooks (including "always True")
 <|assistant|>
-<think></think>
+Story
+<|system|>
+Author's note #3 paragraphs from bottom
+Contextual Lorebooks (including "always True") #inserted aligned to a newline at ~8000? characters from the bottom
+<|assistant|>
 Prefill #1 paragraph from bottom
 Story
 ***
 ```
 
-Note: AN will be before Memory if your context window has no story text.
+Note: Order will be different if your context window has too little story text.
+Contextual lorebooks may be present before or after the Author's Note depending on the size of your paragraphs.
 
 ## Lorebook
 
