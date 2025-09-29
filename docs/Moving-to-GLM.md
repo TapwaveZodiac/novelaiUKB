@@ -76,11 +76,11 @@ Entries are likely ordered by **creation date**, so if ordering is important, ju
 The system is told to understand ---- as a separator in the default system prompt, but you can change that if you want.
 
 Most of the lorebook settings, such as positioning and ordering, are now gone. Instead you have **conditional entries**, which use any combination of these conditions:
-• True: Always returns TRUE.
-• Keyword Match: Looks for keys like in the good old days, returns TRUE if key is found in the search range.
-• Lorebook Entry Active: Checks if the specified lorebook entry has been activated and returns TRUE if it is.
-• AND group: Checks if all contained conditions are true, then returns TRUE if they are.
-• OR group: Checks if any contained conditions are true, then returns TRUE if they are.
-• NOT: Returns TRUE but if the contained conditions are true, returns FALSE.
+* True: Always returns TRUE.
+* Keyword Match: Looks for keys like in the good old days, returns TRUE if key is found in the search range.
+* Lorebook Entry Active: Checks if the specified lorebook entry has been activated and returns TRUE if it is.
+* AND group: Checks if all contained conditions are true, then returns TRUE if they are.
+* OR group: Checks if any contained conditions are true, then returns TRUE if they are.
+* NOT: Returns TRUE but if the contained conditions are true, returns FALSE.
 
 The model checks if *any* of the top-level conditions are TRUE in order to activate the entry. If you have a TRUE as a top level condition, it's effectively always on, just positioned differently.
