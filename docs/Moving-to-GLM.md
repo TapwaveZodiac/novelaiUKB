@@ -28,8 +28,9 @@ yes my mamster
 **Assistant** is everything the model produces.
 
 ## gMASK & sop
-[gMASK]`<sop>` are a pair of reserved markers. You can add them yourself, but in this case you **must build the whole context manully**, including *not including /nothink*.
-This means none of the text injection (lorebook, memory, etc) are used *at all*, you must put them in and categorize them yourself.
+[gMASK]`<sop>` are a pair of reserved markers which must be kept together.
+
+You can add them yourself, but in this case you **must build the whole context manully**, including *not including /nothink*. This means none of the text injection (lorebook, memory, etc) are used *at all*, you must put them in and categorize them yourself.
 
 # Changes
 
@@ -68,6 +69,18 @@ Contextual lorebooks may be present before or after the Author's Note depending 
 
 ## Lorebook
 
-The default search range for Lorebook keys is now 150,000 characters of story text starting from the bottom.
+The default search range for Lorebook keys is now 4000 characters of story text starting from the bottom.
 
-Most of the lorebook settings, such as positioning and ordering, are now gone. The system is told to understand ---- as a separator in the default system prompt, but you can change that if you want.
+Entries are likely ordered by **creation date**, so if ordering is important, just duplicate them in the order you want them to appear.
+
+The system is told to understand ---- as a separator in the default system prompt, but you can change that if you want.
+
+Most of the lorebook settings, such as positioning and ordering, are now gone. Instead you have **conditional entries**, which use any combination of these conditions:
+• True: Always returns TRUE.
+• Keyword Match: Looks for keys like in the good old days, returns TRUE if key is found in the search range.
+• Lorebook Entry Active: Checks if the specified lorebook entry has been activated and returns TRUE if it is.
+• AND group: Checks if all contained conditions are true, then returns TRUE if they are.
+• OR group: Checks if any contained conditions are true, then returns TRUE if they are.
+• NOT: Returns TRUE but if the contained conditions are true, returns FALSE.
+
+The model checks if *any* of the top-level conditions are TRUE in order to activate the entry. If you have a TRUE as a top level condition, it's effectively always on, just positioned differently.
