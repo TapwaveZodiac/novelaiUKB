@@ -1334,7 +1334,7 @@
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 29/09/2025 at
-19:40">Last updated 29/09/2025 at 19:40</time></p>
+19:57">Last updated 29/09/2025 at 19:57</time></p>
 </blockquote>
 </header>
 
@@ -1348,7 +1348,10 @@
     <ul>
     <li><a href="#instructions"
     id="toc-instructions">Instructions</a></li>
-    <li><a href="#gmask" id="toc-gmask">gMASK<sop></a></li>
+    <li><a href="#attribution-blocks"
+    id="toc-attribution-blocks">Attribution blocks</a></li>
+    <li><a href="#gmask--sop" id="toc-gmask--sop">gMASK &amp;
+    sop</a></li>
     </ul></li>
     <li><a href="#changes" id="toc-changes">Changes</a>
     <ul>
@@ -1370,8 +1373,22 @@ Models to GLM</h1>
 GLM 4.5. <em>with contributions from DLTyrus</em></p>
 <h1 id="additions">Additions</h1>
 <h2 id="instructions">Instructions</h2>
+<p>GLM must have an instruction active at all times. If your context is
+empty, the default is <code>Write a story, or perhaps a poem.</code>. If
+it has any content, this becomes <code>Write.</code> This is always in
+effect in System space (see Attribution Blocks below).</p>
+<p>You can change this instruction by having the <strong>very first
+paragraph of your story</strong> contain an {-initiated instruction,
+which will overwrite the default instruction.</p>
+<h2 id="attribution-blocks">Attribution blocks</h2>
 <p>There are three types of attribution for GLM. &lt;|user|&gt;,
-&lt;|system|&gt;, and &lt;|assistant|&gt;</p>
+&lt;|system|&gt;, and &lt;|assistant|&gt;. Blocks are declared and are
+concluded whenever another one is declared. Every block declaration
+<strong>must be followed by a new line</strong>. You can declare the
+next block at the end of a paragraph, i.e</p>
+<pre><code>foobar&lt;|user|&gt;
+do as I say my peon&lt;|assistant|&gt;
+yes my mamster</code></pre>
 <p><strong>User</strong> blocks are initiated by writing instructions
 like you would for Kayra or Erato, by starting a paragraph with an
 opening curly brace {. You don't need to close it.
@@ -1381,12 +1398,12 @@ are in user block by default.</p>
 author's note, as well as <strong>Conditional Lorebook
 Entries</strong>.</p>
 <p><strong>Assistant</strong> is everything the model produces.</p>
-<h2 id="gmask">gMASK<sop></h2>
-<p>[gMASK]<sop> are a pair of reserved markers. You can add them
-yourself, but in this case you <strong>must build the whole context
-manully</strong>, including <em>not including /nothink</em>. This means
-none of the text injection (lorebook, memory, etc) are used <em>at
-all</em>, you must put them in and categorize them yourself.</p>
+<h2 id="gmask--sop">gMASK &amp; sop</h2>
+<p>[gMASK]<code>&lt;sop&gt;</code> are a pair of reserved markers. You
+can add them yourself, but in this case you <strong>must build the whole
+context manully</strong>, including <em>not including /nothink</em>.
+This means none of the text injection (lorebook, memory, etc) are used
+<em>at all</em>, you must put them in and categorize them yourself.</p>
 <h1 id="changes">Changes</h1>
 <h2 id="context">Context</h2>
 <h3 id="window">Window</h3>
@@ -1410,14 +1427,18 @@ Always-On Lorebooks
 Write. + /nothink #This is a default instruction. If you provide one it&#39;ll be replaced by yours.
 &lt;|system|&gt;
 Author&#39;s note #3 paragraphs from bottom
-Contextual Lorebooks (including &quot;always True&quot;)
 &lt;|assistant|&gt;
-&lt;think&gt;&lt;/think&gt;
+Story
+&lt;|system|&gt;
+Author&#39;s note #3 paragraphs from bottom
+Contextual Lorebooks (including &quot;always True&quot;) #inserted aligned to a newline at ~8000? characters from the bottom
+&lt;|assistant|&gt;
 Prefill #1 paragraph from bottom
 Story
 ***</code></pre>
-<p>Note: AN will be before Memory if your context window has no story
-text.</p>
+<p>Note: Order will be different if your context window has too little
+story text. Contextual lorebooks may be present before or after the
+Author's Note depending on the size of your paragraphs.</p>
 <h2 id="lorebook">Lorebook</h2>
 <p>The default search range for Lorebook keys is now 150,000 characters
 of story text starting from the bottom.</p>
