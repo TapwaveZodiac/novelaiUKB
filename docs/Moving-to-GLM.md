@@ -43,6 +43,12 @@ GLM has thinking capabilities (this is similar to what Gemini does, for instance
 
 # Changes
 
+## Formatting
+All paragraphs are now separed by double linebreaks. All single linebreaks are automatically converted to doubles. This is intentional.
+
+## Sampling
+Most sampling parameters are gone, leaving only randomness, topk and nucleus. You cannot reorder them.
+
 ## Context
 ### Window
 The model can see the initial 36K tokens of context. Once this amount is reached, the "rolling" begins.
