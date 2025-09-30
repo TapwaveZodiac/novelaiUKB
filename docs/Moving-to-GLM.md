@@ -2,7 +2,7 @@
 
 This page serves as an inventory of major changes from Erato/Kayra to GLM 4.5.
 
-*with contributions from DLTyrus*
+*with contributions from DLTyrus and MousAI*
 
 # Additions
 
@@ -36,6 +36,10 @@ yes my mamster
 [gMASK]`<sop>` are a pair of reserved markers which must be kept together.
 
 You can add them yourself, but in this case you **must build the whole context manully**, including *not including /nothink*. This means none of the text injection (lorebook, memory, etc) are used *at all*, you must put them in and categorize them yourself. This can be used to create a 100% predictable and fixed context where everything is manually positioned.
+
+## /nothink and the Think block
+
+GLM has thinking capabilities (this is similar to what Gemini does, for instance). However they are disabled in NAI's output by the inclusion of **/nothink** before *every Assistant block*. You can force-enable them by manually building context using the method above.
 
 # Changes
 
