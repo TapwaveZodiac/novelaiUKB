@@ -1334,7 +1334,7 @@
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 30/09/2025 at
-18:16">Last updated 30/09/2025 at 18:16</time></p>
+20:29">Last updated 30/09/2025 at 20:29</time></p>
 </blockquote>
 </header>
 
@@ -1358,6 +1358,8 @@
     </ul></li>
     <li><a href="#changes" id="toc-changes">Changes</a>
     <ul>
+    <li><a href="#formatting" id="toc-formatting">Formatting</a></li>
+    <li><a href="#sampling" id="toc-sampling">Sampling</a></li>
     <li><a href="#context" id="toc-context">Context</a>
     <ul>
     <li><a href="#window" id="toc-window">Window</a></li>
@@ -1432,6 +1434,13 @@ inclusion of <strong>/nothink</strong> before <em>every Assistant
 block</em>. You can force-enable them by manually building context using
 the method above.</p>
 <h1 id="changes">Changes</h1>
+<h2 id="formatting">Formatting</h2>
+<p>All paragraphs are now separed by double linebreaks. All single
+linebreaks are automatically converted to doubles. This is
+intentional.</p>
+<h2 id="sampling">Sampling</h2>
+<p>Most sampling parameters are gone, leaving only randomness, topk and
+nucleus. You cannot reorder them.</p>
 <h2 id="context">Context</h2>
 <h3 id="window">Window</h3>
 <p>The model can see the initial 36K tokens of context. Once this amount
