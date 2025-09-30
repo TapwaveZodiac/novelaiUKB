@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Moving to GLM">Return to Index</a>
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 29/09/2025 at
-21:05">Last updated 29/09/2025 at 21:05</time></p>
+  <p class="date before-toc"><time datetime="Last updated 30/09/2025 at
+16:09">Last updated 30/09/2025 at 16:09</time></p>
 </blockquote>
 </header>
 
@@ -1360,7 +1360,11 @@
     <li><a href="#window" id="toc-window">Window</a></li>
     <li><a href="#ordering" id="toc-ordering">Ordering</a></li>
     </ul></li>
-    <li><a href="#lorebook" id="toc-lorebook">Lorebook</a></li>
+    <li><a href="#lorebook" id="toc-lorebook">Lorebook</a>
+    <ul>
+    <li><a href="#lorebook-settings" id="toc-lorebook-settings">Lorebook
+    Settings</a></li>
+    </ul></li>
     </ul></li>
     </ul>
   <a href="." forTitle="Moving to GLM">Return to Index</a>
@@ -1370,16 +1374,27 @@
 <h1 id="changes-from-previous-models-to-glm">Changes from Previous
 Models to GLM</h1>
 <p>This page serves as an inventory of major changes from Erato/Kayra to
-GLM 4.5. <em>with contributions from DLTyrus</em></p>
+GLM 4.5.</p>
+<p><em>with contributions from DLTyrus</em></p>
 <h1 id="additions">Additions</h1>
 <h2 id="instructions">Instructions</h2>
-<p>GLM must have an instruction active at all times. If your context is
-empty, the default is <code>Write a story, or perhaps a poem.</code>. If
-it has any content, this becomes <code>Write.</code> This is always in
-effect in System space (see Attribution Blocks below).</p>
+<p>GLM must have an instruction active at all times. To decide the
+default behavior, first the story text is split into user and assistant
+messages.</p>
+<ul>
+<li>If there are no messages, add a user message with the text "Write a
+story, or perhaps a poem."</li>
+<li>If the first message isn't a user message, add one with the text
+"Write."</li>
+<li>If the context size is sufficiently long, an user message containing
+"Continue." is also added (see below, in the Context Building
+section).</li>
+</ul>
 <p>You can change this instruction by having the <strong>very first
 paragraph of your story</strong> contain an {-initiated instruction,
-which will overwrite the default instruction.</p>
+which will overwrite the default instruction. Keep in mind that once it
+exits context, it stops applying. Use Author's Note instead at this
+point.</p>
 <h2 id="attribution-blocks">Attribution blocks</h2>
 <p>There are three types of attribution for GLM. &lt;|user|&gt;,
 &lt;|system|&gt;, and &lt;|assistant|&gt;. Blocks are declared and are
@@ -1405,7 +1420,8 @@ must be kept together.</p>
 the whole context manully</strong>, including <em>not including
 /nothink</em>. This means none of the text injection (lorebook, memory,
 etc) are used <em>at all</em>, you must put them in and categorize them
-yourself.</p>
+yourself. This can be used to create a 100% predictable and fixed
+context where everything is manually positioned.</p>
 <h1 id="changes">Changes</h1>
 <h2 id="context">Context</h2>
 <h3 id="window">Window</h3>
@@ -1432,7 +1448,7 @@ Author&#39;s note #3 paragraphs from bottom
 &lt;|assistant|&gt;
 Story
 &lt;|system|&gt;
-Author&#39;s note #3 paragraphs from bottom
+Author&#39;s note #4 newlines from bottom
 Contextual Lorebooks (including &quot;always True&quot;) #inserted aligned to a newline at ~8000? characters from the bottom
 &lt;|assistant|&gt;
 Prefill #1 paragraph from bottom
@@ -1441,6 +1457,13 @@ Story
 <p>Note: Order will be different if your context window has too little
 story text. Contextual lorebooks may be present before or after the
 Author's Note depending on the size of your paragraphs.</p>
+<p>The rules followed by the model, in more detail, are as such:</p>
+<pre><code>If we&#39;ve been given lorebook entries to add, for any nonpermanent lore, add them as a system message at 8,000 assistant message characters from the bottom, aligned to a newline, snapping to a nearby message boundary if close to one.
+If we&#39;ve been given an author&#39;s note, add it as a system message 4 lines or 800 assistant message characters from the bottom, whichever is higher, aligned to a newline, snapping to a nearby message boundary if close to one.
+If the last message is an assistant message and &gt; 8,000 characters long, insert a user message reading &quot;Continue.&quot; 2000 characters up, aligned to a newline.
+If the last message is an assistant message, prepend the prefill text to it.
+If the last message is not an assistant message, add an assistant message with the prefill.
+If we&#39;ve been given memory or any permanent lore entries, prepend them to the first user message.</code></pre>
 <h2 id="lorebook">Lorebook</h2>
 <p>The default search range for Lorebook keys is now 150,000 characters
 of story text starting from the bottom, for normal entries. 4K for
@@ -1450,6 +1473,7 @@ ordering is important, just duplicate them in the order you want them to
 appear.</p>
 <p>The system is told to understand ---- as a separator in the default
 system prompt, but you can change that if you want.</p>
+<h3 id="lorebook-settings">Lorebook Settings</h3>
 <p>Most of the lorebook settings, such as positioning and ordering, are
 now gone. Instead you have <strong>conditional entries</strong>, which
 use any combination of these conditions:</p>
