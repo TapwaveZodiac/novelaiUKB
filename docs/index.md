@@ -26,6 +26,7 @@ You can find short descriptions for various terms and concepts here. Get up to s
 - **📔 [Automatically Tag and Import NovelAI Images for Hydrus](Automatically-Tag-and-Import-NovelAI-Images-for-Hydrus)**
 - **🔖 [Using a Bookmarklet to retrieve Danbooru tags](Tag-Retrieval-Bookmarklet)**
 - **🔧 [Archon's Image Generator Enhancements](NovelAI-Image-Generator-Enhancements)**
+- **🖼️ [mikojiy's Image Generator Profile Manager](https://github.com/mikojiy/NAI-Profile-Manager)** (Requires [Tampermonkey](https://www.tampermonkey.net/) or a similar plugin.)
 
 **Official Links**
 
