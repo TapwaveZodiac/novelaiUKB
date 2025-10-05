@@ -1,4 +1,5 @@
 # Intro
+Note: This guide applies to Kayra and Erato. GLM works similarly with minor changes. See [Moving to GLM](Moving-to-GLM)
 You just discovered NovelAI for the first time. You click "New story". The full might of the AI is displayed before you.
 
 ![image](https://github.com/TapwaveZodiac/novelaiUKB/assets/35267604/32cc877e-b167-4ec1-b38d-03221ee72945)
