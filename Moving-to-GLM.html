@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Moving to GLM">Return to Index</a>
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 04/10/2025 at
-14:44">Last updated 04/10/2025 at 14:44</time></p>
+  <p class="date before-toc"><time datetime="Last updated 05/10/2025 at
+17:26">Last updated 05/10/2025 at 17:26</time></p>
 </blockquote>
 </header>
 
@@ -1476,12 +1476,25 @@ Story
 story text. Contextual lorebooks may be present before or after the
 Author's Note depending on the size of your paragraphs.</p>
 <p>The rules followed by the model, in more detail, are as such:</p>
-<pre><code>If we&#39;ve been given lorebook entries to add, for any nonpermanent lore, add them as a system message at 8,000 assistant message characters from the bottom, aligned to a newline, snapping to a nearby message boundary if close to one.
-If we&#39;ve been given an author&#39;s note, add it as a system message 4 lines or 800 assistant message characters from the bottom, whichever is higher, aligned to a newline, snapping to a nearby message boundary if close to one.
-If the last message is an assistant message and &gt; 8,000 characters long, insert a user message reading &quot;Continue.&quot; 2000 characters up, aligned to a newline.
-If the last message is an assistant message, prepend the prefill text to it.
-If the last message is not an assistant message, add an assistant message with the prefill.
-If we&#39;ve been given memory or any permanent lore entries, prepend them to the first user message.</code></pre>
+<ul>
+<li>If we've been given lorebook entries to add, for any nonpermanent
+lore, add them as a system message at 8,000 assistant message characters
+from the bottom, aligned to a newline, snapping to a nearby message
+boundary if close to one.</li>
+<li>If we've been given an author's note, add it as a system message 4
+lines or 800 assistant message characters from the bottom, whichever is
+higher, aligned to a newline, snapping to a nearby message boundary if
+close to one.</li>
+<li>If the last message is an assistant message and &gt; 8,000
+characters long, insert a user message reading "Continue." 2000
+characters up, aligned to a newline.</li>
+<li>If the last message is an assistant message, prepend the prefill
+text to it.</li>
+<li>If the last message is not an assistant message, add an assistant
+message with the prefill.</li>
+<li>If we've been given memory or any permanent lore entries, prepend
+them to the first user message.</li>
+</ul>
 <h2 id="lorebook">Lorebook</h2>
 <p>The default search range for Lorebook keys is now 150,000 characters
 of story text starting from the bottom, for normal entries. 4K for
