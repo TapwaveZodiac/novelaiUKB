@@ -83,14 +83,13 @@ Note: Order will be different if your context window has too little story text.
 Contextual lorebooks may be present before or after the Author's Note depending on the size of your paragraphs.
 
 The rules followed by the model, in more detail, are as such:
-```
-If we've been given lorebook entries to add, for any nonpermanent lore, add them as a system message at 8,000 assistant message characters from the bottom, aligned to a newline, snapping to a nearby message boundary if close to one.
-If we've been given an author's note, add it as a system message 4 lines or 800 assistant message characters from the bottom, whichever is higher, aligned to a newline, snapping to a nearby message boundary if close to one.
-If the last message is an assistant message and > 8,000 characters long, insert a user message reading "Continue." 2000 characters up, aligned to a newline.
-If the last message is an assistant message, prepend the prefill text to it.
-If the last message is not an assistant message, add an assistant message with the prefill.
-If we've been given memory or any permanent lore entries, prepend them to the first user message.
-```
+
+* If we've been given lorebook entries to add, for any nonpermanent lore, add them as a system message at 8,000 assistant message characters from the bottom, aligned to a newline, snapping to a nearby message boundary if close to one.
+* If we've been given an author's note, add it as a system message 4 lines or 800 assistant message characters from the bottom, whichever is higher, aligned to a newline, snapping to a nearby message boundary if close to one.
+* If the last message is an assistant message and > 8,000 characters long, insert a user message reading "Continue." 2000 characters up, aligned to a newline.
+* If the last message is an assistant message, prepend the prefill text to it.
+* If the last message is not an assistant message, add an assistant message with the prefill.
+* If we've been given memory or any permanent lore entries, prepend them to the first user message.
 
 ## Lorebook
 
