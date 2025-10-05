@@ -125,6 +125,8 @@ NovelAI before reading them.**
 
 ## AI Writing
 
+### **🐲 [Changes between Previous Models and GLM](Moving-to-GLM)**
+
 ### **👨‍🏫 [End of Input Tips](End-of-Input-Tips)**
 
 ### **🐇 [The Rabbit Hole](The-Rabbit-Hole)** (Advanced Techniques & More indepth explanations of NAI-specific elements)
