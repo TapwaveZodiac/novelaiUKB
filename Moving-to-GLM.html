@@ -1333,8 +1333,8 @@
 <a href="." forTitle="Moving to GLM">Return to Index</a>
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
-  <p class="date before-toc"><time datetime="Last updated 12/10/2025 at
-07:48">Last updated 12/10/2025 at 07:48</time></p>
+  <p class="date before-toc"><time datetime="Last updated 18/10/2025 at
+19:53">Last updated 18/10/2025 at 19:53</time></p>
 </blockquote>
 </header>
 
@@ -1451,9 +1451,31 @@ is reached, the "rolling" begins.</p>
 boundaries are now 8K to 44K. (Even if you haven't reached 44K yet.)
 Once you reach that 44K tokens, the 8K topmost tokens are once again
 removed. The window is once again moved by 8K, so 16K to 52K.</p>
-<p>Each time you reach a 8K boundary, the window shift. It doesn't shift
-with every addition to the context, only in these 8K steps. This
-facilitates caching since the context gets pretty big after a while.</p>
+<p>Each time you reach a 8K boundary, the window shifts. It doesn't
+shift with every addition to the context, only in these 8K steps. This
+facilitates caching since the context gets pretty big after a while.
+This 8192 token window is <strong>always</strong> story text and is
+<strong>always</strong> present.</p>
+<p>The story text has a minimum reserved context size of <strong>1024
+tokens</strong>, <em>plus</em> the Rollover window of <strong>8192
+tokens</strong>.</p>
+<p>Always On Lorebook entries, the Memory and System Prompt are thus
+allowed a maximum of 27k tokens (for opus.)</p>
+<p>Context lorebook are allowed up to 50% of the context window, and are
+pruned after this.</p>
+<p>The token pools and their organization is as follows:</p>
+<pre><code>tokens pools and what can take from them:
+storyReserved - story (the &quot;rollover window&quot;)
+highPriority - story, system prompt, memory, always on lorebook entries
+lowPriority - story, system prompt, memory, lorebook entries, an, prefill
+
+order things take tokens:
+system prompt
+prefill
+lorebook entries
+memory
+author&#39;s note
+story</code></pre>
 <h3 id="ordering">Ordering</h3>
 <p>The context window is now ordered this way:</p>
 <pre><code>[gMASK]&lt;sop&gt;&lt;|system|&gt;
