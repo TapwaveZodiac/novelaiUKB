@@ -55,7 +55,31 @@ The model can see the initial 36K tokens of context. Once this amount is reached
 
 First, the topmost 8K tokens are removed, the context window's boundaries are now  8K to 44K. (Even if you haven't reached 44K yet.) Once you reach that 44K tokens, the 8K topmost tokens are once again removed. The window is once again moved by 8K, so 16K to 52K.
 
-Each time you reach a 8K boundary, the window shift. It doesn't shift with every addition to the context, only in these 8K steps. This facilitates caching since the context gets pretty big after a while.
+Each time you reach a 8K boundary, the window shifts. It doesn't shift with every addition to the context, only in these 8K steps. This facilitates caching since the context gets pretty big after a while. This 8192 token window is **always** story text and is **always** present.
+
+The story text has a minimum reserved context size of **1024 tokens**, *plus* the Rollover window of **8192 tokens**.
+
+Always On Lorebook entries, the Memory and System Prompt are thus allowed a maximum of 27k tokens (for opus.)
+
+Context lorebook are allowed up to 50% of the context window, and are pruned after this.
+
+The token pools and their organization is as follows:
+```
+tokens pools and what can take from them:
+storyReserved - story (the "rollover window")
+highPriority - story, system prompt, memory, always on lorebook entries
+lowPriority - story, system prompt, memory, lorebook entries, an, prefill
+
+order things take tokens:
+system prompt
+prefill
+lorebook entries
+memory
+author's note
+story
+```
+
+
 ### Ordering
 The context window is now ordered this way:
 ```
