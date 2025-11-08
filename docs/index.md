@@ -19,6 +19,8 @@ A quick crash course on all the general use techniques you may have heard of.
 
 You can find short descriptions for various terms and concepts here. Get up to speed on what everyone else is talking about!
 
+## **🐲 [Moving from older models to GLM](Moving-to-GLM)**
+
 ## 🔗 Useful Links & Resources
 
 **Tools for NovelAI**
@@ -124,8 +126,6 @@ tasks.
 NovelAI before reading them.**
 
 ## AI Writing
-
-### **🐲 [Changes between Previous Models and GLM](Moving-to-GLM)**
 
 ### **👨‍🏫 [End of Input Tips](End-of-Input-Tips)**
 
