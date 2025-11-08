@@ -47,7 +47,10 @@ GLM has thinking capabilities (this is similar to what Gemini does, for instance
 All paragraphs are now separed by double linebreaks. All single linebreaks are automatically converted to doubles. This is intentional. As a normal user you don't need to think about this. This is only relevant when manually building context with gMASK`<sop>`.
 
 ## Sampling
-Most sampling parameters are gone, leaving only randomness, topk and nucleus. You cannot reorder them.
+Most sampling parameters are gone, leaving only randomness, topk, nucleus, and Min-P. You cannot reorder them.
+
+## Biases
+Anlatan uses a [default bias list](GLM-Bias-list), but you can also add your own like with Kayra and Erato.
 
 ## Context
 ### Window
