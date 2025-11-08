@@ -50,7 +50,7 @@ All paragraphs are now separed by double linebreaks. All single linebreaks are a
 Most sampling parameters are gone, leaving only randomness, topk, nucleus, and Min-P. You cannot reorder them.
 
 ## Biases
-Anlatan uses a [default bias list](GLM-Bias-list), but you can also add your own like with Kayra and Erato.
+Anlatan uses a [default bias list](GLM-bias-list.txt), but you can also add your own like with Kayra and Erato.
 
 ## Context
 ### Window
