@@ -1334,7 +1334,7 @@
 <h1 class="title">Moving to GLM</h1>
 <blockquote class="metadata">
   <p class="date before-toc"><time datetime="Last updated 08/11/2025 at
-10:38">Last updated 08/11/2025 at 10:38</time></p>
+10:44">Last updated 08/11/2025 at 10:44</time></p>
 </blockquote>
 </header>
 
@@ -1360,6 +1360,7 @@
     <ul>
     <li><a href="#formatting" id="toc-formatting">Formatting</a></li>
     <li><a href="#sampling" id="toc-sampling">Sampling</a></li>
+    <li><a href="#biases" id="toc-biases">Biases</a></li>
     <li><a href="#context" id="toc-context">Context</a>
     <ul>
     <li><a href="#window" id="toc-window">Window</a></li>
@@ -1441,8 +1442,11 @@ As a normal user you don't need to think about this. This is only
 relevant when manually building context with
 gMASK<code>&lt;sop&gt;</code>.</p>
 <h2 id="sampling">Sampling</h2>
-<p>Most sampling parameters are gone, leaving only randomness, topk and
-nucleus. You cannot reorder them.</p>
+<p>Most sampling parameters are gone, leaving only randomness, topk,
+nucleus, and Min-P. You cannot reorder them.</p>
+<h2 id="biases">Biases</h2>
+<p>Anlatan uses a <a href="GLM-Bias-list.html">default bias list</a>,
+but you can also add your own like with Kayra and Erato.</p>
 <h2 id="context">Context</h2>
 <h3 id="window">Window</h3>
 <p>The model can see the initial 36K tokens of context. Once this amount
